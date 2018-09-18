@@ -1,0 +1,323 @@
+//////////////////////////////// HEADER AND NAVIGATION
+@menu-mobile-height: 80px;
+//the full width div the nav is in
+div.top {
+    position:relative; z-index:6;
+    background-color:@white;
+    width:100%;
+    //border-bottom:1px solid fade(@pure-black, 10%);
+    .registration-page & {height:0;}
+    .registration-page .my-confirmation-content & {height:auto;}
+    @media @medium {height:auto; z-index:5; .transition;}
+
+    //navigation div which serves as a row
+    .navigation {
+        .display(flex);
+        .flex(0, 1, auto);
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        .justify-content(space-between);
+        //.align-items(stretch);
+        position:relative;
+        margin:0 auto;
+    	@media @medium {max-width:@md-breakpoint;}
+    	@media @large {max-width:@lg-breakpoint;}
+    	@media @xlarge {max-width:@xl-breakpoint;}
+
+        #menu {
+            display:block; position:absolute; z-index:2;
+            overflow:hidden;
+            top:0; left:0;
+            float:none;
+            padding:@menu-mobile-height 0 0 0;
+            width:100%;
+            min-height:100%; max-height:0; height:auto;
+            overflow:hidden;
+            > li:before {display:none;}
+            .transition;
+            &:active {.box-shadow(none);}
+        	@media @medium {
+                .display(flex);
+                .flex-direction(row);
+                .flex-wrap(wrap);
+                .justify-content(flex-end);
+                .flex(0,0,auto);
+                position:relative;
+                top:auto; left:auto;
+                width:auto!important;
+                min-height:100%;
+                max-height:none; text-align:right;
+                padding:0 0 0 20px;
+            }
+
+        	&.menu-opened {
+                @media @small-only {
+                	max-height:100vh;
+                    .box-shadow(1px 1px 10px fade(@pure-black, 50%));
+                    &:after {
+                	    background:@red;
+                	    box-shadow:
+            	        0 0.25em 0 0 @red,
+            	        0 0.5em 0 0 @red;
+                    }
+                }
+            }
+
+            //hamburger icon for mobile view
+        	&:after {
+        	    content: "";
+        	    position:absolute;
+        	    right:15px; top:@menu-mobile-height / 2 - 5px;
+        	    width:1.5em;
+        	    height:0.15em;
+        	    background:@dark-gray;
+        	    box-shadow:
+        	        0 0.25em 0 0 @dark-gray,
+        	        0 0.5em 0 0 @dark-gray;
+                .transition;
+        		@media @medium {display:none;}
+        	}
+
+            //menu items
+            li {
+                display:block; position:relative; float:none;
+                margin:0; padding:0;
+                background-color:@light-gray;
+                border-top:1px solid fade(@white, 90%);
+                border-bottom:1px solid fade(@pure-black, 10%);
+                @media @medium {
+                    .display(flex);
+                    // .flex-direction(row);
+                    .align-items(center);
+                    // .flex(0,0,auto);
+                    background-color:@white;
+                    border:none;
+                }
+                &:hover ul, ul {display:none!important;}
+                a {
+                    display:block; position:relative; z-index:3;
+                    padding:10px 15px;
+                    text-decoration: none;
+                    color:@black;
+                    .uppercase;
+                    font-weight:600;
+                    font-size:16px; line-height:1em;
+                    .transition;
+
+                    @media @medium {
+                        // .display(flex);
+                        // .flex-direction(row);
+                        // .justify-content(center);
+                        // .align-items(center);
+                        // .flex(0,0,auto);
+                        overflow:hidden;
+                        border-bottom:none;
+                        color:@monsoon;
+                        font-size:14px;
+                        padding:10px 20px;
+                        //min-height:100%;
+                        &:hover {color:@red;}
+                    }
+                }
+                &.subnav-register {
+                	padding:10px;
+                    @media @medium {padding:0;}
+                	a {
+                	    background-color:@red;
+                	    color:@white;
+                	    padding:15px 25px; margin:0;
+                	    cursor:pointer;
+                	    .transition();
+                        &:hover {background-color:@light-red;}
+                        &:active {background-color:@dark-red;}
+                	}//end register button link in nav
+                }//end register button li in nav
+            }//end menu li
+        }//end #menu ul list
+    }//end .navigation
+    &.sticky {
+        position:fixed; z-index:500;
+        top:0; left:0;
+        border-bottom:1px solid fade(@pure-black, 10%);
+        .box-shadow(1px 1px 10px fade(@pure-black, 50%));
+        width:100%; max-width:none;
+        background-color:@white;
+
+        @media @medium {.logo-img {max-width:150px; .translateY(0);}}
+    }
+}//end div.top
+.content.scrolled, .registration-page .my-confirmation-content.content.scrolled {padding-top:71px;}
+.registration-page .content.scrolled {padding-top:0;}
+
+.logo-zone {
+    .flex(1, 1, 0px);
+    .display(flex);
+    .flex-wrap(wrap);
+    .align-items(center);
+    position:relative;
+    padding:10px;
+
+    .logo-lockup {
+        .display(flex);
+        .flex-wrap(wrap);
+        .align-items(center);
+        .flex(1, 1, 0px);
+        max-width:400px;
+    }
+
+    .logo-img {
+        height:60px;
+        max-width:275px;
+        padding-right:15px;
+        .transition;
+        @media @medium {height:auto; .translateY(15px);}
+    }
+    .text {
+        @media @small-only {display:none;}
+        .uppercase;
+        color:@monsoon;
+        font-weight:600;
+        font-size:12px; line-height:1em;
+
+        .top-line {display:block; font-size:150%; margin-bottom:5px;}
+    }
+}
+
+
+
+//////////////////////////////// FOOTER
+.cvent-footer-wrapper {padding:0;}
+.footer {
+    position:relative; display:block; overflow:hidden;
+    padding:30px 0 50px 0!important; margin:0px;
+    border-top:1px solid fade(@white, 40%);
+    color:@gray;
+    background-color:@black;
+    font-family:@myriad-pro;
+    font-style:normal; font-weight:600;
+    .uppercase;
+    font-size:14px; line-height:1em;
+	.footer-logo {display:block; margin:0 auto;}
+    .social-media-link {
+        display:block;
+        max-width:300px;
+        color:@white;
+        text-align:left;
+        border:1px solid fade(@white, 20%);
+        margin:20px auto;
+        .ratio, .text-content {display:inline-block; vertical-align:middle;}
+        .ratio {width: ~"calc(30% - 3.5px)"; max-width:100px;}
+        .text-content {
+            width: ~"calc(70% - 3.5px)";
+            padding:10px;
+        }
+        .hashtag {
+            display:block;
+            margin-top:5px;
+            font-size:34px; line-height:1em;
+            text-transform:none;
+            letter-spacing:normal;
+            font-weight:300;
+        }
+    }
+	.footer-links {
+        display:block; padding:7px 0;
+        text-align:center;
+    	a.link {
+    	    position:relative;
+    	    display:block;
+    	    border-top:1px solid @iron;
+    	    color:@gray;
+    	    text-decoration:none;
+    	    padding:10px 15px; margin:0;
+    	    white-space:nowrap;
+    		&:first-child {margin-top:20px;}
+    		&:hover {text-decoration:underline;}
+    	}
+    }
+    @media @large {
+        padding:20px 0 50px 0!important;
+        font-size:11px;
+    	.footer-logo {margin:0;}
+        .social-media-link {
+            display:inline-block;
+            margin:0;
+            box-shadow: 1px 1px 7px fade(@pure-black, 0%);
+            .transition;
+            &:hover {background-color:fade(@pure-black, 20%); border-color:@blue;}
+            .ratio {width: ~"calc(25% - 3.5px)";}
+            .text-content {width: ~"calc(75% - 3.5px)";}
+            .hashtag {font-size:30px;}
+        }
+        .footer-links {
+            padding:0; text-align:right;
+            a.link {
+                display:inline-block; *zoom:1; *display:inline;
+                padding:3px 10px;
+                border-top:none;
+                &:first-child {margin-top:0;}
+                &:last-child {padding-right:0px;}
+                &:before {
+                		position:absolute; display:block;
+                		content:"";
+                		width:1px; height:14px;
+                		right:0; top:50%; margin-top:-7px;
+                		background-color:#bbbbbb;
+                	}
+                &:last-child:before {display:none;}
+            }
+        }
+    }
+    @media @xlarge {font-size:12px;}
+}
+
+
+
+//BANNER STUFF
+#hero-banner {
+    position:relative;
+    overflow:visible; z-index:3;
+    padding-top:40px; padding-bottom:40px;
+    .head {
+        padding-top:20px;
+        font-size:36px; line-height:42px;
+        font-weight:600;
+        .uppercase;
+        @media @medium {font-size:60px; line-height:62px;}
+    }
+    .sub {
+        padding-top:20px;
+        font-size:14px; line-height:18px;
+        font-weight:400;
+        .uppercase;
+    }
+    @media @medium {
+        padding-top:100px; padding-bottom:100px;
+        &.above-card {padding-bottom:180px;}
+        .sub {font-size:22px; line-height:28px;}
+    }
+
+    &.sub-page {
+        padding-top:40px; padding-bottom:40px;
+        .head {padding-top:10px;}
+        .sub {padding-top:0;}
+        @media @small-only {
+            .divider {margin-left:0; margin-right:0;}
+        }
+    }
+}//end hero banner
+
+
+
+//SECTIONS
+section {
+    position:relative; overflow:hidden;
+    padding-top:40px; padding-bottom:40px;
+    background-color:@white;
+	&.no-padding {padding-top:0; padding-bottom:0;}
+	&.no-padding-top {padding-top:0;}
+	&.no-padding-bottom {padding-bottom:0;}
+
+    @media @medium {padding-top:80px; padding-bottom:80px;}
+    @media @large {padding-top:100px; padding-bottom:100px;}
+}//end section

@@ -1,0 +1,347 @@
+/* BASIC GRID
+-----------------------------------------------------------------*/
+.row {
+    .display(flex);
+    .flex(0, 1, auto);
+    .flex-direction(row);
+    .flex-wrap(wrap);
+    .justify-content(center);
+
+    width:100%;
+    margin-left:auto; margin-right:auto;
+
+    // expanded rows
+    &.expand, &.expand-sm { max-width: none; }
+
+    // horizontal column alignment
+    &.h-left, &.h-left-sm { .justify-content(flex-start); }
+    &.h-center, &.h-center-sm { .justify-content(center); }
+    &.h-right, &.h-right-sm { .justify-content(flex-end); }
+    &.between, &.between-sm { .justify-content(space-between); }
+    &.around, &.around-sm { .justify-content(space-around); }
+
+    // vertical column alignment
+    &.v-top, &.v-top-sm { .align-items(flex-start); }
+    &.v-middle, &.v-middle-sm { .align-items(center); }
+    &.v-bottom, &.v-bottom-sm { .align-items(flex-end); }
+    &.stretch, &.stretch-sm { .align-items(stretch); }
+
+    // auto-width columns
+    &.shrink, &.shrink-sm{ > * { .flex(0, 0, auto); width: auto; } }
+    &.release, &.release-sm { > * { .flex(1, 1, 0px); } }
+
+	> .col {
+        width: 100%;
+        .flex(0, 0, auto);
+        padding: calc(@base-gutter-sm * 2) @base-gutter-sm;
+
+        // ordering
+        &.first, &.first-sm { .order(-1); }
+        &.last, &.last-sm { .order(1); }
+
+        // auto-width columns
+        &.shrink, &.shrink-sm { .flex(0,0,auto); width: auto; }
+        &.release, &.release-sm { .flex(1,1,0px); }
+
+        &.collapse {
+            padding-left:0; padding-right:0;
+            padding-top:0; padding-bottom:0;
+            &-x > {padding-left:0; padding-right:0;}
+            &-y > {padding-top:0; padding-bottom:0;}
+        }
+	}
+
+    // gutter controls
+    padding-left:@base-gutter-sm; padding-right:@base-gutter-sm;
+    &.collapse {
+        padding-left:0; padding-right:0;
+        > .col {padding:0;}
+        &-x > .col {padding-left:0; padding-right:0;}
+        &-y > .col {padding-top:0; padding-bottom:0;}
+    }
+    &.compact {
+        padding-left:@base-gutter-sm + (@base-gutter-sm / 2); padding-right:@base-gutter-sm + (@base-gutter-sm / 2);
+        > .col {padding:@base-gutter-sm / 2;}
+        &-x > .col {padding-left:@base-gutter-sm / 2; padding-right:@base-gutter-sm / 2;}
+        &-y {
+            padding-left:@base-gutter-sm; padding-right:@base-gutter-sm;
+            > .col {padding-top:@base-gutter-sm / 2; padding-bottom:@base-gutter-sm / 2;}
+        }
+    }
+    &.loose {
+        padding-left:0; padding-right:0;
+        > .col {padding:@base-gutter-sm * 2;}
+        &-x > .col {padding-left:@base-gutter-sm * 2; padding-right:@base-gutter-sm * 2;}
+        &-y {
+            padding-left:@base-gutter-sm; padding-right:@base-gutter-sm;
+            > .col {padding-top:@base-gutter-sm * 2; padding-bottom:@base-gutter-sm * 2;}
+        }
+    }
+
+    @media @medium {
+        max-width:@md-breakpoint;
+
+        // expanded rows
+        &.expand-md { max-width: none; }
+
+        // horizontal column alignment
+        &.h-left-md { .justify-content(flex-start); }
+        &.h-center-md { .justify-content(center); }
+        &.h-right-md { .justify-content(flex-end); }
+        &.between-md { .justify-content(space-between); }
+        &.around-md { .justify-content(space-around); }
+
+        // vertical column alignment
+        &.v-top-md { .align-items(flex-start); }
+        &.v-middle-md { .align-items(center); }
+        &.v-bottom-md { .align-items(flex-end); }
+        &.stretch-md { .align-items(stretch); }
+
+        // auto-width columns
+        &.shrink-md { > * { .flex(0, 0, auto); width: auto; } }
+        &.release-md { > * { .flex(1, 1, 0px); } }
+
+    	> .col {
+            padding: @base-gutter-md;
+
+            // ordering
+            &.first-md { .order(-1); }
+            &.last-md { .order(1); }
+
+            // auto-width columns
+            &.shrink-md { .flex(0,0,auto); width: auto; }
+            &.release-md { .flex(1,1,0px); }
+    	}
+
+        // gutter controls
+        padding-left:@base-gutter-md; padding-right:@base-gutter-md;
+        &.compact {
+            padding-left:@base-gutter-md + (@base-gutter-md / 2); padding-right:@base-gutter-md + (@base-gutter-md / 2);
+            > .col {padding:@base-gutter-md / 2;}
+            &-x > .col {padding-left:@base-gutter-md / 2; padding-right:@base-gutter-md / 2;}
+            &-y {
+                padding-left:@base-gutter-md; padding-right:@base-gutter-md;
+                > .col {padding-top:@base-gutter-md / 2; padding-bottom:@base-gutter-md / 2;}
+            }
+        }
+        &.loose {
+            > .col {padding:@base-gutter-md * 2;}
+            &-x > .col {padding-left:@base-gutter-md * 2; padding-right:@base-gutter-md * 2;}
+            &-y {
+                padding-left:@base-gutter-md; padding-right:@base-gutter-md;
+                > .col {padding-top:@base-gutter-md * 2; padding-bottom:@base-gutter-md * 2;}
+            }
+        }
+    }
+    @media @large {
+        max-width:@lg-breakpoint;
+
+        // expanded rows
+        &.expand-lg { max-width: none; }
+
+        // horizontal column alignment
+        &.h-left-lg { .justify-content(flex-start); }
+        &.h-center-lg { .justify-content(center); }
+        &.h-right-lg { .justify-content(flex-end); }
+        &.between-lg { .justify-content(space-between); }
+        &.around-lg { .justify-content(space-around); }
+
+        // vertical column alignment
+        &.v-top-lg { .align-items(flex-start); }
+        &.v-middle-lg { .align-items(center); }
+        &.v-bottom-lg { .align-items(flex-end); }
+        &.stretch-lg { .align-items(stretch); }
+
+        // auto-width columns
+        &.shrink-lg { > * { .flex(0, 0, auto); width: auto; } }
+        &.release-lg { > * { .flex(1, 1, 0px); } }
+
+    	> .col {
+            padding: @base-gutter-xl;
+
+            // ordering
+            &.first-lg { .order(-1); }
+            &.last-lg { .order(1); }
+
+            // auto-width columns
+            &.shrink-lg { .flex(0,0,auto); width: auto; }
+            &.release-lg { .flex(1,1,0px); }
+    	}
+    }
+    @media @xlarge {
+        max-width:@xl-breakpoint;
+
+        // expanded rows
+        &.expand-xl { max-width: none; }
+
+        // horizontal column alignment
+        &.h-left-xl { .justify-content(flex-start); }
+        &.h-center-xl { .justify-content(center); }
+        &.h-right-xl { .justify-content(flex-end); }
+        &.between-xl { .justify-content(space-between); }
+        &.around-xl { .justify-content(space-around); }
+
+        // vertical column alignment
+        &.v-top-xl { .align-items(flex-start); }
+        &.v-middle-xl { .align-items(center); }
+        &.v-bottom-xl { .align-items(flex-end); }
+        &.stretch-xl { .align-items(stretch); }
+
+        // auto-width columns
+        &.shrink-xl { > * { .flex(0, 0, auto); width: auto; } }
+        &.release-xl { > * { .flex(1, 1, 0px); } }
+
+    	> .col {
+            // ordering
+            &.first-xl { .order(-1); }
+            &.last-xl { .order(1); }
+
+            // auto-width columns
+            &.shrink-xl { .flex(0,0,auto); width: auto; }
+            &.release-xl { .flex(1,1,0px); }
+    	}
+
+
+        // gutter controls
+        padding-left:@base-gutter-xl; padding-right:@base-gutter-xl;
+        &.compact {
+            padding-left:@base-gutter-xl + (@base-gutter-xl / 2); padding-right:@base-gutter-xl + (@base-gutter-xl / 2);
+            > .col {padding:@base-gutter-xl / 2;}
+            &-x > .col {padding-left:@base-gutter-xl / 2; padding-right:@base-gutter-xl / 2;}
+            &-y {
+                padding-left:@base-gutter-xl; padding-right:@base-gutter-xl;
+                > .col {padding-top:@base-gutter-xl / 2; padding-bottom:@base-gutter-xl / 2;}
+            }
+        }
+        &.loose {
+            > .col {padding:@base-gutter-xl * 2;}
+            &-x > .col {padding-left:@base-gutter-xl * 2; padding-right:@base-gutter-xl * 2;}
+            &-y {
+                padding-left:@base-gutter-xl; padding-right:@base-gutter-xl;
+                > .col {padding-top:@base-gutter-xl * 2; padding-bottom:@base-gutter-xl * 2;}
+            }
+        }
+    }
+}
+
+@base-12-col: 100% / 12;
+.row {
+    .col.sm {
+		&-0 {.flex(0, 0, 0);}
+		&-1 {.flex(0, 0, round(@base-12-col, 2));}
+		&-2 {.flex(0, 0, floor(@base-12-col * 2, 2));}
+		&-3 {.flex(0, 0, round(@base-12-col * 3, 2));}
+		&-4 {.flex(0, 0, round(@base-12-col * 4, 2));}
+		&-5 {.flex(0, 0, round(@base-12-col * 5, 2));}
+		&-6 {.flex(0, 0, round(@base-12-col * 6, 2));}
+		&-7 {.flex(0, 0, round(@base-12-col * 7, 2));}
+		&-8 {.flex(0, 0, round(@base-12-col * 8, 2));}
+		&-9 {.flex(0, 0, round(@base-12-col * 9, 2));}
+		&-10{.flex(0, 0, round(@base-12-col * 10, 2));}
+		&-11{.flex(0, 0, round(@base-12-col * 11, 2));}
+		&-12{.flex(0, 0, 100%);}
+    }
+
+    &.sm-1-up > .col {.flex(0, 0, round(100% / 1, 2));}
+    &.sm-2-up > .col {.flex(0, 0, round(100% / 2, 2));}
+    &.sm-3-up > .col {.flex(0, 0, round(100% / 3, 2));}
+    &.sm-4-up > .col {.flex(0, 0, round(100% / 4, 2));}
+    &.sm-5-up > .col {.flex(0, 0, round(100% / 5, 2));}
+    &.sm-6-up > .col {.flex(0, 0, round(100% / 6, 2));}
+    &.sm-7-up > .col {.flex(0, 0, round(100% / 7, 2));}
+    &.sm-8-up > .col {.flex(0, 0, round(100% / 8, 2));}
+    &.sm-9-up > .col {.flex(0, 0, round(100% / 9, 2));}
+    &.sm-10-up > .col {.flex(0, 0, round(100% / 10, 2));}
+    &.sm-11-up > .col {.flex(0, 0, round(100% / 11, 2));}
+    &.sm-12-up > .col {.flex(0, 0, round(100% / 12, 2));}
+	@media @medium {
+		.col.md {
+    		&-0 {.flex(0, 0, 0);}
+    		&-1 {.flex(0, 0, round(@base-12-col, 2));}
+    		&-2 {.flex(0, 0, floor(@base-12-col * 2, 2));}
+    		&-3 {.flex(0, 0, round(@base-12-col * 3, 2));}
+    		&-4 {.flex(0, 0, round(@base-12-col * 4, 2));}
+    		&-5 {.flex(0, 0, round(@base-12-col * 5, 2));}
+    		&-6 {.flex(0, 0, round(@base-12-col * 6, 2));}
+    		&-7 {.flex(0, 0, round(@base-12-col * 7, 2));}
+    		&-8 {.flex(0, 0, round(@base-12-col * 8, 2));}
+    		&-9 {.flex(0, 0, round(@base-12-col * 9, 2));}
+    		&-10{.flex(0, 0, round(@base-12-col * 10, 2));}
+    		&-11{.flex(0, 0, round(@base-12-col * 11, 2));}
+    		&-12{.flex(0, 0, 100%);}
+		}
+
+        &.md-1-up > .col {.flex(0, 0, round(100% / 1, 2));}
+        &.md-2-up > .col {.flex(0, 0, round(100% / 2, 2));}
+        &.md-3-up > .col {.flex(0, 0, round(100% / 3, 2));}
+        &.md-4-up > .col {.flex(0, 0, round(100% / 4, 2));}
+        &.md-5-up > .col {.flex(0, 0, round(100% / 5, 2));}
+        &.md-6-up > .col {.flex(0, 0, round(100% / 6, 2));}
+        &.md-7-up > .col {.flex(0, 0, round(100% / 7, 2));}
+        &.md-8-up > .col {.flex(0, 0, round(100% / 8, 2));}
+        &.md-9-up > .col {.flex(0, 0, round(100% / 9, 2));}
+        &.md-10-up > .col {.flex(0, 0, round(100% / 10, 2));}
+        &.md-11-up > .col {.flex(0, 0, round(100% / 11, 2));}
+        &.md-12-up > .col {.flex(0, 0, round(100% / 12, 2));}
+	}
+	@media @large {
+		.col.lg {
+    		&-0 {.flex(0, 0, 0);}
+    		&-1 {.flex(0, 0, round(@base-12-col, 2));}
+    		&-2 {.flex(0, 0, floor(@base-12-col * 2, 2));}
+    		&-3 {.flex(0, 0, round(@base-12-col * 3, 2));}
+    		&-4 {.flex(0, 0, round(@base-12-col * 4, 2));}
+    		&-5 {.flex(0, 0, round(@base-12-col * 5, 2));}
+    		&-6 {.flex(0, 0, round(@base-12-col * 6, 2));}
+    		&-7 {.flex(0, 0, round(@base-12-col * 7, 2));}
+    		&-8 {.flex(0, 0, round(@base-12-col * 8, 2));}
+    		&-9 {.flex(0, 0, round(@base-12-col * 9, 2));}
+    		&-10{.flex(0, 0, round(@base-12-col * 10, 2));}
+    		&-11{.flex(0, 0, round(@base-12-col * 11, 2));}
+    		&-12{.flex(0, 0, 100%);}
+		}
+
+        &.lg-1-up > .col {.flex(0, 0, round(100% / 1, 2));}
+        &.lg-2-up > .col {.flex(0, 0, round(100% / 2, 2));}
+        &.lg-3-up > .col {.flex(0, 0, round(100% / 3, 2));}
+        &.lg-4-up > .col {.flex(0, 0, round(100% / 4, 2));}
+        &.lg-5-up > .col {.flex(0, 0, round(100% / 5, 2));}
+        &.lg-6-up > .col {.flex(0, 0, round(100% / 6, 2));}
+        &.lg-7-up > .col {.flex(0, 0, round(100% / 7, 2));}
+        &.lg-8-up > .col {.flex(0, 0, round(100% / 8, 2));}
+        &.lg-9-up > .col {.flex(0, 0, round(100% / 9, 2));}
+        &.lg-10-up > .col {.flex(0, 0, round(100% / 10, 2));}
+        &.lg-11-up > .col {.flex(0, 0, round(100% / 11, 2));}
+        &.lg-12-up > .col {.flex(0, 0, round(100% / 12, 2));}
+	}
+	@media @xlarge {
+		.col.xl {
+    		&-0 {.flex(0, 0, 0);}
+    		&-1 {.flex(0, 0, round(@base-12-col, 2));}
+    		&-2 {.flex(0, 0, floor(@base-12-col * 2, 2));}
+    		&-3 {.flex(0, 0, round(@base-12-col * 3, 2));}
+    		&-4 {.flex(0, 0, round(@base-12-col * 4, 2));}
+    		&-5 {.flex(0, 0, round(@base-12-col * 5, 2));}
+    		&-6 {.flex(0, 0, round(@base-12-col * 6, 2));}
+    		&-7 {.flex(0, 0, round(@base-12-col * 7, 2));}
+    		&-8 {.flex(0, 0, round(@base-12-col * 8, 2));}
+    		&-9 {.flex(0, 0, round(@base-12-col * 9, 2));}
+    		&-10{.flex(0, 0, round(@base-12-col * 10, 2));}
+    		&-11{.flex(0, 0, round(@base-12-col * 11, 2));}
+    		&-12{.flex(0, 0, 100%);}
+		}
+
+        &.xl-1-up > .col {.flex(0, 0, round(100% / 1, 2));}
+        &.xl-2-up > .col {.flex(0, 0, round(100% / 2, 2));}
+        &.xl-3-up > .col {.flex(0, 0, round(100% / 3, 2));}
+        &.xl-4-up > .col {.flex(0, 0, round(100% / 4, 2));}
+        &.xl-5-up > .col {.flex(0, 0, round(100% / 5, 2));}
+        &.xl-6-up > .col {.flex(0, 0, round(100% / 6, 2));}
+        &.xl-7-up > .col {.flex(0, 0, round(100% / 7, 2));}
+        &.xl-8-up > .col {.flex(0, 0, round(100% / 8, 2));}
+        &.xl-9-up > .col {.flex(0, 0, round(100% / 9, 2));}
+        &.xl-10-up > .col {.flex(0, 0, round(100% / 10, 2));}
+        &.xl-11-up > .col {.flex(0, 0, round(100% / 11, 2));}
+        &.xl-12-up > .col {.flex(0, 0, round(100% / 12, 2));}
+	}
+}

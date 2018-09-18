@@ -1,0 +1,449 @@
+//TEMPLATE OVERRIDES
+//break out of fixed width
+.container, .span-24 {display:block; width:auto!important; float:none; overflow:hidden;}
+
+//dont display the header bar or header image
+div.header-bar, div.header {display:none!important;}
+
+//fixes for the weird 'already registered' page
+div.form-page {
+    ul#menu.sf-navbar {padding-bottom:0px;}
+    .Spacer3 {display:none;}
+}
+#tblEnterConfirmation,
+.Line1 {
+    display:block; position:relative;
+    overflow:hidden;
+    padding:0 20px; margin:0 auto;
+    float:none; width:auto;
+
+    @media @medium {max-width:@md-breakpoint;}
+    @media @large {max-width:@lg-breakpoint;}
+    @media @xlarge {max-width:@xl-breakpoint;}
+}
+#tblEnterConfirmation {
+    padding-top:60px;
+    tbody {
+        display:block;
+        width:100%;
+        text-align:center;
+    }
+    @media @small-only {
+        tr, td {text-align:left; display:block; width:100%;}
+    }
+    input {
+        min-width:100%;
+        @media @medium {min-width:@md-breakpoint / 2;}
+        @media @large {min-width:@lg-breakpoint / 3;}
+        @media @xlarge {min-width:@xl-breakpoint / 4;}
+    }
+}
+td.Line1 {border-bottom-color:@gainsboro;}
+
+//REGISTRATION SECTION OVERRIDES
+.registration-page {
+    .already-registered-link {text-align:left;}
+    .margin-top-20 {margin-top:20px;}
+    .footer {margin-top:40px;}
+    .row {
+        text-align:left;
+        //TAKE LEFT AND RIGHT PADDING OFF OF INFO SECTION TEXT SO THE EDGES MATCH WITH THE FORM
+        .col {padding:20px 0;}
+    }
+
+    //PARTS THAT BECOME RESPONSIVE ROWS
+    div.error-msg,
+    .reg-section,
+    .section-header,
+    div.reg-process-content .register-btn-bottom,
+    h2.registrant-name-hdr,
+    .presentation-html.fieldset,
+    .question-box,
+    .reg-questions.reg-section .question-box,
+    .reg-third-header,
+    .reg-table,
+    .reg-summary-content,
+    *:not(.reg-section) div.reg-description-text,
+    .reg-process .register-btn-bottom,
+    .reg-summary-content .reg-section.terms-conditions,
+    .main-action-button-container,
+    .my-confirmation-content .register-btn-bottom {
+        display:block; position:relative;
+        overflow:hidden;
+        padding:0 20px; margin:0 auto;
+        float:none; width:auto;
+
+        @media @medium {max-width:@md-breakpoint;}
+        @media @large {max-width:@lg-breakpoint;}
+        @media @xlarge {max-width:@xl-breakpoint;}
+    }
+
+    //RESET PADDING ON CERTAIN SITUATIONS
+    .reg-section .reg-section {padding:0;}
+    .reg-summary-content .reg-section.terms-conditions {padding:0; width:100%;}
+    @media @small-only {
+        div.reg-process-content .reg-section div.presentation-html.fieldset,
+        .reg-questions.reg-section .question-box {padding-left:0px; padding-right:0px;}
+    }
+    div.error-msg > div {padding:20px;}
+    @media @large {.footer .row {text-align:right;}}
+
+    //RESET SOME OF THE TABLE JUNK
+    .reg-process-content,
+    div.discount-code-container {padding:0; margin:0; float:none; width:auto;}
+
+    //HEADERS FOR THE FORM SECTIONS
+    .section-header,
+    div.reg-process h2.reg-sub-header {
+        font-size:26px; line-height:32px;
+        padding:20px;
+        @media @medium {font-size:36px; line-height:42px;}
+    }
+    div.reg-process h2.reg-sub-header {padding:20px 0;}
+    .section-header > span {display:block;}
+    .section-header > span:before,
+    div.reg-process h2.reg-sub-header:before {
+        display:block; position:relative;
+        content:'';
+        height:8px; width:70px;
+        background-color:@red;
+        margin-bottom:20px;
+    }
+    h2.registrant-name-hdr {padding-top:60px; padding-bottom:20px;}
+
+    //SPECIAL NAV FOR CONFIRMATION PAGE
+    .my-reg-action-buttons {
+        display:block; z-index:4;
+        margin:-25px 0 0 0; padding:0;
+        float:none;
+        width:auto;
+        background-color:@black;
+        table {display:inline-block; vertical-align:middle; float:none; margin:0;}
+        td.grButtonMid a.dropdown-arrow {padding:.75em 1.5em; margin-left:15px;}
+    }
+    .main-action-button-container {
+        overflow:visible;
+        padding:15px;
+        @media @small-only {
+            padding:40px 15px 15px 15px;
+            > table {max-width:"calc(50% - 4px)";}
+            .grButtonText {padding:.75em 1em;}
+        }
+    }
+    ul.confirmation-dropdown-menu {
+        left:0; top:100%;
+        width:100%;
+        background-color:@red;
+        padding:0;
+        .box-shadow(1px 1px 10px fade(@pure-black, 50%));
+        > li {
+            padding:0; margin:0;
+            > a {
+                padding:10px 15px;
+                font-size:12px; line-height:1;
+                .transition;
+                &:hover {background-color:@dark-red; text-decoration:none;}
+            }
+        }
+    }
+
+    //RESETS FOR FORMS
+    .track {display:inline-block; vertical-align:middle;}
+    div.reg-field-container,
+    div.reg-process-row {
+        display:block; position:relative;
+        overflow:hidden;
+        margin:0; padding:0;
+        float:none;
+        width:auto;
+    }
+    div.reg-field-container {width:100%; padding-bottom:20px;}
+    .reg-process-content {
+        div.reg-field-left-column,
+        div.reg-field-right-column {float:none; width:auto; text-align:left; > span {white-space:normal!important;}}
+        input[type='checkbox'],
+        input[type='radio'] {margin:0 5px 5px 1px!important;}
+    }
+    div.reg-process-content {
+        div.fieldset {padding:0; margin:0; width:auto;}
+        div.presentation-html.fieldset {margin:0 auto; padding:0 20px;}
+    }
+    div.reg-field-left-column label {margin:5px 0 5px 0;}
+    div.reg-field-right-column input {width:100%; margin:0;}
+    div.reg-description-text {padding-bottom:0 0 20px 0;}
+    *:not(.reg-section) div.reg-description-text {padding-bottom:20px;}
+    div.fieldset {float:none;}
+    div.question-align-contact-field {width:auto; float:none; display:block;}
+
+    div.reg-process-content .reg-section div.register-btn-bottom,
+    .reg-section div.register-btn-bottom,
+    div.register-btn-bottom div.register-btn-bottom,
+    .reg-summary-content div.register-btn-bottom,
+    .reg-payment-tables > .reg-third-header {padding:0;}
+    .reg-section.reg-questions div.register-btn-bottom {padding:0 20px!important;}
+    div.reg-payment-method ul.payment-options li:before {display:none;}
+
+    .register-btn-bottom {
+        table tr td table {padding-left:0!important;}
+        .grButtonText {
+            margin-right:10px;
+            text-align:center;
+            > font {margin-left:10px;}
+            @media @small-only {padding:.75em 1em;}
+        }
+        > table {float:left;}
+        @media @small-only {
+            table {text-align:left!important;}
+            td {display:inline-block; white-space:normal!important; &:empty {padding:0!important;}}
+            tr {display:block; width:100%;}
+        }
+    }
+
+    .reg-table {
+        table {
+            margin-bottom:20px; border:1px solid @iron;
+            td {padding:5px 10px;border:1px solid @iron;}
+            th {background-color:@black; color:@white; font-weight:bold;}
+        }
+    }
+
+    span.date-picker-calendar {left:auto; right:10px; top:8px;}
+
+    div.reg-field-right-column {
+        select {width:100%;}
+        input[type='radio'],
+        input[type='checkbox'] {width:auto; margin-left:1px;}
+        input[type='radio']:nth-child(2),
+        input[type='checkbox']:nth-child(2) {margin-left:15px;}
+    }
+
+    .FormInfoTxt {display:inline-block; vertical-align:top;}
+    .reg-required-field {
+        font-size:12px;
+        .uppercase;
+        margin-bottom:5px;
+    }
+
+    div.question-align-right {float:none; width:auto; display:block; margin-bottom:5px;}
+    div.choices {padding-left:0;}
+    div.reg-invite-others-container {float:none; width:auto; margin:0; padding:0;}
+    div.button-container {padding:0 0 20px 0;}
+
+    div.question-req div.question span.question-text,
+    div.question-req div.question label.question-text {
+        display:inline-block; vertical-align:middle;
+        font-size:12px; line-height:1em;
+        margin:5px 0;
+        font-weight:600!important;
+        text-transform:uppercase;
+        letter-spacing:0.1em;
+        text-align:left;
+        max-width: ~"calc(100% - 20px)"
+    }
+
+    span.RequiredMarker1,
+    .reg-required-field label,
+    .reg-required-field,
+    div.reg-process-content div.reg-questions div.question-req div.question span.question-text,
+    div.reg-process-content div.reg-questions div.question-req div.question span.required-star {color:@red;}
+    div.reg-process-content div.reg-questions div.question-req div.question span.required-star {margin-right:5px;display:inline-block; vertical-align:middle;}
+
+    div.reg-summary-left-column ul li a,
+    div.reg-summary-left-column ul li span {
+        font-size:26px; line-height:32px;
+        font-weight:300!important;
+        width:auto;
+    }
+    div.reg-summary-left-column.info-section ul li {padding:0 20px 0 0; &:before{display:none;}}
+    div.reg-summary-left-column.info-section ul {margin:0;}
+    .reg-summary-main-content {
+        padding-top:20px;
+        .sub-headers > h2 > span {font-size:26px; line-height:32px;}
+    }
+    .terms-conditions-content {padding:0 0 20px 0;}
+    div.apply-discount-btn {float:none; margin:0 0 20px 0;}
+
+    div.reg-matrix-header-container {margin-top:0;}
+    div.reg-matrix-header {
+        position:relative;
+        padding:20px 30px;
+        text-align:left;
+        border-top:1px solid @gainsboro;
+        input, h3, span.simple-matrix-time, span.simple-matrix-price {display:block; float:none; width:auto;}
+        input {display:block; position:absolute; top:27px; left:0; }
+        label {text-transform:none; letter-spacing: normal; font-size:18px; line-height:24px;}
+    }
+    div.session-content {padding:0;}
+    div.reg-matrix-header-container p {margin-bottom:0;}
+
+    //SPECIAL FOR FINAL CONFIRMATION PAGE
+    div.single-column.wide div.reg-summary-main-column {
+        display:block; float:none; width:100%;
+        @media @medium {
+            width:78%; float:left;
+        }
+    }
+
+
+    //RESPONSIVE CHANGES
+    @media @medium {
+        .question-req,
+        div.reg-field-container,
+        .question-box .question-container,
+        div.discount-code-container {width:50%;}
+        .reg-payment-method > p {width:75%;}
+
+        .reg-questions.reg-section,
+        .reg-section .question-box,
+        .reg-section .reg-table,
+        .reg-summary-content .reg-section {max-width:none; padding:0;}
+    }
+}
+
+
+//REG POPUP BOX OVERRIDES
+div.pop-up.container-1 {
+    @media only screen and (max-width: 400px){max-width:400px;}
+    padding:20px;
+
+    a.grButtonText {
+        font-size:14px;
+        padding:.75em 1.2em;
+    }
+    .search {
+        margin-bottom:20px;
+        td {
+            padding:0 5px 0 0;
+            &:last-child{padding-right:0px;}
+            @media only screen and (max-width: 400px){
+                display:inline-block; vertical-align:top;
+                &:first-child {width:100%!important;}
+            }
+        }
+        input {margin-bottom:0;}
+    }
+    #tblDataList_container,
+    .ListPanel {
+        background-color:@light-gray;
+        padding:15px 20px;
+        .box-sizing(content-box);
+        .ListPanel {
+            padding:0; width:100%!important;
+        }
+        @media only screen and (max-width: 400px){
+            height:auto!important;
+            .ListPanel {height:auto!important;}
+            table, tbody {display:block; width:100%!important;}
+            label {font-size:16px; padding:5px 0; text-align:left;}
+        }
+    }
+    .pager {
+        margin-top:0!important;
+        overflow:hidden;
+        background-color:@blue;
+        #pager_next > a, #pager_prev > a {
+            display:inline-block;
+            padding:10px 1.2em;
+            color:@white;
+            .transition;
+    		&:hover {background-color:@light-blue;}
+    		&:active {background-color:@dark-blue;}
+        }
+    }
+}
+
+
+
+
+//OVERRIDE ALL CVENT GENERATED BUTTONS
+td.grButtonMid {
+    height:auto;
+    padding:0; margin:0;
+    border:none!important;
+}
+.grButtonText, a.grButtonText, td.grButtonMid a {
+    display:block;
+    background-color:@red;
+    color:@white;
+    padding:.75em 2.5em;
+    font-weight:400;
+    .uppercase;
+    cursor:pointer;
+    .transition;
+}
+.grButtonText:hover, a.grButtonText:hover {background-color:@light-red; color:@white;}
+.grButtonText:active, a.grButtonText:active {background-color:@dark-red; color:@white;}
+
+
+
+
+
+//MOVE AND FIX SHARE BUTTON BAR TO MIDDLE LEFT
+div.share-bar {
+    display:block; position:absolute; z-index:5;
+    top:0; left:0;
+    float:none;
+    ul {margin-top:0;}
+    li {
+        position:unset;
+        &:before {display:none;}
+        div.sub {left:0;}
+    }
+    @media @medium {
+        position:fixed; z-index:1000;
+        top:50%; right:auto; left:0; bottom:auto; margin-top:-60px;
+        ul {margin:0; padding:0; float:none; width:45px;}
+        li {
+            display:block; float:none;
+            overflow:hidden;
+            padding:0; margin:0;
+            &:hover {overflow:visible;}
+            div.sub {
+                width:180px; height:120px;
+                left:45px; top:0;
+                background-position:125% 99%!important;
+            }
+            &.google div,
+            &.twitter div {background:transparent;}
+        }
+        .registration-page & {
+            top:30%; bottom:auto;
+            ul {width:45px;}
+            li div.sub {
+        		width:150px; height:120px;
+        		left:auto; bottom:auto; right:100%; top:0;
+        	}
+        }
+    }
+}
+@media print {
+    div.share-bar {display:none;}
+}
+
+
+
+
+//AGENDA PAGE GENERATED LIST TO RESPONSIVE
+.agenda-page .agendaMiddle {
+    .category {
+        display:block; position:relative;
+        overflow:hidden;
+        padding:0; margin:0 auto;
+        @media @medium {max-width:@md-breakpoint - 70px;}
+        @media @large {max-width:@lg-breakpoint - 80px;}
+        @media @xlarge {max-width:@xl-breakpoint - 80px;}
+    }
+}
+
+
+
+//MAKE BUTTON ROW AT THE BOTTOM RESPONSIVE
+div.button {
+    display:block; position:relative;
+    overflow:hidden;
+    width:auto; height:auto;
+    padding:20px; margin:0 auto;
+    @media @medium {max-width:@md-breakpoint;}
+    @media @large {max-width:@lg-breakpoint;}
+    @media @xlarge {max-width:@xl-breakpoint;}
+}
