@@ -1056,9 +1056,16 @@ section.above-card {
 }
 
 .agenda-day {
-    > .row > .col {
-        &:first-child {padding-right:10px;}
-        &:last-child {padding-left:10px;}
+    width:100%;
+    > .row {
+        padding-left:0;
+        padding-right:0;
+        @media @large {
+            > .col {
+                &:first-child {padding-left:0;}
+                &:last-child {padding-right:0;}
+            }
+        }
     }
     .time-block {
         display:block; position:relative;

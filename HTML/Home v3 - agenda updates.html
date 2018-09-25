@@ -1,4 +1,4 @@
-<main id="home-page">
+<div id="home-page">
 
 	<section id="hero" class="grid-banner no-padding">
 		<div class="row expand stretch collapse">
@@ -91,7 +91,7 @@
 		</div>
 
 		<div class="row compact h-left z-1">
-			<div class="col md-6 lg-4">
+			<div class="time-block-wrapper col md-6 lg-4">
 				<div class="agenda-day">
 					<h5 class="text-uppercase text-bold">Monday, February&nbsp;4</h5>
 					<div class="time-block">
@@ -116,11 +116,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="col md-6 lg-8">
+			<div class="time-block-wrapper col md-6 lg-8">
 				<div class="agenda-day">
 					<h5 class="text-uppercase text-bold">Tuesday, February&nbsp;5</h5>
-					<div class="row collapse">
-						<div class="col md-6">
+					<div class="row collapse-y">
+						<div class="col lg-6">
 							<div class="time-block">
 								<div class="time-label">6:00am</div>
 								Fun Run
@@ -142,7 +142,7 @@
 								General Sessions (speakers to be announced)
 							</div>
 						</div>
-						<div class="col md-6">
+						<div class="col lg-6">
 							<div class="time-block">
 								<div class="time-label">12:30pm – 2:00pm</div>
 								Conference Lunch and Exhibit Hall Open
@@ -163,36 +163,42 @@
 					</div>
 				</div>
 			</div>
-			<div class="col md-6 lg-4">
+			<div class="time-block-wrapper col md-6 lg-8">
 				<div class="agenda-day">
 					<h5 class="text-uppercase text-bold">Wednesday, February&nbsp;6</h5>
-					<div class="time-block">
-						<div class="time-label">7:30am – 4:30pm</div>
-						Conference Registration
-					</div>
-					<div class="time-block">
-						<div class="time-label">8:00am – 9:00am</div>
-						Continental Breakfast and Exhibit Hall Open
-					</div>
-					<div class="time-block">
-						<div class="time-label">9:00am – 12:45pm</div>
-						Track Sessions
-					</div>
-					<div class="time-block">
-						<div class="time-label">12:45pm – 2:00pm</div>
-						Conference Lunch and Exhibit Hall Open
-					</div>
-					<div class="time-block">
-						<div class="time-label">2:00pm – 3:00pm</div>
-						Track Sessions
-					</div>
-					<div class="time-block">
-						<div class="time-label">3:00pm – 4:45pm</div>
-						Futures Presentation and Pep Rally
+					<div class="row collapse-y">
+						<div class="col lg-6">
+							<div class="time-block">
+								<div class="time-label">7:30am – 4:30pm</div>
+								Conference Registration
+							</div>
+							<div class="time-block">
+								<div class="time-label">8:00am – 9:00am</div>
+								Continental Breakfast and Exhibit Hall Open
+							</div>
+							<div class="time-block">
+								<div class="time-label">9:00am – 12:45pm</div>
+								Track Sessions
+							</div>
+						</div>
+						<div class="col lg-6">
+							<div class="time-block">
+								<div class="time-label">12:45pm – 2:00pm</div>
+								Conference Lunch and Exhibit Hall Open
+							</div>
+							<div class="time-block">
+								<div class="time-label">2:00pm – 3:00pm</div>
+								Track Sessions
+							</div>
+							<div class="time-block">
+								<div class="time-label">3:00pm – 4:45pm</div>
+								Futures Presentation and Pep Rally
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col md-6 lg-4">
+			<div class="time-block-wrapper col md-6 lg-4">
 				<div class="agenda-day">
 					<h5 class="text-uppercase text-bold">Thursday, February&nbsp;7</h5>
 					<div class="time-block">
@@ -205,20 +211,28 @@
 					</div>
 				</div>
 			</div>
-			<div class="col md-6 lg-4">
+			<div class="col sm-12">
 				<div class="agenda-day">
 					<h5 class="text-uppercase text-bold">Exhibit Hall Hours</h5>
-					<div class="time-block">
-						<div class="time-label">Monday, February 3</div>
-						5:45pm – 7:15pm
-					</div>
-					<div class="time-block">
-						<div class="time-label">Tuesday, February 4</div>
-						8:00am – 9:00AM; 12:30pm – 2:00pm
-					</div>
-					<div class="time-block">
-						<div class="time-label">Wednesday, February 5</div>
-						8:00am – 9:00AM; 12:45pm – 2:00pm
+					<div class="row collapse-y">
+						<div class="col md-4">
+							<div class="time-block">
+								<div class="time-label">Monday, February 3</div>
+								5:45pm – 7:15pm
+							</div>
+						</div>
+						<div class="col md-4">
+							<div class="time-block">
+								<div class="time-label">Tuesday, February 4</div>
+								8:00am – 9:00AM; 12:30pm – 2:00pm
+							</div>
+						</div>
+						<div class="col md-4">
+							<div class="time-block">
+								<div class="time-label">Wednesday, February 5</div>
+								8:00am – 9:00AM; 12:45pm – 2:00pm
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -256,7 +270,7 @@
 			</div>
 			<div class="col lg-6 xl-7 map-col first-lg collapse">
 				<img class="static-pattern pos-bottom" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/d4b7972f185e42cbbbafe9f342b85cf3.png" />
-				<div id="map-canvas" class="map-container"></div>
+				<img class="static-map" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/57f5f00a81c84e81b54de233dcbe989a.jpg" />
 			</div>
 		</div>
 		<div class="pattern-overlay z-0">
@@ -457,11 +471,17 @@
 						<a href="http://www.datafactz.com/" target="_blank" class="sponsor-logo">
 							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/0e503373565c493bbf4923b515eb0fe1.png" alt="DatafactZ logo">
 						</a>
+						<a href="https://fivetran.com/" target="_blank" class="sponsor-logo">
+							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/3add6b3ecbf745b59050e3079cc49a25.png" alt="Fivetran logo">
+						</a>
+						<a href="https://www.perficient.com/" target="_blank" class="sponsor-logo">
+							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/8ed45aa4d60e49c78acd266fbe5b37ef.png" alt="Perficient logo">
+						</a>
 						<a href="https://sensecorp.com/" target="_blank" class="sponsor-logo">
 							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/6ff67ea9652d4e67b82af0d715a242fb.png" alt="Sensecorp logo">
 						</a>
-						<a href="https://fivetran.com/" target="_blank" class="sponsor-logo">
-							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/3add6b3ecbf745b59050e3079cc49a25.png" alt="Fivetran logo">
+						<a href="https://www.teradata.com/" target="_blank" class="sponsor-logo">
+							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/e13c82faae9f410bba814cc48725e303.png" alt="Teradata logo">
 						</a>
 					</div>
 				</div>
@@ -471,7 +491,7 @@
 		<div class="row logo-row h-left v-middle margin-top-20">
 			<div class="col sm-12">
 				<div class="bullet-group navy">
-					<h5 class="text-uppercase text-bold">Exhibitor Sponsors</h5>
+					<h5 class="text-uppercase text-bold">Explorer Sponsors</h5>
 					<div class="pattern-between row h-left expand collapse margin-top-10">
 						<div class="col sm-2 md-1 background-pattern pattern-tartan pattern-small height-tiny"></div>
 						<div class="col sm-2 md-1 background-pattern pattern-split-circles pattern-small height-tiny"></div>
@@ -483,6 +503,9 @@
 						</a>
 						<a href="http://www.invexer.com" target="_blank" class="sponsor-logo">
 							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/0e56b94174ed4aff99eaa46c95d0495e.png" alt="Invexer logo">
+						</a>
+						<a href="http://www.obase.com/" target="_blank" class="sponsor-logo">
+							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/69d91f86ce89441e90adb78c47225a9b.png" alt="Obase logo">
 						</a>
 						<a href="https://smartbridge.com/" target="_blank" class="sponsor-logo">
 							<img src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/168ea6c7d68d4012add4619e3c1f993d.png" alt="SmartBridge logo">
@@ -543,7 +566,7 @@
 		<div class="col release background-pattern pattern-vertical-bars pattern-small height-small"></div>
 	</div>
 
-</main>
+</div>
 {[A-CUSTOM TAG:WISTIA-POPOVER]}
 {[A-CUSTOM TAG:SCRIPT-CUSTOM-MAP]}
 

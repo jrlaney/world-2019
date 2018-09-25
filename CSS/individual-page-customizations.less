@@ -41,6 +41,7 @@
 	}
 
 	#agenda {
+		.time-block-wrapper.col {.display(flex);}
 		.agenda-day {
 		    padding:20px;
 		    background-color:fade(@navy, 70%);
@@ -59,7 +60,7 @@
 			.static-pattern {
 				position:absolute; z-index:1;
 				bottom:0;
-				right:99%;
+				right:75%;
 			}
 		}
 		.map-container {
@@ -71,6 +72,14 @@
 			}
 			@media @large {float:right; margin-right:40px; width:130%;}
 			@media @xlarge {width:125%;}
+		}
+		.static-map {
+			float:right;
+			width:250%;
+			max-width:none;
+			margin-bottom:-30%;
+			@media @medium {width:130%; margin-bottom:0;}
+			@media @large {width:1200px; margin-right:40px; margin-bottom:0;}
 		}
 		.pattern-overlay .static-pattern {
 			&.pos-top {left:55%;}
