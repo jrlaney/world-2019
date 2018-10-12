@@ -1,3 +1,22 @@
+//CARD BETWEEN ROWS
+.in-between-card.row {
+    position:relative; z-index:5;
+    .card {
+        position:relative; z-index:5;
+        background-color:@white;
+        padding:20px;
+        color:@dark-gray;
+        .box-shadow(1px 1px 5px rgba(0,0,0,0.5));
+    }
+    @media @medium {
+		margin-top:-150px; margin-bottom:60px;
+        .card {padding:30px;}
+    }
+}
+section.above-card {
+    @media @medium {padding-bottom:150px; position:relative; z-index:4;}
+}
+
 //V1 homepage:
 #home-page {
 	#hero-banner {
