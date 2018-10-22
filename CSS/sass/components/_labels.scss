@@ -1,0 +1,145 @@
+//LABEL-LIKE TEXT BLOCKS
+.text-label {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.5em 0.75em;
+    font-family: $myriad-pro;
+    line-height: 1;
+    font-weight: 400;
+    white-space: nowrap;
+    @include uppercase;
+
+    // default
+    font-size: 12px;
+    background-color: $light-gray;
+    color: $black;
+
+    //sizes
+    &.small {
+        font-size: 10px;
+    }
+
+    &.large {
+        font-size: 14px;
+    }
+
+    //colors
+    &.red {
+        background-color: $red;
+    }
+
+    &.orange {
+        background-color: $orange;
+    }
+
+    &.green {
+        background-color: $green;
+    }
+
+    &.blue {
+        background-color: $blue;
+    }
+
+    &.navy {
+        background-color: $navy;
+    }
+
+    &.white {
+        background-color: $white;
+    }
+
+    &.light-gray {
+        background-color: $light-gray;
+    }
+
+    &.gray {
+        background-color: $gray;
+    }
+
+    &.dark-gray {
+        background-color: $dark-gray;
+    }
+
+    &.black {
+        background-color: $black;
+    }
+
+    &.red,
+    &.orange,
+    &.green,
+    &.blue,
+    &.navy,
+    &.gray,
+    &.dark-gray,
+    &.black {
+        color: $white;
+    }
+
+    //outline version
+    &.outline {
+        border: 1px solid $light-gray;
+
+        &.red {
+            color: $red;
+            border-color: $red;
+        }
+
+        &.orange {
+            color: $orange;
+            border-color: $orange;
+        }
+
+        &.green {
+            color: $green;
+            border-color: $green;
+        }
+
+        &.blue {
+            color: $blue;
+            border-color: $blue;
+        }
+
+        &.navy {
+            color: $navy;
+            border-color: $navy;
+        }
+
+        &.white {
+            color: $white;
+            border-color: $white;
+        }
+
+        &.light-gray {
+            color: $light-gray;
+            border-color: $light-gray;
+        }
+
+        &.gray {
+            color: $gray;
+            border-color: $gray;
+        }
+
+        &.dark-gray {
+            color: $dark-gray;
+            border-color: $dark-gray;
+        }
+
+        &.black {
+            color: $black;
+            border-color: $black;
+        }
+
+        &.red,
+        &.orange,
+        &.green,
+        &.blue,
+        &.navy,
+        &.white,
+        &.light-gray,
+        &.gray,
+        &.dark-gray,
+        &.black {
+            background-color: transparent;
+        }
+    }
+}

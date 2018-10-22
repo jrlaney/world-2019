@@ -1,0 +1,81 @@
+//RATIO BOX OPTIONS
+.ratio {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+    }
+
+    &.square:before {
+        @include aspect-ratio(1, 1);
+    }
+
+    &.four-three:before {
+        @include aspect-ratio(4, 3);
+    }
+
+    &.sixteen-nine:before {
+        @include aspect-ratio(16, 9);
+    }
+
+    &.two-one:before {
+        @include aspect-ratio(2, 1);
+    }
+
+    &.four-five:before {
+        @include aspect-ratio(4, 5);
+    }
+
+    &.long-rectangle:before {
+        @include aspect-ratio(7, 2);
+    }
+
+    .logo {
+        display: block;
+        position: absolute;
+        height: auto;
+        width: auto;
+        top: 50%;
+        left: 50%;
+        max-height: calc(100% - 40px);
+        max-width: calc(100% - 40px);
+        @include translate(-50%, -50%);
+
+        &.spacing-0 {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        &.spacing-5 {
+            max-height: calc(100% - 10px);
+            max-width: calc(100% - 10px);
+        }
+
+        &.spacing-10 {
+            max-height: calc(100% - 20px);
+            max-width: calc(100% - 20px);
+        }
+    }
+
+    .text-logo {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        @include translateY(-50%);
+        width: 100%;
+        color: $gray;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 34px;
+        text-align: center;
+
+        @include medium {
+            font-size: 30px;
+            line-height: 34px;
+        }
+    }
+}

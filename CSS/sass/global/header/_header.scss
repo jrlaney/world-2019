@@ -1,0 +1,101 @@
+//////////////////////////////// HEADER AND NAVIGATION
+
+
+//the full width div the nav is in
+div.top {
+    position: relative;
+    z-index: 6;
+    background-color: $white;
+    width: 100%;
+    .registration-page & {
+        height: 0;
+    }
+
+    .registration-page .my-confirmation-content & {
+        height: auto;
+    }
+
+    @include medium {
+        height: auto;
+        z-index: 5;
+        @include transition;
+    }
+
+    &.sticky {
+        position: fixed;
+        z-index: 500;
+        top: 0;
+        left: 0;
+        border-bottom: 1px solid fade-out($pure-black, .9);
+        @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
+        width: 100%;
+        max-width: none;
+        background-color: $white;
+
+        @include medium {
+            .logo-img {
+                max-width: 150px;
+                @include translateY(0);
+            }
+        }
+    }
+}
+
+@import 'navigation';
+
+//end div.top
+.content.scrolled,
+.registration-page .my-confirmation-content.content.scrolled {
+    padding-top: 71px;
+}
+
+.registration-page .content.scrolled {
+    padding-top: 0;
+}
+
+.logo-zone {
+    @include flex(1, 1, 1px);
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    position: relative;
+    padding: 10px;
+
+    .logo-lockup {
+        @include display(flex);
+        @include flex-wrap(wrap);
+        @include align-items(center);
+        @include flex(1, 1, 1px);
+        max-width: 400px;
+    }
+
+    .logo-img {
+        height: 60px;
+        max-width: 275px;
+        padding-right: 15px;
+        @include transition;
+
+        @include medium {
+            height: auto;
+            @include translateY(15px);
+        }
+    }
+
+    .text {
+        @include small {
+            display: none;
+        }
+
+        @include uppercase;
+        color:$monsoon;
+        font-weight:600;
+        font-size:12px;
+        line-height:1em;
+
+        .top-line {
+            display: block;
+            font-size: 150%;
+            margin-bottom: 5px;
+        }
+    }
+}

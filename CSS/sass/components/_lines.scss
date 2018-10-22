@@ -1,0 +1,71 @@
+//LINES
+.line {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    height: 8px;
+    min-width: 50px;
+    width: 10%;
+
+    &.small {
+        min-width: 70px;
+        width: 20%;
+    }
+
+    &.medium {
+        min-width: 100px;
+        width: 40%
+    }
+
+    &.large {
+        width: 70%
+    }
+
+    &.jumbo {
+        width: 90%
+    }
+
+    &.thin {
+        height: 1px
+    }
+
+    &.white {
+        background-color: $white
+    }
+
+    &.light-gray {
+        background-color: $light-gray
+    }
+
+    &.gray {
+        background-color: $gray
+    }
+
+    &.dark-gray {
+        background-color: $dark-gray
+    }
+
+    &.black {
+        background-color: $black
+    }
+
+    &.red {
+        background-color: $red
+    }
+
+    &.green {
+        background-color: $green
+    }
+
+    &.blue {
+        background-color: $blue
+    }
+
+    &.navy {
+        background-color: $navy
+    }
+
+    &.orange {
+        background-color: $orange
+    }
+}

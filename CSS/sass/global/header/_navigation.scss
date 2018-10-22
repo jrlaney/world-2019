@@ -1,0 +1,192 @@
+$menu-mobile-height: 80px;
+    //navigation div which serves as a row
+    div {
+        &.top {
+            
+            .navigation {
+                @include display(flex);
+                @include flex(0, 1, auto);
+                @include flex-direction(row);
+                @include flex-wrap(wrap);
+                @include justify-content(space-between);
+                //.align-items(stretch);
+                position: relative;
+                margin: 0 auto;
+        
+                @include medium {
+                    max-width: $md-breakpoint;
+                }
+        
+                @include large {
+                    max-width: $lg-breakpoint;
+                }
+        
+                @include xlarge {
+                    max-width: $xl-breakpoint;
+                }
+        
+                #menu {
+                    display: block;
+                    position: absolute;
+                    z-index: 2;
+                    overflow: hidden;
+                    top: 0;
+                    left: 0;
+                    float: none;
+                    padding: $menu-mobile-height 0 0 0;
+                    width: 100%;
+                    min-height: 100%;
+                    max-height: 0;
+                    height: auto;
+                    overflow: hidden;
+        
+                    >li:before {
+                        display: none;
+                    }
+        
+                    @include transition;
+        
+                    &:active {
+                        @include drop-shadow(0, 0, 0, $pure-black);
+                    }
+        
+                    @include medium {
+                        @include display(flex);
+                        @include flex-direction(row);
+                        @include flex-wrap(wrap);
+                        @include justify-content(flex-end);
+                        @include flex(0, 0, auto);
+                        position: relative;
+                        top: auto;
+                        left: auto;
+                        width: auto !important;
+                        min-height: 100%;
+                        max-height: none;
+                        text-align: right;
+                        padding: 0 0 0 20px;
+                    }
+        
+                    &.menu-opened {
+                        @include small {
+                            max-height: 100vh;
+                            @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
+        
+                            &:after {
+                                background: $red;
+                                box-shadow:
+                                    0 0.25em 0 0 $red,
+                                    0 0.5em 0 0 $red;
+                            }
+                        }
+                    }
+        
+                    //hamburger icon for mobile view
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        right: 15px;
+                        top: $menu-mobile-height / 2 - 5px;
+                        width: 1.5em;
+                        height: 0.15em;
+                        background: $dark-gray;
+                        box-shadow:
+                            0 0.25em 0 0 $dark-gray,
+                            0 0.5em 0 0 $dark-gray;
+                        @include transition;
+        
+                        @include medium {
+                            display: none;
+                        }
+                    }
+        
+                    //menu items
+                    li {
+                        display: block;
+                        position: relative;
+                        float: none;
+                        margin: 0;
+                        padding: 0;
+                        background-color: $light-gray;
+                        border-top: 1px solid fade-out($white, .1);
+                        border-bottom: 1px solid fade-out($pure-black, .9);
+        
+                        @include medium {
+                            @include display(flex);
+                            // .flex-direction(row);
+                            @include align-items(center);
+                            // .flex(0,0,auto);
+                            background-color: $white;
+                            border: none;
+                        }
+        
+                        &:hover ul,
+                        ul {
+                            display: none !important;
+                        }
+        
+                        a {
+                            display: block;
+                            position: relative;
+                            z-index: 3;
+                            padding: 10px 15px;
+                            text-decoration: none;
+                            color: $black;
+                            @include uppercase;
+                            font-weight: 600;
+                            font-size: 16px;
+                            line-height: 1em;
+                            @include transition;
+        
+                            @include medium {
+                                overflow: hidden;
+                                border-bottom: none;
+                                color: $monsoon;
+                                font-size: 14px;
+                                padding: 10px 20px;
+        
+                                //min-height:100%;
+                                &:hover {
+                                    color: $red;
+                                }
+                            }
+                        }
+        
+                        &.subnav-register {
+                            padding: 10px;
+        
+                            @include medium {
+                                padding: 0;
+                            }
+        
+                            a {
+                                background-color: $red;
+                                color: $white;
+                                padding: 15px 25px;
+                                margin: 0;
+                                cursor: pointer;
+                                @include transition();
+        
+                                &:hover {
+                                    background-color: $light-red;
+                                }
+        
+                                &:active {
+                                    background-color: $dark-red;
+                                }
+                            }
+        
+                            //end register button link in nav
+                        }
+        
+                        //end register button li in nav
+                    }
+        
+                    //end menu li
+                }
+        
+                //end #menu ul list
+                //end .navigation
+               
+            }
+        }
+    }

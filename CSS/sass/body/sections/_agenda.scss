@@ -1,0 +1,57 @@
+.agenda-day {
+    width: 100%;
+
+    >.row {
+        padding-left: 0;
+        padding-right: 0;
+
+        @include large {
+            >.col {
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    .time-block {
+        display: block;
+        position: relative;
+        padding: 15px 0 15px 30px;
+        border-bottom: 1px solid $blue;
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 400;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 20px solid $orange;
+            @include translateY(-50%);
+        }
+    }
+
+    .time-label {
+        display: block;
+        position: relative;
+        padding-bottom: 5px;
+        font-size: 12px;
+        line-height: 12px;
+        font-weight: 600;
+        @include uppercase;
+    }
+}

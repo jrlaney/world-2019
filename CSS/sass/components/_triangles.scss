@@ -1,0 +1,175 @@
+//triangle group
+$triangle-group-size: 20px;
+
+.triangle-group {
+    position: relative;
+    list-style: none;
+    padding-left: 40px;
+
+    &:before {
+        display: block;
+        position: absolute;
+        content: '';
+        top: 3px;
+        left: 0;
+        margin-left: -$triangle-group-size;
+        width: 0;
+        height: 0;
+        border-left: $triangle-group-size solid transparent;
+        border-right: $triangle-group-size solid $red;
+        border-top: $triangle-group-size solid transparent;
+    }
+
+    &.white:before {
+        border-right-color: $white;
+    }
+
+    &.light-gray:before {
+        border-right-color: $light-gray;
+    }
+
+    &.gray:before {
+        border-right-color: $gray;
+    }
+
+    &.dark-gray:before {
+        border-right-color: $dark-gray;
+    }
+
+    &.black:before {
+        border-right-color: $black;
+    }
+
+    &.black:before {
+        border-right-color: $black;
+    }
+
+    &.red:before {
+        border-right-color: $red;
+    }
+
+    &.green:before {
+        border-right-color: $green;
+    }
+
+    &.blue:before {
+        border-right-color: $blue;
+    }
+
+    &.navy:before {
+        border-right-color: $navy;
+    }
+
+    &.orange:before {
+        border-right-color: $orange;
+    }
+}
+
+// OPTIONS
+.background-angles {
+    display: block;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    >.row {
+        position: relative;
+        z-index: 2;
+    }
+
+    .angle-wrapper {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 50%;
+        top: 0;
+        right: 0;
+    }
+
+    .angle.top {
+        right: 0;
+        top: 0;
+        opacity: 0.5;
+        height: auto;
+        width: 60%;
+    }
+
+    .angle.bottom {
+        right: 0;
+        bottom: 0;
+        opacity: 0.6;
+        height: auto;
+        width: 150%;
+    }
+
+    .angle {
+        display: block;
+        position: absolute;
+        fill-rule: evenodd;
+        fill: $pure-black;
+        opacity: 0;
+
+        .red.angle,
+        .red-color-scheme & {
+            fill: $red;
+        }
+
+        .orange.angle,
+        .orange-color-scheme & {
+            fill: $orange;
+        }
+
+        .green.angle,
+        .green-color-scheme & {
+            fill: $green;
+        }
+
+        .blue.angle,
+        .blue-color-scheme & {
+            fill: $blue;
+        }
+
+        .navy.angle,
+        .navy-color-scheme & {
+            fill: $navy;
+        }
+    }
+
+    &.reverse-angles {
+        .angle-wrapper {
+            right: auto;
+            left: 0;
+        }
+
+        .angle {
+            @include transform(scaleX(-1));
+            filter: FlipH;
+            -ms-filter: "FlipH";
+
+            &.top,
+            &.bottom {
+                left: 0;
+            }
+        }
+    }
+
+    @include medium {
+        .angle-wrapper {
+            overflow: hidden;
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+
+        .angle.top {
+            height: 60%;
+            width: auto;
+        }
+
+        .angle.bottom {
+            height: 110%;
+            width: auto;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+//ACCORDION
+.accordion {
+    .accordion-content {
+        display: none;
+        overflow: hidden;
+        opacity: 0;
+        @include transition;
+    }
+
+    .cta-button.carat.toggle {
+        &:before {
+            margin-top: -5px;
+            right: 21px;
+        }
+
+        &:after {
+            margin-top: -5px;
+        }
+    }
+
+    .dynamic-text {
+        &.more-details:before {
+            content: 'More details'
+        }
+    }
+
+    &.expanded {
+        .accordion-content {
+            opacity: 1;
+        }
+
+        .cta-button.carat.toggle {
+            &:before {
+               @include rotate(-135deg);
+            }
+
+            &:after {
+               @include rotate(135deg);
+            }
+        }
+
+        .dynamic-text {
+            &.more-details:before {
+                content: 'Less details'
+            }
+        }
+    }
+}

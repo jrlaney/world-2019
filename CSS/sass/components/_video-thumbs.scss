@@ -1,0 +1,94 @@
+//THUMBNAIL FOR A VIDEO
+.video-thumbnail {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+
+    &:before {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        content: '';
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: $pure-black;
+        opacity: 0.3;
+        @include transition;
+
+        .white.video-thumbnail {
+            background-color: $white;
+        }
+
+        .red.video-thumbnail {
+            background-color: $red;
+        }
+
+        .orange.video-thumbnail {
+            background-color: $orange;
+        }
+
+        .green.video-thumbnail {
+            background-color: $green;
+        }
+
+        .blue.video-thumbnail {
+            background-color: $blue;
+        }
+
+        .navy.video-thumbnail {
+            background-color: $navy;
+        }
+    }
+
+    .play-cta {
+        display: block;
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        color: $white;
+        top: 50%;
+        @include translateY(-50%);
+
+        .play-icon {
+            max-width: 25%;
+        }
+
+        >span {
+            display: block;
+        }
+
+        .title {
+            font-weight: 400;
+            margin-top: 3%;
+            font-size: 20px;
+            line-height: 25px;
+        }
+
+        .sub {
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 14px;
+            line-height: 20px;
+            max-height: 0px;
+            opacity: 0;
+            @include transition;
+        }
+    }
+
+    &:hover {
+        &:before {
+            opacity: 0.1;
+        }
+
+        .sub {
+            max-height: 100px;
+            opacity: 1;
+        }
+    }
+}

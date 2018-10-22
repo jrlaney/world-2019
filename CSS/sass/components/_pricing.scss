@@ -1,0 +1,153 @@
+//for pricing blocks
+.pricing-block {
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    padding: 15px;
+    opacity: 0.8;
+    background-color: fade-out($navy, .5);
+
+    @include medium {
+        padding: 30px 20px;
+    }
+
+    .type {
+        display: block;
+        padding-bottom: 20px;
+
+        font-size: 20px;
+        line-height: 1em;
+        font-weight: 400;
+        color: $white;
+    }
+
+    .instructions {
+        display: block;
+        padding-bottom: 20px;
+    }
+
+    .price {
+        position: relative;
+        @include display-inline;
+        padding: 0 0 20px 10px;
+        font-size: 40px;
+        line-height: 1em;
+        font-weight: 600;
+
+        @include large {
+            font-size: 50px;
+        }
+
+        .currency {
+            position: absolute;
+            top: 0.45em;
+            left: 0;
+            font-size: 0.45em;
+            line-height: 0.45em;
+            font-weight: 300;
+        }
+    }
+
+    .date {
+        display: block;
+    }
+
+    &.current {
+        margin-top: 45px;
+        padding: 50px 30px;
+        opacity: 1;
+        background-color: $navy;
+        box-shadow: 1px 1px 5px fade-out($pure-black, .5);
+        text-align: left;
+
+        .type {
+            font-size: 32px;
+        }
+
+        .price {
+            font-size: 50px;
+
+            @include large {
+                font-size: 70px;
+                padding-left: 15px;
+            }
+        }
+
+        //current flag
+        &:before {
+            content: 'Current pricing';
+            display: inline-block;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 0;
+            border-top-left-radius: 90px;
+            border-top-right-radius: 90px;
+            height: 45px;
+            width: 180px;
+            padding: 15px 10px;
+            background-color: $green;
+
+            font-size: 14px;
+            line-height: 1em;
+            text-align: center;
+            @include uppercase;
+            font-weight: 600;
+            color: $white;
+        }
+
+        //end curent price flag
+    }
+
+    //end current price changes
+    &.slim {
+        text-align: left;
+        padding: 15px;
+        border: 1px solid fade-out($pure-black, .9);
+        background-color: $light-gray;
+        opacity: 0.5;
+
+        .type {
+            font-size: 20px;
+            color: $black;
+        }
+
+        .price {
+            @include display-inline;
+            vertical-align: bottom;
+            padding: 0 0 0 10px;
+
+            font-size: 26px;
+            line-height: 1em;
+            font-weight: 600;
+
+            @include large {
+                font-size: 32px;
+            }
+
+            .currency {
+                position: absolute;
+                top: 0.45em;
+                left: 0;
+                font-size: 0.45em;
+                line-height: 0.45em;
+                font-weight: 300;
+            }
+        }
+
+        .date {
+            @include display-inline;
+            padding-left: 10px;
+        }
+
+        &.current {
+            padding: 30px 20px;
+            background-color: $white;
+            opacity: 1;
+            @include drop-shadow(3px, 3px, 7px, fade-out($pure-black, .8));
+        }
+    }
+}
+
+//end pricing-block

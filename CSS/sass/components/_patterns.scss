@@ -1,0 +1,229 @@
+//grid blocks for column fills
+.height {
+    &-jumbo {
+        min-height: 800px;
+    }
+
+    &-x-large {
+        min-height: 400px;
+    }
+
+    &-large {
+        min-height: 200px;
+    }
+
+    &-medium {
+        min-height: 100px;
+    }
+
+    &-small {
+        min-height: 50px;
+    }
+
+    &-x-small {
+        min-height: 25px;
+    }
+
+    &-tiny {
+        min-height: 12.5px;
+        line-height: 0;
+    }
+
+    &-x-tiny {
+        min-height: 8px;
+        line-height: 0;
+    }
+}
+
+.pattern-between {
+    border: 1px solid $white;
+}
+
+.background-pattern {
+    background-repeat: repeat;
+    background-color: $black;
+    border: 2px solid $white;
+
+    //red background options
+    &.pattern-squiggles {
+        background-color: $red;
+        background-image: url($pattern-squiggles);
+        background-size: calc(176px * .5);
+
+        &.pattern-large {
+            background-size: 176px;
+        }
+
+        &.pattern-small {
+            background-size: calc(176px * .33);
+        }
+    }
+
+    &.pattern-vertical-bars {
+        background-color: $red;
+        background-image: url($pattern-vertical-bars);
+        background-size: calc(168px * .5);
+
+        &.pattern-large {
+            background-size: 168px;
+        }
+
+        &.pattern-small {
+            background-size: calc(168px * .33);
+        }
+    }
+
+    &.pattern-round-dots {
+        background-color: $red;
+        background-image: url($pattern-round-dots);
+        background-size: calc(1195px * .33);
+
+        &.pattern-large {
+            background-size: 1195px * .6;
+        }
+
+        &.pattern-small {
+            background-size: calc(1195px * .25);
+        }
+    }
+
+    &.pattern-square-dots {
+        background-color: $red;
+        background-image: url($pattern-square-dots);
+        background-size: calc(1680px * .33);
+
+        &.pattern-large {
+            background-size: 1680px * .6;
+        }
+
+        &.pattern-small {
+            background-size: calc(1680px * .25);
+        }
+    }
+
+    //orange background options
+    &.pattern-ribbon {
+        background-color: $orange;
+        background-image: url($pattern-ribbon);
+        background-size: calc(540px * .5);
+
+        &.pattern-large {
+            background-size: 540px;
+        }
+
+        &.pattern-small {
+            background-size: calc(540px * .33);
+        }
+    }
+
+    &.pattern-stacked-bars {
+        background-color: $orange;
+        background-image: url($pattern-stacked-bars);
+        background-size: calc(848px * .33);
+
+        &.pattern-large {
+            background-size: calc(848px * .4);
+        }
+
+        &.pattern-small {
+            background-size: calc(848px * .2);
+        }
+    }
+
+    //blue background options
+    &.pattern-split-circles {
+        background-color: $blue;
+        background-image: url($pattern-split-circles);
+        background-size: calc(515px * .5);
+
+        &.pattern-large {
+            background-size: 515px;
+        }
+
+        &.pattern-small {
+            background-size: calc(515px * .33);
+        }
+    }
+
+    &.pattern-sparse-triangles {
+        background-color: $blue;
+        background-image: url($pattern-sparse-triangles);
+        background-size: calc(935px * .5);
+
+        &.pattern-large {
+            background-size: 935px;
+        }
+
+        &.pattern-small {
+            background-size: calc(935px * .33);
+        }
+    }
+
+    &.pattern-triangles {
+        background-color: $blue;
+        background-image: url($pattern-triangles);
+        background-size: calc(309px * .5);
+
+        &.pattern-large {
+            background-size: 309px;
+        }
+
+        &.pattern-small {
+            background-size: calc(309px * .33);
+        }
+    }
+
+    &.pattern-static-triangles {
+        background-color: $blue;
+        background-image: url($pattern-static-triangles);
+        background-repeat: no-repeat;
+    }
+
+    //white background options
+    &.pattern-tartan {
+        background-color: $white;
+        background-image: url($pattern-tartan);
+        background-size: calc(1623px * .33);
+
+        &.pattern-large {
+            background-size: 1623px * .5;
+        }
+
+        &.pattern-small {
+            background-size: calc(1623px * .2);
+        }
+    }
+}
+
+
+.pattern-overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    @include translateX(-50%);
+
+    @include xlarge {
+        max-width: $xl-breakpoint;
+    }
+
+    .static-pattern {
+        position: absolute;
+
+        &.pos-top {
+            top: 0;
+            left: 50%;
+        }
+
+        &.pos-left {
+            top: 50%;
+            right: 95%;
+        }
+
+        &.pos-bottom {
+            bottom: 0;
+            right: 50%;
+        }
+    }
+}

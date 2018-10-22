@@ -1,0 +1,67 @@
+// FLEXBOX
+
+    // display
+    @mixin display($value) {
+        @if ($value = flex) {
+            display: flex;
+        } @else  {
+            display: inline-flex;
+        }
+    }
+    
+
+    // flex-direction
+    @mixin flex-direction($direction) {
+        flex-direction: $direction;
+    }
+
+    // flex-wrap
+    @mixin flex-wrap($wrap) {
+        flex-wrap: $wrap;
+    }
+
+    // justify-content
+    @mixin justify-content($align) {
+        justify-content: $align;
+    }
+
+    // align-items
+    @mixin align-items($align) {
+        align-items: $align;
+    }
+
+    // align-content
+    @mixin align-content($align) {
+        align-content: $align;
+    }
+    
+
+    // flex
+    @mixin flex($grow, $shrink, $basis){
+        @if $basis == 0 or $basis == 0px or $basis == 0% {
+            flex: $grow $shrink 0px;
+            max-width: none;
+        }
+        @else if $basis == 1px {
+            flex: $grow $shrink $basis;
+            max-width: none;
+        }
+        @else if $basis == auto {
+            flex: $grow $shrink auto;
+            max-width: none;
+        }
+        @else {
+            flex: $grow $shrink $basis;
+            max-width: $basis;
+        }
+    } 
+
+    // order
+    @mixin order($order) {
+        order: $order;
+    }
+
+    // align-self
+    @mixin align-self($align) {
+        align-self: $align;
+    }

@@ -1,0 +1,225 @@
+body,
+html,
+div.container-1.ff-lucida {
+    font-family: $myriad-pro;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 26px;
+    color: $dark-gray;
+    font-size: 100%;
+}
+
+
+a,
+a:visited {
+    color: $a1link;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:hover {
+    color: $a1hover;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:active {
+    color: $a1active;
+    text-decoration: none;
+    outline: 0;
+}
+
+a.ListText2,
+a.ListText2 {
+    color: $monsoon;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $myriad-pro;
+    font-style: normal;
+
+    &.no-spacing {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+h1,
+.h1 {
+    font-size: 36px;
+    line-height: 42px;
+}
+
+h2,
+.h2 {
+    font-size: 32px;
+    line-height: 37px;
+}
+
+h3,
+.h3 {
+    font-size: 30px;
+    line-height: 35px;
+}
+
+h4,
+.h4 {
+    font-size: 25px;
+    line-height: 30px;
+}
+
+h5,
+.h5 {
+    font-size: 22px;
+    line-height: 28px;
+}
+
+h6,
+.h6 {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+p,
+.p {
+    font-size: 18px;
+    line-height: 26px;
+}
+
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+.text-bold {
+    font-weight: 600 !important;
+}
+
+.text-normal {
+    font-weight: 400 !important;
+}
+
+.text-light {
+    font-weight: 300 !important;
+}
+
+.text-white {
+    color: $white;
+}
+
+.text-light-gray {
+    color: $light-gray;
+}
+
+.text-gray {
+    color: $gray;
+}
+
+.text-dark-gray {
+    color: $dark-gray;
+}
+
+.text-black {
+    color: $black;
+}
+
+.text-red {
+    color: $red;
+}
+
+.text-green {
+    color: $green;
+}
+
+.text-blue {
+    color: $blue;
+}
+
+.text-navy {
+    color: $navy;
+}
+
+.text-orange {
+    color: $orange;
+}
+
+.text-white a,
+.text-white a:active,
+.text-white a:hover,
+a.text-white {
+    color: $white;
+    text-decoration: underline;
+}
+
+@include medium {
+
+    h1,
+    .h1 {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    h2,
+    .h2 {
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    h3,
+    .h3 {
+        font-size: 30px;
+        line-height: 35px;
+    }
+}
+
+@include large {
+
+    h1,
+    .h1 {
+        font-size: 60px;
+        line-height: 65px;
+    }
+
+    h2,
+    .h2 {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    h3,
+    .h3 {
+        font-size: 35px;
+        line-height: 40px;
+    }
+}

@@ -1,0 +1,9 @@
+//////////////////////VENUE PAGE
+#venue-page {
+	#hero-banner {background-image:url($venue-main);}
+	#venue-info {
+		.edge.middle {overflow:visible;}
+		.map-row {position:relative; overflow:visible;}
+		@include small {.map-container:before{padding-bottom:50%;}}
+	}
+}

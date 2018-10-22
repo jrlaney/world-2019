@@ -1,0 +1,71 @@
+// LAYOUT
+@mixin columns($column-count, $column-gap) {
+    -webkit-column-count: $column-count;
+    -moz-column-count: $column-count;
+    column-count: $column-count;
+    -webkit-column-gap: $column-gap;
+    -moz-column-gap: $column-gap;
+    column-gap: $column-gap;
+}
+
+
+//MEDIA QUERIES 
+@mixin small {
+    @media (min-width: #{$small-only}){
+        @content;
+    }
+}
+@mixin medium {
+    @media (min-width: #{$medium}){
+        @content;
+    }
+}
+@mixin large {
+    @media (min-width: #{$large}){
+        @content;
+    }
+}
+@mixin xlarge {
+    @media (min-width: #{$xlarge}){
+        @content;
+    }
+}
+
+// POSITIONING
+
+@mixin position($position, $top:null, $left:null, $right:null, $bottom:null) {
+    position: $position;
+    @include property(top, $top);
+    @include property(right, $right);
+    @include property(bottom, $bottom);
+    @include property(left, $left);
+
+}
+@mixin property($property, $value) {
+    @content;    
+}
+@mixin _getProp($property) {    
+    
+    @include _getProp(top) {
+        top: $value;
+    }
+    @include _getProp(left) {
+        left: $value;
+    }
+    @include _getProp(right) {
+        right: $value;
+    }
+    @include _getProp(bottom) {
+        bottom: $value;
+    }
+}
+@mixin clearfix() {
+
+    &:before, &:after {
+        content: '';
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}

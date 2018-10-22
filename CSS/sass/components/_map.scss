@@ -1,0 +1,13 @@
+//google map container
+.map-container {
+    display: block;
+    position: relative;
+    background-color: $black;
+    width: 100%;
+
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: 56.66%;
+    }
+}

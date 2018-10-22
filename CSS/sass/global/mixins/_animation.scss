@@ -1,0 +1,39 @@
+// TRANSITIONS
+
+@mixin transition($duration:.2s, $ease:ease-out, $property:all, $delay:0s) {
+    transition: $property $duration $ease $delay;
+}
+
+@mixin transition-duration($duration:.2s) {
+    transition-duration: $duration;
+}
+
+@mixin transition-delay($delay:.2s) {
+    transition-duration: $delay;
+}
+
+@mixin transition-open($transition) {
+    transition: $transition;
+}
+
+
+
+// ANIMATION
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation($args) {
+    animation: $args;
+}
+
+@mixin animation-delay($delay) {
+    animation-delay: $delay;
+}
+
+@mixin animation-fill-mode($fill-mode) {
+    animation-fill-mode: $fill-mode;
+}

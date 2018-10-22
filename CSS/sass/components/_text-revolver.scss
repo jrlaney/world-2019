@@ -1,0 +1,160 @@
+.text-revolver {
+    position: relative;
+    display:block;
+    height: 2.3em;
+    padding-left: .6em;
+    @include medium{
+        @include display(flex);
+        @include align-items(stretch);
+        @include justify-content(flex-start);
+        @include flex-wrap(wrap);
+        @include flex(1, 1, 0px);
+        height: 1em;
+    }
+    @include large {
+        padding-left: .2em;
+    }
+    @include xlarge {
+        padding-left: 50px;
+    }
+    
+}
+
+.rev-window {
+    display: block;
+    position: relative;
+    margin: 0 -.59em;
+    @include medium {
+        display: flex;
+        @include flex(1, 1, 0px);
+        margin: 0;
+    }
+}
+    
+.sub-text {
+    padding-left: .6em;
+    @include large {
+        padding-left: .2em;
+    }
+    @include xlarge {
+        padding-left: 50px;
+    }
+}
+
+
+.rev-block {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    top: 0;
+    left: 20px;
+    font-weight: 600;
+    color: $blue;
+    @include animation(revolving-text 12s $snappy-ease-out 0s normal infinite);
+
+    
+    &:nth-child(2) {
+        @include animation-delay(2s!important);
+        color: $navy;
+    }
+    
+    &:nth-child(3) {
+        @include animation-delay(4s!important);
+        color: $green;
+    }
+    
+    &:nth-child(4) {
+        @include animation-delay(6s!important);
+        color: $orange;
+    }
+    
+    &:nth-child(5) {
+        color: $red;
+        @include animation(revolving-text-pause 12s $snappy-ease-out 0s normal infinite);
+        @include animation-delay(8s!important);
+    }
+}
+
+.uppercase {
+    text-transform: uppercase,
+}
+
+
+@keyframes revolving-text{
+    0% {
+        opacity: 0;
+       @include translateY(-10%);
+    }
+
+    2% {
+        opacity: 0;
+       @include translateY(-10%);
+    }
+
+    5% {
+        opacity: 1;
+       @include translateY(0);
+    }
+
+    17% {
+        opacity: 1;
+       @include translateY(0);
+    }
+
+    20% {
+        opacity: 0;
+       @include translateY(10%);
+    }
+
+    80% {
+        opacity: 0;
+       @include translateY(10%);
+    }
+
+    100% {
+        opacity: 0;
+       @include translateY(-10%);
+    }
+}
+
+@keyframes revolving-text-pause {
+    0% {
+        opacity: 0;
+       @include translateY(-10%);
+    }
+
+    2% {
+        opacity: 0;
+       @include translateY(-10%);
+    }
+
+    5% {
+        opacity: 1;
+       @include translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+       @include translateY(0);
+    }
+
+    32% {
+        opacity: 1;
+       @include translateY(0);
+    }
+
+    39% {
+        opacity: 0;
+       @include translateY(10%);
+    }
+
+    95% {
+        opacity: 0;
+       @include translateY(10%);
+    }
+
+    100% {
+        opacity: 0;
+       @include translateY(-10%);
+    }
+}

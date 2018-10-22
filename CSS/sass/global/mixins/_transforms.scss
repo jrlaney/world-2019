@@ -1,0 +1,29 @@
+// TRANSFORMATIONS
+
+@mixin backface-visibility($value) {
+    backface-visibility: $value;
+}
+@mixin transform($args) {
+    transform: $args;
+}
+@mixin transform-origin($x:top, $y:left) {
+    transform-origin:$x $y;
+}
+@mixin translate($x:0, $y:0) {
+    transform: translate($x, $y);
+}
+@mixin translateX($x:0) {
+    transform: translateX($x);
+}
+@mixin translateY($y:0) {
+    transform: translateY($y);
+}
+@mixin translate3d($x:0, $y:0, $z:0) {
+    transform: translate3d($x, $y, $z);
+}
+@mixin rotate($deg) {
+    transform: rotate($deg);
+}
+@mixin scale($factor:1.5) {
+    transform: scale($factor);
+}

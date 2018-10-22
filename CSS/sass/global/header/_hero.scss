@@ -1,0 +1,70 @@
+//BANNER STUFF
+#hero-banner {
+    position: relative;
+    overflow: visible;
+    z-index: 3;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    @include medium {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        &.above-card {
+            padding-bottom: 180px;
+        }
+
+        
+    }
+
+    .head {
+        padding-top: 20px;
+        font-size: 36px;
+        line-height: 42px;
+        font-weight: 600;
+        letter-spacing: .1em;
+        @include uppercase;
+        @include transition();
+
+        @include medium {
+            font-size: 60px;
+            line-height: 62px;
+        }
+    }
+
+    .sub {
+        padding-top: 20px;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 400;
+        @include uppercase;
+        letter-spacing: .1em;
+        
+        @include medium {
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+
+
+    &.sub-page {
+        padding-top: 40px;
+        padding-bottom: 40px;
+
+        .head {
+            padding-top: 10px;
+        }
+
+        .sub {
+            padding-top: 0;
+        }
+
+        @include small {
+            .divider {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+//end hero banner

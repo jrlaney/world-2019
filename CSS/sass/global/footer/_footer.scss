@@ -1,0 +1,175 @@
+//////////////////////////////// FOOTER
+.cvent-footer-wrapper {
+    padding: 0;
+}
+
+.footer {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 30px 0 50px 0 !important;
+    margin: 0px;
+    border-top: 1px solid fade-out($white, .6);
+    color: $gray;
+    background-color: $black;
+    font-family: $myriad-pro;
+    font-style: normal;
+    @include uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1em;
+    letter-spacing: .1em;
+
+    .footer-logo {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .social-media-link {
+        display: block;
+        max-width: 300px;
+        color: $white;
+        text-align: left;
+        border: 1px solid fade-out($white, .8);
+        margin: 20px auto;
+
+        .ratio,
+        .text-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .ratio {
+            width: calc(30% - 3.5px);
+            max-width: 100px;
+        }
+
+        .text-content {
+            width: calc(70% - 3.5px);
+            padding: 10px;
+        }
+
+        .hashtag {
+            display: block;
+            margin-top: 5px;
+            font-size: 34px;
+            line-height: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            font-weight: 300;
+        }
+    }
+
+    .footer-links {
+        display: block;
+        padding: 7px 0;
+        text-align: center;
+
+        a.link {
+            position: relative;
+            display: block;
+            border-top: 1px solid $iron;
+            color: $gray;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0;
+            white-space: nowrap;
+
+            &:first-child {
+                margin-top: 20px;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @include large {
+        padding: 20px 0 50px 0 !important;
+        font-size: 11px;
+
+        .footer-logo {
+            margin: 0;
+        }
+
+        .social-media-link {
+            display: inline-block;
+            margin: 0;
+            box-shadow: 1px 1px 7px fade-out($pure-black, 0);
+            @include transition;
+
+            &:hover {
+                background-color: fade-out($pure-black, .8);
+                border-color: $blue;
+            }
+
+            .ratio {
+                width: calc(25% - 3.5px);
+            }
+
+            .text-content {
+                width: calc(75% - 3.5px);
+            }
+
+            .hashtag {
+                font-size: 30px;
+            }
+        }
+
+        .footer-links {
+            padding: 0;
+            text-align: right;
+
+            a.link {
+                display: inline-block;
+                *zoom: 1;
+                *display: inline;
+                padding: 3px 10px;
+                border-top: none;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0px;
+                }
+
+                &:before {
+                    position: absolute;
+                    display: block;
+                    content: "";
+                    width: 1px;
+                    height: 14px;
+                    right: 0;
+                    top: 50%;
+                    margin-top: -7px;
+                    background-color: #bbbbbb;
+                }
+
+                &:last-child:before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @include xlarge {
+        font-size: 12px;
+    }
+}
+
+//for the reg logo lockup footer
+.registration-footer {
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    @include medium {
+        height: 80vh;
+        min-height: 500px;
+        padding-top: 50px;
+        padding-bottom: 0;
+        @include align-content(center);
+    }
+}

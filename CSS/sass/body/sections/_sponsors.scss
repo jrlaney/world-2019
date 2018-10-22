@@ -1,0 +1,72 @@
+.sponsor-logo-wrapper {
+    width: 100%;
+    @include display(flex);
+    @include flex(0, 1, auto);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+
+    .sponsor-logo {
+        @include flex(0, 0, 50%);
+        position:relative;
+        padding:10px;
+
+        @include medium {
+            @include flex(0, 0, 33.33333%);
+            padding: 25px;
+        }
+
+        @include large {
+            @include flex(0, 0, 25%);
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            padding-bottom: 56%;
+        }
+
+        >img {
+            display: block;
+            position: absolute;
+            height: auto;
+            width: auto;
+            top: 50%;
+            left: 50%;
+            max-height: calc(100% - 60px);
+            max-width: calc(100% - 60px);
+            @include translate(-50%, -50%);
+        }
+    }
+
+    &.small .sponsor-logo {
+        @include large {
+            @include flex(0, 0, 20%);
+        }
+
+        >img {
+            max-height: calc(100% - 40px);
+            max-width: calc(100% - 40px);
+        }
+    }
+
+    &.large .sponsor-logo {
+        @include large {
+            @include flex(0, 0, 33.3333%);
+        }
+
+        >img {
+            max-height: calc(100% - 80px);
+            max-width: calc(100% - 80px);
+        }
+    }
+
+    &.jumbo .sponsor-logo {
+        @include flex(0, 0, 50%);
+
+        >img {
+            max-height: calc(100% - 80px);
+            max-width: calc(100% - 80px);
+        }
+    }
+}

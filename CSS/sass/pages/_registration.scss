@@ -1,0 +1,29 @@
+//////////////////////REGISTRATION PAGES
+.registration-page {
+	#hero {
+		border:1px solid $white;
+		.col {
+			@include display(flex);
+			@include flex-direction(column);
+			@include justify-content(center);
+			@include align-items(center);
+		}
+		.background-blue {border:2px solid $white;}
+		.title-copy-col > div {
+			width:100%;
+			padding:10px 20px 10px 10px;
+			text-align:center;
+			@include large {text-align:left; max-width:$lg-breakpoint / 2; @include align-self(flex-end);}
+			@include xlarge {max-width:$xl-breakpoint / 2;}
+		}
+		.world-logo {width:200px;}
+
+	}
+}
+
+#registration-first-step {
+	.pricing-wrapper {
+		padding:20px 0;
+		@include large {padding:20px 0 20px 20px;}
+	}
+}

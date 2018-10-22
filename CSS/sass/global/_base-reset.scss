@@ -1,0 +1,299 @@
+// BASE STYLES AND RESETS
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+abbr,
+acronym,
+address,
+code,
+del,
+dfn,
+em,
+img,
+q,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption,
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+    line-height: inherit;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+ul {
+    list-style: none;
+    padding-left: 30px;
+
+    &>li {
+        position: relative;
+
+        &:before {
+            display: block;
+            position: absolute;
+            content: '';
+            top: 3px;
+            left: -45px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid $red;
+            border-top: 15px solid transparent;
+        }
+    }
+
+    &.white>li:before {
+        border-right-color: $white;
+    }
+
+    &.light-gray>li:before {
+        border-right-color: $light-gray;
+    }
+
+    &.gray>li:before {
+        border-right-color: $gray;
+    }
+
+    &.dark-gray>li:before {
+        border-right-color: $dark-gray;
+    }
+
+    &.black>li:before {
+        border-right-color: $black;
+    }
+
+    &.red>li:before {
+        border-right-color: $red;
+    }
+
+    &.green>li:before {
+        border-right-color: $green;
+    }
+
+    &.blue>li:before {
+        border-right-color: $blue;
+    }
+
+    &.navy>li:before {
+        border-right-color: $navy;
+    }
+
+    &.orange>li:before {
+        border-right-color: $orange;
+    }
+}
+
+ol {
+    list-style-type: decimal;
+    margin: 0;
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 26px;
+
+    li {
+        padding: 0;
+    }
+
+    ol {
+        list-style-type: lower-alpha;
+    }
+}
+
+blockquote {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    position: relative;
+    padding: 0;
+    margin: 20px;
+    font-size: 26px;
+    line-height: 35px;
+    font-style: italic;
+
+    &:before,
+    &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        top: -20px;
+        left: -20px;
+        height: 56px;
+        width: 68px;
+        background-image: url(https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/6466feb2819a44848228682e37f307a2.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        opacity: 0.3;
+    }
+
+    &:after {
+        top: auto;
+        left: auto;
+        bottom: -20px;
+        right: -20px;
+        transform: rotate(180deg);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+img,
+.cta-button,
+.line,
+.button-group,
+.triangle-group,
+.text-label {
+    margin-top: 20px;
+
+    &:first-child {
+        margin-top: 0px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    &:empty {
+        margin-top: 0px;
+    }
+}
+
+li,
+h1+p,
+h2+p,
+h3+p,
+h4+p,
+h5+p,
+h6+p,
+p+p,
+.text-label+p,
+.text-label+h1,
+.text-label+h2,
+.text-label+h3,
+.text-label+.triangle-group {
+    margin-top: 10px;
+
+    &:first-child {
+        margin-top: 0px;
+    }
+
+    &:empty {
+        margin-top: 0px;
+    }
+}
+
+/* FORMS
+--------------------------------------------------------------*/
+label {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    font-size: 12px;
+    line-height: 1em;
+    margin: 5px 0;
+    font-weight: 600 !important;
+    @include uppercase;
+    color: $black;
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+    padding: .75em;
+    margin-bottom: 20px;
+    background-color: $white;
+    border: 1px solid $iron;
+    font-family: $myriad-pro;
+    font-size: 14px;
+    color: $black;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 0;
+    outline: none;
+    background-color: $white-smoke !important;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    width: auto;
+    margin-bottom: 5px;
+    margin-left: 1px;
+}
+
+select {
+    display: block;
+    width: 100%;
+    padding: .75em;
+    margin-bottom: 20px;
+    background-color: $white;
+    border: 1px solid $iron;
+    font-size: 14px;
+    text-transform: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,296 @@
+.bullet-group {
+    position: relative;
+    padding: 30px 0 0 10px;
+
+    @include medium {
+        padding-left: 20px;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+    }
+
+    .section-square-dots & {
+        &:before {
+            z-index: 2;
+            height: 15px;
+            width: 15px;
+            background-color: $blue;
+        }
+
+        &:after {
+            z-index: 1;
+            top: 5px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: $orange;
+        }
+
+        &.large {
+            padding-top: 45px;
+
+            &:before {
+                height: 25px;
+                width: 25px;
+            }
+
+            &:after {
+                top: 12.5px;
+                left: 12.5px;
+                height: 25px;
+                width: 25px;
+            }
+        }
+    }
+
+    .section-stacked-bars & {
+        @include small {
+            padding-top: 45px;
+        }
+
+        &:before {
+            z-index: 2;
+            height: 30px;
+            width: 8px;
+            background-color: $blue;
+        }
+
+        &:after {
+            z-index: 1;
+            top: 15px;
+            left: 8px;
+            height: 25px;
+            width: 8px;
+            background-color: $navy;
+        }
+
+        &.large {
+            padding-top: 50px;
+
+            &:before {
+                height: 40px;
+                width: 10px;
+            }
+
+            &:after {
+                top: 17px;
+                left: 10px;
+                height: 35px;
+                width: 10px;
+            }
+        }
+    }
+
+    .section-round-dots & {
+        &:before {
+            z-index: 2;
+            left: 15px;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background-color: $orange;
+        }
+
+        &:after {
+            z-index: 1;
+            top: 3px;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-color: $navy;
+        }
+
+        &.large {
+            padding-top: 45px;
+
+            &:before {
+                left: 25px;
+                height: 22px;
+                width: 22px;
+            }
+
+            &:after {
+                height: 40px;
+                width: 40px;
+            }
+        }
+    }
+
+    .section-ribbon & {
+        padding-top: 45px;
+
+        &:before {
+            z-index: 1;
+            left: 13px;
+            height: 20px;
+            width: 20px;
+            background-color: $red;
+            @include transform(rotate(135deg) skew(30deg, 30deg));
+        }
+
+        &:after {
+            z-index: 2;
+            top: 18px;
+            height: 15px;
+            width: 50px;
+            background-color: lighten($orange, 30%);
+            @include transform(rotate(15deg) skew(15deg));
+        }
+
+        &.large {
+            padding-top: 55px;
+
+            &:before {
+                top: -7px;
+                @include transform(scale(1.5) rotate(135deg) skew(30deg, 30deg));
+            }
+
+            &:after {
+                @include transform(scale(1.5) rotate(15deg) skew(15deg));
+            }
+        }
+    }
+
+    .section-sparse-triangles & {
+        padding-top: 40px;
+
+        &:before {
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 30px solid $orange;
+            @include transform(rotate(-50deg));
+        }
+
+        &:after {
+            top: 23px;
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 30px solid $navy;
+            @include transform(rotate(130deg));
+        }
+
+        &.large {
+            padding-top: 50px;
+
+            &:before {
+                @include transform(scale(1.5) rotate(-50deg));
+            }
+
+            &:after {
+                top: 35px;
+                @include transform(scale(1.5) rotate(130deg));
+            }
+        }
+    }
+
+    .section-split-circles & {
+        padding-top: 40px;
+
+        &:before {
+            top: 0;
+            left: 4px;
+            width: 30px;
+            height: 15px;
+            background-color: transparent;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            border: 8px solid $navy;
+            border-bottom: 0;
+            @include transform(rotate(-25deg));
+        }
+
+        &:after {
+            top: 20px;
+            left: 0;
+            width: 30px;
+            height: 15px;
+            background-color: transparent;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            border: 8px solid $green;
+            border-bottom: 0;
+            @include transform(rotate(155deg));
+        }
+
+        &.large {
+            padding-top: 50px;
+
+            &:before {
+                @include transform(scale(1.5) rotate(-25deg));
+            }
+
+            &:after {
+                top: 30px;
+                @include transform(scale(1.5) rotate(155deg));
+            }
+        }
+    }
+
+    .section-tartan & {
+        padding-top: 40px;
+
+        &:before {
+            left: 15px;
+            height: 30px;
+            width: 30px;
+            background-color: $red;
+            @include transform(rotate(135deg) skew(25deg, 25deg));
+        }
+
+        &:after {
+            top: 21px;
+            left: 22px;
+            height: 7px;
+            width: 45px;
+            background-color: $orange;
+            @include transform(rotate(-20deg) skew(45deg));
+        }
+
+        &.large {
+            padding-top: 55px;
+
+            &:before {
+                left: 30px;
+                @include transform(scale(1.5) rotate(135deg) skew(25deg, 25deg));
+            }
+
+            &:after {
+                top: 26px;
+                left: 44px;
+                @include transform(scale(1.5) rotate(-20deg) skew(45deg));
+            }
+        }
+
+        &.blue {
+            &:before {
+                background-color: $blue;
+            }
+
+            &:after {
+                background-color: $light-blue;
+                opacity: 0.7;
+            }
+        }
+
+        &.navy {
+            &:before {
+                background-color: $navy;
+            }
+
+            &:after {
+                background-color: $light-navy;
+                opacity: 0.7;
+            }
+        }
+    }
+}

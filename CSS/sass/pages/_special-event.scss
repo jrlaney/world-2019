@@ -1,0 +1,33 @@
+//////////////////////SPECIAL EVENTS PAGE
+#special-events-page {
+    #hero-banner {
+        background-image: url($world2016-demo-theater);
+    }
+
+    @include medium {
+        .special-event-box {
+            .header-box {
+                padding: 60px 30px;
+            }
+
+            .content-box {
+                padding: 30px;
+
+                .col:first-child {
+                    padding-right: 20px;
+                }
+
+                .col:last-child {
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+
+    @include small {
+        .special-event-box .header-box .h2.text-medium {
+            font-size: 26px;
+            line-height: 32px;
+        }
+    }
+}

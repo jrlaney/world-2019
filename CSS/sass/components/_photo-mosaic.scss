@@ -1,0 +1,117 @@
+//FOR PHOTO MOSAIC ROWS
+.photo-row {
+    .photo {
+        border: 1px solid $white;
+        padding-bottom: 56.25%;
+
+        &.half {
+            width: 50%;
+            float: left;
+        }
+    }
+
+    @include medium {
+        height: 250px;
+
+        &.tall {
+            height: 300px;
+        }
+
+        &.short {
+            height: 150px;
+        }
+
+        .col {
+            height: 100%;
+        }
+
+        .photo {
+            height: 100%;
+            width: 100%;
+            padding-bottom: 0;
+
+            &.half {
+                width: auto;
+                float: none;
+                height: 50%;
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    @include large {
+        height: 450px;
+
+        &.tall {
+            height: 600px;
+        }
+
+        &.short {
+            height: 250px;
+        }
+    }
+}
+
+.photo {
+    @include responsive-photo;
+
+    &.phoenix-city {
+        background-image: url($phoenix-city-photo);
+    }
+
+    &.world2018-keynote-rennyson {
+        background-image: url($world2018-keynote-rennyson);
+    }
+
+    &.world2018-keynote-wide-main-stage {
+        background-image: url($world2018-keynote-wide-main-stage);
+    }
+
+    &.world2018-keynote-wide-crowd {
+        background-image: url($world2018-keynote-wide-crowd);
+    }
+
+    &.world2018-keynote-crowd-view {
+        background-image: url($world2018-keynote-crowd-view);
+    }
+
+    &.world2018-keynote-backstage {
+        background-image: url($world2018-keynote-backstage);
+    }
+
+    &.world2018-keynote-beane-handshake {
+        background-image: url($world2018-keynote-beane-handshake);
+    }
+
+    &.world2018-keynote-beane-speech-close {
+        background-image: url($world2018-keynote-beane-speech-close);
+    }
+
+    &.world2018-keynote-mjs-back {
+        background-image: url($world2018-keynote-mjs-back);
+    }
+
+    &.world2018-keynote-gambill-speech {
+        background-image: url($world2018-keynote-gambill-speech);
+    }
+
+    &.world2018-keynote-tim-lang-close {
+        background-image: url($world2018-keynote-tim-lang-close);
+    }
+
+    &.world2018-show-floor {
+        background-image: url($world2018-show-floor);
+    }
+
+    &.world2018-womens-networking {
+        background-image: url($world2018-womens-networking);
+    }
+
+    &.world2018-keynote-holdridge {
+        background-image: url($world2018-keynote-holdridge);
+    }
+
+    &.world2018-keynote-cook {
+        background-image: url($world2018-keynote-cook);
+    }
+}

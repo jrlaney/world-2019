@@ -1,0 +1,545 @@
+// BUTTONS
+.cta-button {
+    @include display-inline;
+    vertical-align: middle;
+    height: auto;
+    overflow: hidden;
+    margin-right: 15px;
+    padding: 1em 2.5em;
+    cursor: pointer;
+    @include drop-shadow(1px, 1px, 3px, fade-out($pure-black, .8));
+    @include transition;
+
+    &.inactive {
+        cursor: default;
+        background-color: $base !important;
+        color: fade-out($white, .35) !important;
+        @include drop-shadow(0,0,0,$pure-black);
+
+        &:before,
+        &:after {
+            background-color: fade-out($white, .3) !important;
+        }
+    }
+
+    &:last-child {
+        margin-right: 0px;
+    }
+
+    &.expand {
+        display: block;
+        *display: block;
+        padding: 1em 1.5em;
+        margin-right: 0;
+    }
+
+    &.carat {
+        padding-right: 3.5em;
+        padding-left: 2em;
+
+        &:before,
+        &:after {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            content: '';
+            right: 15px;
+            top: 50%;
+            height: 10px;
+            width: 2px;
+            background-color: $white;
+            @include transition();
+        }
+
+        &:before {
+            margin-top: -8px;
+            @include rotate(-45deg);
+        }
+
+        &:after {
+            margin-top: -2px;
+            @include rotate(45deg);
+        }
+    }
+
+    &.red {
+        background-color: $red;
+
+        &:hover {
+            background-color: $light-red;
+        }
+
+        &:active {
+            background-color: $dark-red;
+        }
+    }
+
+    &.orange {
+        background-color: $orange;
+
+        &:hover {
+            background-color: $light-orange;
+        }
+
+        &:active {
+            background-color: $dark-orange;
+        }
+    }
+
+    &.green {
+        background-color: $green;
+
+        &:hover {
+            background-color: $light-green;
+        }
+
+        &:active {
+            background-color: $dark-green;
+        }
+    }
+
+    &.blue {
+        background-color: $blue;
+
+        &:hover {
+            background-color: $light-blue;
+        }
+
+        &:active {
+            background-color: $dark-blue;
+        }
+    }
+
+    &.navy {
+        background-color: $navy;
+
+        &:hover {
+            background-color: $light-navy;
+        }
+
+        &:active {
+            background-color: $dark-navy;
+        }
+    }
+
+    &.white {
+        background-color: $white;
+        color: $black;
+
+        &:hover {
+            background-color: $white-smoke;
+            color: $black;
+        }
+
+        &:active {
+            background-color: $light-gray;
+            color: $black;
+        }
+
+        .text-white & {
+            background-color: $white;
+            color: $black;
+
+            &:hover {
+                background-color: $white-smoke;
+                color: $black;
+            }
+
+            &:active {
+                background-color: $light-gray;
+                color: $black;
+            }
+        }
+
+        &.carat:before,
+        &.carat:after {
+            background-color: $black;
+        }
+    }
+
+    &.light-gray {
+        background-color: $light-gray;
+        color: $black;
+
+        &:hover {
+            background-color: $white-smoke;
+            color: $black;
+        }
+
+        &:active {
+            background-color: $smoke;
+            color: $black;
+        }
+
+        &.carat:before,
+        &.carat:after {
+            background-color: $black;
+        }
+    }
+
+    &.gray {
+        background-color: $gray;
+
+        &:hover {
+            background-color: $base;
+        }
+
+        &:active {
+            background-color: $dark-gray;
+        }
+    }
+
+    &.dark-gray {
+        background-color: $dark-gray;
+
+        &:hover {
+            background-color: $monsoon;
+        }
+
+        &:active {
+            background-color: $tuatara;
+        }
+    }
+
+    &.black {
+        background-color: $black;
+
+        &:hover {
+            background-color: $dark-gray;
+        }
+
+        &:active {
+            background-color: $jet;
+        }
+    }
+
+
+    &.outline {
+        background-color: transparent;
+        border-width: 1px;
+        border-style: solid;
+
+        &.red {
+            border-color: $red;
+
+            &:active {
+                border-color: $dark-red;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $red;
+            }
+
+            &:hover {
+                background-color: $red;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.orange {
+            border-color: $orange;
+
+            &:active {
+                border-color: $dark-orange;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $orange;
+            }
+
+            &:hover {
+                background-color: $orange;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.green {
+            border-color: $green;
+
+            &:active {
+                border-color: $dark-green;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $green;
+            }
+
+            &:hover {
+                background-color: $green;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.blue {
+            border-color: $blue;
+
+            &:active {
+                border-color: $dark-blue;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $blue;
+            }
+
+            &:hover {
+                background-color: $blue;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.navy {
+            border-color: $navy;
+
+            &:active {
+                border-color: $dark-navy;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $navy;
+            }
+
+            &:hover {
+                background-color: $navy;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.white {
+            border-color: $white;
+
+            &:active {
+                border-color: $light-gray;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $white;
+            }
+
+            &:hover {
+                background-color: $white;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $black;
+                }
+            }
+        }
+
+        &.light-gray {
+            border-color: $light-gray;
+
+            &:active {
+                border-color: $smoke;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $light-gray;
+            }
+
+            &:hover {
+                background-color: $light-gray;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $black;
+                }
+            }
+        }
+
+        &.gray {
+            border-color: $gray;
+
+            &:active {
+                border-color: $dark-gray;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $gray;
+            }
+
+            &:hover {
+                background-color: $gray;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.dark-gray {
+            border-color: $dark-gray;
+
+            &:active {
+                border-color: $black;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $dark-gray;
+            }
+
+            &:hover {
+                background-color: $dark-gray;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+
+        &.black {
+            border-color: $black;
+
+            &:active {
+                border-color: $jet;
+            }
+
+            &.carat:before,
+            &.carat:after {
+                background-color: $black;
+            }
+
+            &:hover {
+                background-color: $black;
+
+                &.carat:before,
+                &.carat:after {
+                    background-color: $white;
+                }
+            }
+        }
+    }
+}
+
+a.cta-button,
+.cta-button {
+    font-family: $myriad-pro;
+    font-style: normal;
+    font-weight: 600;
+    color: $white;
+    text-align: center;
+    font-size: 16px;
+    line-height: 16px;
+    text-decoration: none !important;
+    @include uppercase;
+
+    &.tiny {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    &.small {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    &.medium {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    &.large {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    &.white,
+    &.light-gray {
+        color: $black;
+    }
+
+    &.carat {
+        text-align: left;
+    }
+
+    &.outline {
+        &.red {
+            color: $red;
+        }
+
+        &.orange {
+            color: $orange;
+        }
+
+        &.green {
+            color: $green;
+        }
+
+        &.blue {
+            color: $blue;
+        }
+
+        &.navy {
+            color: $navy;
+        }
+
+        &.white {
+            color: $white;
+        }
+
+        &.light-gray {
+            color: $light-gray;
+        }
+
+        &.gray {
+            color: $gray;
+        }
+
+        &.dark-gray {
+            color: $dark-gray;
+        }
+
+        &.black {
+            color: $black;
+        }
+
+        &:hover {
+
+            &.red,
+            &.orange,
+            &.green,
+            &.blue,
+            &.navy,
+            &.gray,
+            &.dark-gray,
+            &.black {
+                color: $white;
+            }
+
+            &.white,
+            &.light-gray {
+                color: $black;
+            }
+        }
+    }
+}
