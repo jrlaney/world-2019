@@ -152,10 +152,10 @@
 
     .screen {
         position: absolute;
-        height: round(percentage($screen-height / $device-height), 2);
-        top: round(percentage($top-gutter / $device-height), 2);
-        left: round((100% - percentage($screen-width / $device-width)) / 2, 2);
-        right: round((100% - percentage($screen-width / $device-width)) / 2, 2);
+        height: round(calc($screen-height / $device-height), 2);
+        top: round(calc($top-gutter / $device-height), 2);
+        left: round((100% - calc($screen-width / $device-width)) / 2, 2);
+        right: round((100% - calc($screen-width / $device-width)) / 2, 2);
     }
 }
 
@@ -167,13 +167,13 @@
 
     .screen {
         position: absolute;
-        height: round(percentage($screen-height / $device-height), 2);
-        top: round(percentage($top-gutter / $device-height), 2);
-        left: round((100% - percentage($screen-width / $device-width)) / 2, 2);
-        right: round((100% - percentage($screen-width / $device-width)) / 2, 2);
+        height: round(calc($screen-height / $device-height), 2);
+        top: round(calc($top-gutter / $device-height), 2);
+        left: round((100% - calc($screen-width / $device-width)) / 2, 2);
+        right: round((100% - calc($screen-width / $device-width)) / 2, 2);
 
         .screenshot {
-            top: round(percentage($status-bar-height / $device-height), 2);
+            top: round(calc($status-bar-height / $device-height), 2);
         }
     }
 }

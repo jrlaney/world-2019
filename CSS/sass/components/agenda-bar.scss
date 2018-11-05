@@ -1,0 +1,384 @@
+//agenda at a glance with colored bars
+.agenda-bars-mobile {
+    display: flex;
+    background-color: fade-out($navy, .3);
+    width: 97.5%;
+    padding: 20px;
+    @include medium {
+        display: none;
+    }
+
+    .day-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-right: 10px;
+    }
+
+    .event-col {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .event-col span.event-title:nth-child(1), .event-col span.event-title:nth-child(17) {
+        // education
+        background-color: lighten($navy, 10%);
+        padding: .5em;
+    }   
+    .event-col span.event-title:nth-child(2), .event-col span.event-title:nth-child(6) {
+        // keynote
+        background-color: $orange;
+        padding: .5em;
+        }
+    .event-col span.event-title:nth-child(3), .event-col span.event-title:nth-child(7), .event-col span.event-title:nth-child(13) {
+        // engagement zone
+        background-color: $gray;
+        padding: .5em;
+    }
+    .event-col span.event-title:nth-child(4), .event-col span.event-title:nth-child(11), .event-col span.event-title:nth-child(16) {
+        // datathon
+        background-color: darken($green, 10%);
+        padding: .5em;
+        margin-bottom: 10px;
+
+    }
+    .event-col span.event-title:nth-child(5), .event-col span.event-title:nth-child(12) {
+        // sessions
+        background-color: $green;
+        padding: .5em;
+    }
+    
+    .event-col span.event-title:nth-child(8) {
+        // block party
+        background-color: darken($red, 10%);
+        padding: .5em;
+    }
+    .event-col span.event-title:nth-child(9) {
+        // executive summit
+        background-color: lighten($blue, 10%);
+        padding: .5em;
+    }
+    .event-col span.event-title:nth-child(10) {
+        // womens networking
+        background-color: darken($red, 30%);
+        padding: .5em;
+    }
+     
+    .event-col span.event-title:nth-child(14) {
+        // futures
+        background-color: $red;
+        padding: .5em;
+    }
+    
+    .event-col span.event-title:nth-child(15) {
+        // partner summit
+        background-color: darken($blue, 20%);
+        padding: .5em;
+    }
+    
+}
+.agenda-bars {
+    display: none;
+    @include medium{
+        display: grid;
+        width: 98.5%;
+        padding: 20px;
+        background-color: fade-out($navy, .3);
+    }
+
+    .day-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        @include medium {
+            flex-direction: row;
+            justify-content: space-around;
+            grid-column: 2/6;
+            grid-row: 1/2;
+            border-bottom: 1px solid lighten($blue, 40%);
+        }
+    }
+
+    .label-col {
+        display: none;
+        
+        @include medium {
+            display: grid;
+            grid-column: 1/2;
+            grid-row: 2/11;
+            z-index: 1;
+            border-bottom: 1px solid lighten($blue, 40%);
+    
+            & .event-label:nth-child(1) {
+                grid-row: 2/3;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(2) {
+                grid-row: 3/4;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(3) {
+                grid-row: 4/5;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(4) {
+                grid-row: 5/6;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(5) {
+                grid-row: 6/7;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(6) {
+                grid-row: 7/8;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(7) {
+                grid-row: 8/9;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(8) {
+                grid-row: 9/10;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+                
+            }
+            & .event-label:nth-child(9) {
+                grid-row: 10/11;
+                border-bottom: 1px solid lighten($blue, 40%);
+                padding: .5em 0;
+            }
+            & .event-label:nth-child(10) {
+                grid-row: 11/12;
+                padding: .5em 0;
+    
+            }
+
+        }
+    }
+
+    .event-col span.event-title:nth-child(1) {
+        // education
+        background-color: lighten($navy, 10%);
+        padding: .5em;
+        grid-column: 1/3;
+        grid-row: 1/2;
+
+        @include medium{
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+    }   
+    .event-col span.event-title:nth-child(2) {
+        // education
+        background-color: lighten($navy, 10%);
+        padding: .5em;
+        grid-column: 1/3;
+        grid-row: 12/13;
+        @include medium {
+            grid-column: 4/5;
+            grid-row: 2/3;
+        }
+    }
+    .event-col span.event-title:nth-child(3) {
+        // sessions
+        grid-column: 2/3;
+        grid-row: 6/10;
+        background-color: $green;
+        padding: .5em;
+
+        @include medium{
+            grid-column: 2/4;
+            grid-row: 3/4;
+        }
+    }
+    .event-col span.event-title:nth-child(4) {
+        // keynotes
+        grid-column: 1/2;
+        grid-row: 2/8;
+        background-color: $orange;
+        padding: .5em;
+
+        @include medium {
+            grid-column: 2/4;
+            grid-row: 4/5;
+        }
+    }
+    .event-col span.event-title:nth-child(5) {
+        // engagement zone
+        grid-column: 2/3;
+        grid-row: 1/10;
+        background-color: $gray;
+        padding: .5em;
+        @include medium {
+            grid-column: 1/4;
+            grid-row: 5/6;
+        }
+    }
+    .event-col span.event-title:nth-child(6) {
+        // block party
+        background-color: darken($red, 10%);
+        padding: .5em;
+        @include medium {
+            grid-column: 2/3;
+            grid-row: 6/7;
+
+        }
+    }
+    .event-col span.event-title:nth-child(7) {
+        // futures
+        @include medium {
+            grid-column: 3/4;
+            grid-row: 7/8;
+        }
+        background-color: $red;
+        padding: .5em;
+    }
+    .event-col span.event-title:nth-child(8) {
+        // executive summit
+        @include medium {
+            grid-column: 2/3;
+            grid-row: 8/9;
+
+        }
+        background-color: lighten($blue, 10%);
+        padding: .5em;
+    }
+    .event-col span.event-title:nth-child(9) {
+        // partner summit
+        grid-column: 1/2;
+        grid-row: 9/10;
+        background-color: darken($blue, 20%);
+        padding: .5em;
+
+        @include medium {
+            grid-column: 3/4;
+            grid-row: 9/10;
+        }
+    }
+    .event-col span.event-title:nth-child(10) {
+        // womens networking
+        grid-column: 2/3;
+        grid-row: 10/11;
+        background-color: darken($red, 30%);
+        padding: .5em;
+    }
+    .event-col span.event-title:nth-child(11) {
+        // datathon
+        grid-column: 2/3;
+        grid-row: 3/10;
+        background-color: darken($green, 10%);
+        padding: .5em;
+
+        @include medium {
+            grid-column: 1/4;
+            grid-row: 11/12;
+        }
+    }
+
+    .event-col {
+        display: grid;
+        @include medium{
+            grid-column: 2/6;
+            grid-row: 2/11;
+        }
+    }
+
+    .event {
+        display: block;
+        position: relative;
+        z-index: 1;
+        background-color: $black;
+        color: white;
+
+        .event-time {
+            display: none;
+        }
+
+        .event-title {
+            display: block;
+            padding: 5px;
+            height: 36px;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &.special {
+            background-color: $green;
+        }
+
+        &.reg {
+            background-color: $navy;
+        }
+
+        &.session {
+            background-color: $red;
+        }
+
+        &.meal {
+            background-color: $orange;
+        }
+
+        @include small {
+            width: 100% !important;
+            margin-left: 0px !important;
+            margin-bottom: 20px;
+
+            .event-title {
+                height: auto;
+                white-space: normal;
+            }
+
+            .event-time {
+                display: block;
+                background-color: fade-out($pure-black, .7);
+                padding: 5px;
+                font-size: 14px;
+                line-height: 1em;
+            }
+        }
+    }
+
+    
+
+    .time-markers {
+        @include display(flex);
+        @include flex(0, 1, auto);
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include justify-content(flex-start);
+        @include align-items(stretch);
+        position: absolute;
+        z-index: 0;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        .time-bar {
+            @include display(flex);
+            @include flex(1, 1, auto);
+            position: relative;
+            border-left: 1px solid $iron;
+
+            >span {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                color: $gray;
+                font-weight: 400;
+                font-size: 16px;
+            }
+        }
+
+    }
+}

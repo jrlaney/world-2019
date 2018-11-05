@@ -12,17 +12,14 @@ $menu-mobile-height: 80px;
                 //.align-items(stretch);
                 position: relative;
                 margin: 0 auto;
-        
+                padding: 0 5px;
+                
                 @include medium {
-                    max-width: $md-breakpoint;
+                    padding: 0 15px;
                 }
-        
-                @include large {
-                    max-width: $lg-breakpoint;
-                }
-        
+
                 @include xlarge {
-                    max-width: $xl-breakpoint;
+                    padding: 0 20px;
                 }
         
                 #menu {
@@ -63,7 +60,7 @@ $menu-mobile-height: 80px;
                         min-height: 100%;
                         max-height: none;
                         text-align: right;
-                        padding: 0 0 0 20px;
+                        padding: 0 10px 0 20px;
                     }
         
                     &.menu-opened {

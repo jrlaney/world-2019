@@ -2,7 +2,7 @@
     position: relative;
     display:block;
     height: 2.3em;
-    padding-left: .6em;
+    padding-left: .2em;
     @include medium{
         @include display(flex);
         @include align-items(stretch);
@@ -10,12 +10,6 @@
         @include flex-wrap(wrap);
         @include flex(1, 1, 0px);
         height: 1em;
-    }
-    @include large {
-        padding-left: .2em;
-    }
-    @include xlarge {
-        padding-left: 50px;
     }
     
 }
@@ -32,12 +26,12 @@
 }
     
 .sub-text {
-    padding-left: .6em;
+    padding-left: .4em;
     @include large {
         padding-left: .2em;
     }
     @include xlarge {
-        padding-left: 50px;
+        padding-left: .4em;
     }
 }
 

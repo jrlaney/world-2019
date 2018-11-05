@@ -48,56 +48,56 @@
     &.pattern-squiggles {
         background-color: $red;
         background-image: url($pattern-squiggles);
-        background-size: calc(176px * .5);
+        background-size: 176px * .5;
 
         &.pattern-large {
             background-size: 176px;
         }
 
         &.pattern-small {
-            background-size: calc(176px * .33);
+            background-size: 176px * .33;
         }
     }
 
     &.pattern-vertical-bars {
         background-color: $red;
         background-image: url($pattern-vertical-bars);
-        background-size: calc(168px * .5);
+        background-size: 168px * .5;
 
         &.pattern-large {
             background-size: 168px;
         }
 
         &.pattern-small {
-            background-size: calc(168px * .33);
+            background-size: 168px * .33;
         }
     }
 
     &.pattern-round-dots {
         background-color: $red;
         background-image: url($pattern-round-dots);
-        background-size: calc(1195px * .33);
+        background-size: 1195px * .33;
 
         &.pattern-large {
             background-size: 1195px * .6;
         }
 
         &.pattern-small {
-            background-size: calc(1195px * .25);
+            background-size: 1195px * .25;
         }
     }
 
     &.pattern-square-dots {
         background-color: $red;
         background-image: url($pattern-square-dots);
-        background-size: calc(1680px * .33);
+        background-size: 1680px * .33;
 
         &.pattern-large {
             background-size: 1680px * .6;
         }
 
         &.pattern-small {
-            background-size: calc(1680px * .25);
+            background-size: 1680px * .25;
         }
     }
 
@@ -105,28 +105,28 @@
     &.pattern-ribbon {
         background-color: $orange;
         background-image: url($pattern-ribbon);
-        background-size: calc(540px * .5);
+        background-size: 540px * .5;
 
         &.pattern-large {
             background-size: 540px;
         }
 
         &.pattern-small {
-            background-size: calc(540px * .33);
+            background-size: 540px * .33;
         }
     }
 
     &.pattern-stacked-bars {
         background-color: $orange;
         background-image: url($pattern-stacked-bars);
-        background-size: calc(848px * .33);
+        background-size: 848px * .33;
 
         &.pattern-large {
-            background-size: calc(848px * .4);
+            background-size: 848px * .4;
         }
 
         &.pattern-small {
-            background-size: calc(848px * .2);
+            background-size: 848px * .2;
         }
     }
 
@@ -134,42 +134,42 @@
     &.pattern-split-circles {
         background-color: $blue;
         background-image: url($pattern-split-circles);
-        background-size: calc(515px * .5);
+        background-size: 515px * .5;
 
         &.pattern-large {
             background-size: 515px;
         }
 
         &.pattern-small {
-            background-size: calc(515px * .33);
+            background-size: 515px * .33;
         }
     }
 
     &.pattern-sparse-triangles {
         background-color: $blue;
         background-image: url($pattern-sparse-triangles);
-        background-size: calc(935px * .5);
+        background-size: 935px * .5;
 
         &.pattern-large {
             background-size: 935px;
         }
 
         &.pattern-small {
-            background-size: calc(935px * .33);
+            background-size: 935px * .33;
         }
     }
 
     &.pattern-triangles {
         background-color: $blue;
         background-image: url($pattern-triangles);
-        background-size: calc(309px * .5);
+        background-size: 309px * .5;
 
         &.pattern-large {
             background-size: 309px;
         }
 
         &.pattern-small {
-            background-size: calc(309px * .33);
+            background-size: 309px * .33;
         }
     }
 
@@ -183,14 +183,14 @@
     &.pattern-tartan {
         background-color: $white;
         background-image: url($pattern-tartan);
-        background-size: calc(1623px * .33);
+        background-size: 1623px * .33;
 
         &.pattern-large {
             background-size: 1623px * .5;
         }
 
         &.pattern-small {
-            background-size: calc(1623px * .2);
+            background-size: 1623px * .2;
         }
     }
 }

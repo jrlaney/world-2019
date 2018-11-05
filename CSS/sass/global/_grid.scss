@@ -82,7 +82,7 @@
     >.col {
         width: 100%;
         @include flex(0, 0, auto);
-        padding: calc(#{$base-gutter-sm} * 2) $base-gutter-sm;
+        padding: $base-gutter-sm * 2 $base-gutter-sm;
 
         // ordering
         &.first,
@@ -197,7 +197,6 @@
     }
 
     @include medium {
-        max-width: $md-breakpoint;
 
         // expanded rows
         &.expand-md {
@@ -560,43 +559,43 @@ $base-12-col: 100% / 12;
         }
 
         &-2 {
-            @include flex(0, 0, calc(#{$base-12-col} * 2));
+            @include flex(0, 0, $base-12-col * 2);
         }
 
         &-3 {
-            @include flex(0, 0, calc(#{$base-12-col} * 3));
+            @include flex(0, 0, $base-12-col * 3);
         }
 
         &-4 {
-            @include flex(0, 0, calc(#{$base-12-col} * 4));
+            @include flex(0, 0, $base-12-col * 4);
         }
 
         &-5 {
-            @include flex(0, 0, calc(#{$base-12-col} * 5));
+            @include flex(0, 0, $base-12-col * 5);
         }
 
         &-6 {
-            @include flex(0, 0, calc(#{$base-12-col} * 6));
+            @include flex(0, 0, $base-12-col * 6);
         }
 
         &-7 {
-            @include flex(0, 0, calc(#{$base-12-col} * 7));
+            @include flex(0, 0, $base-12-col * 7);
         }
 
         &-8 {
-            @include flex(0, 0, calc(#{$base-12-col} * 8));
+            @include flex(0, 0, $base-12-col * 8);
         }
 
         &-9 {
-            @include flex(0, 0, calc(#{$base-12-col} * 9));
+            @include flex(0, 0, $base-12-col * 9);
         }
 
         &-10 {
-            @include flex(0, 0, calc(#{$base-12-col} * 10));
+            @include flex(0, 0, $base-12-col * 10);
         }
 
         &-11 {
-            @include flex(0, 0, calc(#{$base-12-col} * 11));
+            @include flex(0, 0, $base-12-col * 11);
         }
 
         &-12 {
@@ -605,51 +604,51 @@ $base-12-col: 100% / 12;
     }
 
     &.sm-1-up>.col {
-        @include flex(0, 0, calc(100% / 1));
+        @include flex(0, 0, 100% / 1);
     }
 
     &.sm-2-up>.col {
-        @include flex(0, 0, calc(100% / 2));
+        @include flex(0, 0, 100% / 2);
     }
 
     &.sm-3-up>.col {
-        @include flex(0, 0, calc(100% / 3));
+        @include flex(0, 0, 100% / 3);
     }
 
     &.sm-4-up>.col {
-        @include flex(0, 0, calc(100% / 4));
+        @include flex(0, 0, 100% / 4);
     }
 
     &.sm-5-up>.col {
-        @include flex(0, 0, calc(100% / 5));
+        @include flex(0, 0, 100% / 5);
     }
 
     &.sm-6-up>.col {
-        @include flex(0, 0, calc(100% / 6));
+        @include flex(0, 0, 100% / 6);
     }
 
     &.sm-7-up>.col {
-        @include flex(0, 0, calc(100% / 7));
+        @include flex(0, 0, 100% / 7);
     }
 
     &.sm-8-up>.col {
-        @include flex(0, 0, calc(100% / 8));
+        @include flex(0, 0, 100% / 8);
     }
 
     &.sm-9-up>.col {
-        @include flex(0, 0, calc(100% / 9));
+        @include flex(0, 0, 100% / 9);
     }
 
     &.sm-10-up>.col {
-        @include flex(0, 0, calc(100% / 10));
+        @include flex(0, 0, 100% / 10);
     }
 
     &.sm-11-up>.col {
-        @include flex(0, 0, calc(100% / 11));
+        @include flex(0, 0, 100% / 11);
     }
 
     &.sm-12-up>.col {
-        @include flex(0, 0, calc(100% / 12));
+        @include flex(0, 0, 100% / 12);
     }
 
     @include medium {
@@ -659,47 +658,47 @@ $base-12-col: 100% / 12;
             }
 
             &-1 {
-                @include flex(0, 0, calc(#{$base-12-col}));
+                @include flex(0, 0, $base-12-col);
             }
 
             &-2 {
-                @include flex(0, 0, calc(#{$base-12-col} * 2));
+                @include flex(0, 0, $base-12-col * 2);
             }
 
             &-3 {
-                @include flex(0, 0, calc(#{$base-12-col} * 3));
+                @include flex(0, 0, $base-12-col * 3);
             }
 
             &-4 {
-                @include flex(0, 0, calc(#{$base-12-col} * 4));
+                @include flex(0, 0, $base-12-col * 4);
             }
 
             &-5 {
-                @include flex(0, 0, calc(#{$base-12-col} * 5));
+                @include flex(0, 0, $base-12-col * 5);
             }
 
             &-6 {
-                @include flex(0, 0, calc(#{$base-12-col} * 6));
+                @include flex(0, 0, $base-12-col * 6);
             }
 
             &-7 {
-                @include flex(0, 0, calc(#{$base-12-col} * 7));
+                @include flex(0, 0, $base-12-col * 7);
             }
 
             &-8 {
-                @include flex(0, 0, calc(#{$base-12-col} * 8));
+                @include flex(0, 0, $base-12-col * 8);
             }
 
             &-9 {
-                @include flex(0, 0, calc(#{$base-12-col} * 9));
+                @include flex(0, 0, $base-12-col * 9);
             }
 
             &-10 {
-                @include flex(0, 0, calc(#{$base-12-col} * 10));
+                @include flex(0, 0, $base-12-col * 10);
             }
 
             &-11 {
-                @include flex(0, 0, calc(#{$base-12-col} * 11));
+                @include flex(0, 0, $base-12-col * 11);
             }
 
             &-12 {
@@ -708,51 +707,51 @@ $base-12-col: 100% / 12;
         }
 
         &.md-1-up>.col {
-            @include flex(0, 0, calc(100% / 1));
+            @include flex(0, 0, 100% / 1);
         }
 
         &.md-2-up>.col {
-            @include flex(0, 0, calc(100% / 2));
+            @include flex(0, 0, 100% / 2);
         }
 
         &.md-3-up>.col {
-            @include flex(0, 0, calc(100% / 3));
+            @include flex(0, 0, 100% / 3);
         }
 
         &.md-4-up>.col {
-            @include flex(0, 0, calc(100% / 4));
+            @include flex(0, 0, 100% / 4);
         }
 
         &.md-5-up>.col {
-            @include flex(0, 0, calc(100% / 5));
+            @include flex(0, 0, 100% / 5);
         }
 
         &.md-6-up>.col {
-            @include flex(0, 0, calc(100% / 6));
+            @include flex(0, 0, 100% / 6);
         }
 
         &.md-7-up>.col {
-            @include flex(0, 0, calc(100% / 7));
+            @include flex(0, 0, 100% / 7);
         }
 
         &.md-8-up>.col {
-            @include flex(0, 0, calc(100% / 8));
+            @include flex(0, 0, 100% / 8);
         }
 
         &.md-9-up>.col {
-            @include flex(0, 0, calc(100% / 9));
+            @include flex(0, 0, 100% / 9);
         }
 
         &.md-10-up>.col {
-            @include flex(0, 0, calc(100% / 10));
+            @include flex(0, 0, 100% / 10);
         }
 
         &.md-11-up>.col {
-            @include flex(0, 0, calc(100% / 11));
+            @include flex(0, 0, 100% / 11);
         }
 
         &.md-12-up>.col {
-            @include flex(0, 0, calc(100% / 12));
+            @include flex(0, 0, 100% / 12);
         }
     }
 
@@ -763,47 +762,47 @@ $base-12-col: 100% / 12;
             }
 
             &-1 {
-                @include flex(0, 0, calc(#{$base-12-col}));
+                @include flex(0, 0, $base-12-col);
             }
 
             &-2 {
-                @include flex(0, 0, calc(#{$base-12-col} * 2));
+                @include flex(0, 0, $base-12-col * 2);
             }
 
             &-3 {
-                @include flex(0, 0, calc(#{$base-12-col} * 3));
+                @include flex(0, 0, floor($base-12-col * 3));
             }
 
             &-4 {
-                @include flex(0, 0, calc(#{$base-12-col} * 4));
+                @include flex(0, 0, $base-12-col * 4);
             }
 
             &-5 {
-                @include flex(0, 0, calc(#{$base-12-col} * 5));
+                @include flex(0, 0, $base-12-col * 5);
             }
 
             &-6 {
-                @include flex(0, 0, calc(#{$base-12-col} * 6));
+                @include flex(0, 0, $base-12-col * 6);
             }
 
             &-7 {
-                @include flex(0, 0, calc(#{$base-12-col} * 7));
+                @include flex(0, 0, $base-12-col * 7);
             }
 
             &-8 {
-                @include flex(0, 0, calc(#{$base-12-col} * 8));
+                @include flex(0, 0, $base-12-col * 8);
             }
 
             &-9 {
-                @include flex(0, 0, calc(#{$base-12-col} * 9));
+                @include flex(0, 0, $base-12-col * 9);
             }
 
             &-10 {
-                @include flex(0, 0, calc(#{$base-12-col} * 10));
+                @include flex(0, 0, $base-12-col * 10);
             }
 
             &-11 {
-                @include flex(0, 0, calc(#{$base-12-col} * 11));
+                @include flex(0, 0, $base-12-col * 11);
             }
 
             &-12 {
@@ -812,51 +811,51 @@ $base-12-col: 100% / 12;
         }
 
         &.lg-1-up>.col {
-            @include flex(0, 0, calc(100% / 1));
+            @include flex(0, 0, 100% / 1);
         }
 
         &.lg-2-up>.col {
-            @include flex(0, 0, calc(100% / 2));
+            @include flex(0, 0, 100% / 2);
         }
 
         &.lg-3-up>.col {
-            @include flex(0, 0, calc(100% / 3));
+            @include flex(0, 0, 100% / 3);
         }
 
         &.lg-4-up>.col {
-            @include flex(0, 0, calc(100% / 4));
+            @include flex(0, 0, 100% / 4);
         }
 
         &.lg-5-up>.col {
-            @include flex(0, 0, calc(100% / 5));
+            @include flex(0, 0, 100% / 5);
         }
 
         &.lg-6-up>.col {
-            @include flex(0, 0, calc(100% / 6));
+            @include flex(0, 0, 100% / 6);
         }
 
         &.lg-7-up>.col {
-            @include flex(0, 0, calc(100% / 7));
+            @include flex(0, 0, 100% / 7);
         }
 
         &.lg-8-up>.col {
-            @include flex(0, 0, calc(100% / 8));
+            @include flex(0, 0, 100% / 8);
         }
 
         &.lg-9-up>.col {
-            @include flex(0, 0, calc(100% / 9));
+            @include flex(0, 0, 100% / 9);
         }
 
         &.lg-10-up>.col {
-            @include flex(0, 0, calc(100% / 10));
+            @include flex(0, 0, 100% / 10);
         }
 
         &.lg-11-up>.col {
-            @include flex(0, 0, calc(100% / 11));
+            @include flex(0, 0, 100% / 11);
         }
 
         &.lg-12-up>.col {
-            @include flex(0, 0, calc(100% / 12));
+            @include flex(0, 0, 100% / 12);
         }
     }
 
@@ -867,47 +866,47 @@ $base-12-col: 100% / 12;
             }
 
             &-1 {
-                @include flex(0, 0, calc(#{$base-12-col}));
+                @include flex(0, 0, $base-12-col);
             }
 
             &-2 {
-                @include flex(0, 0, calc(#{$base-12-col} * 2));
+                @include flex(0, 0, $base-12-col * 2);
             }
 
             &-3 {
-                @include flex(0, 0, calc(#{$base-12-col} * 3));
+                @include flex(0, 0, $base-12-col * 3);
             }
 
             &-4 {
-                @include flex(0, 0, calc(#{$base-12-col} * 4));
+                @include flex(0, 0, $base-12-col * 4);
             }
 
             &-5 {
-                @include flex(0, 0, calc(#{$base-12-col} * 5));
+                @include flex(0, 0, $base-12-col * 5);
             }
 
             &-6 {
-                @include flex(0, 0, calc(#{$base-12-col} * 6));
+                @include flex(0, 0, $base-12-col * 6);
             }
 
             &-7 {
-                @include flex(0, 0, calc(#{$base-12-col} * 7));
+                @include flex(0, 0, $base-12-col * 7);
             }
 
             &-8 {
-                @include flex(0, 0, calc(#{$base-12-col} * 8));
+                @include flex(0, 0, $base-12-col * 8);
             }
 
             &-9 {
-                @include flex(0, 0, calc(#{$base-12-col} * 9));
+                @include flex(0, 0, $base-12-col * 9);
             }
 
             &-10 {
-                @include flex(0, 0, calc(#{$base-12-col} * 10));
+                @include flex(0, 0, $base-12-col * 10);
             }
 
             &-11 {
-                @include flex(0, 0, calc(#{$base-12-col} * 11));
+                @include flex(0, 0, $base-12-col * 11);
             }
 
             &-12 {
@@ -916,51 +915,51 @@ $base-12-col: 100% / 12;
         }
 
         &.xl-1-up>.col {
-            @include flex(0, 0, calc(100% / 1));
+            @include flex(0, 0, 100% / 1);
         }
 
         &.xl-2-up>.col {
-            @include flex(0, 0, calc(100% / 2));
+            @include flex(0, 0, 100% / 2);
         }
 
         &.xl-3-up>.col {
-            @include flex(0, 0, calc(100% / 3));
+            @include flex(0, 0, 100% / 3);
         }
 
         &.xl-4-up>.col {
-            @include flex(0, 0, calc(100% / 4));
+            @include flex(0, 0, 100% / 4);
         }
 
         &.xl-5-up>.col {
-            @include flex(0, 0, calc(100% / 5));
+            @include flex(0, 0, 100% / 5);
         }
 
         &.xl-6-up>.col {
-            @include flex(0, 0, calc(100% / 6));
+            @include flex(0, 0, 100% / 6);
         }
 
         &.xl-7-up>.col {
-            @include flex(0, 0, calc(100% / 7));
+            @include flex(0, 0, 100% / 7);
         }
 
         &.xl-8-up>.col {
-            @include flex(0, 0, calc(100% / 8));
+            @include flex(0, 0, 100% / 8);
         }
 
         &.xl-9-up>.col {
-            @include flex(0, 0, calc(100% / 9));
+            @include flex(0, 0, 100% / 9);
         }
 
         &.xl-10-up>.col {
-            @include flex(0, 0, calc(100% / 10));
+            @include flex(0, 0, 100% / 10);
         }
 
         &.xl-11-up>.col {
-            @include flex(0, 0, calc(100% / 11));
+            @include flex(0, 0, 100% / 11);
         }
 
         &.xl-12-up>.col {
-            @include flex(0, 0, calc(100% / 12));
+            @include flex(0, 0, 100% / 12);
         }
     }
 }

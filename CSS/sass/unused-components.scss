@@ -87,7 +87,7 @@ section.above-card {
 				.info-box {
 					display: inline-block;
 					vertical-align: middle;
-					max-width: "calc(100% - (80px + 3.5px))";
+					max-width: calc(100% - (80px + 3.5px));
 
 					p:last-child {
 						font-size: 16px;
@@ -143,7 +143,7 @@ section.above-card {
 	&:before {
 		content: '';
 		display: block;
-		padding-bottom: "calc(100% - 26px)";
+		padding-bottom: calc(100% - 26px);
 	}
 
 	&.mjs {
@@ -430,12 +430,12 @@ section.above-card {
 
 	&:before {
 		margin-top: -5px;
-		.rotation(-45deg);
+		@include rotation(-45deg);
 	}
 
 	&:after {
 		margin-top: 5px;
-		.rotation(45deg);
+		@include rotation(45deg);
 	}
 
 	&.slick-prev {
@@ -461,7 +461,7 @@ section.above-card {
 
 
 .logo-slider {
-	@media $medium {
+	@include medium {
 		max-height: 200px;
 		overflow: hidden;
 	}
@@ -470,9 +470,9 @@ section.above-card {
 		padding: 0;
 
 		.ratio {
-			width: "calc(100% - 20px)";
+			width: calc(100% - 20px);
 			margin: 0 auto;
-			.box-shadow(1px 1px 5px fade-out($pure-black, .2));
+			@include drop-shadow(1px 1px 5px fade-out($pure-black, .2));
 		}
 	}
 }

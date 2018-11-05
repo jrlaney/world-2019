@@ -39,6 +39,16 @@
 		}
 	}
 
+	.last-call {
+		font-weight: 600;
+		color: #da1f26;
+		padding: 0 20px;
+
+		& p {
+			font-size: 1.4em;
+		}
+	}
+
 	#about {
 		.photo {
 			@include medium {
@@ -74,6 +84,8 @@
 			}
 		}
 	}
+	
+	@import '../components/agenda-bar';
 
 	#agenda {
 		.time-block-wrapper.col {
@@ -226,7 +238,7 @@
 				.info-box {
 					display: inline-block;
 					vertical-align: middle;
-					max-width: "calc(75% - (10px + 3.5px))";
+					max-width: calc(75% - (10px + 3.5px));
 
 					p:last-child {
 						font-size: 16px;

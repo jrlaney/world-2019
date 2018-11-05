@@ -1,4 +1,265 @@
 //////////////////////AGENDA PAGE
+#agenda-page {
+	padding-top: 1em;
+	@include medium {
+		padding-top: 2em;
+	}
+}
+
+.tabs-menu {
+	padding: 20px 80px 0;
+	background-color: $blue;
+
+	& button {
+		border: none;
+		box-shadow: none;
+		outline: none;
+	}
+	
+	& a {
+		font-size: 1.5em;
+		font-weight: 600;
+		color: $navy;
+		padding: 5px 20px 10px;
+		transition: background-color .3s ease-in-out;
+		&:hover, &:focus {
+			text-decoration: underline;
+			color: $white;
+			background-color: lighten($orange, 10%);
+		}
+		&.current {
+			color: $white;
+			background-color: $orange;
+		}
+	}
+	& #filter-btn {
+		background-color: $orange;
+	}
+}
+
+
+#filter-box {
+    background-color: lighten($orange, 10%);
+	color: white;
+	& .row {
+		justify-content: center;
+	}
+	button {
+		height: 40px;
+		margin-top: 64px;
+		line-height: 0;
+		background-color: $navy;
+		border: none;
+		transition: background-color .3s ease-in-out;
+		&:hover, &:focus {
+			background-color: lighten($navy, 10%);
+		}
+	}
+	.list-heading {
+		font-size: 1.3em;
+		font-weight: 500;
+	}
+}
+
+
+
+select#program, select#role, select#topic {
+    background-color: white;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius: 0;
+	border: none;
+	margin-top: 5px;
+	background-image: url(https://www.microstrategy.com/Strategy/media/images/icons/svg/chevron_down.svg);
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
+.agenda-view {
+	display: block;
+	padding: 1em 4.6em;
+	background-color: $orange;
+	
+	#agendaCards {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.session-browse {
+		padding: 20px 0;
+		background-color: $orange;
+		justify-content: flex-start;
+		& .row {
+			justify-content: flex-start;
+		}
+	}
+
+	.my-agenda {
+		width: 500px;
+		background-color: #efefef;
+		padding: 1em;
+		box-sizing: border-box;
+		position: relative;
+	}
+}
+
+.agenda-list {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 0;
+	background-color: white;
+	margin: 0;
+	width: 100%;
+	margin: 2px 0;
+	.details-expand {
+		width: 15%;
+		background-color: transparent;
+		color: $gray;
+		font-size: .9em;
+		font-weight: 600;
+		padding: 1em;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		&:hover, &:focus {
+			color: darken($gray, 10%);
+		}
+	}
+}
+
+.agenda-card {
+	position: relative;
+    flex-direction: column;
+	flex: 1 0 auto;
+	flex-wrap: wrap;
+	margin: 5px;
+	padding: 1em;
+	background-color: $white;
+    max-width: 31.7%;
+	@include drop-shadow(0, 7px, 10px, fade-out($pure-black, .7));
+
+	.details-expand {
+		width: 50%;
+		background-color: transparent;
+		color: $gray;
+		font-size: .9em;
+		font-weight: 600;
+		padding: 1em;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		transition: background-color .3s ease-in-out;
+		&:hover, &:focus {
+			color: darken($gray, 10%);
+		}
+	}
+}
+
+.session-title {
+	padding-top: 0;
+	padding-left: 1em;
+	font-size: 1.3em;
+	line-height: 1.2em;
+	font-weight: 500;
+	border-bottom: 1px solid $light-gray;
+	padding-bottom: 10px;
+	transition: all .3s ease-in-out;
+
+}
+
+.session-speaker {
+	
+	font-size: 1em;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: $gray;
+	margin: 0;
+}
+.session-type {
+
+	font-size: 1em;
+	letter-spacing: 1px;
+	padding: 0 0 .5em;
+	margin: 0;
+	color: $dark-gray;
+}
+
+.top-40 {
+	padding-top: 40px;
+}
+
+.tags {
+	margin-bottom: 10px;
+	span {
+	background-color: #efefef;
+	padding: .5em;
+	margin: .5em;
+	display: inline-flex;
+	}
+}
+
+.administration, .analytics, .applications, .database, .departmental, .enterprise, .identity, .intelligence, .mobility, .platforms, .services, .systems {
+	font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 1em;
+	background-color: $navy;
+}
+
+
+
+#list-view-btn {
+    background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/list-view-navy.svg) no-repeat top left;
+	border: none;
+	width: 4%;
+	height: 25px;
+	transition: all .3s ease-in-out;
+	&:hover, &:focus {
+		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-list-view.svg) no-repeat top left;
+		outline: none;
+	}
+	&.current {
+		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-list-view.svg) no-repeat top left;
+	}
+}
+
+#grid-view-btn {
+    background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/grid-view-navy.svg) no-repeat top left;
+	border: none;
+	width: 4%;
+	height: 25px;
+	transition: all .3s ease-in-out;
+	&:hover, &:focus {
+		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-grid-view.svg) no-repeat top left;
+		outline: none;
+	}
+	&.current {
+		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-grid-view.svg) no-repeat top left;
+	}
+}
+
+.details-popup {
+	visibility: hidden;
+	&.active {
+		visibility: visible;
+		position: absolute;
+		width: 100%;
+		background-color: $light-gray;
+		z-index: 2;
+	}
+	& .session-details {
+		visibility: hidden;
+		&.active {
+			visibility: visible;
+		}
+	}
+}
+
+
+
 body.agenda-page {
 	position:relative;
 
@@ -106,7 +367,7 @@ body.agenda-page {
 	// 				display:inline-block;
 	// 				vertical-align:middle;
 	// 				padding:10px 15px;
-	// 				max-width: "calc(100% - (90px + 3.5px))";
+	// 				max-width: calc(100% - (90px + 3.5px));
 	// 			}
 	// 			&:last-child {margin-bottom:0;}
 	// 		}
@@ -665,7 +926,7 @@ body.agenda-page {
 					iframe {
 						position:absolute;
 						top:10px; left:10px;
-						width:"calc(100% - 20px)"; height:"calc(100% - 20px)";
+						width:calc(100% - 20px); height:calc(100% - 20px);
 					}
 				}
 				#cboxClose {
