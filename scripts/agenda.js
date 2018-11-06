@@ -73,13 +73,14 @@ $('document').ready(function () {
 			if (value.Title != null && value.Title.indexOf("TBD") === -1) {
 				$(".session-browse .row").append("" +
 					"<article class=\"grid-item agenda-list\">" +
-					"<h3 class=\"session-title\">" + value.Title.substring(0, 50) + "..." + "</h3>" +
+					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
 					"<div class=\"session-details hide\">" +
 					"<p class=\"session-description\">" + ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "") + "</p>" +
 					"</div>" +
 					"<div class=\"text-block-group tiny tags\">" +
+					"<span class=\"tag-heading\">Tags:</span>" +
 					tags + "</div>" +
 					"<div class='add-to-agenda hide'>+ to my agenda</div>" +
 					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
