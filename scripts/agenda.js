@@ -47,7 +47,7 @@ function tagFilterInit() {
 //https://www.microstrategy.com/api/GetAirTableData
 $('document').ready(function () {
 	//Grabbing API Information
-	$.get("http://dev.microstrategy.com/api/GetAirTableData", function (data) {
+	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
 		//Creating empty array variables for each of the filtering options
 		var program = [];
 		var role = [];
@@ -70,7 +70,8 @@ $('document').ready(function () {
 					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
 				});
 			}
-			if (value.Title != null && value.Title.indexOf("TBD") === -1) {
+			if (value.Title != null && value.Publish)
+			{
 				$(".session-browse .row").append("" +
 					"<article class=\"grid-item agenda-list\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
