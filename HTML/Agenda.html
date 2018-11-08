@@ -13,13 +13,14 @@
 	</div>
 
 	<section id="hero-banner" class="background-blue section-sparse-triangles">
-		<div class="row h-left z-1">
-			<div class="col md-6 lg-6 xl-8">
+		
+		<div class="row z-1">
+			<div class="col md-12 lg-9 xl-9">
 				<div class="bullet-group large">
 					<h2 class="text-bold text-uppercase">
 						World 2019 Sessions
 					</h2>
-					<p>MicroStrategy World is a full three-day conference designed to educate and inspire every attendee. With new and exciting sessions, everyone can have a uniquely tailored&nbsp;experience.</p>
+					<p>MicroStrategy World 2019 is an immersive learning experience designed to educate and inspire every attendee. With sessions tailored to every role, industry, and skill level, World offers personalized content that matches the interests and needs of everyone—from executives, to IT developers, to analysts. Use the filters below to explore the agenda and find the right sessions for you!</p>
 
 					<p>New speakers and sessions are confirmed daily. Check back often for&nbsp;updates.</p>
 					<!-- <a href="//fast.wistia.net/embed/iframe/p59htevk8i?popover=true" class="cta-button orange carat wistia-popover[height=720,playerColor=7b796a,width=1280]">Get help from Agenda Gurus</a> -->
@@ -27,10 +28,16 @@
 			</div>
 		</div>
 
+		<div class="tabs-menu">
+			<a class="tab-toggle sessions current">Sessions</a>
+			<a class="tab-toggle agenda-grid">Agenda at a glance</a>
+		</div>
+		
+		
 		<!-- Agenda Bar View-->
-
-	<div class="row compact z-1">
-			<div class="agenda-bars">
+		<div id="agenda-grid" class="hide">
+		<div class="row compact z-1">
+				<div class="agenda-bars">
 				
 					<div class="day-label">
 						<div class="event-day">Monday</div>
@@ -41,14 +48,14 @@
 
 					<div class="label-col ">
 						<div class="event-label">Education</div>
-						<div class="event-label">Sessions</div>
-						<div class="event-label">Keynotes</div>
-						<div class="event-label">Engagement Zone</div>
+						<div class="event-label">Sessions & Workshops</div>
+						<div class="event-label">General Session</div>
+						<div class="event-label">Expo Hall & Lounge</div>
 						<div class="event-label">Block Party</div>
-						<div class="event-label">Futures</div>
-						<div class="event-label">Executive Summit</div>
+						<div class="event-label">Futures Presentation</div>
+						<div class="event-label">Executive Forum</div>
 						<div class="event-label">Partner Summit</div>
-						<div class="event-label">Women's Networking</div>
+						<div class="event-label">At the Table Panel & Women’s Networking Reception</div>
 						<div class="event-label">Datathon</div>
 					</div>
 
@@ -67,114 +74,112 @@
 					</div>
 			</div>
 		</div>
+
+		<div class="row release no-padding z-1">
+			<div class="agenda-bars-mobile">
+				
+					<div class="day-label">
+						<div class="event-day">Monday</div>
+						<div class="event-day">Tuesday</div>
+						<div class="event-day">Wednesday</div>
+						<div class="event-day">Thursday</div>
+					</div>
+
+					<div class="event-col">
+						<span class="event-title" title="Education">Education</span>
+						<span class="event-title" title="Continental Keynotes">Keynotes</span>
+						<span class="event-title" title="Engagement Zone">Engagement Zone</span>
+						<span class="event-title" title="Datathon">Datathon</span>
+						
+						<span class="event-title" title="Sessions">Sessions</span>
+						<span class="event-title" title="Continental Keynotes">Keynotes</span>
+						<span class="event-title" title="Engagement Zone">Engagement Zone</span>
+						<span class="event-title" title="Block Party">Block Party</span>
+						<span class="event-title" title="Executive Summit">Executive Summit</span>
+						<span class="event-title" title="Women's Networking">Women's Networking</span>
+						<span class="event-title" title="Datathon">Datathon</span>
+						
+						<span class="event-title" title="Sessions">Sessions</span>
+						<span class="event-title" title="Engagement Zone">Engagement Zone</span>
+						<span class="event-title" title="Futures">Futures</span>
+						<span class="event-title" title="Partner Summit">Partner Summit</span>
+						<span class="event-title" title="Datathon">Datathon</span>
+
+						<span class="event-title" title="Education">Education</span>
+					</div>
+			</div>
+		</div>
+		</div>
 	</section> <!-- End Agenda Hero -->
 
-	
-
-
-		<div class="row compact z-1">
-				<div class="agenda-bars-mobile">
-					
-						<div class="day-label">
-							<div class="event-day">Monday</div>
-							<div class="event-day">Tuesday</div>
-							<div class="event-day">Wednesday</div>
-							<div class="event-day">Thursday</div>
-						</div>
-	
-						<div class="event-col">
-							<span class="event-title" title="Education">Education</span>
-							<span class="event-title" title="Continental Keynotes">Keynotes</span>
-							<span class="event-title" title="Engagement Zone">Engagement Zone</span>
-							<span class="event-title" title="Datathon">Datathon</span>
-							
-							<span class="event-title" title="Sessions">Sessions</span>
-							<span class="event-title" title="Continental Keynotes">Keynotes</span>
-							<span class="event-title" title="Engagement Zone">Engagement Zone</span>
-							<span class="event-title" title="Block Party">Block Party</span>
-							<span class="event-title" title="Executive Summit">Executive Summit</span>
-							<span class="event-title" title="Women's Networking">Women's Networking</span>
-							<span class="event-title" title="Datathon">Datathon</span>
-							
-							<span class="event-title" title="Sessions">Sessions</span>
-							<span class="event-title" title="Engagement Zone">Engagement Zone</span>
-							<span class="event-title" title="Futures">Futures</span>
-							<span class="event-title" title="Partner Summit">Partner Summit</span>
-							<span class="event-title" title="Datathon">Datathon</span>
-
-							<span class="event-title" title="Education">Education</span>
-						</div>
-				</div>
-			</div>
-
-	<div class="tabs-menu">
-
-		<button id="filter-btn" class="cta-button navy">Filter</button>
-		<a class="tab-toggle day1 current"href="#day1">Day 1</a>
-		<a class="tab-toggle day2 hide"href="#day2">Day 2</a>
-		<a class="tab-toggle agenda hide"href="#myAgenda">My Agenda</a>
-
-	
-	</div>
-
-	<div id="filter-box">
-		<div class="row">
-			
-			<div class="col lg-3 md-3">
-				
-				<h3 class="list-heading">Program</h3>
-				<select id="program" class="jplist-select" data-control-type="filter-select" data-control-name="program-filter" data-control-action="filter"></select>
-				
-			</div>
-			
-			<div class="col lg-3 md-3">
-				
-				<h3 class="list-heading">Role | Persona</h3>
-				<select id="role" class="jplist-select" data-control-type="filter-select" data-control-name="role-filter" data-control-action="filter"></select>
-				
-			</div>
-			
-			<div class="col lg-2 md-3">
-				
-				<h3 class="list-heading">Topic</h3>
-				<select id="topic" class="jplist-select" data-control-type="filter-select" data-control-name="topic-filter" data-control-action="filter"></select>
-				
-			</div>
-			
-			<button type="button" data-control-name="reset" data-control-type="reset" data-control-action="reset" class="cta-button dark-gray">Reset</button>
-			
-		</div>
-		
-	</div>
-	
-	<section class="agenda-view">
-
-			<button id="list-view-btn" class="current"></button>
-			<button id="grid-view-btn"></button>
-
-		<div class="session-browse" id="agendaCards">
+	<div id="sessions">
+		<!-- <div class="tabs-menu">
+			<button id="filter-btn" class="cta-button navy">Filter</button>
+		</div> -->
+		<div id="filter-box">
 			<div class="row">
 				
-			</div>
-		</div>
-
-		<div class="jplist-pagination" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="15"></div>
-		<div class="jplist-no-results jplist-hidden">
-			<p>No results found</p>
-		</div>
-			<!-- <div class="my-agenda">
-				<div class="row">
-					<h3>My Agenda</h3>
+				<div class="col lg-3 md-4">
+					<h3 class="list-heading">Topic</h3>
+					<div id="topic-filter" class="jplist-checkbox-dropdown" data-control-type="checkbox-dropdown" data-control-name="topic-filter"
+						data-control-action="filter" data-no-selected-text="All Topics" data-one-item-text="{selected}" data-many-items-text="{num} selected">
+						<ul style="display: none"></ul>
+					</div>
 				</div>
-			</div> -->
+
+				<div class="col lg-3 md-4">
+					<h3 class="list-heading">Role | Persona</h3>
+					<div id="role-filter" class="jplist-checkbox-dropdown" data-control-type="checkbox-dropdown" data-control-name="role-filter"
+						data-control-action="filter" data-no-selected-text="All Roles/Personas" data-one-item-text="{selected}"
+						data-many-items-text="{num} selected">
+						<ul style="display: none"></ul>
+					</div>
+				</div>
+
+				<div class="col lg-3 md-4">
+					<h3 class="list-heading">Program</h3>
+					<div id="program-filter" class="jplist-checkbox-dropdown" data-control-type="checkbox-dropdown" data-control-name="program-filter"
+						data-control-action="filter" data-no-selected-text="All Programs" data-one-item-text="{selected}"
+						data-many-items-text="{num} selected">
+						<ul style="display: none"></ul>
+					</div>
+				</div>
+				
+				<button type="button" data-control-name="reset" data-control-type="reset" data-control-action="reset" class="cta-button dark-gray">Reset</button>
+				
+			</div>
+			
+		</div>
 		
-	</section>
-		
+		<section class="agenda-view">
+	
+				<button id="list-view-btn" class="current"></button>
+				<button id="grid-view-btn"></button>
+	
+			<div class="session-browse" id="agendaCards">
+				<div class="row">
+					
+				</div>
+			</div>
+	
+			<div class="jplist-pagination" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="15"></div>
+			<div class="jplist-no-results jplist-hidden">
+				<p>No results found</p>
+			</div>
+				<!-- <div class="my-agenda">
+					<div class="row">
+						<h3>My Agenda</h3>
+					</div>
+				</div> -->
+			
+		</section>
+	</div>
 </div>
 
 {[A-CUSTOM TAG:WISTIA-POPOVER]}
 {[E-CUSTOM TAG:AGENDA-JPLIST-SCRIPT]}
 {[E-CUSTOM TAG:AGENDA-SCRIPT]}
+{[E-CUSTOM TAG:AGENDA-SCRIPT-2]}
 <style>
 	.register-btn-bottom {display:none;}
 	div.bottom {padding:0;}
