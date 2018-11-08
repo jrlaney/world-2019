@@ -69,12 +69,18 @@ $('document').ready(function () {
 				$.each(value.Topic.toString().split(","), function (i, topic) {
 					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
 				});
+<<<<<<< HEAD
 			} 
 			if (value.Title != null && value.Publish)
 			{
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 			
 				description = description.replace(/\n/g, '<br/>');
+=======
+			}
+			if (value.Title != null && value.Publish)
+			{
+>>>>>>> refs/remotes/origin/master
 				$(".session-browse .row").append("" +
 					"<article class=\"grid-item agenda-list\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
