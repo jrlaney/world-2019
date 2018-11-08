@@ -1,9 +1,10 @@
 //agenda at a glance with colored bars
 .agenda-bars-mobile {
     display: flex;
-    background-color: fade-out($navy, .3);
+    background-color: $navy;
     width: 97.5%;
     padding: 20px;
+    color: $white;
     @include medium {
         display: none;
     }
@@ -13,6 +14,7 @@
         flex-direction: column;
         justify-content: space-between;
         margin-right: 10px;
+        color: $white;
     }
 
     .event-col {
@@ -91,6 +93,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        color: $white;
         @include medium {
             flex-direction: row;
             justify-content: space-around;
@@ -286,6 +289,7 @@
 
     .event-col {
         display: grid;
+        color:$white;
         @include medium{
             grid-column: 2/6;
             grid-row: 2/11;
@@ -297,7 +301,7 @@
         position: relative;
         z-index: 1;
         background-color: $black;
-        color: white;
+        color: $white;
 
         .event-time {
             display: none;

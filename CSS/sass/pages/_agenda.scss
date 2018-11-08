@@ -4,11 +4,19 @@
 	@include medium {
 		padding-top: 2em;
 	}
+	#hero-banner {
+		padding-top: 50px;
+		padding-bottom: 0;
+		text-align: center;
+	}
 }
 
 .tabs-menu {
-	padding: 20px 80px 0;
+	padding: 20px 0 40px;
 	background-color: $blue;
+	@include medium {
+		padding: 20px 80px 40px;
+	}
 
 	& button {
 		border: none;
@@ -17,39 +25,59 @@
 	}
 	
 	& a {
+		display: block;
+		padding: 15px;
+		width: 100%;
 		font-size: 1.5em;
 		font-weight: 600;
-		color: $navy;
-		padding: 5px 20px 10px;
-		transition: background-color .3s ease-in-out;
-		&:hover, &:focus {
-			text-decoration: underline;
-			color: $white;
-			background-color: lighten($orange, 10%);
+		color: $white;
+		transition: all .3s ease-in-out;
+		
+		@include medium {
+			display: inline;
+			padding: 5px 20px 14px;
+			cursor: pointer;
+			&:hover, &:focus {
+				text-decoration: underline;
+				color: $white;
+				background-color: lighten($navy, 10%);
+			}
 		}
 		&.current {
 			color: $white;
-			background-color: $orange;
+			background-color: $navy;
 		}
 	}
 	& #filter-btn {
-		background-color: $orange;
+		background-color: $green;
+		letter-spacing: 1px;
+		transition: all .3s ease-in-out;
+		&:hover, &:focus {
+			background-color: lighten($green, 5%);
+			outline: none;
+		}
 	}
 }
 
 
 #filter-box {
-    background-color: lighten($orange, 10%);
+    background-color: $green;
 	color: white;
+	height: auto;
+	padding-bottom: 30px;
+	@include large {
+		height: 140px;
+	}
 	& .row {
 		justify-content: center;
 	}
 	button {
 		height: 40px;
-		margin-top: 64px;
+		margin-top: 60px;
 		line-height: 0;
 		background-color: $navy;
 		border: none;
+		letter-spacing: 1px;
 		transition: background-color .3s ease-in-out;
 		&:hover, &:focus {
 			background-color: lighten($navy, 10%);
@@ -58,28 +86,75 @@
 	.list-heading {
 		font-size: 1.3em;
 		font-weight: 500;
+		margin-bottom: 5px;
+		@include medium {
+			margin-bottom: 0;
+		}
+	}
+
+	#program-filter, #role-filter, #topic-filter {
+		width: 90%;
+		background-color: white;
+		background-image: url(https://www.microstrategy.com/Strategy/media/images/icons/svg/chevron_down.svg);
+    	background-repeat: no-repeat;
+    	background-position: 95% 14px;
+		padding: .5em;
+		color: gray;
+		position: absolute;
+		box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+
+		@include medium {
+			cursor: pointer;
+			width: 30%;
+		}
+		
+		@include large {
+			width: 15%;
+		}
+		@include xlarge {
+			width: 20%;
+		}
+		
+		& ul{
+			padding-left: 0;
+			& li {
+				& label {
+					text-transform: capitalize;
+					font-size: 1em;
+					font-weight: 400!important;
+				}
+			}
+			&>li {
+				&::before {
+					border:none;
+				}
+			}
+		}
+	}
+
+	#topic-filter{
+		z-index: 3;
+	}
+	#role-filter {
+		z-index: 2;
+	}
+	#program-filter {
+		z-index: 1;
 	}
 }
 
 
-
-select#program, select#role, select#topic {
-    background-color: white;
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	border-radius: 0;
-	border: none;
-	margin-top: 5px;
-	background-image: url(https://www.microstrategy.com/Strategy/media/images/icons/svg/chevron_down.svg);
-    background-repeat: no-repeat;
-    background-position: 95%;
-}
-
 .agenda-view {
-	display: block;
-	padding: 1em 4.6em;
-	background-color: $orange;
+	padding: 1em .5em;
+	background-color: $navy;
+	@include medium {
+		display: block;
+		padding: 1em;
+	}
+	@include large {
+		padding: 1em 4.6em;
+
+	}
 	
 	#agendaCards {
 		display: flex;
@@ -87,7 +162,7 @@ select#program, select#role, select#topic {
 	}
 	.session-browse {
 		padding: 20px 0;
-		background-color: $orange;
+		background-color: $navy;
 		justify-content: flex-start;
 		& .row {
 			justify-content: flex-start;
@@ -110,61 +185,138 @@ select#program, select#role, select#topic {
 	flex-grow: 1;
 	flex-shrink: 0;
 	background-color: white;
-	margin: 0;
-	width: 100%;
-	margin: 2px 0;
+	width: 90%;
+	padding-right: 1em;
+	margin: 5px 1em;
+
+	@include medium{
+		width: 100%;
+		margin: 2px 0;
+	}
+
+	.tags {
+		display: flex;
+		flex-direction: column;
+		margin: 0 1em 20px;
+		
+		@include medium {
+			flex-direction: row;
+			flex-wrap: wrap;
+			cursor: pointer;
+		}
+		
+		.topic-tag {
+			margin-left: .5em;
+			margin-top: .5em;
+			background-color: $light-gray;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-size: .8em;
+			font-weight: normal;
+			padding: .5em .5em;
+			@include medium{
+				margin-top: 0;
+				cursor: pointer;
+
+			}
+		}
+	}
 	.details-expand {
-		width: 15%;
+		width: 100%;
 		background-color: transparent;
 		color: $gray;
 		font-size: .9em;
 		font-weight: 600;
-		padding: 1em;
+		padding: .5em 1.5em;
 		border: none;
 		outline: none;
 		cursor: pointer;
+		border-top: 1px solid $light-gray;
 		&:hover, &:focus {
 			color: darken($gray, 10%);
+			background-color: $light-gray;
 		}
+	}
+
+	.tags .program-tag {
+		font-size: .8em;
+		font-weight: normal;
+		line-height: 2.3em;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding: .5em .5em;
+		margin-left: .5em;
+		background-color: $light-gray;
+		cursor: pointer;
 	}
 }
 
 .agenda-card {
 	position: relative;
+	display: flex;
     flex-direction: column;
 	flex: 1 0 auto;
 	flex-wrap: wrap;
 	margin: 5px;
-	padding: 1em;
 	background-color: $white;
     max-width: 31.7%;
-	@include drop-shadow(0, 7px, 10px, fade-out($pure-black, .7));
+	
+	.tags {
+		margin-bottom: 70px;
+		padding: 0 1em;
+		cursor: pointer;
+		.topic-tag {
+			background-color: $light-gray;
+			font-size: .8em;
+			font-weight: normal;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			padding: .5em;
+			margin-left: .5em;
+			cursor: pointer;
+		}
+	}
 
 	.details-expand {
-		width: 50%;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 		background-color: transparent;
 		color: $gray;
 		font-size: .9em;
 		font-weight: 600;
-		padding: 1em;
+		padding: .5em 1.5em;
 		border: none;
 		outline: none;
 		cursor: pointer;
+		border-top: 1px solid $light-gray;
 		transition: background-color .3s ease-in-out;
 		&:hover, &:focus {
 			color: darken($gray, 10%);
+			background-color: $light-gray;
 		}
+	}
+
+	.tags .program-tag {
+		font-size: .8em;
+		font-weight: normal;
+		line-height: 2.3em;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding: .5em .5em;
+		margin-left: .5em;
+		background-color: $light-gray;
+		cursor: pointer;
 	}
 }
 
 .session-title {
-	padding-top: 0;
+	padding-top: 20px;
 	padding-left: 1em;
+	padding-bottom: 20px;
 	font-size: 1.3em;
 	line-height: 1.2em;
 	font-weight: 500;
-	border-bottom: 1px solid $light-gray;
-	padding-bottom: 10px;
 	transition: all .3s ease-in-out;
 
 }
@@ -176,69 +328,105 @@ select#program, select#role, select#topic {
 	letter-spacing: 1px;
 	color: $gray;
 	margin: 0;
+	padding-left: 1.4em;
 }
 .session-type {
 
 	font-size: 1em;
 	letter-spacing: 1px;
-	padding: 0 0 .5em;
+	padding: 0 0 .5em 1.3em;
 	margin: 0;
 	color: $dark-gray;
+}
+
+.session-description {
+    padding: 0 1em 10px 1.2em;
+    font-weight: 300;
 }
 
 .top-40 {
 	padding-top: 40px;
 }
 
-.tags {
-	margin-bottom: 10px;
-	span {
-	background-color: #efefef;
+.role-tag {
+	margin: .5em; 
+	text-transform: uppercase;
+	font-size: .8em;
+	font-weight: normal;
+	letter-spacing: 1px;
+	background-color: $light-gray;
 	padding: .5em;
-	margin: .5em;
-	display: inline-flex;
+	@include medium {
+		margin: 0 .5em;
+		cursor: pointer;
 	}
 }
 
-.administration, .analytics, .applications, .database, .departmental, .enterprise, .identity, .intelligence, .mobility, .platforms, .services, .systems {
-	font-size: 1em;
+.tag-heading {
+	text-transform: uppercase;
     font-weight: 600;
-    text-transform: uppercase;
-	letter-spacing: 1px;
-	padding: 1em;
-	background-color: $navy;
+    font-size: .8em;
+    letter-spacing: 1px;
+    padding-left: .5em;
 }
 
 
 
 #list-view-btn {
-    background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/list-view-navy.svg) no-repeat top left;
-	border: none;
-	width: 4%;
-	height: 25px;
-	transition: all .3s ease-in-out;
-	&:hover, &:focus {
-		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-list-view.svg) no-repeat top left;
-		outline: none;
-	}
-	&.current {
-		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-list-view.svg) no-repeat top left;
+	display: none;
+	@include large {
+		display: inline-flex;
+		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+		border: none;
+		width: 4%;
+		height: 25px;
+		transition: all .3s ease-in-out;
+		cursor: pointer;
+		opacity: .5;
+		&:hover, &:focus {
+			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+			outline: none;
+			opacity: 1;
+			
+		}
+		&.current {
+			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+			opacity: 1;
+		}
 	}
 }
 
 #grid-view-btn {
-    background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/grid-view-navy.svg) no-repeat top left;
-	border: none;
-	width: 4%;
-	height: 25px;
-	transition: all .3s ease-in-out;
-	&:hover, &:focus {
-		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-grid-view.svg) no-repeat top left;
-		outline: none;
+	display: none;
+	@include large {
+		display: inline-flex;
+		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+		border: none;
+		width: 4%;
+		height: 25px;
+		transition: all .3s ease-in-out;
+		cursor: pointer;
+		opacity: .5;
+		&:hover, &:focus {
+			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+			outline: none;
+			opacity: 1;
+		}
+		&.current {
+			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+			opacity: 1;
+		}
 	}
-	&.current {
-		background: url(http://stage.microstrategy.com/Strategy/media/images/icons/svg/icon-grid-view.svg) no-repeat top left;
-	}
+}
+
+.add-to-agenda {
+    padding: 0.5em;
+    background-color: $light-navy;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    right: 0;
+    line-height: 1.3em;
 }
 
 .details-popup {
