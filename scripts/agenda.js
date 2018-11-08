@@ -47,7 +47,7 @@ function tagFilterInit() {
 //https://www.microstrategy.com/api/GetAirTableData
 $('document').ready(function () {
 	//Grabbing API Information
-	$.get("http://dev.microstrategy.com/api/GetAirTableData", function (data) {
+	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
 		//Creating empty array variables for each of the filtering options
 		var program = [];
 		var role = [];
@@ -69,15 +69,19 @@ $('document').ready(function () {
 				$.each(value.Topic.toString().split(","), function (i, topic) {
 					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
 				});
-			}
-			if (value.Title != null && value.Title.indexOf("TBD") === -1) {
+			} 
+			if (value.Title != null && value.Publish)
+			{
+				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
+			
+				description = description.replace(/\n/g, '<br/>');
 				$(".session-browse .row").append("" +
 					"<article class=\"grid-item agenda-list\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
 					"<div class=\"session-details hide\">" +
-					"<p class=\"session-description\">" + ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "") + "</p>" +
+					"<p class=\"session-description\">" + description + "</p>" +
 					"</div>" +
 					"<div class=\"text-block-group tiny tags\">" +
 					"<span class=\"tag-heading\">Tags:</span>" +
@@ -174,13 +178,17 @@ $('document').ready(function () {
 
 	$(document).on('click', '.agenda-grid', function () {
 		var details = $('#agenda-grid');
-		$(details).toggleClass('hide');
+		$(details).removeClass('hide');
+		$(details).prev('.tabs-menu').find('.agenda-grid').addClass('current');
 		$('#sessions').addClass('hide');
+		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').removeClass('current');
 	});
 
 	$(document).on('click', '.sessions', function () {
 		var details = $('#agenda-grid');
-		$(details).toggleClass('hide');
+		$(details).addClass('hide');
+		$(details).prev('.tabs-menu').find('.agenda-grid').removeClass('current');
 		$('#sessions').removeClass('hide');
+		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').addClass('current');
 	});
 }); //end document.ready
