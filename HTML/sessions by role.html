@@ -1,0 +1,230 @@
+<div id="sessions-page" class="padding-top-30">
+	<div class="pattern-between row expand collapse">
+		<div class="col release background-pattern pattern-tartan pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-squiggles pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-triangles pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-round-dots pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-stacked-bars pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-ribbon pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-split-circles pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-square-dots pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-sparse-triangles pattern-small height-small">&nbsp;</div>
+		<div class="col release background-pattern pattern-vertical-bars pattern-small height-small">&nbsp;</div>
+	</div>
+
+	<section id="hero-banner" class="background-blue section-sparse-triangles no-padding-bottom">
+		<div class="row h-left z-1">
+			<div class="col md-10 lg-8">
+				<div class="bullet-group large text-left">
+					<h1 class="h3 text-bold text-uppercase">Sessions by Role and&nbsp;Persona</h1>
+					<p class="h4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed viverra augue. Etiam ac molestie ex. Nunc ultricies pellentesque libero, in ullamcorper velit lobortis ut. Vestibulum auctor lectus at odio finibus hendrerit.</p>
+				</div>
+			</div>
+		</div>
+		<div class="pattern-overlay z-0">
+			<img alt="" class="static-pattern pos-top" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/1a108c61dca149da854f874d67d53aa1.png" width="842" height="569">
+		</div>
+	</section>
+	<div id="sessions">
+		<section id="filter-box">
+			<div class="row">
+				<div class="col release text-center">
+					<span class="text-label orange">Now Viewing</span>
+					<h2 class="text-white text-normal">Top 10 sessions for&nbsp;{Current_role}s</h2>
+				</div>
+			</div>
+			<div class="row v-middle compact">
+				<div class="col shrink-md">
+					<h5 class="h6 text-normal">Change Role or Persona:</h5>
+				</div>
+				<div class="col shrink-md">
+					<div id="role-filter" class="jplist-checkbox-dropdown" data-control-type="checkbox-dropdown" data-control-name="role-filter" data-control-action="filter" data-no-selected-text="All Roles/Personas" data-one-item-text="{selected}" data-many-items-text="{num} selected">
+						<ul style="display: none;"></ul>
+						{single-select filter goes here}
+					</div>
+				</div>
+				<!-- <button type="button" data-control-name="reset" data-control-type="reset" data-control-action="reset" class="cta-button dark-gray">Reset</button> -->
+			</div>
+		</section>
+
+		<section id="sessions-list" class="agenda-view">
+			<div class="row h-right collapse-x">
+				<div id="view-options" class="col">
+					<button id="list-view-btn" class="current">
+						<img alt="list view toggle icon" src="http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg">
+					</button>
+					<button id="grid-view-btn">
+						<img alt="grid view toggle icon" src="http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg">
+					</button>
+				</div>
+			</div>
+
+			<div class="row collapse">
+				<div id="agendaCards" class="session-browse col">
+					<div class="row">
+
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="jplist-pagination" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="15">&nbsp;</div>
+					<div class="jplist-no-results jplist-hidden">
+						<p>No results found</p>
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+
+	<section id="call-to-action_new">
+		<div class="final-cta">
+			<div class="row">
+				<img src="http://www.microstrategy.com/Strategy/media/images/logos/branding/world2019-wht-logo.svg" alt="World 2019 white logo" width="0" height="0">
+			</div>
+			<a class="cta-button large red expand" href="http://www.cvent.com/events/microstrategy-world-2019/registration-2c0e177416a0487b95c82069ccaa35ce.aspx">Register now</a>
+		</div>
+
+		<div class="final-date">
+			<div class="icon-lockup text-white">
+				<img alt="" class="icon" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/e1bbbb629eb34c34b6462bbb28612345.png" width="32" height="32">
+				<p>
+					<strong class="text-uppercase text-bold text-white">February</strong>
+					4th – 6th 2019
+				</p>
+			</div>
+			<div class="icon-lockup text-white">
+				<img alt="" class="icon" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/0a1ac4e6db4c4a61834db54ffeebff71.png" width="32" height="32">
+				<p>
+					<strong class="text-uppercase text-bold text-white">Phoenix, Arizona</strong>
+					Phoenix Convention Center
+				</p>
+			</div>
+		</div>
+	</section>
+</div>
+
+{[E-CUSTOM TAG:AGENDA-JPLIST-SCRIPT]}
+{[E-CUSTOM TAG:AGENDA-SCRIPT]}
+{[E-CUSTOM TAG:AGENDA-SCRIPT-2]}
+<style>
+	.register-btn-bottom {display:none;}
+	div.bottom {padding:0;}
+	.jplist-hidden { display: none !important; }
+
+	#sessions-page #sessions {background-color:#11566F;}
+
+	#sessions-page .pattern-overlay .static-pattern.pos-top {
+		left:65%;
+	}
+	#sessions-page .agenda-view {padding:0 0 80px 0;}
+	#sessions-page #filter-box {height:auto; padding:40px 0 0 0; background-color:transparent;}
+	#sessions-page #hero-banner {padding:80px 0 40px 0; z-index:auto;}
+	#sessions-page #filter-box #role-filter {
+		width:auto;
+		display:block;
+		position:relative;
+		padding:.5em 40px .5em 1em;
+	}
+	#sessions-page .agenda-view .session-browse {padding-top:0}
+	#sessions-page #grid-view-btn,  #sessions-page #list-view-btn{
+		background:none!important;
+		width:60px;
+		max-width:100%;
+		height:auto;
+	}
+	#sessions-page #grid-view-btn.current {background:none!important;}
+	#sessions-page .agenda-list,
+	#sessions-page .agenda-card {
+		margin:0;
+		overflow:hidden;
+		border:2px solid #11566F;
+		padding:30px;
+	}
+	#sessions-page .agenda-card .details-expand,
+	#sessions-page .agenda-list .details-expand {
+		display:flex;
+		position:relative;
+		margin-top:auto;
+		width:calc(100% + 60px);
+		margin-left:-30px; margin-bottom:-30px;
+		padding:.5em 30px;
+		color:#333333;
+		background-color:#f2f2f2;
+	}
+	#sessions-page .session-title {
+		padding: 0 0 20px;
+		font-size:22px;
+		line-height:28px;
+		font-weight:400;
+	}
+	#sessions-page .session-description {
+		padding: 0 0 20px 0;
+		font-weight:400;
+	}
+	#sessions-page .agenda-list .tags,
+	#sessions-page .agenda-card .tags {
+		justify-content:flex-start;
+		align-items:flex-start;
+		margin:0; padding:0;
+		padding-bottom:20px;
+	}
+	#sessions-page .tag-heading {width:100%; padding:0; margin-bottom:5px;}
+	#sessions-page .agenda-list .tags .text-block,
+	#sessions-page .agenda-card .tags .text-block {
+		line-height:1.2em;
+		padding:.5em 1em;
+		margin:0 5px 5px 0;
+		margin-bottom:5px;
+	}
+	.text-label {letter-spacing:0.2em; font-weight:600;}
+
+	#call-to-action_new {
+	  background: linear-gradient(#254a58, #333333); }
+
+	#call-to-action_new .final-cta {
+	  display: flex;
+	  flex-direction: column;
+	  width: 100%;
+	  justify-content: center;
+	  align-content: center;
+	  margin: 0 auto;
+	  position: relative; }
+	  @media (min-width: 768px) {
+	    #call-to-action_new .final-cta {
+	      width: 75%; } }
+	  @media (min-width: 1100px) {
+	    #call-to-action_new .final-cta {
+	      width: 60%; } }
+	  @media (min-width: 1400px) {
+	    #call-to-action_new .final-cta {
+	      width: 50%; } }
+
+	#call-to-action_new .final-cta img {
+	  width: 100%;
+	  height: 100%; }
+
+	#call-to-action_new .final-cta .cta-button.large.red.expand {
+	  position: relative;
+	  width: 290px;
+	  align-self: center; }
+	  @media (min-width: 768px) {
+	    #call-to-action_new .final-cta .cta-button.large.red.expand {
+	      position: absolute;
+	      align-self: center;
+	      width: 43%;
+	      margin-top: 0; } }
+
+	#call-to-action_new .final-date {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  margin-top: 20px;
+	  padding-left: 1.2em; }
+	  @media (min-width: 768px) {
+	    #call-to-action_new .final-date {
+	      flex-direction: row;
+	      padding-left: 0; } }
+	  #call-to-action_new .final-date .icon-lockup {
+	    padding: 10px 20px; }
+</style>
