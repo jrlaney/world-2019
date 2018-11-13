@@ -43,35 +43,32 @@ $('document').ready(function () {
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
 		//Creating empty array variables for each of the filtering options
-		var program = [];
+		//var program = [];
 		var role = [];
-		var topic = [];
+		//var topic = [];
 		//Looping through each data point from airtable and creating the cards
 		$.each(data, function (key, value) {
 			var tags = "";
-			if (value.Program != null) {
-				$.each(value.Program.toString().split(","), function (i, program) {
-					tags += "<span class=\"text-block program-tag " + classifyText(program) + "\">" + program + "</span>"
-				});
-			}
+			//if (value.Program != null) {
+			//	$.each(value.Program.toString().split(","), function (i, program) {
+			//		tags += "<span class=\"text-block program-tag " + classifyText(program) + "\">" + program + "</span>"
+			//	});
+			//}
 			if (value.RolePersona != null) {
 				$.each(value.RolePersona.toString().split(","), function (i, rolePersona) {
 					tags += "<span class=\"text-block role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>"
 				});
 			}
-			if (value.Topic != null) {
-				$.each(value.Topic.toString().split(","), function (i, topic) {
-					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
-				});
-			}
-			if (value.Title != null && value.Publish)
+			//if (value.Topic != null) {
+			//	$.each(value.Topic.toString().split(","), function (i, topic) {
+			//		tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
+			//	});
+			//}
+			if (value.Title != null && value.Publish && value.Featured)
 			{
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
-
 				description = description.replace(/\n/g, '<br/>');
-			}
-			if (value.Title != null && value.Publish)
-			{
+
 				$(".session-browse .row").append("" +
 					"<article class=\"grid-item agenda-list\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
@@ -87,13 +84,13 @@ $('document').ready(function () {
 					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
 					"</article>");
 
-				if (value.Program != null) {
-					$.each(value.Program,
-						function (k, v) {
-							if (program.indexOf(v) === -1)
-								program.push(v);
-						});
-				}
+				//if (value.Program != null) {
+				//	$.each(value.Program,
+				//		function (k, v) {
+				//			if (program.indexOf(v) === -1)
+				//				program.push(v);
+				//		});
+				//}
 				if (value.RolePersona != null) {
 					$.each(value.RolePersona,
 						function (k, v) {
@@ -101,42 +98,44 @@ $('document').ready(function () {
 								role.push(v);
 						});
 				}
-				if (value.Topic != null) {
-					$.each(value.Topic,
-						function (k, v) {
-							if (topic.indexOf(v) === -1)
-								topic.push(v);
-						});
-				}
+				//if (value.Topic != null) {
+				//	$.each(value.Topic,
+				//		function (k, v) {
+				//			if (topic.indexOf(v) === -1)
+				//				topic.push(v);
+				//		});
+				//}
 			}
 		});//end snippet
 
 		// Second snippet starts here
 		//Sorting items
-		program.sort();
+		//program.sort();
 		role.sort();
-		topic.sort();
+		//topic.sort();
 		//Adding text dynamically from airtable to each of filter slots
-		var p = $('#program-filter > ul');
-		$.each(program, function (key, value) {
-			p.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
-		var r = $('#role-filter > ul');
+		//var p = $('#program-filter > ul');
+		//$.each(program, function (key, value) {
+		//	p.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		//});
+		var r = $('#role-filter');
 		$.each(role, function (key, value) {
-			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+			//r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+			r.append($("<option></option>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).html(value));
 		});
-		var t = $('#topic-filter > ul');
-		$.each(topic, function (key, value) {
-			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
+		//var t = $('#topic-filter > ul');
+		//$.each(topic, function (key, value) {
+		//	t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		//});
 
-		$('#agenda-page').jplist({
+		$('#sessions-page').jplist({
 			itemsBox: '#agendaCards',
 			itemPath: '.grid-item',
 			panelPath: '#filter-box',
 			effect: 'fade',
-			redrawCallback: function () {
-				tagFilterInit();
+			redrawCallback: function (collection, $dataview, statuses)
+			{
+				$("#currentRoleTxt").html($("#role-filter").val());
 			}
 		});
 	}); //end of api pull

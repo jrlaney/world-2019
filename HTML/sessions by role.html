@@ -30,7 +30,7 @@
 			<div class="row">
 				<div class="col release text-center">
 					<span class="text-label orange">Now Viewing</span>
-					<h2 class="text-white text-normal">Top 10 sessions for&nbsp;<span id="currentRoleTxt">{Current_role}</span>s</h2>
+					<h2 class="text-white text-normal">Top 10 sessions for <span id="currentRoleTxt"></span> Role(s)</h2>
 				</div>
 			</div>
 			<div class="row v-middle compact">
@@ -39,9 +39,7 @@
 				</div>
 				<div class="col shrink-md">
 					<select id="role-filter" data-control-name="role-filter" data-control-type="filter-select" data-control-action="filter">
-						<option data-path="default">Admin</option>
-						<option data-path=".lang-en">other role</option>
-						<option data-path=".lang-de">third role</option>
+						<option data-path="default">All</option>
 					</select>
 				</div>
 				<!-- <button type="button" data-control-name="reset" data-control-type="reset" data-control-action="reset" class="cta-button dark-gray">Reset</button> -->
