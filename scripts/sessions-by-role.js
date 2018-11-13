@@ -142,13 +142,20 @@ $('document').ready(function ()
 			redrawCallback: function (collection, $dataview, statuses)
 			{
 				tagFilterInit();
-				$("#currentRoleTxt").html($("#role-filter").val() + "Role");
+				$("#currentRoleTxt").html(($("#role-filter option:selected").text() + " Role").replace("All Roles Role","All Roles"));
 			}
 		});
 
-		if (getQueryStringParamValue('role') != '')
+		var roleQS = getQueryStringParamValue('role');
+		if (roleQS != '')
 		{
-			$("#role-filter").val(getQueryStringParamValue('role').toLowerCase()).change();
+			roleQS = classifyText(roleQS);
+			$("#role-filter option").filter(function ()
+			{
+				return $(this).val() == roleQS;
+			}).prop('selected', true);
+
+			$("#role-filter").change();
 		}
 	}); //end of api pull
 
