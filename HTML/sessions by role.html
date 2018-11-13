@@ -38,10 +38,11 @@
 					<h5 class="h6 text-normal">Change Role:</h5>
 				</div>
 				<div class="col shrink-md">
-					<div id="role-filter" class="jplist-checkbox-dropdown" data-control-type="checkbox-dropdown" data-control-name="role-filter" data-control-action="filter" data-no-selected-text="All Roles/Personas" data-one-item-text="{selected}" data-many-items-text="{num} selected">
-						<ul style="display: none;"></ul>
-						{single-select filter goes here}
-					</div>
+					<select id="role-filter" data-control-name="role-filter" data-control-type="filter-select" data-control-action="filter">
+						<option data-path="default">Admin</option>
+						<option data-path=".lang-en">other role</option>
+						<option data-path=".lang-de">third role</option>
+					</select>
 				</div>
 				<!-- <button type="button" data-control-name="reset" data-control-type="reset" data-control-action="reset" class="cta-button dark-gray">Reset</button> -->
 			</div>
