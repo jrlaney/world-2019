@@ -123,6 +123,9 @@ $('document').ready(function ()
 			}
 		});//end snippet
 
+
+
+
 		// Second snippet starts here
 		//Sorting items
 		role.sort();
@@ -142,7 +145,7 @@ $('document').ready(function ()
 			redrawCallback: function (collection, $dataview, statuses)
 			{
 				tagFilterInit();
-				$("#currentRoleTxt").html($("#role-filter").val() + "Role");
+				$("#currentRoleTxt").html($("#role-filter").val() + "s");
 			}
 		});
 
@@ -162,7 +165,7 @@ $('document').ready(function ()
 		e.preventDefault();
 		$.each($('.session-browse .grid-item'), function (key, value)
 		{
-			$(value).removeClass('agenda-card col lg-3').addClass('agenda-list');
+			$(value).removeClass('agenda-card col lg-6 xl-4').addClass('agenda-list');
 		});
 		$(this).toggleClass('current');
 		$('#grid-view-btn').removeClass('current');
@@ -172,7 +175,7 @@ $('document').ready(function ()
 		e.preventDefault();
 		$.each($('.session-browse .agenda-list'), function (key, value)
 		{
-			$(value).removeClass('agenda-list').addClass('agenda-card col lg-3');
+			$(value).removeClass('agenda-list').addClass('agenda-card col lg-6 xl-4');
 		});
 		$(this).toggleClass('current');
 		$('#list-view-btn').removeClass('current');
@@ -204,6 +207,6 @@ $('document').ready(function ()
 		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').addClass('current');
 	});
 
-	
+
 }); //end document.ready
 </script>
