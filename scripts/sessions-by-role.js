@@ -1,17 +1,44 @@
 <script type="text/javascript">
-function classifyText(text) {
+function classifyText(text)
+{
 	var returnValue = "";
-	if ($.isArray(text)) {
-		$.each($.unique(text), function (key, value) {
+	if ($.isArray(text))
+	{
+		$.each($.unique(text), function (key, value)
+		{
 			returnValue += " " + value.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
 		});
-	} else {
+	} else
+	{
 		returnValue = text.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
 	}
 	return returnValue;
 }
 
-function tagCheckboxDropdownFilter($filter, $tag, dataPathId) {
+function getQueryStringParamValue(key)
+{
+	var url = document.location.href;
+	var value = "";
+
+	if (url.indexOf('?') !== -1)
+	{
+		var queryStrings = url.substr(url.indexOf('?') + 1);
+
+		if (queryStrings.toLowerCase().indexOf(key.toLowerCase() + "=") !== -1)
+		{
+			var queryString = queryStrings.split("&").find(function (element)
+			{
+				return element.toLowerCase().split("=")[0] === key.toLowerCase();
+			});
+			if (typeof queryString !== "undefined")
+				value = queryString.substr(queryString.indexOf('=') + 1);
+		}
+	}
+	return value;
+}
+
+function tagCheckboxDropdownFilter($filter, $tag, dataPathId)
+{
 	var dataPath = dataPathId + classifyText($tag.text());
 	// update value and trigger change in field
 	$filter.find('#' + dataPath).trigger('click');
@@ -23,47 +50,47 @@ function tagCheckboxDropdownFilter($filter, $tag, dataPathId) {
 	// select first pagination page
 	$('.pagination').find('button[data-number="0"]').trigger('click');
 	// remove changed style after a second
-	setTimeout(function () {
+	setTimeout(function ()
+	{
 		$filter.find('.jplist-dd-panel').removeClass('changed');
 	}, 1000);
 }
 
-function tagFilterInit() {
-	$('.program-tag').click(function () {
+function tagFilterInit()
+{
+	$('.program-tag').click(function ()
+	{
 		tagCheckboxDropdownFilter($('#program-filter'), $(this), '');
 	});
-	$('.role-tag').click(function () {
+	$('.role-tag').click(function ()
+	{
 		tagCheckboxDropdownFilter($('#role-filter'), $(this), '');
 	});
-	$('.topic-tag').click(function () {
+	$('.topic-tag').click(function ()
+	{
 		tagCheckboxDropdownFilter($('#topic-filter'), $(this), '');
 	});
 }
-$('document').ready(function () {
+
+$('document').ready(function ()
+{
 	//Grabbing API Information
-	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
+	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data)
+	{
 		//Creating empty array variables for each of the filtering options
-		//var program = [];
 		var role = [];
-		//var topic = [];
 		//Looping through each data point from airtable and creating the cards
-		$.each(data, function (key, value) {
+		$.each(data, function (key, value)
+		{
 			var tags = "";
-			//if (value.Program != null) {
-			//	$.each(value.Program.toString().split(","), function (i, program) {
-			//		tags += "<span class=\"text-block program-tag " + classifyText(program) + "\">" + program + "</span>"
-			//	});
-			//}
-			if (value.RolePersona != null) {
-				$.each(value.RolePersona.toString().split(","), function (i, rolePersona) {
+			if (value.RolePersona != null)
+			{
+				$.each(value.RolePersona.toString().split(","), function (i, rolePersona)
+				{
 					tags += "<span class=\"text-block role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>"
 				});
 			}
-			//if (value.Topic != null) {
-			//	$.each(value.Topic.toString().split(","), function (i, topic) {
-			//		tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
-			//	});
-			//}
+
 			if (value.Title != null && value.Publish && value.Featured)
 			{
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
@@ -84,49 +111,28 @@ $('document').ready(function () {
 					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
 					"</article>");
 
-				//if (value.Program != null) {
-				//	$.each(value.Program,
-				//		function (k, v) {
-				//			if (program.indexOf(v) === -1)
-				//				program.push(v);
-				//		});
-				//}
-				if (value.RolePersona != null) {
+				if (value.RolePersona != null)
+				{
 					$.each(value.RolePersona,
-						function (k, v) {
+						function (k, v)
+						{
 							if (role.indexOf(v) === -1)
 								role.push(v);
 						});
 				}
-				//if (value.Topic != null) {
-				//	$.each(value.Topic,
-				//		function (k, v) {
-				//			if (topic.indexOf(v) === -1)
-				//				topic.push(v);
-				//		});
-				//}
 			}
 		});//end snippet
 
 		// Second snippet starts here
 		//Sorting items
-		//program.sort();
 		role.sort();
-		//topic.sort();
+
 		//Adding text dynamically from airtable to each of filter slots
-		//var p = $('#program-filter > ul');
-		//$.each(program, function (key, value) {
-		//	p.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		//});
 		var r = $('#role-filter');
-		$.each(role, function (key, value) {
-			//r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-			r.append($("<option></option>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).html(value));
+		$.each(role, function (key, value)
+		{
+			r.append($("<option></option>").attr("value", classifyText(value)).attr("data-path", "." + classifyText(value)).html(value));
 		});
-		//var t = $('#topic-filter > ul');
-		//$.each(topic, function (key, value) {
-		//	t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		//});
 
 		$('#sessions-page').jplist({
 			itemsBox: '#agendaCards',
@@ -135,43 +141,53 @@ $('document').ready(function () {
 			effect: 'fade',
 			redrawCallback: function (collection, $dataview, statuses)
 			{
-				$("#currentRoleTxt").html($("#role-filter").val());
+				tagFilterInit();
+				$("#currentRoleTxt").html($("#role-filter").val() + "Role");
 			}
 		});
+
+		if (getQueryStringParamValue('role') != '')
+		{
+			$("#role-filter").val(getQueryStringParamValue('role').toLowerCase()).change();
+		}
 	}); //end of api pull
 
-	$('#filter-btn').click(function (event) {
+	$('#filter-btn').click(function (event)
+	{
 		event.preventDefault();
 		$('#filter-box').slideToggle('slow');
 	});
-	$('#list-view-btn').click(function (e) {
+	$('#list-view-btn').click(function (e)
+	{
 		e.preventDefault();
-		$.each($('.session-browse .grid-item'), function (key, value) {
+		$.each($('.session-browse .grid-item'), function (key, value)
+		{
 			$(value).removeClass('agenda-card col lg-3').addClass('agenda-list');
 		});
 		$(this).toggleClass('current');
 		$('#grid-view-btn').removeClass('current');
 	});
-	$('#grid-view-btn').click(function (e) {
+	$('#grid-view-btn').click(function (e)
+	{
 		e.preventDefault();
-		$.each($('.session-browse .agenda-list'), function (key, value) {
+		$.each($('.session-browse .agenda-list'), function (key, value)
+		{
 			$(value).removeClass('agenda-list').addClass('agenda-card col lg-3');
 		});
 		$(this).toggleClass('current');
 		$('#list-view-btn').removeClass('current');
 	});
 
-	// $.each($('.session-details'), function(key, value){
-	// 	$(value).addClass('hide');
-	// });
-	$(document).on('click', '.details-expand', function () {
+	$(document).on('click', '.details-expand', function ()
+	{
 		var details = $('.session-details');
 		$(this).parent('.grid-item').find(details).slideToggle('fast');
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
-	$(document).on('click', '.agenda-grid', function () {
+	$(document).on('click', '.agenda-grid', function ()
+	{
 		var details = $('#agenda-grid');
 		$(details).removeClass('hide');
 		$(details).prev('.tabs-menu').find('.agenda-grid').addClass('current');
@@ -179,12 +195,15 @@ $('document').ready(function () {
 		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').removeClass('current');
 	});
 
-	$(document).on('click', '.sessions', function () {
+	$(document).on('click', '.sessions', function ()
+	{
 		var details = $('#agenda-grid');
 		$(details).addClass('hide');
 		$(details).prev('.tabs-menu').find('.agenda-grid').removeClass('current');
 		$('#sessions').removeClass('hide');
 		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').addClass('current');
 	});
+
+	
 }); //end document.ready
 </script>
