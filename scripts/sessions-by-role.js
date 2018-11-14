@@ -82,12 +82,18 @@ $('document').ready(function ()
 		//Looping through each data point from airtable and creating the cards
 		$.each(data, function (key, value)
 		{
+			debugger ;
 			var tags = "";
 			if (value.RolePersona != null)
 			{
 				$.each(value.RolePersona.toString().split(","), function (i, rolePersona)
 				{
-					tags += "<span class=\"text-block role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>"
+					var classRole = '';
+					if (rolePersona.toLowerCase().indexOf('architect') >= 0)
+						classRole = 'architect';
+					else
+						classRole = classifyText(rolePersona);
+					tags += "<span class=\"text-block role-tag " + classRole + "\">" + rolePersona + "</span>";
 				});
 			}
 
@@ -116,6 +122,8 @@ $('document').ready(function ()
 					$.each(value.RolePersona,
 						function (k, v)
 						{
+							if (v.toLowerCase().indexOf('architect') >= 0)
+								v = 'Architect';
 							if (role.indexOf(v) === -1)
 								role.push(v);
 						});
