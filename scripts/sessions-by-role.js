@@ -82,7 +82,6 @@ $('document').ready(function ()
 		//Looping through each data point from airtable and creating the cards
 		$.each(data, function (key, value)
 		{
-			debugger ;
 			var tags = "";
 			if (value.RolePersona != null)
 			{
