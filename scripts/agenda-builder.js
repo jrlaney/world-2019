@@ -164,6 +164,12 @@ $('document').ready(function () {
 		$(this).toggleClass('current');
 		$('#grid-view-btn').removeClass('current');
 	});
+
+	$(document).on('click', '.add-to-agenda', function () {
+		$(this).toggleClass('added');
+		console.log('clicked');
+	});
+
 	$('#grid-view-btn').click(function (e) {
 		e.preventDefault();
 		$.each($('.session-browse .agenda-list'), function (key, value) {
@@ -183,30 +189,25 @@ $('document').ready(function () {
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
-	$(".tabs-menu .tab-toggle").click(function(event) {
+	$('.tabs-menu .tab-toggle').click(function(event) {
 		event.preventDefault();
-		$(this).addClass("current");
-		$(this).siblings().removeClass("current");
+		$(this).addClass('current');
+		$(this).siblings().removeClass('current');
 
 		//for the tab contents
-		var tab = $(this).attr("href");
+		var tab = $(this).attr('href');
 		//add the hiding animation for everything but the current tab
-		$(".tab-content").not(tab).addClass("hide-tab");
+		$('.tab-content').not(tab).addClass('hide-tab');
 		//delay the display setting till after the animation plays
 		setTimeout(function(){
-			$(".tab-content").not(tab).css("display", "none");
+			$('.tab-content').not(tab).css('display', 'none');
 		}, 200);
 		//remove the hiding class if its on the current tab
-		$(tab).removeClass("hide-tab");
+		$(tab).removeClass('hide-tab');
 		//have the current tab display after the hiding animation plays for the previous tab
 		setTimeout(function(){
-			$(tab).css("display", "block");
-		}, 200);
+			$(tab).css('display', 'block');
+		}, 400);
 	});//tab toogle script
-
-
-	$('.add-to-agenda').click(function (event) {
-		$(this).toggleClass('added');
-	});
 }); //end document.ready
 </script>
