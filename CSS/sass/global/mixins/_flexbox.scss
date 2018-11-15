@@ -2,13 +2,13 @@
 
     // display
     @mixin display($value) {
-        @if ($value = flex) {
+        @if $value == flex {
             display: flex;
         } @else  {
             display: inline-flex;
         }
     }
-    
+
 
     // flex-direction
     @mixin flex-direction($direction) {
@@ -34,7 +34,7 @@
     @mixin align-content($align) {
         align-content: $align;
     }
-    
+
 
     // flex
     @mixin flex($grow, $shrink, $basis){
@@ -54,7 +54,7 @@
             flex: $grow $shrink $basis;
             max-width: $basis;
         }
-    } 
+    }
 
     // order
     @mixin order($order) {
