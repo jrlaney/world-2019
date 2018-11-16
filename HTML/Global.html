@@ -2,6 +2,7 @@
 <head>
 	<title>Cvent Test page</title>
 	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery.cookie/jquery.cookie.js"></script>
 	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.core.min.js"></script>
 	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.filter-dropdown-bundle.min.js"></script>
 	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.pagination-bundle.min.js"></script>
@@ -11,13 +12,15 @@
 	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.history-bundle.min.js"></script>
 
 	<style type="text/css" id="styles"></style>
+	<style type="text/css" id="styles2"></style>
 
 	<script>
 		$(function ()
 		{
-			$("#agenda").load("Agenda.html");
+			$("#agenda").load("Agenda_builder-version.html");
 			$("#styles").load("../CSS/main.css");
-			$("#scripts").load("../scripts/agenda.js");
+			$("#styles2").load("http://events.microstrategy.com/events/GetAdvancedCSS.aspx?e=2c0e1774-16a0-487b-95c8-2069ccaa35ce&rand=1513171984");
+			$("#scripts").load("../scripts/agenda-builder.js");
 		});
 	</script>
 </head>
