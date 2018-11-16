@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery.cookie/jquery.cookie.js"></script>
 <script type="text/javascript">
 var allSessions = [];
 function classifyText(text)
@@ -163,6 +164,12 @@ $('document').ready(function ()
 					});
 			}
 		});
+		// End of first snippet
+
+
+
+
+
 
 		// Second snippet starts here
 		//Sorting items

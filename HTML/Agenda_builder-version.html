@@ -94,6 +94,9 @@
 			</section>
 		</div>
 
+
+
+
 		<!-- My Agenda Tab-->
 		<div id="my-agenda" class="tab-content hide-tab" style="display:none">
 			<section class="background-navy">
@@ -105,6 +108,7 @@
 						<div id="#share-agenda" class="cta-button medium orange carat">Share this Agenda</div>
 					</div>
 					<div id="my-agenda-list" class="col">
+
 					</div>
 				</div>
 			</section>
@@ -191,24 +195,26 @@
 		</div>
 	</div>
 
-	<section id="call-to-action_new">
+
+
+	<section id="call-to-action">
 		<div class="final-cta">
 			<div class="row">
 				<img src="http://www.microstrategy.com/Strategy/media/images/logos/branding/world2019-wht-logo.svg" alt="World 2019 white logo" width="0" height="0">
 			</div>
-			<a class="cta-button large red expand" href="http://www.cvent.com/events/microstrategy-world-2019/registration-2c0e177416a0487b95c82069ccaa35ce.aspx">Register now</a>
+			<a class="cta-button large red expand" href="{[E-RSVP YES URL]}">Register now</a>
 		</div>
 
 		<div class="final-date">
 			<div class="icon-lockup text-white">
-				<img alt="" class="icon" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/e1bbbb629eb34c34b6462bbb28612345.png" width="32" height="32">
+				<img alt="date icon" class="icon" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/e1bbbb629eb34c34b6462bbb28612345.png" width="32" height="32">
 				<p>
 					<strong class="text-uppercase text-bold text-white">February</strong>
 					4th – 6th 2019
 				</p>
 			</div>
 			<div class="icon-lockup text-white">
-				<img alt="" class="icon" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/0a1ac4e6db4c4a61834db54ffeebff71.png" width="32" height="32">
+				<img alt="location icon" class="icon" src="https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/0a1ac4e6db4c4a61834db54ffeebff71.png" width="32" height="32">
 				<p>
 					<strong class="text-uppercase text-bold text-white">Phoenix, Arizona</strong>
 					Phoenix Convention Center
@@ -278,52 +284,50 @@
 	}
 
 
-	#call-to-action_new {
-	  background: linear-gradient(#254a58, #333333); }
+#call-to-action {
+  background: #11566F;
+  background: linear-gradient(to bottom, #11566F, #333333); }
+  #call-to-action .final-cta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    position: relative; }
+    @media (min-width: 768px) {
+      #call-to-action .final-cta {
+        width: 75%; } }
+    @media (min-width: 1100px) {
+      #call-to-action .final-cta {
+        width: 60%; } }
+    @media (min-width: 1400px) {
+      #call-to-action .final-cta {
+        width: 50%; } }
+    #call-to-action .final-cta img {
+      width: 100%;
+      height: 100%; }
+    #call-to-action .final-cta .cta-button.large.red.expand {
+      position: relative;
+      width: 290px;
+      align-self: center; }
+      @media (min-width: 768px) {
+        #call-to-action .final-cta .cta-button.large.red.expand {
+          position: absolute;
+          align-self: center;
+          width: 43%;
+          margin-top: 0; } }
+  #call-to-action .final-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding-left: 1.2em; }
+    @media (min-width: 768px) {
+      #call-to-action .final-date {
+        flex-direction: row;
+        padding-left: 0; } }
+    #call-to-action .final-date .icon-lockup {
+      padding: 10px 20px; }
 
-	#call-to-action_new .final-cta {
-	  display: flex;
-	  flex-direction: column;
-	  width: 100%;
-	  justify-content: center;
-	  align-content: center;
-	  margin: 0 auto;
-	  position: relative; }
-	  @media (min-width: 768px) {
-	    #call-to-action_new .final-cta {
-	      width: 75%; } }
-	  @media (min-width: 1100px) {
-	    #call-to-action_new .final-cta {
-	      width: 60%; } }
-	  @media (min-width: 1400px) {
-	    #call-to-action_new .final-cta {
-	      width: 50%; } }
-
-	#call-to-action_new .final-cta img {
-	  width: 100%;
-	  height: 100%; }
-
-	#call-to-action_new .final-cta .cta-button.large.red.expand {
-	  position: relative;
-	  width: 290px;
-	  align-self: center; }
-	  @media (min-width: 768px) {
-	    #call-to-action_new .final-cta .cta-button.large.red.expand {
-	      position: absolute;
-	      align-self: center;
-	      width: 43%;
-	      margin-top: 0; } }
-
-	#call-to-action_new .final-date {
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  margin-top: 20px;
-	  padding-left: 1.2em; }
-	  @media (min-width: 768px) {
-	    #call-to-action_new .final-date {
-	      flex-direction: row;
-	      padding-left: 0; } }
-	  #call-to-action_new .final-date .icon-lockup {
-	    padding: 10px 20px; }
 </style>
