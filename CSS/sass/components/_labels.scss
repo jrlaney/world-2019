@@ -1,5 +1,6 @@
 //LABEL-LIKE TEXT BLOCKS
-.text-label {
+.text-label,
+.text-block {
     display: inline-block;
     vertical-align: top;
     padding: 0.5em 0.75em;
@@ -141,5 +142,23 @@
         &.black {
             background-color: transparent;
         }
+    }
+}
+
+.text-label-group {
+    @include display(flex);
+    @include flex-wrap(wrap);
+
+    .text-label {
+        margin: 0 5px 5px 0;
+    }
+}
+
+.text-block-group {
+    @include display(flex);
+    @include flex-wrap(wrap);
+
+    .text-block {
+        margin: 0 5px 5px 0;
     }
 }

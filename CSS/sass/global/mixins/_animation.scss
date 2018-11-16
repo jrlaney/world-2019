@@ -21,19 +21,25 @@
 // ANIMATION
 
 @mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
     @keyframes #{$name} {
         @content;
     }
 }
 
 @mixin animation($args) {
+    -webkit-animation: $args;
     animation: $args;
 }
 
 @mixin animation-delay($delay) {
+    -webkit-animation-delay: $delay;
     animation-delay: $delay;
 }
 
 @mixin animation-fill-mode($fill-mode) {
+    -webkit-animation-fill-mode: $fill-mode;
     animation-fill-mode: $fill-mode;
 }

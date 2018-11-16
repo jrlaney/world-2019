@@ -1,213 +1,213 @@
 <script type="text/javascript">
-function classifyText(text) {
-	var returnValue = "";
-	if ($.isArray(text)) {
-		$.each($.unique(text), function (key, value) {
-			returnValue += " " + value.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
-		});
-	} else {
-		returnValue = text.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
+	function classifyText(text) {
+		var returnValue = "";
+		if ($.isArray(text)) {
+			$.each($.unique(text), function (key, value) {
+				returnValue += " " + value.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
+			});
+		} else {
+			returnValue = text.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
+		}
+		return returnValue;
 	}
-	return returnValue;
-}
 
-function tagCheckboxDropdownFilter($filter, $tag, dataPathId) {
-	var dataPath = dataPathId + classifyText($tag.text());
+	function tagCheckboxDropdownFilter($filter, $tag, dataPathId) {
+		var dataPath = dataPathId + classifyText($tag.text());
 
-	// update value and trigger change in field
-	$filter.find('#' + dataPath).trigger('click');
-	$filter.find('.jplist-dd-panel').addClass('changed');
+		// update value and trigger change in field
+		$filter.find('#' + dataPath).trigger('click');
+		$filter.find('.jplist-dd-panel').addClass('changed');
 
-	// move window to focus on field changed
-	$('html, body').animate({
-		scrollTop: $('#filter-box').offset().top // - $(window).height() / 2
-	}, 50);
+		// move window to focus on field changed
+		$('html, body').animate({
+			scrollTop: $('#filter-box').offset().top // - $(window).height() / 2
+		}, 50);
 
-	// select first pagination page
-	$('.pagination').find('button[data-number="0"]').trigger('click');
+		// select first pagination page
+		$('.pagination').find('button[data-number="0"]').trigger('click');
 
-	// remove changed style after a second
-	setTimeout(function () {
-		$filter.find('.jplist-dd-panel').removeClass('changed');
-	}, 1000);
-}
+		// remove changed style after a second
+		setTimeout(function () {
+			$filter.find('.jplist-dd-panel').removeClass('changed');
+		}, 1000);
+	}
 
-function tagFilterInit() {
+	function tagFilterInit() {
 
-	$('.program-tag').click(function () {
-		tagCheckboxDropdownFilter($('#program-filter'), $(this), '');
-	});
-	$('.role-tag').click(function () {
-		tagCheckboxDropdownFilter($('#role-filter'), $(this), '');
-	});
-	$('.topic-tag').click(function () {
-		tagCheckboxDropdownFilter($('#topic-filter'), $(this), '');
-	});
-}
-$('document').ready(function () {
-	//Grabbing API Information
-	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
-		//Creating empty array variables for each of the filtering options
-		var program = [];
-		var role = [];
-		var topic = [];
-		//Looping through each data point from airtable and creating the cards
-		$.each(data, function (key, value) {
-			var tags = "";
-			if (value.Program != null) {
-				$.each(value.Program.toString().split(","), function (i, program) {
-					tags += "<span class=\"text-block program-tag " + classifyText(program) + "\">" + program + "</span>"
-				});
-			}
-			if (value.RolePersona != null) {
-				$.each(value.RolePersona.toString().split(","), function (i, rolePersona) {
-					tags += "<span class=\"text-block role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>"
-				});
-			}
-			if (value.Topic != null) {
-				$.each(value.Topic.toString().split(","), function (i, topic) {
-					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
-				});
-			}
-			if (value.Title != null && value.Publish)
-			{
-				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
-
-				description = description.replace(/\n/g, '<br/>');
-			}
-			if (value.Title != null && value.Publish)
-			{
-				$(".session-browse .row").append("" +
-					"<article class=\"grid-item agenda-list\">" +
-					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
-					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
-					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
-					"<div class=\"session-details hide\">" +
-					"<p class=\"session-description\">" + description + "</p>" +
-					"</div>" +
-					"<div class=\"text-block-group tags\">" +
-					"<span class=\"tag-heading\">Tags:</span>" +
-					tags + "</div>" +
-					"<div class='add-to-agenda'><span class=\"plus-icon\"></span><span class=\"txt-add\">Add to</span><span class=\"txt-remove\">Remove from</span> my agenda</div>" +
-					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
-					"</article>");
-
+		$('.program-tag').click(function () {
+			tagCheckboxDropdownFilter($('#program-filter'), $(this), '');
+		});
+		$('.role-tag').click(function () {
+			tagCheckboxDropdownFilter($('#role-filter'), $(this), '');
+		});
+		$('.topic-tag').click(function () {
+			tagCheckboxDropdownFilter($('#topic-filter'), $(this), '');
+		});
+	}
+	$('document').ready(function () {
+		//Grabbing API Information
+		$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
+			//Creating empty array variables for each of the filtering options
+			var program = [];
+			var role = [];
+			var topic = [];
+			//Looping through each data point from airtable and creating the cards
+			$.each(data, function (key, value) {
+				var tags = "";
 				if (value.Program != null) {
-					$.each(value.Program,
-						function (k, v) {
-							if (program.indexOf(v) === -1)
-								program.push(v);
-						});
+					$.each(value.Program.toString().split(","), function (i, program) {
+						tags += "<span class=\"text-label program-tag " + classifyText(program) + "\">" + program + "</span>"
+					});
 				}
 				if (value.RolePersona != null) {
-					$.each(value.RolePersona,
-						function (k, v) {
-							if (role.indexOf(v) === -1)
-								role.push(v);
-						});
+					$.each(value.RolePersona.toString().split(","), function (i, rolePersona) {
+						tags += "<span class=\"text-label role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>"
+					});
 				}
 				if (value.Topic != null) {
-					$.each(value.Topic,
-						function (k, v) {
-							if (topic.indexOf(v) === -1)
-								topic.push(v);
-						});
+					$.each(value.Topic.toString().split(","), function (i, topic) {
+						tags += "<span class=\"text-label topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
+					});
 				}
+				if (value.Title != null && value.Publish)
+				{
+					var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 
-			}
+					description = description.replace(/\n/g, '<br/>');
+				}
+				if (value.Title != null && value.Publish)
+				{
+					$(".session-browse .row").append("" +
+						"<article class=\"grid-item agenda-list\">" +
+						"<h3 class=\"session-title\">" + value.Title + "</h3>" +
+						"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
+						"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
+						"<div class=\"session-details hide\">" +
+						"<p class=\"session-description\">" + description + "</p>" +
+						"</div>" +
+						"<div class=\"text-label-group tags\">" +
+						"<span class=\"tag-heading\">Tags:</span>" +
+						tags + "</div>" +
+						"<div class='add-to-agenda'><span class=\"plus-icon\"></span><span class=\"txt-add\">Add to</span><span class=\"txt-remove\">Remove from</span> my agenda</div>" +
+						"<span class=\"details-expand\">" + 'See Details' + "</span>" +
+						"</article>");
+
+					if (value.Program != null) {
+						$.each(value.Program,
+							function (k, v) {
+								if (program.indexOf(v) === -1)
+									program.push(v);
+							});
+					}
+					if (value.RolePersona != null) {
+						$.each(value.RolePersona,
+							function (k, v) {
+								if (role.indexOf(v) === -1)
+									role.push(v);
+							});
+					}
+					if (value.Topic != null) {
+						$.each(value.Topic,
+							function (k, v) {
+								if (topic.indexOf(v) === -1)
+									topic.push(v);
+							});
+					}
+
+				}
+			});
+
+
+
+
+
+			// Second snippet starts here
+			//Sorting items
+			program.sort();
+			role.sort();
+			topic.sort();
+			//Adding text dynamically from airtable to each of filter slots
+			var p = $('#program-filter > ul');
+			$.each(program, function (key, value) {
+				p.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+			});
+			var r = $('#role-filter > ul');
+			$.each(role, function (key, value) {
+				r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+			});
+			var t = $('#topic-filter > ul');
+			$.each(topic, function (key, value) {
+				t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+			});
+
+			$('#agenda-page').jplist({
+				itemsBox: '#agendaCards',
+				itemPath: '.grid-item',
+				panelPath: '#filter-box',
+				effect: 'fade',
+				redrawCallback: function () {
+					tagFilterInit();
+				}
+			});
+		}); //end of api pull
+
+		$('#filter-btn').click(function (event) {
+			event.preventDefault();
+			$('#filter-box').slideToggle('slow');
 		});
 
-
-
-
-
-		// Second snippet starts here
-		//Sorting items
-		program.sort();
-		role.sort();
-		topic.sort();
-		//Adding text dynamically from airtable to each of filter slots
-		var p = $('#program-filter > ul');
-		$.each(program, function (key, value) {
-			p.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
-		var r = $('#role-filter > ul');
-		$.each(role, function (key, value) {
-			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
-		var t = $('#topic-filter > ul');
-		$.each(topic, function (key, value) {
-			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		$('#list-view-btn').click(function (e) {
+			e.preventDefault();
+			$.each($('.session-browse .grid-item'), function (key, value) {
+				$(value).removeClass('agenda-card col lg-4 xl-3').addClass('agenda-list');
+			});
+			$(this).toggleClass('current');
+			$('#grid-view-btn').removeClass('current');
 		});
 
-		$('#agenda-page').jplist({
-			itemsBox: '#agendaCards',
-			itemPath: '.grid-item',
-			panelPath: '#filter-box',
-			effect: 'fade',
-			redrawCallback: function () {
-				tagFilterInit();
-			}
+		$(document).on('click', '.add-to-agenda', function () {
+			$(this).toggleClass('added');
+			console.log('clicked');
 		});
-	}); //end of api pull
 
-	$('#filter-btn').click(function (event) {
-		event.preventDefault();
-		$('#filter-box').slideToggle('slow');
-	});
-
-	$('#list-view-btn').click(function (e) {
-		e.preventDefault();
-		$.each($('.session-browse .grid-item'), function (key, value) {
-			$(value).removeClass('agenda-card col lg-3').addClass('agenda-list');
+		$('#grid-view-btn').click(function (e) {
+			e.preventDefault();
+			$.each($('.session-browse .agenda-list'), function (key, value) {
+				$(value).removeClass('agenda-list').addClass('agenda-card col lg-4 xl-3');
+			});
+			$(this).toggleClass('current');
+			$('#list-view-btn').removeClass('current');
 		});
-		$(this).toggleClass('current');
-		$('#grid-view-btn').removeClass('current');
-	});
 
-	$(document).on('click', '.add-to-agenda', function () {
-		$(this).toggleClass('added');
-		console.log('clicked');
-	});
-
-	$('#grid-view-btn').click(function (e) {
-		e.preventDefault();
-		$.each($('.session-browse .agenda-list'), function (key, value) {
-			$(value).removeClass('agenda-list').addClass('agenda-card col lg-3');
+		// $.each($('.session-details'), function(key, value){
+		// 	$(value).addClass('hide');
+		// });
+		$(document).on('click', '.details-expand', function () {
+			var details = $('.session-details');
+			$(this).parent('.grid-item').find(details).slideToggle('fast');
+			$(this).parent('.grid-item').find(details).toggleClass('hide');
+			$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 		});
-		$(this).toggleClass('current');
-		$('#list-view-btn').removeClass('current');
-	});
 
-	// $.each($('.session-details'), function(key, value){
-	// 	$(value).addClass('hide');
-	// });
-	$(document).on('click', '.details-expand', function () {
-		var details = $('.session-details');
-		$(this).parent('.grid-item').find(details).slideToggle('fast');
-		$(this).parent('.grid-item').find(details).toggleClass('hide');
-		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
-	});
+		$('.tabs-menu .tab-toggle').click(function(event) {
+			event.preventDefault();
+			$(this).addClass('current');
+			$(this).siblings().removeClass('current');
 
-	$('.tabs-menu .tab-toggle').click(function(event) {
-		event.preventDefault();
-		$(this).addClass('current');
-		$(this).siblings().removeClass('current');
-
-		//for the tab contents
-		var tab = $(this).attr('href');
-		//add the hiding animation for everything but the current tab
-		$('.tab-content').not(tab).addClass('hide-tab');
-		//delay the display setting till after the animation plays
-		setTimeout(function(){
-			$('.tab-content').not(tab).css('display', 'none');
-		}, 200);
-		//remove the hiding class if its on the current tab
-		$(tab).removeClass('hide-tab');
-		//have the current tab display after the hiding animation plays for the previous tab
-		setTimeout(function(){
-			$(tab).css('display', 'block');
-		}, 400);
-	});//tab toogle script
-}); //end document.ready
+			//for the tab contents
+			var tab = $(this).attr('href');
+			//add the hiding animation for everything but the current tab
+			$('.tab-content').not(tab).addClass('hide-tab');
+			//delay the display setting till after the animation plays
+			setTimeout(function(){
+				$('.tab-content').not(tab).css('display', 'none');
+			}, 200);
+			//remove the hiding class if its on the current tab
+			$(tab).removeClass('hide-tab');
+			//have the current tab display after the hiding animation plays for the previous tab
+			setTimeout(function(){
+				$(tab).css('display', 'block');
+			}, 400);
+		});//tab toogle script
+	}); //end document.ready
 </script>

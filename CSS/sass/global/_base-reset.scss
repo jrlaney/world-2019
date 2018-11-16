@@ -193,7 +193,9 @@ img,
 .line,
 .button-group,
 .triangle-group,
-.text-label {
+.text-label,
+.text-label-group,
+.text-block-group {
     margin-top: 20px;
 
     &:first-child {
@@ -227,7 +229,9 @@ p+p,
 .text-label+h1,
 .text-label+h2,
 .text-label+h3,
-.text-label+.triangle-group {
+.text-label+.triangle-group,
+.text-label-group+p,
+.text-block-group+p {
     margin-top: 10px;
 
     &:first-child {

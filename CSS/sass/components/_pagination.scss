@@ -1,0 +1,50 @@
+﻿.jplist-pagination {
+    @include display(flex);
+	@include justify-content(center);
+    margin: 20px auto;
+    list-style: none;
+
+    li {
+        padding: 0;
+    }
+
+    .page, button {
+        @include display(inline-flex);
+        @include justify-content(center);
+        @include align-items(center);
+        min-height:40px; min-width:40px;
+        padding: .5em;
+        margin: 10px;
+        background-color: $blue;
+        border: 1px fade-out($white, 0.2);
+        font-size: 20px;
+        line-height: 1;
+        font-weight: 400;
+        color: $white;
+        white-space: nowrap;
+        outline: 0;
+		cursor:pointer;
+        @include transition;
+
+        &:hover, &:active {
+            background-color: $light-blue;
+        }
+
+        &.current, &.jplist-current {
+            cursor: default;
+            background-color: $orange;
+            font-weight: 400;
+            color: $white;
+        }
+    }
+
+    .jplist-pagesbox, .jplist-pagingmid, .jplist-pagingprev, .jplist-pagingnext {
+        @include display(inline-flex);
+    }
+
+    &.jplist-one-page {
+        max-height: 0px;
+        opacity: 0;
+        margin-top: 0;
+    }
+}

@@ -8,12 +8,16 @@
     @include medium {
         padding-top: 100px;
         padding-bottom: 100px;
-
-        &.above-card {
-            padding-bottom: 180px;
+        &.no-padding-top {
+            padding-top: 0px;
         }
-
-        
+        &.no-padding-bottom {
+            padding-bottom: 0px;
+        }
+        &.no-padding {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
     }
 
     .head {
@@ -38,7 +42,7 @@
         font-weight: 400;
         @include uppercase;
         letter-spacing: .1em;
-        
+
         @include medium {
             font-size: 22px;
             line-height: 28px;
