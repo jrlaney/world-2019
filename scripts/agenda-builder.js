@@ -235,6 +235,8 @@ $('document').ready(function ()
 		if (myAgenda !== undefined)
 		{
 			myArticles = JSON.parse(myAgenda);
+			if (typeof myArticles === "string")
+				myArticles = JSON.parse(myArticles);
 			var index = myArticles.indexOf(id);
 			if (classes.indexOf("added") === -1)
 			{
