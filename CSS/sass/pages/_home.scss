@@ -49,6 +49,43 @@
 		}
 	}
 
+	#contests {
+		// > .row {
+		// 	background-color:rgba($pure-black, 20%);
+		// }
+		.pattern-overlay .static-pattern {
+			&.pos-top {
+				top:-60px;
+			}
+			&.pos-bottom {
+				bottom:-120px;
+			}
+			@include medium {
+				&.pos-top {
+					left: 60%;
+					top:-30%;
+				}
+				&.pos-bottom {
+					right: 80%;
+					bottom:-20%;
+				}
+			}
+			@include large {
+				&.pos-top {
+					left: 78%;
+				}
+			}
+			@include xlarge {
+				&.pos-top {
+					left: 85%;
+				}
+				&.pos-bottom {
+					right: 86%;
+				}
+			}
+		}
+	}
+
 	#about {
 		.photo {
 			@include medium {

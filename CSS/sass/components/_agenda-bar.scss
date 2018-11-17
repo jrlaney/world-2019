@@ -2,7 +2,7 @@
 .agenda-bars-mobile {
     display: flex;
     background-color: $navy;
-    width: 97.5%;
+    //width: 97.5%;
     padding: 20px;
     color: $white;
     @include medium {
@@ -84,7 +84,7 @@
     display: none;
     @include medium{
         display: grid;
-        width: 98.5%;
+        //width: 98.5%;
         padding: 20px;
         background-color: fade-out($navy, .3);
     }

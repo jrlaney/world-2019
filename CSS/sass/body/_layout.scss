@@ -4,11 +4,8 @@
     padding: 10px 0;
 
     @include medium {
-        padding: 10px 20px 10px 0;
+        padding: 10px 30px 10px 0;
 
-    }
-    @include large {
-        padding: 10px 20px;
     }
 
     .icon {

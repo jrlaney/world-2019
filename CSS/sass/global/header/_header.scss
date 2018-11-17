@@ -35,7 +35,7 @@ div.top {
         @include medium {
             .logo-img {
                 max-width: 150px;
-                @include translateY(0);
+                //@include translateY(0);
             }
         }
     }
@@ -77,7 +77,7 @@ div.top {
 
         @include medium {
             height: auto;
-            @include translateY(15px);
+            //@include translateY(15px);
         }
     }
 

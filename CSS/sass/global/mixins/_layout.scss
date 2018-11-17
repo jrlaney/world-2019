@@ -9,9 +9,14 @@
 }
 
 
-//MEDIA QUERIES 
+//MEDIA QUERIES
 @mixin small {
     @media (min-width: #{$small-only}){
+        @content;
+    }
+}
+@mixin small-only {
+    @media (max-width: #{$small-only}){
         @content;
     }
 }
@@ -42,10 +47,10 @@
 
 }
 @mixin property($property, $value) {
-    @content;    
+    @content;
 }
-@mixin _getProp($property) {    
-    
+@mixin _getProp($property) {
+
     @include _getProp(top) {
         top: $value;
     }

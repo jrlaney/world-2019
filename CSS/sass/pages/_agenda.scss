@@ -1,14 +1,9 @@
 //////////////////////AGENDA PAGE
 #agenda-page {
-	padding-top:15px;
-	@include medium {
-		padding-top:30px;
+	.agenda-bars {
+		background-color: rgba(0,0,0,0.2);
+		box-shadow:1px 1px 5px rgba(0,0,0,0.5);
 	}
-	// #hero-banner {
-	// 	padding-top: 50px;
-	// 	padding-bottom: 0;
-	// 	text-align: center;
-	// }
 }
 
 .tabs-menu {
@@ -76,36 +71,38 @@
 
 
 #filter-box {
-    background-color: $green;
+	overflow:visible;
+    //background-color: $green;
+	background-color:fade-out($pure-black, 0.8);
 	color: white;
-	height: auto;
-	padding-bottom: 30px;
-	@include large {
-		height: 140px;
-	}
-	& .row {
-		justify-content: center;
-	}
+	padding: 20px 0;
 	button {
-		height: 40px;
-		margin-top: 60px;
-		line-height: 0;
-		background-color: $navy;
+		width:100%;
+		min-height: 42px;
+		//margin-top: 60px;
+		background-color: $gray;
 		border: none;
-		letter-spacing: 1px;
-		transition: background-color .3s ease-in-out;
+		box-shadow: none;
+		outline: none;
+		@include uppercase;
+		line-height: 0;
+		@include transition;
+
 		&:hover, &:focus {
-			background-color: lighten($navy, 10%);
+			background-color: lighten($gray, 10%);
+		}
+		&:active {
+			background-color: darken($gray, 10%);
 		}
 	}
-	.list-heading {
-		font-size: 1.3em;
-		font-weight: 500;
-		margin-bottom: 5px;
-		@include medium {
-			margin-bottom: 0;
-		}
-	}
+	// .list-heading {
+	// 	font-size: 1.3em;
+	// 	font-weight: 500;
+	// 	margin-bottom: 5px;
+	// 	@include medium {
+	// 		margin-bottom: 0;
+	// 	}
+	// }
 
 	.program-label, .topic-label, .role-label, {
 		&:before {
@@ -122,37 +119,61 @@
 	.role-label:before {background-color:$blue;}
 
 	#program-filter, #role-filter, #topic-filter {
-		width: 90%;
+		display:block;
+		position:relative;
+		width: 100%;
+		padding: .5em calc(1em + 20px) .5em 1em;
+		margin-top:10px;
+		box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+
+		cursor:pointer;
+
 		background-color: white;
 		background-image: url(https://www.microstrategy.com/Strategy/media/images/icons/svg/chevron_down.svg);
     	background-repeat: no-repeat;
     	background-position: 95% 14px;
-		padding: .5em;
-		color: gray;
-		position: absolute;
-		box-shadow: 1px 1px 5px rgba(0,0,0,.3);
 
-		@include medium {
-			cursor: pointer;
-			width: 30%;
-		}
+		color: $dark-gray;
+		font-weight:400;
+		//position: absolute;
+		// 	cursor: pointer;
 
-		@include large {
-			width: 15%;
-		}
+		// @include medium {
+		// 	width: 30%;
+		// }
+		//
+		// @include large {
+		// 	width: 15%;
+		// }
 
 		& ul{
-			padding-left: 0;
+			position:absolute; z-index:3;
+			width:100%;
+			background-color:$white;
+			top:100%; left:0;
+			margin:0; padding:0;
+			box-shadow:1px 1px 3px rgba(0,0,0,0.3);
 			& li {
+				@include display(flex);
+				@include flex-wrap(nowrap);
+				padding:7px 15px; margin:0;
+				cursor:pointer;
+				&:hover{
+					background-color:$light-gray;
+				}
+
 				& label {
+					@include flex(1,0,auto);
+					margin-left:5px; margin-top:2px;
 					text-transform: capitalize;
-					font-size: 1em;
-					font-weight: 400!important;
+					letter-spacing: normal;
+					font-size:14px;
+					font-weight:400!important;
 				}
 			}
 			&>li {
 				&::before {
-					border:none;
+					display:none;
 				}
 			}
 		}
@@ -376,10 +397,19 @@
 	// padding-top: 20px;
 	// padding-left: 1em;
 	// padding-bottom: 20px;
-	font-size: 1.7em;
+	font-size: 1.2em;
 	line-height: 1.2em;
 	font-weight: 400;
 	transition: all .3s ease-in-out;
+	@include medium {
+		font-size: 1.3em;
+	}
+	@include large {
+		font-size: 1.5em;
+	}
+	@include xlarge {
+		font-size: 1.7em;
+	}
 }
 
 .session-speaker {
@@ -400,7 +430,7 @@
 
 .session-description {
     padding: 20px 0 0 20px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 // .top-40 {
@@ -430,52 +460,77 @@
 
 
 
-#list-view-btn {
-	display: none;
+#agenda-page #grid-view-btn,
+#agenda-page #list-view-btn{
+	display:none;
+
 	@include large {
-		display: inline-flex;
-		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+		@include display(inline-flex);
 		border: none;
-		width: 4%;
-		height: 25px;
-		transition: all .3s ease-in-out;
+		background:transparent;
+		width:60px;
+		max-width:100%;
+		height:auto;
 		cursor: pointer;
 		opacity: .5;
+		@include transition;
+
 		&:hover, &:focus {
-			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
 			outline: none;
 			opacity: 1;
-
 		}
 		&.current {
-			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
 			opacity: 1;
 		}
 	}
 }
 
-#grid-view-btn {
-	display: none;
-	@include large {
-		display: inline-flex;
-		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-		border: none;
-		width: 4%;
-		height: 25px;
-		transition: all .3s ease-in-out;
-		cursor: pointer;
-		opacity: .5;
-		&:hover, &:focus {
-			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-			outline: none;
-			opacity: 1;
-		}
-		&.current {
-			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-			opacity: 1;
-		}
-	}
-}
+// #list-view-btn {
+// 	display: none;
+// 	@include large {
+// 		display: inline-flex;
+// 		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+// 		border: none;
+// 		width: 4%;
+// 		height: 25px;
+// 		transition: all .3s ease-in-out;
+// 		cursor: pointer;
+// 		opacity: .5;
+// 		&:hover, &:focus {
+// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+// 			outline: none;
+// 			opacity: 1;
+//
+// 		}
+// 		&.current {
+// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+// 			opacity: 1;
+// 		}
+// 	}
+// }
+//
+// #grid-view-btn {
+// 	display: none;
+// 	@include large {
+// 		display: inline-flex;
+// 		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+// 		border: none;
+// 		width: 4%;
+// 		height: 25px;
+// 		transition: all .3s ease-in-out;
+// 		cursor: pointer;
+// 		opacity: .5;
+// 		&:hover, &:focus {
+// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+// 			outline: none;
+// 			opacity: 1;
+// 		}
+// 		&.current {
+// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+// 			opacity: 1;
+// 		}
+// 	}
+// }
 
 
 .add-to-agenda {

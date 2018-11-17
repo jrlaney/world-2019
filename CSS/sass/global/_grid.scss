@@ -137,9 +137,13 @@
             padding: 0;
         }
 
-        &-x>.col {
+        &-x{
             padding-left: 0;
             padding-right: 0;
+            >.col {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
 
         &-y>.col {
