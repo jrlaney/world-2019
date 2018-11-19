@@ -144,7 +144,7 @@ $('document').ready(function ()
 			r.append($("<option></option>").attr("value", classifyText(value)).attr("data-path", "." + classifyText(value)).html(value));
 		});
 
-		$('#sessions-page').jplist({
+		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
 			itemPath: '.grid-item',
 			panelPath: '#filter-box',
