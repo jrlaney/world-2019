@@ -66,6 +66,8 @@ function populateSessions(isMyAgenda)
 		myArticles = JSON.parse(myAgenda);
 	if (isMyAgenda)
 		$("#my-agenda-list").html("");
+	else
+		$("#agendaCards").html("");
 
 	//Looping through each data point from airtable and creating the cards
 	$.each(allSessions, function (key, value)
@@ -101,7 +103,7 @@ function populateSessions(isMyAgenda)
 			var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 			description = description.replace(/\n/g, '<br />');
 			var index = myArticles.indexOf(value.Id);
-			var sessionsHolder = (isMyAgenda ? $("#my-agenda-list") : $(".session-browse .row"));
+			var sessionsHolder = (isMyAgenda ? $("#my-agenda-list") : $("#agendaCards"));
 			sessionsHolder.append("" +
 				"<article class=\"grid-item agenda-list\" id=\"" + (isMyAgenda ? "myAgenda-" : "") + value.Id + "\">" +
 				"<h3 class=\"session-title\">" + value.Title + "</h3>" +
@@ -117,7 +119,10 @@ function populateSessions(isMyAgenda)
 				"</article>");
 		}
 	});
-
+	if (!isMyAgenda && $("#filter-box input[type=checkbox]").length)
+	{
+		$("#filter-box input[type=checkbox]").trigger('change');
+	}
 }
 
 $('document').ready(function ()
@@ -294,7 +299,7 @@ $('document').ready(function ()
 		}, 200);
 		//remove the hiding class if its on the current tab
 		$(tab).removeClass('hide-tab');
-		populateSessions(true);
+		populateSessions(tab.indexOf("#my-agenda") > -1);
 		//have the current tab display after the hiding animation plays for the previous tab
 		setTimeout(function ()
 		{
