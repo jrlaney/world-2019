@@ -1,4 +1,3 @@
-<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery.cookie/jquery.cookie.js"></script>
 <script type="text/javascript">
 var allSessions = [];
 function classifyText(text)
@@ -21,7 +20,6 @@ function classifyText(text)
 function tagCheckboxDropdownFilter($filter, $tag, dataPathId)
 {
 	var dataPath = dataPathId + classifyText($tag.text());
-
 	// update value and trigger change in field
 	$filter.find('#' + dataPath).trigger('click');
 	$filter.find('.jplist-dd-panel').addClass('changed');
@@ -30,10 +28,8 @@ function tagCheckboxDropdownFilter($filter, $tag, dataPathId)
 	$('html, body').animate({
 		scrollTop: $('#filter-box').offset().top // - $(window).height() / 2
 	}, 50);
-
 	// select first pagination page
 	$('.pagination').find('button[data-number="0"]').trigger('click');
-
 	// remove changed style after a second
 	setTimeout(function ()
 	{
@@ -43,7 +39,6 @@ function tagCheckboxDropdownFilter($filter, $tag, dataPathId)
 
 function tagFilterInit()
 {
-
 	$('.program-tag').click(function ()
 	{
 		tagCheckboxDropdownFilter($('#program-filter'), $(this), '');
@@ -60,7 +55,6 @@ function tagFilterInit()
 
 function populateSessions(isMyAgenda)
 {
-
 	var myAgenda = $.cookie("myAgenda");
 	var myArticles = [];
 	if (myAgenda !== undefined)
@@ -100,7 +94,6 @@ function populateSessions(isMyAgenda)
 						tags += "<span class=\"text-label topic-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
 			}
-
 			var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 			description = description.replace(/\n/g, '<br />');
 			var index = myArticles.indexOf(value.Id);
@@ -125,7 +118,6 @@ function populateSessions(isMyAgenda)
 		$("#filter-box input[type=checkbox]").trigger('change');
 	}
 }
-
 $('document').ready(function ()
 {
 	//Grabbing API Information
@@ -138,7 +130,6 @@ $('document').ready(function ()
 		var program = [];
 		var role = [];
 		var topic = [];
-
 		$.each(allSessions, function (key, value)
 		{
 			if (value.Program != null)
@@ -266,7 +257,6 @@ $('document').ready(function ()
 			else
 				$(this).removeClass("added");
 		}
-
 		$.cookie("myAgenda", JSON.stringify(myArticles), { path: '/', expires: 7 });
 	});
 
@@ -295,23 +285,18 @@ $('document').ready(function ()
 		$(this).addClass('current');
 		$(this).siblings().removeClass('current');
 
-		//for the tab contents
 		var tab = $(this).attr('href');
-		//add the hiding animation for everything but the current tab
 		$('.tab-content').not(tab).addClass('hide-tab');
-		//delay the display setting till after the animation plays
 		setTimeout(function ()
 		{
 			$('.tab-content').not(tab).css('display', 'none');
 		}, 200);
-		//remove the hiding class if its on the current tab
 		$(tab).removeClass('hide-tab');
-		populateSessions(tab.indexOf("#my-agenda") > -1);
-		//have the current tab display after the hiding animation plays for the previous tab
 		setTimeout(function ()
 		{
 			$(tab).css('display', 'block');
 		}, 400);
+		populateSessions(tab.indexOf("#my-agenda") > -1);
 	});//tab toogle script
 
 	$("#print-agenda").click(function ()
@@ -333,5 +318,5 @@ $('document').ready(function ()
 		printWin.print();
 		printWin.close();
 	});
-}); //end document.ready
+});
 </script >

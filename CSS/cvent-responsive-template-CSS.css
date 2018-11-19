@@ -5024,12 +5024,12 @@ a.cta-button,
   z-index: 2;
   opacity: 1;
   transform: translateY(0);
-  transition: all 0.5s ease-out 0s; }
+  transition: all 0.2s ease-out 0.2s; }
   .tab-content.hide-tab {
     padding: 0;
     opacity: 0;
     transform: translateY(100px);
-    transition: all 0.5s ease-out 0s; }
+    transition: all 0.2s ease-out 0s; }
 
 #filter-box {
   overflow: visible;
