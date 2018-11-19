@@ -313,5 +313,25 @@ $('document').ready(function ()
 			$(tab).css('display', 'block');
 		}, 400);
 	});//tab toogle script
+
+	$("#print-agenda").click(function ()
+	{
+		var html = "<html>";
+		html += "<head>";
+		html += "<style type='text/css'>#content div.ads, #content img {display:none}</style>";
+		html += "<link rel='Stylesheet' type='text/css' href='css/print.css' media='print' />";
+		html += "</head>";
+		html += "<body>";
+		html += $("#my-agenda-list").html();
+		html += "</body>";
+		html += "</html>";
+
+		var printWin = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status  =0');
+		printWin.document.write(html);
+		printWin.document.close();
+		printWin.focus();
+		printWin.print();
+		printWin.close();
+	});
 }); //end document.ready
 </script >
