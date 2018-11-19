@@ -1,0 +1,54 @@
+#call-to-action {
+	//background: linear-gradient(#254a58, #333333);
+	@include linear-gradient($navy, $black, $navy , top, bottom);
+
+	.final-cta {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		justify-content: center;
+		align-content: center;
+		margin: 0 auto;
+		position: relative;
+		@include medium {
+			width: 75%;
+		}
+		@include large {
+			width: 60%;
+		}
+		@include xlarge {
+			width: 50%;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+		.cta-button.large.red.expand {
+			position: relative;
+			width: 290px;
+			align-self: center;
+			@include medium {
+				position: absolute;
+				align-self: center;
+				width: 43%;
+				margin-top: 0;
+			}
+		}
+	}
+	.final-date {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-top: 20px;
+		padding-left: 1.2em;
+
+		@include medium {
+			flex-direction: row;
+			padding-left: 0;
+		}
+
+		& .icon-lockup {
+			padding: 10px 20px;
+		}
+	}
+}

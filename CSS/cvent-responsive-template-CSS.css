@@ -1230,9 +1230,12 @@ a.text-white {
     padding-right: 0; }
     .row.collapse > .col {
       padding: 0; }
-    .row.collapse-x > .col {
+    .row.collapse-x {
       padding-left: 0;
       padding-right: 0; }
+      .row.collapse-x > .col {
+        padding-left: 0;
+        padding-right: 0; }
     .row.collapse-y > .col {
       padding-top: 0;
       padding-bottom: 0; }
@@ -1915,8 +1918,7 @@ div.top {
     background-color: #ffffff; }
     @media (min-width: 768px) {
       div.top.sticky .logo-img {
-        max-width: 150px;
-        transform: translateY(0); } }
+        max-width: 150px; } }
 
 div.top .navigation {
   display: -webkit-flex;
@@ -1979,26 +1981,28 @@ div.top .navigation {
         max-height: none;
         text-align: right;
         padding: 0 10px 0 20px; } }
-    @media (min-width: 320px) {
-      div.top .navigation #menu.menu-opened {
-        max-height: 100vh;
-        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5); }
-        div.top .navigation #menu.menu-opened:after {
-          background: #D9232E;
-          box-shadow: 0 0.25em 0 0 #D9232E, 0 0.5em 0 0 #D9232E; } }
+@media (max-width: 320px) and (min-width: 320px) {
+  div.top .navigation #menu.menu-opened {
+    max-height: 100vh;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5); }
+    div.top .navigation #menu.menu-opened:after {
+      background: #D9232E;
+      box-shadow: 0 0.25em 0 0 #D9232E, 0 0.5em 0 0 #D9232E; } }
+    @media (max-width: 320px) {
+      div.top .navigation #menu:after {
+        content: "";
+        position: absolute;
+        right: 15px;
+        top: 35px;
+        width: 1.5em;
+        height: 0.15em;
+        background: #555555;
+        box-shadow: 0 0.25em 0 0 #555555, 0 0.5em 0 0 #555555;
+        transition: all 0.2s ease-out 0s; } }
+  @media (max-width: 320px) and (min-width: 768px) {
     div.top .navigation #menu:after {
-      content: "";
-      position: absolute;
-      right: 15px;
-      top: 35px;
-      width: 1.5em;
-      height: 0.15em;
-      background: #555555;
-      box-shadow: 0 0.25em 0 0 #555555, 0 0.5em 0 0 #555555;
-      transition: all 0.2s ease-out 0s; }
-      @media (min-width: 768px) {
-        div.top .navigation #menu:after {
-          display: none; } }
+      display: none; } }
+
     div.top .navigation #menu li {
       display: block;
       position: relative;
@@ -2095,8 +2099,7 @@ div.top .navigation {
     transition: all 0.2s ease-out 0s; }
     @media (min-width: 768px) {
       .logo-zone .logo-img {
-        height: auto;
-        transform: translateY(15px); } }
+        height: auto; } }
   .logo-zone .text {
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -2316,10 +2319,7 @@ section {
   padding: 10px 0; }
   @media (min-width: 768px) {
     .icon-lockup {
-      padding: 10px 20px 10px 0; } }
-  @media (min-width: 1100px) {
-    .icon-lockup {
-      padding: 10px 20px; } }
+      padding: 10px 30px 10px 0; } }
   .icon-lockup .icon {
     margin-right: 15px; }
   .icon-lockup > p {
@@ -4147,7 +4147,6 @@ a.cta-button,
 .agenda-bars-mobile {
   display: flex;
   background-color: #11566F;
-  width: 97.5%;
   padding: 20px;
   color: #ffffff; }
   @media (min-width: 768px) {
@@ -4200,7 +4199,6 @@ a.cta-button,
   @media (min-width: 768px) {
     .agenda-bars {
       display: grid;
-      width: 98.5%;
       padding: 20px;
       background-color: rgba(17, 86, 111, 0.7); } }
   .agenda-bars .day-label {
@@ -4477,6 +4475,52 @@ a.cta-button,
     opacity: 0;
     margin-top: 0; }
 
+#call-to-action {
+  background: #11566F;
+  background: linear-gradient(to bottom, #11566F, #333333); }
+  #call-to-action .final-cta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    position: relative; }
+    @media (min-width: 768px) {
+      #call-to-action .final-cta {
+        width: 75%; } }
+    @media (min-width: 1100px) {
+      #call-to-action .final-cta {
+        width: 60%; } }
+    @media (min-width: 1400px) {
+      #call-to-action .final-cta {
+        width: 50%; } }
+    #call-to-action .final-cta img {
+      width: 100%;
+      height: 100%; }
+    #call-to-action .final-cta .cta-button.large.red.expand {
+      position: relative;
+      width: 290px;
+      align-self: center; }
+      @media (min-width: 768px) {
+        #call-to-action .final-cta .cta-button.large.red.expand {
+          position: absolute;
+          align-self: center;
+          width: 43%;
+          margin-top: 0; } }
+  #call-to-action .final-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding-left: 1.2em; }
+    @media (min-width: 768px) {
+      #call-to-action .final-date {
+        flex-direction: row;
+        padding-left: 0; } }
+    #call-to-action .final-date .icon-lockup {
+      padding: 10px 20px; }
+
 /*pages / pages*/
 #home-page #hero {
   border: 1px solid #ffffff; }
@@ -4513,6 +4557,25 @@ a.cta-button,
   padding: 0 20px; }
   #home-page .last-call p {
     font-size: 1.4em; }
+#home-page #contests .pattern-overlay .static-pattern.pos-top {
+  top: -60px; }
+#home-page #contests .pattern-overlay .static-pattern.pos-bottom {
+  bottom: -120px; }
+@media (min-width: 768px) {
+  #home-page #contests .pattern-overlay .static-pattern.pos-top {
+    left: 60%;
+    top: -30%; }
+  #home-page #contests .pattern-overlay .static-pattern.pos-bottom {
+    right: 80%;
+    bottom: -20%; } }
+@media (min-width: 1100px) {
+  #home-page #contests .pattern-overlay .static-pattern.pos-top {
+    left: 78%; } }
+@media (min-width: 1400px) {
+  #home-page #contests .pattern-overlay .static-pattern.pos-top {
+    left: 85%; }
+  #home-page #contests .pattern-overlay .static-pattern.pos-bottom {
+    right: 86%; } }
 @media (min-width: 768px) {
   #home-page #about .photo {
     float: left;
@@ -4536,7 +4599,6 @@ a.cta-button,
 #home-page .agenda-bars-mobile {
   display: flex;
   background-color: #11566F;
-  width: 97.5%;
   padding: 20px;
   color: #ffffff; }
   @media (min-width: 768px) {
@@ -4588,7 +4650,6 @@ a.cta-button,
   @media (min-width: 768px) {
     #home-page .agenda-bars {
       display: grid;
-      width: 98.5%;
       padding: 20px;
       background-color: rgba(17, 86, 111, 0.7); } }
   #home-page .agenda-bars .day-label {
@@ -4914,56 +4975,10 @@ a.cta-button,
           line-height: 18px; }
       #home-page #highlights .speaker-card:last-child {
         margin-bottom: 0; } }
-#home-page #call-to-action_new {
-  background: linear-gradient(#254a58, #333333); }
-#home-page .final-cta {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-content: center;
-  margin: 0 auto;
-  position: relative; }
-  @media (min-width: 768px) {
-    #home-page .final-cta {
-      width: 75%; } }
-  @media (min-width: 1100px) {
-    #home-page .final-cta {
-      width: 60%; } }
-  @media (min-width: 1400px) {
-    #home-page .final-cta {
-      width: 50%; } }
-#home-page .final-cta img {
-  width: 100%;
-  height: 100%; }
-#home-page .final-cta .cta-button.large.red.expand {
-  position: relative;
-  width: 290px;
-  align-self: center; }
-  @media (min-width: 768px) {
-    #home-page .final-cta .cta-button.large.red.expand {
-      position: absolute;
-      align-self: center;
-      width: 43%;
-      margin-top: 0; } }
-#home-page .final-date {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 20px;
-  padding-left: 1.2em; }
-  @media (min-width: 768px) {
-    #home-page .final-date {
-      flex-direction: row;
-      padding-left: 0; } }
-  #home-page .final-date .icon-lockup {
-    padding: 10px 20px; }
 
-#agenda-page {
-  padding-top: 15px; }
-  @media (min-width: 768px) {
-    #agenda-page {
-      padding-top: 30px; } }
+#agenda-page .agenda-bars {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); }
 
 .tabs-menu {
   text-align: center;
@@ -5017,32 +5032,25 @@ a.cta-button,
     transition: all 0.5s ease-out 0s; }
 
 #filter-box {
-  background-color: #68AA00;
+  overflow: visible;
+  background-color: rgba(0, 0, 0, 0.2);
   color: white;
-  height: auto;
-  padding-bottom: 30px; }
-  @media (min-width: 1100px) {
-    #filter-box {
-      height: 140px; } }
-  #filter-box .row {
-    justify-content: center; }
+  padding: 20px 0; }
   #filter-box button {
-    height: 40px;
-    margin-top: 60px;
-    line-height: 0;
-    background-color: #11566F;
+    width: 100%;
+    min-height: 42px;
+    background-color: #999999;
     border: none;
-    letter-spacing: 1px;
-    transition: background-color .3s ease-in-out; }
+    box-shadow: none;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 0;
+    transition: all 0.2s ease-out 0s; }
     #filter-box button:hover, #filter-box button:focus {
-      background-color: #18789b; }
-  #filter-box .list-heading {
-    font-size: 1.3em;
-    font-weight: 500;
-    margin-bottom: 5px; }
-    @media (min-width: 768px) {
-      #filter-box .list-heading {
-        margin-bottom: 0; } }
+      background-color: #b3b3b3; }
+    #filter-box button:active {
+      background-color: gray; }
   #filter-box .program-label:before, #filter-box .topic-label:before, #filter-box .role-label:before {
     content: '';
     display: inline-block;
@@ -5058,30 +5066,51 @@ a.cta-button,
   #filter-box .role-label:before {
     background-color: #4789A3; }
   #filter-box #program-filter, #filter-box #role-filter, #filter-box #topic-filter {
-    width: 90%;
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0.5em calc(1em + 20px) 0.5em 1em;
+    margin-top: 10px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
     background-color: white;
     background-image: url(https://www.microstrategy.com/Strategy/media/images/icons/svg/chevron_down.svg);
     background-repeat: no-repeat;
     background-position: 95% 14px;
-    padding: .5em;
-    color: gray;
-    position: absolute;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-    @media (min-width: 768px) {
-      #filter-box #program-filter, #filter-box #role-filter, #filter-box #topic-filter {
-        cursor: pointer;
-        width: 30%; } }
-    @media (min-width: 1100px) {
-      #filter-box #program-filter, #filter-box #role-filter, #filter-box #topic-filter {
-        width: 15%; } }
+    color: #555555;
+    font-weight: 400; }
     #filter-box #program-filter ul, #filter-box #role-filter ul, #filter-box #topic-filter ul {
-      padding-left: 0; }
-      #filter-box #program-filter ul li label, #filter-box #role-filter ul li label, #filter-box #topic-filter ul li label {
-        text-transform: capitalize;
-        font-size: 1em;
-        font-weight: 400 !important; }
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      background-color: #ffffff;
+      top: 100%;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
+      #filter-box #program-filter ul li, #filter-box #role-filter ul li, #filter-box #topic-filter ul li {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        padding: 7px 15px;
+        margin: 0;
+        cursor: pointer; }
+        #filter-box #program-filter ul li:hover, #filter-box #role-filter ul li:hover, #filter-box #topic-filter ul li:hover {
+          background-color: #f2f2f2; }
+        #filter-box #program-filter ul li label, #filter-box #role-filter ul li label, #filter-box #topic-filter ul li label {
+          -webkit-flex: 1 0 auto;
+          flex: 1 0 auto;
+          max-width: none;
+          margin-left: 5px;
+          margin-top: 2px;
+          text-transform: capitalize;
+          letter-spacing: normal;
+          font-size: 14px;
+          font-weight: 400 !important; }
       #filter-box #program-filter ul > li::before, #filter-box #role-filter ul > li::before, #filter-box #topic-filter ul > li::before {
-        border: none; }
+        display: none; }
   #filter-box #topic-filter {
     z-index: 3; }
   #filter-box #role-filter {
@@ -5196,10 +5225,19 @@ a.cta-button,
     background-color: #f2f2f2; }
 
 .session-title {
-  font-size: 1.7em;
+  font-size: 1.2em;
   line-height: 1.2em;
   font-weight: 400;
   transition: all .3s ease-in-out; }
+  @media (min-width: 768px) {
+    .session-title {
+      font-size: 1.3em; } }
+  @media (min-width: 1100px) {
+    .session-title {
+      font-size: 1.5em; } }
+  @media (min-width: 1400px) {
+    .session-title {
+      font-size: 1.7em; } }
 
 .session-speaker {
   font-size: 1em;
@@ -5218,7 +5256,7 @@ a.cta-button,
 
 .session-description {
   padding: 20px 0 0 20px;
-  font-weight: 300; }
+  font-weight: 400; }
 
 .tag-heading {
   text-transform: uppercase;
@@ -5227,44 +5265,29 @@ a.cta-button,
   font-size: 12px;
   margin-right: 10px; }
 
-#list-view-btn {
+#agenda-page #grid-view-btn,
+#agenda-page #list-view-btn {
   display: none; }
   @media (min-width: 1100px) {
-    #list-view-btn {
+    #agenda-page #grid-view-btn,
+    #agenda-page #list-view-btn {
+      display: -webkit-inline-flex;
       display: inline-flex;
-      background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
       border: none;
-      width: 4%;
-      height: 25px;
-      transition: all .3s ease-in-out;
+      background: transparent;
+      width: 60px;
+      max-width: 100%;
+      height: auto;
       cursor: pointer;
-      opacity: .5; }
-      #list-view-btn:hover, #list-view-btn:focus {
-        background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
+      opacity: .5;
+      transition: all 0.2s ease-out 0s; }
+      #agenda-page #grid-view-btn:hover, #agenda-page #grid-view-btn:focus,
+      #agenda-page #list-view-btn:hover,
+      #agenda-page #list-view-btn:focus {
         outline: none;
         opacity: 1; }
-      #list-view-btn.current {
-        background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
-        opacity: 1; } }
-
-#grid-view-btn {
-  display: none; }
-  @media (min-width: 1100px) {
-    #grid-view-btn {
-      display: inline-flex;
-      background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-      border: none;
-      width: 4%;
-      height: 25px;
-      transition: all .3s ease-in-out;
-      cursor: pointer;
-      opacity: .5; }
-      #grid-view-btn:hover, #grid-view-btn:focus {
-        background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-        outline: none;
-        opacity: 1; }
-      #grid-view-btn.current {
-        background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
+      #agenda-page #grid-view-btn.current,
+      #agenda-page #list-view-btn.current {
         opacity: 1; } }
 
 .add-to-agenda {
