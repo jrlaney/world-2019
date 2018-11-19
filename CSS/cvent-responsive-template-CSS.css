@@ -5069,7 +5069,7 @@ a.cta-button,
     display: block;
     position: relative;
     width: 100%;
-    padding: 0.5em calc(1em + 20px) 0.5em 1em;
+    padding: 0;
     margin-top: 10px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -5103,14 +5103,17 @@ a.cta-button,
           -webkit-flex: 1 0 auto;
           flex: 1 0 auto;
           max-width: none;
-          margin-left: 5px;
-          margin-top: 2px;
+          padding: 2px 5px;
+          margin: 0;
           text-transform: capitalize;
           letter-spacing: normal;
           font-size: 14px;
-          font-weight: 400 !important; }
+          font-weight: 400 !important;
+          cursor: pointer; }
       #filter-box #program-filter ul > li::before, #filter-box #role-filter ul > li::before, #filter-box #topic-filter ul > li::before {
         display: none; }
+  #filter-box .jplist-dd-panel {
+    padding: 0.5em calc(1em + 20px) 0.5em 1em; }
   #filter-box #topic-filter {
     z-index: 3; }
   #filter-box #role-filter {
