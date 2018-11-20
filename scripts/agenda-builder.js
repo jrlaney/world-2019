@@ -93,7 +93,14 @@ function populateSessions(isMyAgenda)
 					{
 						tags += "<span class=\"text-label topic-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
-			}
+			}//end first snippet
+
+
+
+
+
+
+			//start second snippet
 			var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 			description = description.replace(/\n/g, '<br />');
 			var index = myArticles.indexOf(value.Id);
@@ -160,14 +167,6 @@ $('document').ready(function ()
 					});
 			}
 		});
-		// End of first snippet
-
-
-
-
-
-
-		// Second snippet starts here
 		//Sorting items
 		program.sort();
 		role.sort();
@@ -200,6 +199,14 @@ $('document').ready(function ()
 			}
 		});
 	}); //end of api pull
+	// End of second snippet
+
+
+
+
+
+
+	// Third snippet starts here
 
 	$('#filter-btn').click(function (event)
 	{
@@ -303,11 +310,13 @@ $('document').ready(function ()
 	{
 		var html = "<html>";
 		html += "<head>";
-		html += "<style type='text/css'>#content div.ads, #content img {display:none}</style>";
-		html += "<link rel='Stylesheet' type='text/css' href='css/print.css' media='print' />";
+		html += "<link rel='Stylesheet' type='text/css' href='http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/world2019-print-agenda-sheet.css' />";
 		html += "</head>";
 		html += "<body>";
+		html += "<div class='logo-zone'><img class='logo-img' src='https://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/world2019-logo.svg'><h2>MicroStrategy World 2019<span>February 4-6 2019</span><span>Phoenix, Arizona</span></h2><h3>http://events.microstrategy.com/world2019</h3></div>";
+		html += "<h1 class='agenda-headline'>My Agenda</h1><div class='agenda-body'><h5 class='text-uppercase text-bold program-label'>Theme</h5><h5 class='text-uppercase text-bold topic-label'>Topic</h5><h5 class='text-uppercase text-bold role-label'>Role</h5>";
 		html += $("#my-agenda-list").html();
+		html += "</div>";
 		html += "</body>";
 		html += "</html>";
 
@@ -319,4 +328,4 @@ $('document').ready(function ()
 		printWin.close();
 	});
 });
-</script >
+</script>

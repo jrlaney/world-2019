@@ -55,6 +55,10 @@ section {
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -81,14 +85,54 @@ ul {
             border-top: 15px solid transparent;
         }
     }
+
+    &.white>li:before {
+        border-right-color: $white;
+    }
+
+    &.light-gray>li:before {
+        border-right-color: $light-gray;
+    }
+
+    &.gray>li:before {
+        border-right-color: $gray;
+    }
+
+    &.dark-gray>li:before {
+        border-right-color: $dark-gray;
+    }
+
+    &.black>li:before {
+        border-right-color: $black;
+    }
+
+    &.red>li:before {
+        border-right-color: $red;
+    }
+
+    &.green>li:before {
+        border-right-color: $green;
+    }
+
+    &.blue>li:before {
+        border-right-color: $blue;
+    }
+
+    &.navy>li:before {
+        border-right-color: $navy;
+    }
+
+    &.orange>li:before {
+        border-right-color: $orange;
+    }
 }
 
 ol {
     list-style-type: decimal;
     margin: 0;
-    padding-left: $base-spacing;
-    font-size: $font-size-18px;
-    line-height: 1.1em;
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 26px;
 
     li {
         padding: 0;
@@ -96,6 +140,42 @@ ol {
 
     ol {
         list-style-type: lower-alpha;
+    }
+}
+
+blockquote {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    position: relative;
+    padding: 0;
+    margin: 20px;
+    font-size: 26px;
+    line-height: 35px;
+    font-style: italic;
+
+    &:before,
+    &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        top: -20px;
+        left: -20px;
+        height: 56px;
+        width: 68px;
+        background-image: url(https://custom.cvent.com/83AD54AE0B7F4CBC94A9A945D0A278DA/pix/6466feb2819a44848228682e37f307a2.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        opacity: 0.3;
+    }
+
+    &:after {
+        top: auto;
+        left: auto;
+        bottom: -20px;
+        right: -20px;
+        transform: rotate(180deg);
     }
 }
 
@@ -108,11 +188,31 @@ h6,
 p,
 ul,
 ol,
-img {
-    margin:0;
-    margin-top: $base-spacing;
+img,
+.cta-button,
+.line,
+.button-group,
+.triangle-group,
+.text-label,
+.text-label-group,
+.text-block-group {
+    margin-top: 20px;
 
     &:first-child {
+        margin-top: 0px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    &:empty {
         margin-top: 0px;
     }
 }
@@ -132,7 +232,7 @@ p+p,
 .text-label+.triangle-group,
 .text-label-group+p,
 .text-block-group+p {
-    margin-top: $base-spacing / 2;
+    margin-top: 10px;
 
     &:first-child {
         margin-top: 0px;
@@ -143,14 +243,15 @@ p+p,
     }
 }
 
-///////////////////////////////////  FORMS
+/* FORMS
+--------------------------------------------------------------*/
 label {
     display: inline-block;
     *zoom: 1;
     *display: inline;
-    font-size: .75rem;
+    font-size: 12px;
     line-height: 1em;
-    margin: ($base-spacing / 4) 0;
+    margin: 5px 0;
     font-weight: 600 !important;
     @include uppercase;
     color: $black;
@@ -161,11 +262,11 @@ textarea {
     display: block;
     width: 100%;
     padding: .75em;
-    margin-bottom: $base-spacing;
+    margin-bottom: 20px;
     background-color: $white;
     border: 1px solid $iron;
     font-family: $myriad-pro;
-    font-size: .875rem;
+    font-size: 14px;
     color: $black;
 }
 
@@ -184,7 +285,7 @@ input[type='radio'] {
     *display: inline;
     vertical-align: middle;
     width: auto;
-    margin-bottom: $base-spacing / 4;
+    margin-bottom: 5px;
     margin-left: 1px;
 }
 
@@ -192,7 +293,7 @@ select {
     display: block;
     width: 100%;
     padding: .75em;
-    margin-bottom: $base-spacing;
+    margin-bottom: 20px;
     background-color: $white;
     border: 1px solid $iron;
     font-size: 14px;

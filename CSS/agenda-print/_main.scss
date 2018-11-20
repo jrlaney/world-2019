@@ -1,0 +1,73 @@
+.logo-zone {
+	padding:$base-spacing 0;
+	border-bottom:1px solid $iron;
+	.logo-img {
+		display:inline-block;
+		vertical-align:middle;
+		width:15rem;
+		margin-right:$base-spacing;
+	}
+	> h2 {
+		display:inline-block;
+		vertical-align:middle;
+		font-size:$font-size-22px;
+		line-height:1em;
+		margin:0; padding:0;
+
+		> span {
+			display:block;
+			margin:($base-spacing / 2) 0 0 0; padding:0;
+			@include uppercase;
+			font-size:$font-size-14px;
+			line-height:1em;
+			color:$dark-gray;
+		}
+	}
+	> h3 {
+		padding-top:$base-spacing;
+		font-size:$font-size-16px;
+		font-weight:400;
+		color:$a1link;
+		display:block;
+		//float:right;
+	}
+}
+.program-label, .topic-label, .role-label, {
+	display:inline-block; vertical-align:middle;
+	padding: 0.25em 0.75em;
+	margin:0 $base-spacing $base-spacing 0!important;
+	background-color:$light-gray;
+	border-left:5px solid $black;
+
+	font-size:$font-size-18px;
+	line-height:1em;
+}
+.program-label {border-left-color:$red;}
+.topic-label {border-left-color:$orange;}
+.role-label {border-left-color:$blue;}
+
+.grid-item {
+	padding:$base-spacing 0;
+	border-top:1px solid $gray;
+}
+.session-speaker {font-style: italic; color:$dark-gray;}
+.session-details {padding-left:$base-spacing;}
+.tag-heading {
+	@include uppercase;
+    font-weight: 600;
+    font-size: $font-size-12px;
+	margin-right:$base-spacing / 2;
+}
+.tags {
+	.text-label {
+		border-left:3px solid $black;
+		&.program-tag {border-left-color:$red;}
+		&.topic-tag {border-left-color:$orange;}
+		&.role-tag {border-left-color:$blue;}
+	}
+
+}
+.add-to-agenda, .details-expand, .session-type {display:none;}
+@media print {
+	.text-label, .program-label, .topic-label, .role-label {background-color:$light-gray;}
+}

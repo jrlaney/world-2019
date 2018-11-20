@@ -1,0 +1,113 @@
+
+// SPACING
+    $base-spacing: 1.25rem;
+
+// MEDIA QUERIES
+
+    // breakpoints
+    $sm-breakpoint: 320px;
+    $md-breakpoint:  768px;
+    $lg-breakpoint: 1100px;
+    $xl-breakpoint:  1400px;
+
+    $small-only: $sm-breakpoint;
+    $medium: $md-breakpoint;
+    $large: $lg-breakpoint;
+    $xlarge: $xl-breakpoint;
+
+
+// COLORS
+
+    // brand colors
+    $red              : #D9232E;
+    $blue             : #4789A3;
+    $navy             : #11566F;
+    $orange           : #FF9100;
+    $green            : #68AA00;
+
+    // grays
+    $white            : #ffffff;
+    $light-gray       : #ececec;
+    $gray             : #999999;
+    $dark-gray        : #555555;
+    $black            : #333333;
+
+    // tints
+    $light-red        : lighten(saturate($red, 10%), 5%); //#f32532
+    $light-blue       : lighten(saturate($blue, 10%), 5%); //#5ea1bb
+    $light-navy       : lighten(saturate($navy, 10%), 5%); //#1e6c88
+    $light-orange     : lighten(saturate($orange, 10%), 5%); //#ffa733
+    $light-green      : lighten(saturate($green, 10%), 5%); //#79bc0f
+
+    // shades
+    $dark-red         : darken(desaturate($red, 5%), 5%); //#c5202a
+    $dark-blue        : darken(desaturate($blue, 5%), 5%); //#3a7288
+    $dark-navy        : darken(desaturate($navy, 5%), 5%); //#11485c
+    $dark-orange      : darken(desaturate($orange, 5%), 5%); //#ef7d03
+    $dark-green       : darken(desaturate($green, 5%), 5%); //#5d9209
+
+    // additional grays
+    $ghost            : #FAFAFA;
+    $snow             : #F9F9F9;
+    $vapor            : #F6F6F6;
+    $white-smoke      : #f2f2f2;
+    $silver           : #ececec;
+    $smoke            : #EEEEEE;
+    $gainsboro        : #DDDDDD;
+    $iron             : #CCCCCC;
+    $base             : #AAAAAA;
+    $aluminum         : #999999;
+    $jumbo            : #888888;
+    $monsoon          : #777777;
+    $steel            : #666666;
+    $charcoal         : #555555;
+    $tuatara          : #444444;
+    $oil              : #333333;
+    $jet              : #222222;
+    $pure-black       : #000000;
+
+    // link state colors
+    $a1link           : #377ABD;
+    $a1visited        : #377ABD;
+    $a1hover          : #4EA2F6;
+    $a1active         : #285989;
+
+    // other brand colors
+    $facebook         : #365397;
+    $twitter          : #00a9f1;
+    $linkedin         : #006db3;
+    $google-plus      : #e0452c;
+    $youtube          : #ff3333;
+    $flickr           : #ea0066;
+    $xing             : #026466;
+
+
+
+// TYPOGRAPHY
+
+    // font families
+    $sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    $myriad-pro: myriad-pro, 'Myriad Pro', $sans-serif;
+    $lucida-grande: 'Lucida Grande', $sans-serif;
+
+    $font-size-12px: 0.6667rem;
+    $font-size-14px: 0.7778rem;
+    $font-size-16px: 0.8889rem;
+    $font-size-18px: 1rem;
+
+    $font-size-20px: 1.111rem;
+    $font-size-22px: 1.222rem;
+    $font-size-25px: 1.389rem;
+    $font-size-30px: 1.667rem;
+    $font-size-32px: 1.778rem;
+    $font-size-36px: 2rem;
+
+    $font-size-40px: 2.222rem;
+    $font-size-60px: 3.333rem;
+
+
+
+
+    // $base-gutter-sm: 10px;
+    // $base-gutter-md: 15px;
+    // $base-gutter-xl: 20px;

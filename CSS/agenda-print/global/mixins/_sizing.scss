@@ -1,0 +1,39 @@
+// SIZING
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+@mixin min-size($width, $height:$width) {
+    min-width: $width;
+    min-height: $height;
+}
+@mixin max-size($width, $height:$width) {
+    max-width: $width;
+    max-height: $height;
+}
+
+
+
+// SPACING
+
+@mixin padding-x($padding) {
+    padding-left: $padding;
+    padding-right: $padding;
+}
+@mixin padding-y($padding) {
+    padding-top: $padding;
+    padding-bottom: $padding;
+}
+@mixin margin-x($margin) {
+    margin-left: $margin;
+    margin-right: $margin;
+}
+@mixin margin-y($margin) {
+    margin-top: $margin;
+    margin-bottom: $margin;
+}
+@mixin box-sizing($value) {
+    box-sizing: $value;
+    @content;
+}
