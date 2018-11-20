@@ -1,5 +1,28 @@
 <script type="text/javascript">
 var allSessions = [];
+
+function getQueryStringParamValue(key)
+{
+	var url = document.location.href;
+	var value = "";
+
+	if (url.indexOf('?') !== -1)
+	{
+		var queryStrings = url.substr(url.indexOf('?') + 1);
+
+		if (queryStrings.toLowerCase().indexOf(key.toLowerCase() + "=") !== -1)
+		{
+			var queryString = queryStrings.split("&").find(function (element)
+			{
+				return element.toLowerCase().split("=")[0] === key.toLowerCase();
+			});
+			if (typeof queryString !== "undefined")
+				value = queryString.substr(queryString.indexOf('=') + 1);
+		}
+	}
+	return value;
+}
+
 function classifyText(text)
 {
 	var returnValue = "";
@@ -144,6 +167,13 @@ function updateAddtoMyAgendaButtons()
 
 $('document').ready(function ()
 {
+	var sessions = getQueryStringParamValue("sessions");
+	if (sessions.length > 0)
+	{
+		debugger;
+		var myArticles = sessions.replace("[", "").replace("]", "").split("%22").join("").split(",");
+		$.cookie("myAgenda", JSON.stringify(myArticles), { path: '/', expires: 7 });
+	}
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data)
 	{
@@ -364,12 +394,41 @@ $('document').ready(function ()
 		html += "</body>";
 		html += "</html>";
 
-		var printWin = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status  =0');
+		var printWin = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status=0');
 		printWin.document.write(html);
 		printWin.document.close();
 		printWin.focus();
-		printWin.print();
-		printWin.close();
+		setTimeout(function ()
+		{
+			printWin.print();
+		}, 500);
+		setTimeout(function ()
+		{
+			printWin.close();
+		}, 500);
+	});
+
+	$("#share-agenda").click(function ()
+	{
+		var shareURL = window.location.href;
+		if (shareURL.indexOf("?") > -1)
+			shareURL = shareURL + "&sessions=" + $.cookie("myAgenda");
+		else
+			shareURL = shareURL + "?sessions=" + $.cookie("myAgenda");
+
+		var html = "<html>";
+		html += "<head>";
+		html += "<script type=\"text/javascript\">function copyURL() {var copyText = document.getElementById(\"input-url\");copyText.select();document.execCommand(\"copy\");alert(\"Copied!\");}<\/script>";
+		html += "</head>";
+		html += "<body>";
+		html += "<div><h3>Click button below to copy current url to clipboard or use the URL below</h3 ><input type=\"text\" id=\"input-url\" value=" + shareURL + "><button class=\"btn-copy\" onclick=\"copyURL()\">Copy</button></div>";
+		html += "</body>";
+		html += "</html>";
+
+		var shareWin = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status=0');
+		shareWin.document.write(html);
+		shareWin.document.close();
+		shareWin.focus();
 	});
 });
 </script>
