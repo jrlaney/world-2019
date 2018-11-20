@@ -53,21 +53,18 @@ function tagFilterInit()
 	});
 }
 
-function populateSessions(isMyAgenda)
+function populateMyAgendaSessions()
 {
 	var myAgenda = $.cookie("myAgenda");
 	var myArticles = [];
 	if (myAgenda !== undefined)
 		myArticles = JSON.parse(myAgenda);
-	if (isMyAgenda)
-		$("#my-agenda-list").html("");
-	else
-		$("#agendaCards").html("");
+	$("#my-agenda-list").html("");
 
 	//Looping through each data point from airtable and creating the cards
 	$.each(allSessions, function (key, value)
 	{
-		if (value.Title != null && value.Publish && (!isMyAgenda || myArticles.indexOf(value.Id) > -1))
+		if (value.Title != null && value.Publish && myArticles.indexOf(value.Id) > -1)
 		{
 			var tags = "";
 			if (value.Program != null)
@@ -103,10 +100,8 @@ function populateSessions(isMyAgenda)
 			//start second snippet
 			var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 			description = description.replace(/\n/g, '<br />');
-			var index = myArticles.indexOf(value.Id);
-			var sessionsHolder = (isMyAgenda ? $("#my-agenda-list") : $("#agendaCards"));
-			sessionsHolder.append("" +
-				"<article class=\"grid-item agenda-list\" id=\"" + (isMyAgenda ? "myAgenda-" : "") + value.Id + "\">" +
+			$("#my-agenda-list").append("" +
+				"<article class=\"grid-item agenda-list\" id=\"myAgenda-" + value.Id + "\">" +
 				"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 				"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 				"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
@@ -115,23 +110,40 @@ function populateSessions(isMyAgenda)
 				"</div>" +
 				"<div class=\"text-label-group tags\">" +
 				"<span class=\"tag-heading\">Tags:</span>" + tags + "</div>" +
-				"<div class='add-to-agenda " + ((index > -1) ? 'added' : '') + "'><span class=\"plus-icon\"></span><span class=\"txt-add\">Add to</span><span class=\"txt-remove\">Remove from</span> my agenda</div>" +
+				"<div class='add-to-agenda added'><span class=\"plus-icon\"></span><span class=\"txt-add\">Add to</span><span class=\"txt-remove\">Remove from</span> my agenda</div>" +
 				"<span class=\"details-expand\">" + 'See Details' + "</span>" +
 				"</article>");
 		}
 	});
-	if (!isMyAgenda && $("#filter-box input[type=checkbox]").length)
-	{
-		$("#filter-box input[type=checkbox]").trigger('change');
-	}
 }
+
+function updateAddtoMyAgendaButtons()
+{
+	var myAgenda = $.cookie("myAgenda");
+	var myArticles = [];
+	if (myAgenda !== undefined)
+	{
+		myArticles = JSON.parse(myAgenda);
+		if (typeof myArticles === "string")
+			myArticles = JSON.parse(myArticles);
+	}
+	$.each($("#agendaCards article"), function (key, article)
+	{
+		var id = $(article).attr('id');
+		var index = myArticles.indexOf(id);
+		if (index === -1) 
+			$(article).children(".add-to-agenda").removeClass("added");
+		else
+			$(article).children(".add-to-agenda").addClass("added");
+	});
+}
+
 $('document').ready(function ()
 {
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data)
 	{
 		allSessions = data;
-		populateSessions(false);
 
 		//Creating empty array variables for each of the filtering options
 		var program = [];
@@ -139,34 +151,70 @@ $('document').ready(function ()
 		var topic = [];
 		$.each(allSessions, function (key, value)
 		{
-			if (value.Program != null)
+			if (value.Title != null && value.Publish)
 			{
-				$.each(value.Program,
-					function (k, v)
-					{
-						if (program.indexOf(v) === -1)
-							program.push(v);
-					});
-			}
-			if (value.RolePersona != null)
-			{
-				$.each(value.RolePersona,
-					function (k, v)
-					{
-						if (role.indexOf(v) === -1)
-							role.push(v);
-					});
-			}
-			if (value.Topic != null)
-			{
-				$.each(value.Topic,
-					function (k, v)
-					{
-						if (topic.indexOf(v) === -1)
-							topic.push(v);
-					});
+				var tags = "";
+				if (value.Program != null)
+				{
+					$.each(value.Program,
+						function (k, v)
+						{
+							tags += "<span class=\"text-label program-tag " + classifyText(v) + "\">" + v + "</span>";
+							if (program.indexOf(v) === -1)
+								program.push(v);
+						});
+				}
+				if (value.RolePersona != null)
+				{
+					$.each(value.RolePersona,
+						function (k, v)
+						{
+							tags += "<span class=\"text-label role-tag " + classifyText(v) + "\">" + v + "</span>";
+							if (role.indexOf(v) === -1)
+								role.push(v);
+						});
+				}
+				if (value.Topic != null)
+				{
+					$.each(value.Topic,
+						function (k, v)
+						{
+							tags += "<span class=\"text-label topic-tag " + classifyText(v) + "\">" + v + "</span>";
+							if (topic.indexOf(v) === -1)
+								topic.push(v);
+						});
+				}
+
+				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
+				description = description.replace(/\n/g, '<br />');
+				$("#agendaCards").append("" +
+					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
+					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
+					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
+					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
+					"<div class=\"session-details hide\">" +
+					"<p class=\"session-description\">" + description + "</p>" +
+					"</div>" +
+					"<div class=\"text-label-group tags\">" +
+					"<span class=\"tag-heading\">Tags:</span>" + tags + "</div>" +
+					"<div class='add-to-agenda'><span class=\"plus-icon\"></span><span class=\"txt-add\">Add to</span><span class=\"txt-remove\">Remove from</span> my agenda</div>" +
+					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
+					"</article>");
 			}
 		});
+<<<<<<< HEAD
+=======
+		updateAddtoMyAgendaButtons();
+
+		// End of first snippet
+
+
+
+
+
+
+		// Second snippet starts here
+>>>>>>> d588bd7ba52c85992a5cf713e2da2409f7125a78
 		//Sorting items
 		program.sort();
 		role.sort();
@@ -303,7 +351,10 @@ $('document').ready(function ()
 		{
 			$(tab).css('display', 'block');
 		}, 400);
-		populateSessions(tab.indexOf("#my-agenda") > -1);
+		if (tab.indexOf("#my-agenda") > -1)
+			populateMyAgendaSessions();
+		else if (tab.indexOf("#sessions") > -1)
+			updateAddtoMyAgendaButtons();
 	});//tab toogle script
 
 	$("#print-agenda").click(function ()
