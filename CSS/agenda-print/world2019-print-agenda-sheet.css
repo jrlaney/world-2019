@@ -532,7 +532,7 @@ p,
   .tags .text-label.role-tag {
     border-left-color: #4789A3; }
 
-.add-to-agenda, .details-expand, .session-type {
+.add-to-agenda, .details-expand, .session-type, .session-details, .session-speaker {
   display: none; }
 
 @media print {

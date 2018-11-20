@@ -98,6 +98,7 @@ function populateMyAgendaSessions()
 						tags += "<span class=\"text-label program-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
 			}
+
 			if (value.RolePersona != null)
 			{
 				$.each(value.RolePersona,
@@ -132,17 +133,6 @@ function populateMyAgendaSessions()
 		}
 	});
 }
-//end first snippet
-
-
-
-
-
-
-
-
-
-//start second snippet
 
 function updateAddtoMyAgendaButtons()
 {
@@ -164,6 +154,17 @@ function updateAddtoMyAgendaButtons()
 			$(article).children(".add-to-agenda").addClass("added");
 	});
 }
+//end first snippet
+
+
+
+
+
+
+
+
+
+//start second snippet
 
 $('document').ready(function ()
 {
@@ -270,14 +271,6 @@ $('document').ready(function ()
 			}
 		});
 	}); //end of api pull
-	// End of second snippet
-
-
-
-
-
-
-	// Third snippet starts here
 
 	$('#filter-btn').click(function (event)
 	{
@@ -305,7 +298,14 @@ $('document').ready(function ()
 		id = id.replace("myAgenda-", "");
 		var myAgenda = $.cookie("myAgenda");
 		var myArticles = [];
+	// End of second snippet
 
+
+
+
+
+
+	// Third snippet starts here
 		if (myAgenda !== undefined)
 		{
 			myArticles = JSON.parse(myAgenda);
@@ -337,6 +337,7 @@ $('document').ready(function ()
 		}
 		$.cookie("myAgenda", JSON.stringify(myArticles), { path: '/', expires: 7 });
 	});
+
 
 	$('#grid-view-btn').click(function (e)
 	{

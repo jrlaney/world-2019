@@ -67,7 +67,7 @@
 	}
 
 }
-.add-to-agenda, .details-expand, .session-type {display:none;}
+.add-to-agenda, .details-expand, .session-type, .session-details, .session-speaker {display:none;}
 @media print {
 	.text-label, .program-label, .topic-label, .role-label {background-color:$light-gray;}
 }
