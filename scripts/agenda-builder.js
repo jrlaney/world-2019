@@ -294,18 +294,18 @@ $('document').ready(function ()
 		var classes = $(this).attr("class");
 		var article = $(this).parent();
 		var id = article.attr('id');
-		//var myAgendaArticle = id.indexOf("myAgenda-") > -1;
+		var myAgendaArticle = id.indexOf("myAgenda-") > -1;
 		id = id.replace("myAgenda-", "");
 		var myAgenda = $.cookie("myAgenda");
 		var myArticles = [];
-	// End of second snippet
+		// End of second snippet
 
 
 
 
 
 
-	// Third snippet starts here
+		// Third snippet starts here
 		if (myAgenda !== undefined)
 		{
 			myArticles = JSON.parse(myAgenda);
@@ -336,6 +336,9 @@ $('document').ready(function ()
 				$(this).removeClass("added");
 		}
 		$.cookie("myAgenda", JSON.stringify(myArticles), { path: '/', expires: 7 });
+
+		if (myAgendaArticle)
+			article.fadeOut(1000, function () { $(this).remove(); });
 	});
 
 
