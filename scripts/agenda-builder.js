@@ -154,6 +154,14 @@ function updateAddtoMyAgendaButtons()
 			$(article).children(".add-to-agenda").addClass("added");
 	});
 }
+
+function copyURL()
+{
+	var copyText = document.getElementById("inputURL");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Copied!");
+}
 //end first snippet
 
 
@@ -379,7 +387,10 @@ $('document').ready(function ()
 			$(tab).css('display', 'block');
 		}, 400);
 		if (tab.indexOf("#my-agenda") > -1)
+		{
 			populateMyAgendaSessions();
+			$("#shareURL").hide();
+		}
 		else if (tab.indexOf("#sessions") > -1)
 			updateAddtoMyAgendaButtons();
 	});//tab toogle script
@@ -414,25 +425,15 @@ $('document').ready(function ()
 
 	$("#share-agenda").click(function ()
 	{
+		debugger ;
 		var shareURL = window.location.href;
 		if (shareURL.indexOf("?") > -1)
 			shareURL = shareURL + "&sessions=" + $.cookie("myAgenda");
 		else
 			shareURL = shareURL + "?sessions=" + $.cookie("myAgenda");
 
-		var html = "<html>";
-		html += "<head>";
-		html += "<script type=\"text/javascript\">function copyURL() {var copyText = document.getElementById(\"input-url\");copyText.select();document.execCommand(\"copy\");alert(\"Copied!\");}<\/script>";
-		html += "</head>";
-		html += "<body>";
-		html += "<div><h3>Click button below to copy current url to clipboard or use the URL below</h3 ><input type=\"text\" id=\"input-url\" value=" + shareURL + "><button class=\"btn-copy\" onclick=\"copyURL()\">Copy</button></div>";
-		html += "</body>";
-		html += "</html>";
-
-		var shareWin = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status=0');
-		shareWin.document.write(html);
-		shareWin.document.close();
-		shareWin.focus();
+		$("#inputURL").val(shareURL);
+		$("#shareURL").show();
 	});
 });
 </script>
