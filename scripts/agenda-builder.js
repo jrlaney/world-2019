@@ -76,12 +76,22 @@ function tagFilterInit()
 	});
 }
 
-function populateMyAgendaSessions()
+function GetSessionsFromCookie()
 {
 	var myAgenda = $.cookie("myAgenda");
 	var myArticles = [];
 	if (myAgenda !== undefined)
+	{
 		myArticles = JSON.parse(myAgenda);
+		if (typeof myArticles === "string")
+			myArticles = JSON.parse(myArticles);
+	}
+	return myArticles;
+}
+
+function populateMyAgendaSessions()
+{
+	var myArticles = GetSessionsFromCookie();
 	$("#my-agenda-list").html("");
 
 	//Looping through each data point from airtable and creating the cards
@@ -136,14 +146,8 @@ function populateMyAgendaSessions()
 
 function updateAddtoMyAgendaButtons()
 {
-	var myAgenda = $.cookie("myAgenda");
-	var myArticles = [];
-	if (myAgenda !== undefined)
-	{
-		myArticles = JSON.parse(myAgenda);
-		if (typeof myArticles === "string")
-			myArticles = JSON.parse(myArticles);
-	}
+	var myArticles = GetSessionsFromCookie();
+
 	$.each($("#agendaCards article"), function (key, article)
 	{
 		var id = $(article).attr('id');
@@ -179,7 +183,6 @@ $('document').ready(function ()
 	var sessions = getQueryStringParamValue("sessions");
 	if (sessions.length > 0)
 	{
-		debugger;
 		var myArticles = sessions.replace("[", "").replace("]", "").split("%22").join("").split(",");
 		$.cookie("myAgenda", JSON.stringify(myArticles), { path: '/', expires: 7 });
 	}
@@ -305,7 +308,7 @@ $('document').ready(function ()
 		var myAgendaArticle = id.indexOf("myAgenda-") > -1;
 		id = id.replace("myAgenda-", "");
 		var myAgenda = $.cookie("myAgenda");
-		var myArticles = [];
+		var myArticles = GetSessionsFromCookie();
 		// End of second snippet
 
 
@@ -316,9 +319,6 @@ $('document').ready(function ()
 		// Third snippet starts here
 		if (myAgenda !== undefined)
 		{
-			myArticles = JSON.parse(myAgenda);
-			if (typeof myArticles === "string")
-				myArticles = JSON.parse(myArticles);
 			var index = myArticles.indexOf(id);
 			if (classes.indexOf("added") === -1)
 			{
@@ -427,10 +427,11 @@ $('document').ready(function ()
 	{
 		debugger ;
 		var shareURL = window.location.href;
+		var cookieValue = $.cookie("myAgenda").replace("[", "").replace("]", "").split("%22").join("").split("\"").join("");
 		if (shareURL.indexOf("?") > -1)
-			shareURL = shareURL + "&sessions=" + $.cookie("myAgenda");
+			shareURL = shareURL + "&sessions=" + cookieValue;
 		else
-			shareURL = shareURL + "?sessions=" + $.cookie("myAgenda");
+			shareURL = shareURL + "?sessions=" + cookieValue;
 
 		$("#inputURL").val(shareURL);
 		$("#shareURL").show();
