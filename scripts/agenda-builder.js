@@ -164,7 +164,6 @@ function copyURL()
 	var copyText = document.getElementById("inputURL");
 	copyText.select();
 	document.execCommand("copy");
-	alert("Copied!");
 }
 //end first snippet
 
@@ -425,7 +424,6 @@ $('document').ready(function ()
 
 	$("#share-agenda").click(function ()
 	{
-		debugger ;
 		var shareURL = window.location.href;
 		var cookieValue = $.cookie("myAgenda").replace("[", "").replace("]", "").split("%22").join("").split("\"").join("");
 		if (shareURL.indexOf("?") > -1)
@@ -435,6 +433,16 @@ $('document').ready(function ()
 
 		$("#inputURL").val(shareURL);
 		$("#shareURL").show();
+	});
+
+	$("#buttonCopy").click(function ()
+	{
+		$(this).text("Copied!");
+
+		setTimeout(function ()
+		{
+			$("#buttonCopy").text("Copy");
+		}, 5000);
 	});
 });
 </script>
