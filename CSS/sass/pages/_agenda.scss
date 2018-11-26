@@ -12,6 +12,7 @@
 	background-color: $blue;
 	flex-direction: column;
 	@include medium {
+		flex-direction: row;
 		padding: 20px 80px 40px;
 	}
 
@@ -244,7 +245,7 @@
 }
 
 .tags {
-	padding-bottom:20px;
+	padding: $base-spacing 0;
 	.text-block, .text-label {
 		cursor:pointer;
 		@include transition;
@@ -355,20 +356,25 @@
 }
 
 .add-to-agenda {
-	position:absolute;
-	max-width:130px;
-	right:0; top:0;
-    padding: 15px;
+	position: relative;
+	padding: 15px;
+	margin-bottom: $base-spacing;
     background-color: $white;
     color: $black;
 	cursor: pointer;
-	@include transition;
-
 	font-size:12px;
 	line-height:16px;
 	font-weight:600;
-    @include uppercase;
 	text-align:center;
+    @include uppercase;
+	@include transition;
+	
+	@include medium {
+		position:absolute;
+		max-width:130px;
+		right:0;
+		top:0;
+	}
 
 	&:hover {
 		background-color:$light-gray;
