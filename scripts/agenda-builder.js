@@ -273,7 +273,7 @@ $('document').ready(function ()
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
 			itemPath: '.grid-item',
-			panelPath: '#filter-box',
+			panelPath: '.jp-lists',
 			effect: 'fade',
 			redrawCallback: function ()
 			{

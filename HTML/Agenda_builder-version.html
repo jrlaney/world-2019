@@ -35,7 +35,7 @@
 
 	<div class="background-navy">
 		<div id="sessions" class="tab-content">
-			<section id="filter-box" class="background-green no-padding">
+			<section id="filter-box" class="background-green no-padding jp-lists">
 				<div class="row around v-bottom">
 					<div class="col md-4 lg-3">
 						<h5 class="text-uppercase text-bold program-label">Theme</h5>
@@ -81,16 +81,19 @@
 						<div class="row">
 
 						</div>
-					</div>
+					</div>	
+				</div>
+				
+				<div class="row collapse jp-lists">
 
-					<div class="col">
-						<div class="jplist-pagination" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="15">&nbsp;</div>
-						<div class="jplist-no-results jplist-hidden">
-							<p>No results found</p>
-						</div>
+					<div class="jplist-pagination col" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="15">&nbsp;</div>
+					<div class="jplist-no-results jplist-hidden">
+						<p>No results found</p>
 					</div>
 
 				</div>
+
+					
 			</section>
 		</div>
 
@@ -106,7 +109,7 @@
 						<p class="h4">Below are your selected sessions, use the agenda toggle to remove sessions from the list.</p>
 						<div id="print-agenda" class="cta-button medium blue carat">Print this Agenda</div>
 						<div id="share-agenda" class="cta-button medium orange carat">Generate share link</div>
-						<div id="shareURL"><input type="text" id="inputURL" value=""/><span id="buttonCopy" class="btnCopy" onclick="copyURL()">Copy</span></div>
+						<div id="shareURL"><input type="text" id="inputURL" value=""/><span id="buttonCopy" class="btnCopy cta-button medium orange" onclick="copyURL()">Copy</span></div>
 					</div>
 					<div id="my-agenda-list" class="col">
 
