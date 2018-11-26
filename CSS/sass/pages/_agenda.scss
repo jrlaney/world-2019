@@ -10,6 +10,7 @@
 	text-align:center;
 	padding: 20px 0 40px;
 	background-color: $blue;
+	flex-direction: column;
 	@include medium {
 		padding: 20px 80px 40px;
 	}
@@ -95,14 +96,6 @@
 			background-color: darken($gray, 10%);
 		}
 	}
-	// .list-heading {
-	// 	font-size: 1.3em;
-	// 	font-weight: 500;
-	// 	margin-bottom: 5px;
-	// 	@include medium {
-	// 		margin-bottom: 0;
-	// 	}
-	// }
 
 	.program-label, .topic-label, .role-label, {
 		&:before {
@@ -135,19 +128,10 @@
 
 		color: $dark-gray;
 		font-weight:400;
-		//position: absolute;
-		// 	cursor: pointer;
-
-		// @include medium {
-		// 	width: 30%;
-		// }
-		//
-		// @include large {
-		// 	width: 15%;
-		// }
 
 		& ul{
-			position:absolute; z-index:3;
+			position:absolute; 
+			z-index:3;
 			width:100%;
 			background-color:$white;
 			top:100%; left:0;
@@ -181,14 +165,14 @@
 	}
 	.jplist-dd-panel {padding: .5em calc(1em + 20px) .5em 1em;}
 
-	#topic-filter{
-		z-index: 3;
-	}
 	#role-filter {
+		z-index: 1;
+	}
+	#topic-filter{
 		z-index: 2;
 	}
 	#program-filter {
-		z-index: 1;
+		z-index: 3;
 	}
 }
 
@@ -227,8 +211,6 @@
 	}
 }
 
-
-
 .agenda-list, .agenda-card {
 	@include display(flex);
 	@include flex-direction(column);
@@ -246,112 +228,19 @@
 }
 
 .agenda-list {
-	// flex-grow: 1;
-	// flex-shrink: 0;
 	width: 90%;
-	padding-right:150px;
-
+	
 	@include medium{
 		width: 100%;
+		padding-right:150px;
 	}
-
-	// .tags {
-	// 	@include display(flex);
-	// 	@include flex-direction(column);
-	// 	margin: 0 1em 20px;
-	//
-	// 	@include medium {
-	// 		flex-direction: row;
-	// 		flex-wrap: wrap;
-	// 		cursor: pointer;
-	// 	}
-	//
-	// 	// .topic-tag {
-	// 	// 	margin-left: .5em;
-	// 	// 	margin-top: .5em;
-	// 	// 	background-color: $light-gray;
-	// 	// 	text-transform: uppercase;
-	// 	// 	letter-spacing: 1px;
-	// 	// 	font-size: .8em;
-	// 	// 	font-weight: normal;
-	// 	// 	padding: .5em .5em;
-	// 	// 	@include medium{
-	// 	// 		margin-top: 0;
-	// 	// 		cursor: pointer;
-	// 	//
-	// 	// 	}
-	// 	// }
-	// }
-
-	// .tags .program-tag {
-	// 	font-size: .8em;
-	// 	font-weight: normal;
-	// 	line-height: 2.3em;
-	// 	text-transform: uppercase;
-	// 	letter-spacing: 1px;
-	// 	padding: .5em .5em;
-	// 	margin-left: .5em;
-	// 	background-color: $light-gray;
-	// 	cursor: pointer;
-	// }
 }
 
 .agenda-card {
 	@include flex-wrap(wrap);
-	//flex: 1 0 auto;
-	//flex-wrap: wrap;
-    //max-width: 31.7%;
 	@include medium {max-width:50%}
 	@include large {max-width:33.33333%}
 	@include xlarge {max-width:25%}
-
-	// .tags {
-	// 	margin-bottom: 70px;
-	// 	padding: 0 1em;
-	// 	cursor: pointer;
-	// 	// .topic-tag {
-	// 	// 	background-color: $light-gray;
-	// 	// 	font-size: .8em;
-	// 	// 	font-weight: normal;
-	// 	// 	text-transform: uppercase;
-	// 	// 	letter-spacing: 1px;
-	// 	// 	padding: .5em;
-	// 	// 	margin-left: .5em;
-	// 	// 	cursor: pointer;
-	// 	// }
-	// }
-
-	// .details-expand {
-	// 	position: absolute;
-	// 	bottom: 0;
-	// 	width: 100%;
-	// 	background-color: transparent;
-	// 	color: $gray;
-	// 	font-size: .9em;
-	// 	font-weight: 600;
-	// 	padding: .5em 1.5em;
-	// 	border: none;
-	// 	outline: none;
-	// 	cursor: pointer;
-	// 	border-top: 1px solid $light-gray;
-	// 	transition: background-color .3s ease-in-out;
-	// 	&:hover, &:focus {
-	// 		color: darken($gray, 10%);
-	// 		background-color: $light-gray;
-	// 	}
-	// }
-
-	// .tags .program-tag {
-	// 	font-size: .8em;
-	// 	font-weight: normal;
-	// 	line-height: 2.3em;
-	// 	text-transform: uppercase;
-	// 	letter-spacing: 1px;
-	// 	padding: .5em .5em;
-	// 	margin-left: .5em;
-	// 	background-color: $light-gray;
-	// 	cursor: pointer;
-	// }
 }
 
 .tags {
@@ -372,8 +261,8 @@
 		&.topic-tag:before {background-color:$orange;}
 		&.role-tag:before {background-color:$blue;}
 	}
-
 }
+
 .details-expand {
 	margin-top:auto;
 	width: calc(100% + 60px);
@@ -396,9 +285,6 @@
 }
 
 .session-title {
-	// padding-top: 20px;
-	// padding-left: 1em;
-	// padding-bottom: 20px;
 	font-size: 1.2em;
 	line-height: 1.2em;
 	font-weight: 400;
@@ -422,6 +308,7 @@
 	margin: 0;
 	padding-left: 1.4em;
 }
+
 .session-type {
 	font-size: 1em;
 	letter-spacing: 1px;
@@ -435,24 +322,6 @@
     font-weight: 400;
 }
 
-// .top-40 {
-// 	padding-top: 40px;
-// }
-
-// .role-tag {
-// 	margin: .5em;
-// 	text-transform: uppercase;
-// 	font-size: .8em;
-// 	font-weight: normal;
-// 	letter-spacing: 1px;
-// 	background-color: $light-gray;
-// 	padding: .5em;
-// 	@include medium {
-// 		margin: 0 .5em;
-// 		cursor: pointer;
-// 	}
-// }
-
 .tag-heading {
 	@include uppercase;
     font-weight: 600;
@@ -460,12 +329,10 @@
 	margin-right:10px;
 }
 
-
-
 #agenda-page #grid-view-btn,
 #agenda-page #list-view-btn{
 	display:none;
-
+	
 	@include large {
 		@include display(inline-flex);
 		border: none;
@@ -486,54 +353,6 @@
 		}
 	}
 }
-
-// #list-view-btn {
-// 	display: none;
-// 	@include large {
-// 		display: inline-flex;
-// 		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
-// 		border: none;
-// 		width: 4%;
-// 		height: 25px;
-// 		transition: all .3s ease-in-out;
-// 		cursor: pointer;
-// 		opacity: .5;
-// 		&:hover, &:focus {
-// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
-// 			outline: none;
-// 			opacity: 1;
-//
-// 		}
-// 		&.current {
-// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-list-view.svg) no-repeat top left;
-// 			opacity: 1;
-// 		}
-// 	}
-// }
-//
-// #grid-view-btn {
-// 	display: none;
-// 	@include large {
-// 		display: inline-flex;
-// 		background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-// 		border: none;
-// 		width: 4%;
-// 		height: 25px;
-// 		transition: all .3s ease-in-out;
-// 		cursor: pointer;
-// 		opacity: .5;
-// 		&:hover, &:focus {
-// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-// 			outline: none;
-// 			opacity: 1;
-// 		}
-// 		&.current {
-// 			background: url(http://www.microstrategy.com/Strategy/media/external-assets/events-support/world-2019/icon-grid-view.svg) no-repeat top left;
-// 			opacity: 1;
-// 		}
-// 	}
-// }
-
 
 .add-to-agenda {
 	position:absolute;
@@ -631,6 +450,34 @@
 	}
 }
 
+#print-agenda, #share-agenda {
+	margin-top: $base-spacing;
+}
+
+#shareURL {
+	flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: $base-spacing;
+    position: relative;
+	transition: display .3s ease-in-out;
+	@include large {
+		flex-direction: row;
+		margin-top: -50px;
+		margin-left: 570px;
+	}
+	& #inputURL {
+		height: 50px;
+		border: none;
+		background: rgba(255,255,255,.9);
+	}
+	& #buttonCopy {
+			margin-top: 0;
+			align-self: baseline;
+			border: none;
+		}
+}
+
 @include keyframes(fade-slide-in) {
 	0%{opacity:0; @include translateY(100px);}
 	100%{opacity:1; @include translateY(0);}
@@ -639,712 +486,3 @@
 	0%{opacity:1; @include translateY(0);}
 	100%{opacity:0; @include translateY(100px);}
 }
-
-
-////////////////////////////CVENT GENERATED AGENDA PAGE OVERRIDES
-// body.agenda-page {
-// 	position:relative;
-//
-// 	#hero-banner {background-image:url($world2017-session-audience);}
-// 	#agenda-info {
-// 		&:before {height:100%;}
-// 		&:after {display:none;}
-//
-// 		// .video-card {
-// 		// 	.display(flex);
-// 		//     .flex(0, 1, auto);
-// 		//     .flex-wrap(wrap);
-// 		// 	.flex-direction(column);
-// 		// 	.align-items(flex-start);
-//         //
-// 		// 	position:relative;
-// 		// 	margin:0 auto;
-// 		// 	background-color:$light-gray;
-// 		// 	.box-shadow(1px 1px 5px fade-out($pure-black, .5));
-//         //
-// 		// 	@include large {
-// 		// 		.flex-direction(row);
-// 		// 		.align-items(center);
-// 		// 		.justify-content(flex-end);
-// 		// 		max-width:none;
-// 		// 	}
-//         //
-// 		// 	.video-thumbnail {
-// 		// 		width:100%;
-// 		// 		@include large {
-// 		// 			position:absolute;
-// 		// 			top:0; left:0;
-// 		// 			width:50%; height:100%;
-// 		// 			padding-bottom:0;
-// 		// 		}
-// 		// 	}
-// 		// 	.info-box {
-// 		// 		.flex(0, 0, auto);
-// 		// 		width:100%;
-// 		// 		padding:20px;
-// 		// 		@include large {width:50%;}
-// 		// 	}
-// 		// }
-// 	}
-//
-// 	//used to determin spacing allowed for the time labels to the left of the list
-// 	$time-label-width: 200px;
-// 	//used to determin spacing allowed for the track labels to the left of the list
-// 	$track-label-width: 350px;
-// 	//agenda at a glance table
-// 	// .agendaMiddle .agenda-table {
-// 	// 	width:100%;
-// 	// 	margin-bottom:20px; padding-bottom:20px;
-// 	// 	background-color:$white;
-// 	// 	tr, td, th {display:block; width:100%;}
-// 	// 	tr {
-// 	// 		&.date {background-color:$blue; color:$white;}
-// 	// 		th {padding:20px;}
-// 	// 		td {
-// 	// 			&:first-child {
-// 	// 				padding:10px 10px;
-// 	// 				background-color:$light-gray;
-// 	// 				color:$black;
-// 	// 				text-transform:uppercase;
-// 	// 			}
-// 	// 			&:last-child {padding:10px 15px 10px 30px;}
-// 	// 			.sponsor-logo {display:inline-block; vertical-align:middle; max-width:150px;}
-// 	// 		}
-// 	// 	}
-// 	// 	@include medium {
-// 	// 		tr {
-// 	// 			display:table-row; width:auto;
-// 	// 			&.date {background-color:$light-gray; color:$black;}
-// 	// 		}
-// 	// 		td, th {display:table-cell; width:auto;}
-// 	// 		tr td {
-// 	// 			vertical-align:top;
-// 	// 			&:first-child {
-// 	// 				background-color:$white;
-// 	// 				padding:15px 5px 15px 0;
-// 	// 				color:$monsoon;
-// 	// 				width:200px; white-space:nowrap;
-// 	// 			}
-// 	// 			&:last-child {padding:15px 20px 15px 5px;}
-// 	// 			.inline-text {display:inline-block; vertical-align:middle;}
-// 	// 		}
-// 	// 	}
-// 	// 	.speaker-card {
-// 	// 		position:relative;
-// 	// 		background-color:$white-smoke;
-// 	// 		width:100%;
-// 	// 		//.box-shadow(1px 1px 7px fade-out($pure-black, .8));
-// 	// 		margin-bottom:15px;
-// 	// 		max-width:150px;
-// 	// 		.info-box {padding:10px;}
-// 	// 		.speaker-photo:before {display:none;}
-// 	// 		@include medium {
-// 	// 			max-width:none;
-// 	// 			.speaker-photo {
-// 	// 				display:inline-block;
-// 	// 				vertical-align:middle;
-// 	// 				width:90px;
-// 	// 			}
-// 	// 			.info-box {
-// 	// 				display:inline-block;
-// 	// 				vertical-align:middle;
-// 	// 				padding:10px 15px;
-// 	// 				max-width: calc(100% - (90px + 3.5px));
-// 	// 			}
-// 	// 			&:last-child {margin-bottom:0;}
-// 	// 		}
-// 	// 	}
-// 	// }//end agenda-table
-//
-// 	.agendaMiddle {
-// 		.sort {display:none;}
-// 		//for the agenda sorting dropdown and top bar controls
-// 		.sort {
-// 			position:relative; z-index:1;
-// 			display:block;
-// 			padding:0; margin:0;
-// 			background-color:$light-gray;
-// 			//.box-shadow(0px 3px 3px fade-out($pure-black, .8));
-//
-// 			//animate the sort in and out depending on the selected tab
-// 			// opacity:0; margin-top:-44px;
-// 			// .transition();
-// 			// &.shown {opacity:1; margin-top:0;}
-// 			// @include medium {margin-top:-46px;}
-//
-// 			//hide the sorter control now that times are in and the sorter dont work so good
-// 			//.control {display:none!important;}
-//
-// 			.control {
-// 				display:block;
-// 				padding:15px 20px;
-// 				&.toggle {padding:0;}
-// 				//show description button
-// 				.showTop {
-// 					display:block!important;
-// 					width:auto;
-// 					padding:15px; margin:0;
-// 					cursor:pointer;
-// 					font-size:14px; line-height:1em;
-// 					font-weight:600;
-// 					@include uppercase;
-// 					color:$black;
-// 					background-color:darken($light-gray, 10%);
-// 				}
-// 				> span {display:none;}
-// 				&:before, select, .button {
-// 					display:inline-block; *zoom:1; *display:inline;
-// 					vertical-align:middle;
-// 					margin-bottom:15px;
-// 				}
-// 				label {display:none;}
-// 				select {
-// 					width:100%;
-// 					height:40px;
-// 				}
-// 				&:first-child:before {
-// 					content:'Sort by:';
-// 					padding-right:15px;
-// 					font-size:16px; line-height:1em;
-// 					@include uppercase;
-// 					font-weight:600;
-// 				}
-// 				.button {
-// 				    width:auto; height:40px;
-// 				    padding:0.75em 2.5em; margin-left:-8px; margin-bottom:0;
-// 				    cursor:pointer;
-// 				    font-size:16px; line-height:1em;
-// 					font-weight:600;
-// 				    @include uppercase;
-// 				    @include drop-shadow(1px, 1px, 3px, rgba(0,0,0,0.2));
-// 					color:$white;
-// 					background-color:$blue;
-// 					@include transition;
-// 					&:hover {background-color:$light-blue;}
-// 					&:active {background-color:$dark-blue;}
-// 				}//sort sessions button
-// 			}//end control
-//
-// 			//in mobile view, the jump to day buttons
-// 			.tabsTop {
-// 				padding:20px;
-// 				float:none;
-// 				&:before {
-// 					display:block;
-// 					content: 'Jump to:';
-// 					font-size:20px; line-height:1em;
-// 					margin-bottom:15px;
-// 				}
-// 				li {
-// 					position:relative;
-// 					float:none;
-// 					padding:0 0 0 25px; margin:0 0 10px 0;
-// 					span {display:none;}
-// 					a {
-// 						font-size:16px; line-height:1em;
-// 						font-weight:400;
-// 						@include uppercase;
-// 						color:$white;
-// 						text-decoration:none;
-// 					}
-// 					&:before {
-// 						display:block; position:absolute;
-// 						content:'';
-// 						top:0; left:-10px;
-// 						width:0; height:0;
-// 						border-left: 0.7em solid transparent;
-// 						border-right: 0.7em solid $light-blue;
-// 						border-top: 0.7em solid transparent;
-// 					}
-// 				}//end li
-// 			}//end mobile jump to tabs
-// 		}// end sort
-// 		@include medium {
-// 			.sort {
-// 				text-align:center;
-// 				height:50px;
-// 				.control {
-// 					display:inline-block; vertical-align:middle;
-// 					padding:0;
-// 					select {
-// 						width:60%;
-// 						margin-bottom:0;
-// 						height:50px;
-// 						background-color:darken($light-gray, 10%);
-// 						border-width:0;
-// 					}
-// 					.button {padding:17px 40px; height:auto; max-height:50px;}
-// 					&:first-child:before {margin-bottom:0;}
-// 					&:first-of-type {width:$md-breakpoint * .70; padding-left:35px; text-align:left;}
-// 					&:last-of-type {width:$md-breakpoint * .30;  padding-right:35px; text-align:right;}
-//
-// 					.showTop {
-// 						display:inline-block!important;
-// 						padding:17px 20px; margin:0;
-// 						font-size:16px; line-height:1em;
-// 						max-height:50px;
-// 						@include transition;
-// 						background-color:transparent;
-// 						&:hover {background-color:darken($light-gray, 10%);}
-//
-// 					}
-// 				}
-// 				.tabsTop {display:none;}
-// 			}
-// 		}
-// 		@include large {
-// 			.sort .control:first-of-type {width:$lg-breakpoint * .75; padding-left:40px;}
-// 			.sort .control:last-of-type {width:$lg-breakpoint * .25; padding-right:40px;}
-// 		}
-// 		@include xlarge {
-// 			.sort .control:first-of-type {width:$xl-breakpoint * .75; padding-left:40px;}
-// 			.sort .control:last-of-type {width:$xl-breakpoint * .25; padding-right:40px;}
-// 		}
-//
-// 		//dont display the legend row
-// 		.wider {display:none;}
-//
-// 		//div for each day of content
-// 		.day {
-// 			position:relative; z-index:2;
-// 			background-color:$white;
-// 			padding:0;
-// 			margin-top:20px!important;
-// 			//for the 'day, month, year' day dividers
-// 			li.date {
-// 				display:block; position:relative;
-// 			    width:auto; float:none;
-// 			    margin:50px 0 0 0!important; padding:3px 20px;
-// 				font-size:26px; line-height:30px;
-// 				font-weight:400;
-// 				&:before {display:none;}
-// 				@include medium {font-size:30px; line-height:35px; padding:3px 0;}
-// 			}//end date
-// 		}
-//
-// 		//contains all of the sessions under each day
-// 		.item {
-// 			padding-left:0;
-// 			float:none;
-// 			table,
-// 			table tbody {border:none; display:block; cursor:default;}
-// 			> p {display:none;}
-// 			table {margin:0; width:100%; background-color:transparent;}
-// 			//@include medium {padding-left:40px;}
-// 		}
-//
-//
-// 		//for the track grouping labels generated by the script
-// 		// .track-label {
-// 		// 	display:block; position:relative;
-// 		// 	padding:15px 15px 15px 0; margin:30px 0 20px 20px;
-// 		// 	color:$monsoon;
-// 		// 	border-top:1px solid $gainsboro;
-// 		// 	font-size:26px; line-height:32px;
-// 		// 	font-weight:400;
-// 		// 	text-transform:none; letter-spacing:normal;
-// 		// 	&:after {
-// 		// 		display:block; position:absolute; z-index:2;
-// 		// 		content:'';
-// 		// 		top:-1px; left:0;
-// 		// 		width:100px; height:5px;
-// 		// 		background-color:$blue;
-// 		// 	}
-// 		// 	@include medium {font-size:36px; line-height:42px; margin-left:0;}
-// 		// }
-//
-//
-//
-// 		//individual session rows
-// 		.day tr {
-// 			@include transition;
-// 			&.ListRowBgrd1,
-// 			&.ListRowBgrd2 {
-// 			    display:block; position:relative;
-// 			    overflow:visible; width:auto;
-// 			    background-color:transparent;
-// 			    margin:0; padding:0;
-// 				border-top:1px solid $gainsboro;
-// 				cursor:pointer;
-// 				@include medium {
-// 					//border-left:1px solid $gainsboro;
-// 					//margin:0 0 0 $time-label-width; //time-labels mode
-// 					//margin:0 0 0 100px; //Track labels mode
-// 					margin:0; //sessions mode
-// 				}
-// 			}
-// 			td {
-// 				&.time {display:none;}
-// 				// &.time {
-// 				// 	display:none; //turn off for sessions mode
-// 				// 	//display:block!important;
-// 				// 	width:auto!important;
-// 				// 	overflow:hidden;
-// 				// 	padding:20px 0 0 20px!important;
-// 				// 	//max-height:26px; max-width:180px;
-// 				// 	//background-color:$gainsboro;
-// 				// 	//margin:15px 15px 10px 15px; padding:5px 10px!important;
-//                 //
-// 				// 	font-size:16px; line-height:1.2em;
-// 				// 	font-weight:400;
-// 				// 	.uppercase;
-// 				// 	color:$gray;
-// 				// 	&:empty {padding:0!important;}
-//                 //
-// 				// 	//for the start time grouping labels generated by the script
-// 				// 	.time-label {display:none;}//end time label
-// 				// 	@include medium {
-// 				// 		//for the start time grouping labels generated by the script
-// 				// 		.time-label {
-// 				// 		    display:block; position:absolute; z-index:1;
-// 				// 		    top:-1px; left:-($time-label-width);
-// 				// 		    width:$time-label-width; padding:30px 0 0 0;
-//                 //
-// 				// 		    color:$jumbo;
-// 				// 		    font-size:50px; line-height:1em;
-// 				// 			font-weight:300;
-// 				// 		    text-transform:none; letter-spacing:normal;
-// 				// 		    border-top:1px solid $gainsboro;
-// 				// 			.am-pm {
-// 				// 			    position:relative; z-index:1;
-// 				// 			    display:inline-block; margin-bottom:0.6em; margin-left:-0.6em;
-// 				// 			    vertical-align:bottom;
-// 				// 				font-weight:400;
-// 				// 			    font-size:26%; line-height:1;
-// 				// 			    color:$gray;
-// 				// 				.uppercase;
-// 				// 			}
-// 				// 			// &:after {
-// 				// 			//     display:block; position:absolute; z-index:2;
-// 				// 			//     content:'';
-// 				// 			//     top:-1px; left:0;
-// 				// 			//     width:100px; height:5px;
-// 				// 			//     background-color:$blue;
-// 				// 			// }
-// 				// 		}//end time label
-// 				// 	}//end medium width media query
-// 				// 	@include large {
-// 				// 		.time-label {font-size:55px;}
-// 				// 	}
-// 				// }//end time row
-//
-// 				//contains session name, subtitle, and description
-// 				&.title {
-// 					display:block; float:none;
-// 					width:100%!important;
-// 					//padding:10px 0 30px 20px!important;
-// 					padding:20px 0!important; //sessions mode
-// 					@include transition;
-// 					.session {
-// 					    position:relative;
-// 					    font-size:16px; line-height:20px;
-// 						font-weight:400;
-// 					    @include uppercase;
-// 					    color:$gray;
-// 					    padding-right:70px;
-// 						//the actual session title is in here
-// 						b {
-// 						    display:block;
-// 						    padding:0;
-// 						    font-family:$myriad-pro;
-// 						    font-style:normal; font-weight:600!important;
-// 						    color:$dark-gray;
-// 						    font-size:20px; line-height:25px;
-// 						    text-transform:none; letter-spacing:normal;
-// 						}
-// 						//for the data code of the session track, appears below the title
-// 						.track {
-// 							display:inline-block; vertical-align:middle;
-// 							position:relative; overflow:hidden;
-// 							padding:0.5em 0.75em;
-// 						    margin:10px -10px 0 -10px;
-// 						    background-color:$silver;
-// 							font-size:12px; line-height:1em;
-// 							font-weight:400;
-// 							color:$black;
-// 							@include uppercase;
-// 							@include transition;
-// 						}
-// 						//creates the down arrow icon when there is a description available
-// 						&:before,
-// 						&:after {
-// 							display:block; position:absolute;
-// 							content:'';
-// 							top:0;
-// 							height:15px; width:2px;
-// 							background-color:$pure-black;
-// 							opacity:0.5;
-// 							@include transition;
-// 						}
-// 						&:before {@include rotate(135deg);right:40px;}
-// 						&:after {@include rotate(-135deg);right:30px;}
-// 					}//end session
-//
-// 					div.description {
-// 						display:block;
-// 						padding:25px 60px 20px 0;
-// 						&:before {
-// 						    display:block; position:relative;
-// 						    content:'';
-// 						    width:150px; height:1px;
-// 						    background-color:$gainsboro;
-// 							margin-bottom:20px;
-// 						}
-// 						p {
-// 							margin:0 0 20px 0;
-// 							&:last-child{margin-bottom:0;}
-// 						}
-// 					}
-// 				}//end title
-// 			}//end td
-// 			.icons {display:none;}
-//
-// 			&:after {
-// 				position:absolute;
-// 				content:'';
-// 				left:0; top:0;
-// 				height:100%; width:0;
-// 				background-color:$blue;
-// 				@include transition;
-// 			}
-//
-// 			//hover effects on the row
-// 			&:hover {
-// 				background-color:$snow;
-// 				padding-left:20px;
-// 				&:after {width:5px;}
-//
-// 				//make the down icon blue
-// 				.title .session {
-// 					//.track {background-color:$snow;}
-// 					&:before,
-// 					&:after {background-color:$blue; opacity:1;}
-// 				}
-// 			}
-//
-// 			//get rid of the down icon and color change hover state when there is no description
-// 			&[style="cursor:default"] {
-// 				.title .session:before,
-// 				.title .session:after {display:none;}
-// 				.title div.description {display:none!important;}
-// 			}
-// 		}//end .day tr
-//
-// 		//speakers in the generated list
-// 		.session-speakers {
-// 			display:inline-block; *zoom:1; *display:inline;
-// 			vertical-align:middle;
-// 			float:none;
-// 		    background-color:none;
-// 		    padding:15px 0 0 0; margin:0;
-// 		    font-size:14px; line-height:14px;
-//
-// 			&:before {
-// 				display:block; position:relative;
-// 				content:'';
-// 				width:150px; height:1px;
-// 				background-color:$gainsboro;
-// 				margin-bottom:20px;
-// 			}
-// 			> h6,
-// 			.session-sp-list,
-// 			.session-sp-list > li {display:inline-block; *zoom:1; *display:inline; vertical-align:middle; float:none;}
-// 			> h6 {
-// 				font-size:16px; line-height:1em;
-// 				@include uppercase;
-// 				font-weight:600;
-// 				margin-right:7px;
-// 			}
-// 			.session-sp-list > li {
-// 				padding:0; margin:0;
-// 				height:auto;
-// 				&:before{display:none;}
-// 				a {
-// 					color:$monsoon;
-// 					text-decoration:none;
-// 					font-size:16px; line-height:1em;
-// 					padding:0; margin:0;
-// 					@include transition;
-// 					&:hover {color:$blue; text-decoration:underline;}
-// 				}
-// 			}
-// 		}//end session speakers
-// 		//for the bullet formatting in the agenda list
-// 		.day ul .description ul {
-// 			list-style: none;
-// 			padding-left:20px;
-// 			& > li {
-// 				position:relative;
-// 				&:before {
-// 					display:block; position:absolute;
-// 					content:'';
-// 					top:3px; left:-30px;
-// 					width:0; height:0;
-// 					border-left: 10px solid transparent;
-// 					border-right: 10px solid $blue;
-// 					border-top: 10px solid transparent;
-// 				}
-// 			}
-// 		}//end description bullets
-// 		// .tabs-menu {
-// 		// 	display:block; position:relative; z-index:2;
-// 		// 	padding:0;
-// 		// 	background-color:$light-blue;
-// 		//     box-shadow:1px 1px 5px rgba(0,0,0,0.2);
-// 		// 	.tab-toggle {
-// 		// 		display:block;
-// 		// 		width:100%;
-// 		// 		padding:20px;
-// 		// 		border-left:3px solid $light-blue;
-// 		// 		font-size:22px;
-// 		// 		font-weight:400;
-// 		// 		.uppercase;
-// 		// 		color:$white;
-// 		// 		.transition;
-// 		// 		&:hover {background-color:fade-out($blue, .5); border-bottom-color:fade-out($black, .7);}
-// 		// 		&.current {background-color:$blue; border-left-color:$black;}
-// 		// 		@include medium {
-// 		// 			display:inline-block; vertical-align:bottom;
-// 		// 			width:auto;
-// 		// 			border-left:none;
-// 		// 			border-bottom:3px solid $light-blue;
-// 		// 			padding:20px 30px;
-// 		// 			&.current {border-bottom-color:$black;}
-// 		// 		}
-// 		// 	}
-// 		// }
-// 		// .tab-content, .agendaMiddle .day {
-// 		// 	position:relative; z-index:2;
-// 		//     padding:0;
-// 		// 	opacity:0;
-// 		// 	.animation(fade-slide-in 0.5s $bounce-ease-out 0s normal forwards);
-// 		// 	&.hide-tab {
-// 		// 		.animation(fade-slide-out 0.3s $bounce-ease-out 0s normal forwards);
-// 		// 	}
-// 		// }
-// 	}//end agendaMiddle
-//
-// 	//make the agenda printable
-// 	@media print {
-// 	   #agenda, #tabs-2, #tabs-3 {display:block!important; opacity:1;}
-// 	   .tabs-menu {display:none;}
-// 	}
-//
-// 	//for the download presentation button after the event is over
-// 	.session-dl-block {
-// 		display:inline-block; *zoom:1; *display:inline;
-// 		vertical-align:middle;
-// 		position:relative;
-// 		padding:0 10px; margin:10px -10px 0 -16px;
-// 		background-color:$white;
-// 		font-weight:600;
-// 		font-size:16px; line-height:1em;
-// 		@include transition;
-// 		.icon,
-// 		.dl-text {
-// 			display:inline-block; *zoom:1; *display:inline;
-// 			vertical-align:middle;
-// 			position:relative;
-// 			color:$red;
-// 		}
-// 		.icon {height:25px; margin:0 7px 0 0;}
-// 	}
-// 	.agendaMiddle tr:hover .session-dl-block {background-color:$snow;}
-//
-// 	//for the back to top button fixed to the right size of the window
-// 	div.backToTop {
-// 		bottom:100px; z-index:1000;
-// 		width:75px!important; min-height:40px;
-// 	    border-radius:0;
-// 	    background-color:$blue;
-// 	    border:none;
-// 	    border-width:0 0 0 3px;
-// 		padding:12px 15px 5px 35px;
-// 		@include drop-shadow(2px, 2px, 5px, fade-out($pure-black, 0));
-//
-// 		color:$white;
-// 		font-weight:400;
-// 		@include uppercase;
-// 		font-size:16px; line-height:16px;
-//
-// 	    @include transition;
-// 		.arrow {left:10px; top:3px; border-color: transparent transparent $white transparent;}
-// 		.topText {padding-left:0; top:auto;}
-// 		&:hover {
-// 			@include drop-shadow(2px, 2px, 5px, fade-out($pure-black, .7));
-// 			background-color:$light-blue;
-// 		}
-// 	}
-//
-// 	//for the speaker modal window
-//     #cboxOverlay {background-color:fade-out($pure-black, .3); background-image:none;}
-// 	#colorbox {
-// 		overflow:visible!important;
-// 		width:95%!important; height:80%!important;
-// 		max-width:600px; max-height:450px;
-// 		padding:0!important;
-// 		left:50%!important;
-// 		@include translateX(-50%);
-// 		#cboxWrapper {
-// 			height:100%!important; width:100%!important;
-// 			display:block; position:relative;
-// 			overflow:visible!important;
-// 			background-color:$white;
-// 			padding:0;
-// 			@include drop-shadow(2px, 2px, 10px, fade-out($pure-black, .5));
-// 			> div {height:auto;}
-//
-// 			#cboxContent {
-// 				display:block; position:absolute;
-// 				top:0; left:0;
-// 				height:100%!important; width:100%!important;
-// 				float:none!important;
-//
-// 				#dialog {height:auto!important; width:auto!important;}
-// 				#cboxLoadedContent {
-// 					height:auto!important; width:auto!important;
-// 					margin-bottom:0;
-//
-// 					iframe {
-// 						position:absolute;
-// 						top:10px; left:10px;
-// 						width:calc(100% - 20px); height:calc(100% - 20px);
-// 					}
-// 				}
-// 				#cboxClose {
-// 					background-image:none;
-// 					top:-40px; right:0;
-// 					@include medium {top:0; right:-40px;}
-// 					height:30px; width:30px;
-// 					&:before, &:after {
-// 						display:block; position:absolute;
-// 						content:'';
-// 						top:50%; left:50%;
-// 						@include transform(translate(-50%, -50%) rotate(45deg));
-// 						height:80%; width:2px;
-// 						background-color:$white;
-// 						@include transition;
-// 					}
-// 					&:after {@include transform(translate(-50%, -50%) rotate(-45deg));}
-// 					&:hover {&:before, &:after {opacity:0.6;}}
-// 				}
-// 			}
-// 		}
-// 		#cboxTopLeft,
-// 		#cboxTopCenter,
-// 		#cboxTopRight,
-// 		#cboxMiddleLeft,
-// 		#cboxMiddleRight,
-// 		#cboxBottomLeft,
-// 		#cboxBottomCenter,
-// 		#cboxBottomRight {display:none;}
-// 	}
-//
-// 	.speaker-in-modal {
-// 		padding:20px;
-// 		font-family:$myriad-pro;
-// 		font-size:18px; line-height:26px;
-// 		font-style:normal;
-// 		font-weight:300;
-// 	}
-// }
