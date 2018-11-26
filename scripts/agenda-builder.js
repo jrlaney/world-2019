@@ -442,7 +442,7 @@ $('document').ready(function ()
 		setTimeout(function ()
 		{
 			$("#buttonCopy").text("Copy");
-		}, 5000);
+		}, 3000);
 	});
 });
 </script>
