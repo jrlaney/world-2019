@@ -55,6 +55,10 @@ section {
     box-sizing: border-box;
 }
 
+p:empty {
+    margin-top: 0;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -87,7 +91,7 @@ ol {
     list-style-type: decimal;
     margin: 0;
     padding-left: $base-spacing;
-    font-size: $font-size-18px;
+    font-size: 18px;
     line-height: 1.1em;
 
     li {

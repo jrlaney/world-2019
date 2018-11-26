@@ -63,7 +63,7 @@ $menu-mobile-height: 80px;
                         padding: 0 10px 0 20px;
                     }
 
-                    @include small-only {
+                    @include small {
                         &.menu-opened {
                             @include small {
                                 max-height: 100vh;
