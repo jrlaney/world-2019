@@ -257,5 +257,4 @@ $('document').ready(function () {
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
-});
 </script>
