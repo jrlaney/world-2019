@@ -9,7 +9,6 @@ $menu-mobile-height: 80px;
                 @include flex-direction(row);
                 @include flex-wrap(wrap);
                 @include justify-content(space-between);
-                //.align-items(stretch);
                 position: relative;
                 margin: 0 auto;
                 padding: 0 5px;
@@ -36,15 +35,10 @@ $menu-mobile-height: 80px;
                     max-height: 0;
                     height: auto;
                     overflow: hidden;
+                    @include transition;
 
                     >li:before {
                         display: none;
-                    }
-
-                    @include transition;
-
-                    &:active {
-                        @include drop-shadow(0, 0, 0, $pure-black);
                     }
 
                     @include medium {
@@ -62,21 +56,20 @@ $menu-mobile-height: 80px;
                         text-align: right;
                         padding: 0 10px 0 20px;
                     }
-
-                    @include small {
+                    
                         &.menu-opened {
-                            @include small {
-                                max-height: 100vh;
-                                @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
-
+                            max-height: 100vh;
+                            @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
                                 &:after {
                                     background: $red;
                                     box-shadow:
                                         0 0.25em 0 0 $red,
-                                        0 0.5em 0 0 $red;
+                                        0 0.5em 0 0 $red;  
+                                }
+                                @include medium {
+                                    box-shadow: none;
                                 }
                             }
-                        }
 
                         //hamburger icon for mobile view
                         &:after {
@@ -188,4 +181,3 @@ $menu-mobile-height: 80px;
 
             }
         }
-    }
