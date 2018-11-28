@@ -7,7 +7,7 @@
     @include justify-content(center);
 
     .sponsor-logo {
-        @include flex(0, 0, 50%);
+        @include flex(0, 0, 100%);
         position:relative;
         padding:10px;
 
@@ -28,14 +28,17 @@
 
         >img {
             display: block;
-            position: absolute;
-            height: auto;
-            width: auto;
-            top: 50%;
-            left: 50%;
-            max-height: calc(100% - 60px);
-            max-width: calc(100% - 60px);
-            @include translate(-50%, -50%);
+            position: relative;
+            @include medium {
+                position: absolute;
+                height: auto;
+                width: auto;
+                top: 50%;
+                left: 50%;
+                max-height: calc(100% - 60px);
+                max-width: calc(100% - 60px);
+                @include translate(-50%, -50%);
+            }
         }
     }
 
