@@ -13,7 +13,7 @@
 	flex-direction: column;
 	@include medium {
 		flex-direction: row;
-		padding: 20px 80px 40px;
+		padding: 20px 80px 0;
 	}
 
 	& button {
@@ -46,19 +46,11 @@
 			background-color: $navy;
 		}
 	}
-	& #filter-btn {
-		background-color: $green;
-		letter-spacing: 1px;
-		transition: all .3s ease-in-out;
-		&:hover, &:focus {
-			background-color: lighten($green, 5%);
-			outline: none;
-		}
-	}
 }
 
 .tab-content {
-	position:relative; z-index:2;
+	position:relative; 
+	z-index:2;
 	opacity:1;
 	transform:translateY(0);
 	transition: all 0.2s ease-out 0.2s;
@@ -71,17 +63,21 @@
 	}
 }
 
-
 #filter-box {
-	overflow:visible;
-    //background-color: $green;
-	background-color:fade-out($pure-black, 0.8);
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	width: 20%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-color:darken($navy, 10%);
 	color: white;
 	padding: 20px 0;
+	z-index: 3;
 	button {
 		width:100%;
 		min-height: 42px;
-		//margin-top: 60px;
 		background-color: $gray;
 		border: none;
 		box-shadow: none;
@@ -118,33 +114,23 @@
 		width: 100%;
 		padding:0;
 		margin-top:10px;
-		box-shadow: 1px 1px 5px rgba(0,0,0,.3);
-
 		cursor:pointer;
-
-		background-color: white;
-		background-image: url(https://www.microstrategy.com/Strategy/media/images/icons/svg/chevron_down.svg);
-    	background-repeat: no-repeat;
-    	background-position: 95% 14px;
-
-		color: $dark-gray;
+		color: $white;
 		font-weight:400;
 
 		& ul{
-			position:absolute; 
-			z-index:3;
+			position:block; 
 			width:100%;
-			background-color:$white;
 			top:100%; left:0;
 			margin:0; padding:0;
-			box-shadow:1px 1px 3px rgba(0,0,0,0.3);
 			& li {
 				@include display(flex);
 				@include flex-wrap(nowrap);
 				padding:7px 15px; margin:0;
 				cursor:pointer;
+				color: white;
 				&:hover{
-					background-color:$light-gray;
+					background-color:$blue;
 				}
 
 				& label {
@@ -155,6 +141,7 @@
 					font-size:14px;
 					font-weight:400!important;
 					cursor:pointer;
+					color: $white;
 				}
 			}
 			&>li {
@@ -164,7 +151,7 @@
 			}
 		}
 	}
-	.jplist-dd-panel {padding: .5em calc(1em + 20px) .5em 1em;}
+	.jplist-lists {padding: .5em calc(1em + 20px) .5em 1em;}
 
 	#role-filter {
 		z-index: 1;
@@ -177,6 +164,13 @@
 	}
 }
 
+#view-options {
+	position: absolute;
+	top:0;
+	z-index: 3;
+	background-color: $navy;
+	width: 100%;
+}
 
 .agenda-view {
 	padding: 1em .5em;
@@ -186,7 +180,7 @@
 		padding: 1em;
 	}
 	@include large {
-		padding: 1em 4.6em;
+		padding: 1em 2em 0 20em;
 
 	}
 
@@ -235,13 +229,6 @@
 		width: 100%;
 		padding-right:150px;
 	}
-}
-
-.agenda-card {
-	@include flex-wrap(wrap);
-	@include medium {max-width:50%}
-	@include large {max-width:33.33333%}
-	@include xlarge {max-width:25%}
 }
 
 .tags {
@@ -330,159 +317,6 @@
 	margin-right:10px;
 }
 
-#agenda-page #grid-view-btn,
-#agenda-page #list-view-btn{
-	display:none;
-	
-	@include large {
-		@include display(inline-flex);
-		border: none;
-		background:transparent;
-		width:60px;
-		max-width:100%;
-		height:auto;
-		cursor: pointer;
-		opacity: .5;
-		@include transition;
-
-		&:hover, &:focus {
-			outline: none;
-			opacity: 1;
-		}
-		&.current {
-			opacity: 1;
-		}
-	}
-}
-
-.add-to-agenda {
-	position: relative;
-	padding: 15px;
-	margin-bottom: $base-spacing;
-    background-color: $white;
-    color: $black;
-	cursor: pointer;
-	font-size:12px;
-	line-height:16px;
-	font-weight:600;
-	text-align:center;
-    @include uppercase;
-	@include transition;
-	
-	@include medium {
-		position:absolute;
-		max-width:130px;
-		right:0;
-		top:0;
-	}
-
-	&:hover {
-		background-color:$light-gray;
-		box-shadow:1px 1px 3px fade-out($pure-black, 0.7);
-		.plus-icon {
-			background-color:$light-green;
-			box-shadow:1px 1px 3px fade-out($pure-black, 0.7);
-		}
-	}
-	.plus-icon {
-		position:relative;
-		display:block;
-		background-color:$green;
-		height:30px; width:30px;
-		border-radius:50%;
-		margin:0 auto 10px;
-		@include transition;
-
-		&:before, &:after {
-			content:'';
-			position:absolute;
-			top:50%; left:50%;
-			width:13px; height:2px;
-			background-color:$white;
-			@include transform(translate(-50%, -50%));
-		}
-		&:before {
-			@include transform(translate(-50%, -50%) rotate(90deg));
-		}
-	}
-
-	.txt-remove {
-		display:none;
-	}
-	&.added {
-		.plus-icon {
-			background-color:$red;
-			@include rotate(45deg);
-		}
-		&:hover .plus-icon {
-			background-color:$light-red;
-		}
-		.txt-add {
-			display:none;
-		}
-		.txt-remove {
-			display:inline;
-		}
-	}
-	//changes for grid-view
-	.agenda-card & {
-		position:relative;
-		top:auto; right:auto;
-		max-width:none;
-		margin-bottom:20px;
-		text-align:left;
-		.plus-icon {
-			display:inline-block;
-			margin:0 15px 0 0;
-			vertical-align:middle;
-		}
-	}
-}
-
-.details-popup {
-	visibility: hidden;
-	&.active {
-		visibility: visible;
-		position: absolute;
-		width: 100%;
-		background-color: $light-gray;
-		z-index: 2;
-	}
-	& .session-details {
-		visibility: hidden;
-		&.active {
-			visibility: visible;
-		}
-	}
-}
-
-#print-agenda, #share-agenda {
-	margin-top: $base-spacing;
-}
-
-#shareURL {
-	flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: $base-spacing;
-    position: relative;
-	transition: display .3s ease-in-out;
-	@include large {
-		flex-direction: row;
-		margin-top: -50px;
-		margin-left: 570px;
-	}
-	& #inputURL {
-		height: 50px;
-		border: none;
-		background: rgba(255,255,255,.9);
-	}
-	& #buttonCopy {
-			margin-top: 0;
-			align-self: baseline;
-			border: none;
-		}
-}
 
 @include keyframes(fade-slide-in) {
 	0%{opacity:0; @include translateY(100px);}
