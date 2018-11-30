@@ -142,6 +142,7 @@ $('document').ready(function () {
 		//Creating empty array variables for each of the filtering options
 		var program = [];
 		var role = [];
+		var sessionType = [];
 		var topic = [];
 		$.each(allSessions, function (key, value) {
 			if (value.Title != null && value.Publish) {
@@ -161,6 +162,12 @@ $('document').ready(function () {
 							if (role.indexOf(v) === -1)
 								role.push(v);
 						});
+				}
+				if (value.SessionType != null)
+				{
+					tags += "<span class=\"text-label sessiontype-tag " + classifyText(value.SessionType) + "\">" + value.SessionType + "</span>";
+					if (sessionType.indexOf(value.SessionType) === -1)
+						sessionType.push(value.SessionType);
 				}
 				if (value.Topic != null) {
 					$.each(value.Topic,
@@ -193,6 +200,7 @@ $('document').ready(function () {
 		//Sorting items
 		program.sort();
 		role.sort();
+		sessionType.sort();
 		topic.sort();
 		//Adding text dynamically from airtable to each of filter slots
 		var p = $('#program-filter > ul');
@@ -202,6 +210,11 @@ $('document').ready(function () {
 		var r = $('#role-filter > ul');
 		$.each(role, function (key, value) {
 			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var s = $('#session-filter > ul');
+		$.each(sessionType, function (key, value)
+		{
+			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var t = $('#topic-filter > ul');
 		$.each(topic, function (key, value) {
