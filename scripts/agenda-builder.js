@@ -1,4 +1,4 @@
-<script type="text/javascript">
+//<script type="text/javascript">
 var allSessions = [];
 
 function getQueryStringParamValue(key) {
@@ -84,6 +84,12 @@ function populateMyAgendaSessions() {
 				$.each(value.Program,
 					function (k, v) {
 						tags += "<span class=\"text-label program-tag " + classifyText(v) + "\">" + v + "</span>";
+					});
+			}
+			if (value.SessionType != null) {
+				$.each(value.SessionType,
+					function (k, v) {
+						tags += "<span class=\"text-label session-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
 			}
 
@@ -213,25 +219,61 @@ $('document').ready(function () {
 		});
 	}); //end of api pull
 
-	$(function () {
-
-		var $sidebar = $("#filter-box"),
-			$window = $(window),
-			offset = $sidebar.offset(),
-			topPadding = 0;
-
-		$window.scroll(function () {
-			if ($window.scrollTop() > offset.top) {
-				$sidebar.stop().animate({
-					marginTop: $window.scrollTop() - offset.top
-				});
-			} else {
-				$sidebar.stop().animate({
-					marginTop: 0
-				});
-			}
-		});
+	$('#filter-btn').click(function (event)
+	{
+		event.preventDefault();
+		$('#filter-box').animate({width: 'toggle'});
 	});
+
+	$('#program-filter > ul').hide();
+	$('#session-filter > ul').hide();
+	$('#topic-filter > ul').hide();
+	$('#role-filter > ul').hide();
+	
+	$('.program-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#program-filter > ul').slideToggle('fast');
+	});
+	$('.session-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#session-filter > ul').slideToggle('fast');
+	});
+	$('.topic-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#topic-filter > ul').slideToggle('fast');
+	});
+	$('.role-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#role-filter > ul').slideToggle('fast');
+	});
+
+	$("#filter-box").hide();
+	// $(function () {
+	// 	var $sidebar_btn = $("#view-options"),
+	// 		$sidebar = $("#filter-box"),
+	// 		$window = $(window),
+	// 		offset = $sidebar_btn.offset();
+	// 		//topPadding = 80;
+
+	// 	$window.scroll(function () {
+	// 		if ($window.scrollTop() > offset.top) {
+	// 			$sidebar_btn.stop().animate({
+	// 				marginTop: $window.scrollTop() - offset.top
+	// 			});
+	// 			$sidebar.stop().animate({
+	// 				marginTop: $window.scrollTop() - offset.top
+	// 			});
+	// 		} else {
+	// 			$sidebar_btn.stop().animate({
+	// 				marginTop: 0
+	// 			});
+	// 		}
+	// 	});
+	// });
 // End of second snippet
 
 // Third snippet starts here
@@ -257,4 +299,5 @@ $('document').ready(function () {
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
-</script>
+});
+//</script>
