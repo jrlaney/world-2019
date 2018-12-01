@@ -1,4 +1,3 @@
-<script type="text/javascript">
 var allSessions = [];
 
 function getQueryStringParamValue(key) {
@@ -86,6 +85,12 @@ function populateMyAgendaSessions() {
 						tags += "<span class=\"text-label program-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
 			}
+			if (value.SessionType != null) {
+				$.each(value.SessionType,
+					function (k, v) {
+						tags += "<span class=\"text-label session-tag " + classifyText(v) + "\">" + v + "</span>";
+					});
+			}
 
 			if (value.RolePersona != null) {
 				$.each(value.RolePersona,
@@ -136,6 +141,7 @@ $('document').ready(function () {
 		//Creating empty array variables for each of the filtering options
 		var program = [];
 		var role = [];
+		var sessionType = [];
 		var topic = [];
 		$.each(allSessions, function (key, value) {
 			if (value.Title != null && value.Publish) {
@@ -155,6 +161,12 @@ $('document').ready(function () {
 							if (role.indexOf(v) === -1)
 								role.push(v);
 						});
+				}
+				if (value.SessionType != null)
+				{
+					tags += "<span class=\"text-label sessiontype-tag " + classifyText(value.SessionType) + "\">" + value.SessionType + "</span>";
+					if (sessionType.indexOf(value.SessionType) === -1)
+						sessionType.push(value.SessionType);
 				}
 				if (value.Topic != null) {
 					$.each(value.Topic,
@@ -187,6 +199,7 @@ $('document').ready(function () {
 		//Sorting items
 		program.sort();
 		role.sort();
+		sessionType.sort();
 		topic.sort();
 		//Adding text dynamically from airtable to each of filter slots
 		var p = $('#program-filter > ul');
@@ -196,6 +209,11 @@ $('document').ready(function () {
 		var r = $('#role-filter > ul');
 		$.each(role, function (key, value) {
 			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var s = $('#session-filter > ul');
+		$.each(sessionType, function (key, value)
+		{
+			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var t = $('#topic-filter > ul');
 		$.each(topic, function (key, value) {
@@ -213,25 +231,61 @@ $('document').ready(function () {
 		});
 	}); //end of api pull
 
-	$(function () {
-
-		var $sidebar = $("#filter-box"),
-			$window = $(window),
-			offset = $sidebar.offset(),
-			topPadding = 0;
-
-		$window.scroll(function () {
-			if ($window.scrollTop() > offset.top) {
-				$sidebar.stop().animate({
-					marginTop: $window.scrollTop() - offset.top
-				});
-			} else {
-				$sidebar.stop().animate({
-					marginTop: 0
-				});
-			}
-		});
+	$('#filter-btn').click(function (event)
+	{
+		event.preventDefault();
+		$('#filter-box').animate({width: 'toggle'});
 	});
+
+	$('#program-filter > ul').hide();
+	$('#session-filter > ul').hide();
+	$('#topic-filter > ul').hide();
+	$('#role-filter > ul').hide();
+	
+	$('.program-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#program-filter > ul').slideToggle('fast');
+	});
+	$('.session-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#session-filter > ul').slideToggle('fast');
+	});
+	$('.topic-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#topic-filter > ul').slideToggle('fast');
+	});
+	$('.role-label').click(function (event)
+	{
+		event.preventDefault();
+		$('#role-filter > ul').slideToggle('fast');
+	});
+
+	$("#filter-box").hide();
+	// $(function () {
+	// 	var $sidebar_btn = $("#view-options"),
+	// 		$sidebar = $("#filter-box"),
+	// 		$window = $(window),
+	// 		offset = $sidebar_btn.offset();
+	// 		//topPadding = 80;
+
+	// 	$window.scroll(function () {
+	// 		if ($window.scrollTop() > offset.top) {
+	// 			$sidebar_btn.stop().animate({
+	// 				marginTop: $window.scrollTop() - offset.top
+	// 			});
+	// 			$sidebar.stop().animate({
+	// 				marginTop: $window.scrollTop() - offset.top
+	// 			});
+	// 		} else {
+	// 			$sidebar_btn.stop().animate({
+	// 				marginTop: 0
+	// 			});
+	// 		}
+	// 	});
+	// });
 // End of second snippet
 
 // Third snippet starts here
@@ -257,4 +311,4 @@ $('document').ready(function () {
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
-</script>
+});
