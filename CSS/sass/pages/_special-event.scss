@@ -1,9 +1,6 @@
 //////////////////////SPECIAL EVENTS PAGE
 #special-events-page {
-    #hero-banner {
-        background-image: url($world2016-demo-theater);
-    }
-
+    
     @include medium {
         .special-event-box {
             .header-box {

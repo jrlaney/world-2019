@@ -1,7 +1,8 @@
 ﻿.jplist-pagination {
     @include display(flex);
-	@include justify-content(center);
-    margin: 20px auto;
+    @include justify-content(center);
+    flex-wrap: wrap;
+    margin: 20px;
     list-style: none;
 
     li {

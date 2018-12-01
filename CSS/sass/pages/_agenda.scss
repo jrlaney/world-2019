@@ -63,18 +63,82 @@
 	}
 }
 
-#filter-box {
-	position: fixed;
+#view-options {
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	justify-items: center;
+	align-content: center;
+	align-items: center;
+	padding: 2em;
+	top:0;
 	left: 0;
-	top: 0;
-	height: 100vh;
-	width: 20%;
+	z-index: 3;
+	background-color: $navy;
+	width: 100%;
+
+	#filter-btn {
+		position: relative;
+		z-index: 3;
+		padding: .7em;
+		margin: 0;
+		background-color: darken($navy, 10%);
+		border: none;
+		&:hover, &:focus {
+			background-color: lighten($navy, 5%);
+		}
+		&:focus {
+			outline: 1px solid $green;
+		}
+	}
+
+}
+#search-btn {
+	display: inline-block;
+	margin: 0;
+	border: none;
+	padding: .7em;
+	width: 40px;
+	height: 40px;
+	&:hover, &:focus {
+		background-color: lighten($blue, 5%);
+	}
+	&:focus {
+		outline: 1px solid $navy;
+	}
+}
+
+input[type='search'] {
+	display: inline-block;
+	width: 80%;
+	margin: 0;
+	border: none;
+	@include medium {
+		width: 80%;
+		margin: 0;
+	}
+}
+
+#filter-box {
+	position: absolute;
+	left: 0;
+	top: 100px;
+	height: auto;
+	width: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	background-color:darken($navy, 10%);
 	color: white;
 	padding: 20px 0;
 	z-index: 3;
+	@include medium {
+		width: 50%;
+	}
+	@include large {
+		width: 25%;
+	}
 	button {
 		width:100%;
 		min-height: 42px;
@@ -94,8 +158,8 @@
 		}
 	}
 
-	.program-label, .topic-label, .role-label, {
-		&:before {
+	.program-label, .topic-label, .role-label, .session-label{
+		&::before {
 			content:'';
 			display:inline-block;
 			border-radius:50%;
@@ -103,12 +167,22 @@
 			background-color: $black;
 			height:20px; width:20px;
 		}
+		&::after {
+			content:'+';
+			display:inline-block;
+			margin-left:10px;
+			height:20px; width:20px;
+		}
 	}
 	.program-label:before {background-color:$red;}
 	.topic-label:before {background-color:$orange;}
 	.role-label:before {background-color:$blue;}
+	.session-label:before {background-color:$green;}
 
-	#program-filter, #role-filter, #topic-filter {
+	.program-label, .role-label, .topic-label {
+		cursor: pointer;
+	}
+	#program-filter, #role-filter, #topic-filter, #session-filter {
 		display:block;
 		position:relative;
 		width: 100%;
@@ -138,7 +212,7 @@
 					padding:2px 5px; margin:0;
 					text-transform: capitalize;
 					letter-spacing: normal;
-					font-size:14px;
+					font-size:1em;
 					font-weight:400!important;
 					cursor:pointer;
 					color: $white;
@@ -152,25 +226,9 @@
 		}
 	}
 	.jplist-lists {padding: .5em calc(1em + 20px) .5em 1em;}
-
-	#role-filter {
-		z-index: 1;
-	}
-	#topic-filter{
-		z-index: 2;
-	}
-	#program-filter {
-		z-index: 3;
-	}
 }
 
-#view-options {
-	position: absolute;
-	top:0;
-	z-index: 3;
-	background-color: $navy;
-	width: 100%;
-}
+
 
 .agenda-view {
 	padding: 1em .5em;
@@ -180,13 +238,17 @@
 		padding: 1em;
 	}
 	@include large {
-		padding: 1em 2em 0 20em;
+		padding: 1em 2em 0 2em;
 
 	}
 
 	#agendaCards {
 		@include display(flex);
 		flex-wrap: wrap;
+		padding-top: 80px;
+		@include medium {
+			padding-top: 75px;
+		}
 	}
 	.session-browse {
 		padding: 20px 0;
@@ -248,6 +310,7 @@
 		&.program-tag:before {background-color:$red;}
 		&.topic-tag:before {background-color:$orange;}
 		&.role-tag:before {background-color:$blue;}
+		&.session-tag:before {background-color:$green;}
 	}
 }
 
