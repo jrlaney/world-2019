@@ -82,6 +82,27 @@
                             </div>
                         </div>
                         <div class="col">
+                            <div class="text-filter-box">
+                                <i class="fa fa-pencil jplist-icon"></i>
+
+                                <!--[if lt IE 10]>
+                                    <div class="jplist-label">Filter by Title:</div>
+                                <![endif]-->
+
+                                <input data-path=".session-title"
+                                        type="text"
+                                        value=""
+                                        class="jplist-no-right-border"
+                                        placeholder="Filter by Title"
+                                        data-control-type="textbox"
+                                        data-control-name="title-filter"
+                                        data-control-action="filter" />
+
+                                <!-- clear textbox button -->
+                                <i class="fa fa-times-circle jplist-clear" data-type="clear"></i>
+                            </div>
+                        </div>
+                        <div class="col">
                             <button type="button" data-control-name="reset" data-control-type="reset"
                                 data-control-action="reset" class="cta-button gray expand">Reset</button>
                         </div>
@@ -92,8 +113,6 @@
                     <div class="row h-left">
                         <div id="view-options" class="col">
                             <button id="filter-btn" class="cta-button">Filter</button>
-                            <input type="search" placeholder="Search...">
-                            <button id="search-btn" type="submit" class="cta-button blue">Search</button>
                         </div>
                     </div>
 
@@ -270,6 +289,7 @@
     <script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.history-bundle.min.js"></script>
     <script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.filter-toggle-bundle.min.js"></script>
     <script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.textbox-filter.min.js"></script>
 
     <!-- {[E-CUSTOM TAG:AGENDA-BUILDER-SCRIPT-1]}
     {[E-CUSTOM TAG:AGENDA-BUILDER-SCRIPT-2]}
