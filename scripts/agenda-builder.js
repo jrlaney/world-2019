@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//<script type="text/javascript">
+>>>>>>> 153c99b38bde96a25a1c33e41d9b4d68b6e144cc
 var allSessions = [];
 
 function getQueryStringParamValue(key) {
@@ -311,4 +315,9 @@ $('document').ready(function () {
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
+<<<<<<< HEAD
 });
+=======
+});
+//</script>
+>>>>>>> 153c99b38bde96a25a1c33e41d9b4d68b6e144cc
