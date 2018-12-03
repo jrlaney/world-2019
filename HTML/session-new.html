@@ -50,17 +50,38 @@
                 <section id="filter-box" class="no-padding jp-lists">
                     <div class="row v-bottom">
                         <div class="col">
-                            <h5 class="text-uppercase text-bold program-label">Theme</h5>
-                            <div id="program-filter" class="jplist-group" data-control-type="checkbox-group-filter"
-                                data-control-name="program-filter" data-control-action="filter" data-no-selected-text="All Programs"
+                            <div class="text-filter-box">
+                                <i class="fa fa-pencil jplist-icon"></i>
+
+                                <!--[if lt IE 10]>
+                                    <div class="jplist-label">Search:</div>
+                                <![endif]-->
+
+                                <input data-path=".session-title"
+                                        type="text"
+                                        value=""
+                                        class="jplist-no-right-border"
+                                        placeholder="Search"
+                                        data-control-type="textbox"
+                                        data-control-name="title-filter"
+                                        data-control-action="filter" />
+
+                                <!-- clear textbox button -->
+                                <i class="fa fa-times-circle jplist-clear" data-type="clear"></i>
+                            </div>
+                        </div>
+                         <div class="col">
+                            <h5 class="text-uppercase text-bold session-label">Session Type</h5>
+                            <div id="session-filter" class="jplist-group" data-control-type="checkbox-group-filter"
+                                data-control-name="session-filter" data-control-action="filter" data-no-selected-text="All sessions"
                                 data-one-item-text="{selected}" data-many-items-text="{num} selected">
                                 <ul></ul>
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="text-uppercase text-bold session-label">Session Type</h5>
-                            <div id="session-filter" class="jplist-group" data-control-type="checkbox-group-filter"
-                                data-control-name="session-filter" data-control-action="filter" data-no-selected-text="All sessions"
+                            <h5 class="text-uppercase text-bold program-label">Theme</h5>
+                            <div id="program-filter" class="jplist-group" data-control-type="checkbox-group-filter"
+                                data-control-name="program-filter" data-control-action="filter" data-no-selected-text="All Programs"
                                 data-one-item-text="{selected}" data-many-items-text="{num} selected">
                                 <ul></ul>
                             </div>
@@ -79,27 +100,6 @@
                                 data-control-name="role-filter" data-control-action="filter" data-no-selected-text="All Roles/Personas"
                                 data-one-item-text="{selected}" data-many-items-text="{num} selected">
                                 <ul></ul>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="text-filter-box">
-                                <i class="fa fa-pencil jplist-icon"></i>
-
-                                <!--[if lt IE 10]>
-                                    <div class="jplist-label">Filter by Title:</div>
-                                <![endif]-->
-
-                                <input data-path=".session-title"
-                                        type="text"
-                                        value=""
-                                        class="jplist-no-right-border"
-                                        placeholder="Filter by Title"
-                                        data-control-type="textbox"
-                                        data-control-name="title-filter"
-                                        data-control-action="filter" />
-
-                                <!-- clear textbox button -->
-                                <i class="fa fa-times-circle jplist-clear" data-type="clear"></i>
                             </div>
                         </div>
                         <div class="col">
@@ -135,29 +135,6 @@
                     </div>
 
 
-                </section>
-            </div>
-
-
-
-
-            <!-- My Agenda Tab-->
-            <div id="my-agenda" class="tab-content hide-tab" style="display:none">
-                <section class="background-navy">
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-normal">My Agenda</h2>
-                            <p class="h4">Below are your selected sessions, use the agenda toggle to remove sessions
-                                from the list.</p>
-                            <div id="print-agenda" class="cta-button medium blue carat">Print this Agenda</div>
-                            <div id="share-agenda" class="cta-button medium orange carat">Generate share link</div>
-                            <div id="shareURL"><input type="text" id="inputURL" value="" /><span id="buttonCopy" class="btnCopy cta-button medium orange"
-                                    onclick="copyURL()">Copy</span></div>
-                        </div>
-                        <div id="my-agenda-list" class="col">
-
-                        </div>
-                    </div>
                 </section>
             </div>
 
