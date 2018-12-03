@@ -159,6 +159,10 @@ input[type='search'] {
 	}
 
 	.program-label, .topic-label, .role-label, .session-label{
+		transition: all .5s ease-in-out;
+		&.menu-open::after {
+			transform: rotate(-45deg);
+		}
 		&::before {
 			content:'';
 			display:inline-block;
@@ -179,7 +183,7 @@ input[type='search'] {
 	.role-label:before {background-color:$blue;}
 	.session-label:before {background-color:$green;}
 
-	.program-label, .role-label, .topic-label {
+	.program-label, .role-label, .topic-label, .session-label {
 		cursor: pointer;
 	}
 	#program-filter, #role-filter, #topic-filter, #session-filter {
@@ -310,7 +314,7 @@ input[type='search'] {
 		&.program-tag:before {background-color:$red;}
 		&.topic-tag:before {background-color:$orange;}
 		&.role-tag:before {background-color:$blue;}
-		&.session-tag:before {background-color:$green;}
+		&.sessiontype-tag:before {background-color:$green;}
 	}
 }
 
@@ -356,20 +360,34 @@ input[type='search'] {
 	font-weight: 600;
 	letter-spacing: 1px;
 	color: $gray;
-	margin: 0;
-	padding-left: 1.4em;
+	line-height: 1.3rem;
+	margin-top: .6rem;
+	margin-bottom: .4rem;
 }
 
 .session-type {
-	font-size: 1em;
-	letter-spacing: 1px;
-	padding: 0 0 .5em 1.3em;
-	margin: 0;
-	color: $dark-gray;
+    font-family: myriad-pro,"Myriad Pro","Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 12px;
+    color: #333;
+    margin-top: -3px;
+}
+
+.session-start-time {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 400;
+    border-bottom: 1px solid $light-gray;
+    border-top: 1px solid $light-gray;
 }
 
 .session-description {
-    padding: 20px 0 0 20px;
+    padding: 20px 0 0;
     font-weight: 400;
 }
 
