@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-//<script type="text/javascript">
->>>>>>> 153c99b38bde96a25a1c33e41d9b4d68b6e144cc
 var allSessions = [];
 
 function getQueryStringParamValue(key) {
@@ -166,8 +162,7 @@ $('document').ready(function () {
 								role.push(v);
 						});
 				}
-				if (value.SessionType != null)
-				{
+				if (value.SessionType != null) {
 					tags += "<span class=\"text-label sessiontype-tag " + classifyText(value.SessionType) + "\">" + value.SessionType + "</span>";
 					if (sessionType.indexOf(value.SessionType) === -1)
 						sessionType.push(value.SessionType);
@@ -183,18 +178,22 @@ $('document').ready(function () {
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 1000) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
 				description = description.replace(/\n/g, '<br />');
+				var sessionTime = new Date(value.StartDateTime);
+				var date = sessionTime.getDate();
+				var month = sessionTime.getMonth(); //Be careful! January is 0 not 1
+				var dateString = (month + 1) + "-" + date + "-" + sessionTime.getHours() + ":" + sessionTime.getMinutes();
+
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
-					"<p class=\"session-start-time hide\">" + value.SessionStartDateTime + "</p>" +
+					"<p class=\"session-start-time hide\">" + dateString + "</p>" +
 					"<div class=\"session-details hide\">" +
 					"<p class=\"session-description\">" + description + "</p>" +
 					"</div>" +
 					"<div class=\"text-label-group tags\">" +
 					"<span class=\"tag-heading\">Tags:</span>" + tags + "</div>" +
-					//"<div class='add-to-agenda'><span class=\"plus-icon\"></span><span class=\"txt-add\">Add to</span><span class=\"txt-remove\">Remove from</span> my agenda</div>" +
 					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
 					"</article>");
 			}
@@ -215,8 +214,7 @@ $('document').ready(function () {
 			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var s = $('#session-filter > ul');
-		$.each(sessionType, function (key, value)
-		{
+		$.each(sessionType, function (key, value) {
 			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var t = $('#topic-filter > ul');
@@ -235,68 +233,52 @@ $('document').ready(function () {
 		});
 	}); //end of api pull
 
-	$('#filter-btn').click(function (event)
-	{
+	$('#filter-btn').click(function (event) {
 		event.preventDefault();
-		$('#filter-box').animate({width: 'toggle'});
+		$('#filter-box').animate({
+			width: 'toggle'
+		});
 	});
+	// End of second snippet
 
+	// Third snippet starts here	
 	$('#program-filter > ul').hide();
 	$('#session-filter > ul').hide();
 	$('#topic-filter > ul').hide();
 	$('#role-filter > ul').hide();
-	
-	$('.program-label').click(function (event)
-	{
+
+	$('.program-label').click(function (event) {
 		event.preventDefault();
+		$(this).toggleClass('menu-open');
 		$('#program-filter > ul').slideToggle('fast');
 	});
-	$('.session-label').click(function (event)
-	{
+	$('.session-label').click(function (event) {
 		event.preventDefault();
+		$(this).toggleClass('menu-open');
 		$('#session-filter > ul').slideToggle('fast');
 	});
-	$('.topic-label').click(function (event)
-	{
+	$('.topic-label').click(function (event) {
 		event.preventDefault();
+		$(this).toggleClass('menu-open');
 		$('#topic-filter > ul').slideToggle('fast');
 	});
-	$('.role-label').click(function (event)
-	{
+	$('.role-label').click(function (event) {
 		event.preventDefault();
+		$(this).toggleClass('menu-open');
 		$('#role-filter > ul').slideToggle('fast');
 	});
 
 	$("#filter-box").hide();
-	// $(function () {
-	// 	var $sidebar_btn = $("#view-options"),
-	// 		$sidebar = $("#filter-box"),
-	// 		$window = $(window),
-	// 		offset = $sidebar_btn.offset();
-	// 		//topPadding = 80;
 
-	// 	$window.scroll(function () {
-	// 		if ($window.scrollTop() > offset.top) {
-	// 			$sidebar_btn.stop().animate({
-	// 				marginTop: $window.scrollTop() - offset.top
-	// 			});
-	// 			$sidebar.stop().animate({
-	// 				marginTop: $window.scrollTop() - offset.top
-	// 			});
-	// 		} else {
-	// 			$sidebar_btn.stop().animate({
-	// 				marginTop: 0
-	// 			});
-	// 		}
-	// 	});
-	// });
-// End of second snippet
 
-// Third snippet starts here
+
 	$(document).on('click', '.details-expand', function () {
 		var details = $('.session-details');
 		$(this).parent('.grid-item').find(details).slideToggle('fast');
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
+		$(this).parent('.grid-item').find('.session-speaker').toggleClass('hide');
+		$(this).parent('.grid-item').find('.session-type').toggleClass('hide');
+		//$(this).parent('.grid-item').find('.session-start-time').toggleClass('hide');
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
@@ -315,9 +297,4 @@ $('document').ready(function () {
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
-<<<<<<< HEAD
 });
-=======
-});
-//</script>
->>>>>>> 153c99b38bde96a25a1c33e41d9b4d68b6e144cc
