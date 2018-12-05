@@ -1,4 +1,4 @@
-<script type="text/javascript">
+
 function classifyText(text)
 {
 	var returnValue = "";
@@ -45,7 +45,7 @@ function tagCheckboxDropdownFilter($filter, $tag, dataPathId)
 	$filter.find('.jplist-dd-panel').addClass('changed');
 	// move window to focus on field changed
 	$('html, body').animate({
-		scrollTop: $('#filter-box').offset().top // - $(window).height() / 2
+		scrollTop: $('#role-filter-box').offset().top // - $(window).height() / 2
 	}, 50);
 	// select first pagination page
 	$('.pagination').find('button[data-number="0"]').trigger('click');
@@ -58,17 +58,9 @@ function tagCheckboxDropdownFilter($filter, $tag, dataPathId)
 
 function tagFilterInit()
 {
-	$('.program-tag').click(function ()
-	{
-		tagCheckboxDropdownFilter($('#program-filter'), $(this), '');
-	});
 	$('.role-tag').click(function ()
 	{
 		tagCheckboxDropdownFilter($('#role-filter'), $(this), '');
-	});
-	$('.topic-tag').click(function ()
-	{
-		tagCheckboxDropdownFilter($('#topic-filter'), $(this), '');
 	});
 }
 
@@ -102,19 +94,17 @@ $('document').ready(function ()
 				description = description.replace(/\n/g, '<br/>');
 
 				$(".session-browse .row").append("" +
-					"<article class=\"grid-item agenda-list\">" +
-					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
-					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
-					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
-					"<div class=\"session-details hide\">" +
-					"<p class=\"session-description\">" + description + "</p>" +
-					"</div>" +
-					"<div class=\"text-block-group tiny tags\">" +
-					"<span class=\"tag-heading\">Tags:</span>" +
-					tags + "</div>" +
-					"<div class='add-to-agenda hide'>+ to my agenda</div>" +
-					"<span class=\"details-expand\">" + 'See Details' + "</span>" +
-					"</article>");
+				"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
+				"<h3 class=\"session-title\">" + value.Title + "</h3>" +
+				"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
+				"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
+				"<div class=\"session-details hide\">" +
+				"<p class=\"session-description\">" + description + "</p>" +
+				"</div>" +
+				"<div class=\"text-label-group tags\">" +
+				"<span class=\"tag-heading\">Tags:</span>" + tags + "</div>" +
+				"<span class=\"details-expand\">" + 'See Details' + "</span>" +
+				"</article>");
 
 				if (value.RolePersona != null)
 				{
@@ -147,7 +137,7 @@ $('document').ready(function ()
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
 			itemPath: '.grid-item',
-			panelPath: '#filter-box',
+			panelPath: '#role-filter-box',
 			effect: 'fade',
 			redrawCallback: function (collection, $dataview, statuses)
 			{
@@ -169,11 +159,6 @@ $('document').ready(function ()
 		}
 	}); //end of api pull
 
-	$('#filter-btn').click(function (event)
-	{
-		event.preventDefault();
-		$('#filter-box').slideToggle('slow');
-	});
 	$('#list-view-btn').click(function (e)
 	{
 		e.preventDefault();
@@ -200,27 +185,8 @@ $('document').ready(function ()
 		var details = $('.session-details');
 		$(this).parent('.grid-item').find(details).slideToggle('fast');
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
+		$(this).parent('.grid-item').find('.session-speaker').toggleClass('hide');
+		$(this).parent('.grid-item').find('.session-type').toggleClass('hide');
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
-
-	$(document).on('click', '.agenda-grid', function ()
-	{
-		var details = $('#agenda-grid');
-		$(details).removeClass('hide');
-		$(details).prev('.tabs-menu').find('.agenda-grid').addClass('current');
-		$('#sessions').addClass('hide');
-		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').removeClass('current');
-	});
-
-	$(document).on('click', '.sessions', function ()
-	{
-		var details = $('#agenda-grid');
-		$(details).addClass('hide');
-		$(details).prev('.tabs-menu').find('.agenda-grid').removeClass('current');
-		$('#sessions').removeClass('hide');
-		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').addClass('current');
-	});
-
-
 }); //end document.ready
-</script>
