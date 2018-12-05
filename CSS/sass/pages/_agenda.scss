@@ -72,12 +72,12 @@
 	justify-items: center;
 	align-content: center;
 	align-items: center;
-	padding: 2em;
 	top:0;
 	left: 0;
-	z-index: 3;
+	z-index: 2;
 	background-color: $navy;
 	width: 100%;
+	padding: 2em;
 
 	#filter-btn {
 		position: relative;
@@ -124,8 +124,8 @@ input[type='search'] {
 #filter-box {
 	position: absolute;
 	left: 0;
-	top: 100px;
-	height: auto;
+	top: 70px;
+	height: 75vh;
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -231,6 +231,22 @@ input[type='search'] {
 	}
 	.jplist-lists {padding: .5em calc(1em + 20px) .5em 1em;}
 }
+
+#role-filter-box {
+	background-color: darken($color: $navy, $amount: 5%);
+}
+#list-view-btn, #grid-view-btn {
+	background: transparent;
+	border: none;
+	height: 50px;
+	width: 50px;
+	opacity: .5;
+	transition: all .3s ease-in-out;
+	&.current {
+		opacity: 1;
+	}
+}
+
 
 
 
