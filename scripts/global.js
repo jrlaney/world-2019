@@ -1,5 +1,3 @@
-<script type="text/javascript">
-
 	//FORCE RESPONSIVE LAYOUT
 	var meta1 = document.createElement('meta');
 	meta1.httpEquiv = "X-UA-Compatible";
@@ -67,4 +65,3 @@
 			});
 		});//end sticky nav
 	}); // end document.ready
-</script>
