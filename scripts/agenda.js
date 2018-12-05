@@ -1,4 +1,3 @@
-<script type="text/javascript">
 function classifyText(text)
 {
 	var returnValue = "";
@@ -196,4 +195,3 @@ $('document').ready(function () {
 		$('#sessions').prev('#hero-banner').find('.tabs-menu .sessions').addClass('current');
 	});
 }); //end document.ready
-</script>
