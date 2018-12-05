@@ -215,15 +215,37 @@
             top: 0;
             left: 50%;
         }
+        &.pos-top-left {
+            top: 0;
+            left: 0;
+        }
+        &.pos-top-right {
+            top: 0;
+            right: 0;
+        }
 
         &.pos-left {
             top: 50%;
             right: 95%;
         }
 
+        &.pos-right {
+            bottom: 0;
+            left: 75%;
+        }
+
         &.pos-bottom {
             bottom: 0;
             right: 50%;
+        }
+
+        &.pos-bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+        &.pos-bottom-right {
+            bottom: 0;
+            right: 0;
         }
     }
 }
