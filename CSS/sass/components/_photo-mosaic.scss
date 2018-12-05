@@ -58,6 +58,15 @@
     &.phoenix-city {
         background-image: url($phoenix-city-photo);
     }
+    &.phoenix-city-landscape {
+        background-image: url($phoenix-city-photo2);
+    }
+    &.venue-main {
+        background-image: url($venue-main);
+    }
+    &.accomm-main {
+        background-image: url($accommodations-main);
+    }
 
     &.world2018-keynote-rennyson {
         background-image: url($world2018-keynote-rennyson);
