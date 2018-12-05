@@ -104,7 +104,7 @@ function populateMyAgendaSessions() {
 						tags += "<span class=\"text-label topic-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
 			}
-			var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 1000) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
+			var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
 			description = description.replace(/\n/g, '<br />');
 			$("#my-agenda-list").append("" +
 				"<article class=\"grid-item agenda-list\" id=\"myAgenda-" + value.Id + "\">" +
@@ -176,7 +176,7 @@ $('document').ready(function () {
 						});
 				}
 
-				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 1000) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
+				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
 				description = description.replace(/\n/g, '<br />');
 				var sessionTime = new Date(value.StartDateTime);
 				var date = sessionTime.getDate();
