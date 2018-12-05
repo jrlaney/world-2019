@@ -65,84 +65,84 @@ jQuery(document).ready(function($) {
 			}
 		]
 	});
-	// $('#speaker-slider').slick({
-	// 	autoplay: true,
-	// 	autoplaySpeed: 3500,
-	// 	cssEase: 'ease-out',
-	// 	slidesToShow: 4,
-	// 	slidesToScroll: 1,
-	// 	draggable: true,
-	// 	swipe: true,
-	// 	touchMove: true,
-	// 	pauseOnFocus: true,
-	// 	pauseOnHover: true,
-	// 	arrows: true,
-	// 	prevArrow: '<button type="button" class="slick-prev"></button>',
-	// 	nextArrow: '<button type="button" class="slick-next"></button>',
-	// 	responsive: [
-	// 		{
-	// 			breakpoint: 1200,
-	// 			settings: {
-	// 				slidesToShow: 4,
-	// 			}
-	// 		},
-	// 		{
-	// 			breakpoint: 980,
-	// 			settings: {
-	// 				slidesToShow: 3,
-	// 			}
-	// 		},
-	// 		{
-	// 			breakpoint: 768,
-	// 			settings: {
-	// 				slidesToShow: 1,
-	// 			}
-	// 		}
-	// 	]
-	// });
-	// $('.photo-slider').slick({
-	// 	autoplay: true,
-	// 	autoplaySpeed: 5000,
-	// 	dots: false,
-	// 	arrows: false,
-	// 	infinite: true,
-	// 	speed: 500,
-	// 	fade: true,
-	// 	cssEase: 'linear',
-	// });
-	//
-	//
-	// $('.blog-slider').slick({
-	// 	cssEase: 'ease-out',
-	// 	slidesToShow: 2,
-	// 	slidesToScroll: 1,
-	// 	draggable: true,
-	// 	swipe: true,
-	// 	touchMove: true,
-	// 	arrows: true,
-	// 	infinite: false,
-	// 	prevArrow: '<button type="button" class="slick-prev"></button>',
-	// 	nextArrow: '<button type="button" class="slick-next"></button>',
-	// 	responsive: [
-	// 		{
-	// 			breakpoint: 1200,
-	// 			settings: {
-	// 				slidesToShow: 2,
-	// 			}
-	// 		},
-	// 		{
-	// 			breakpoint: 980,
-	// 			settings: {
-	// 				slidesToShow: 2,
-	// 			}
-	// 		},
-	// 		{
-	// 			breakpoint: 768,
-	// 			settings: {
-	// 				slidesToShow: 1,
-	// 			}
-	// 		}
-	// 	]
-	// });
+	$('#speaker-slider').slick({
+		autoplay: true,
+		autoplaySpeed: 3500,
+		cssEase: 'ease-out',
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		draggable: true,
+		swipe: true,
+		touchMove: true,
+		pauseOnFocus: true,
+		pauseOnHover: true,
+		arrows: true,
+		prevArrow: '<button type="button" class="slick-prev"></button>',
+		nextArrow: '<button type="button" class="slick-next"></button>',
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 4,
+				}
+			},
+			{
+				breakpoint: 980,
+				settings: {
+					slidesToShow: 3,
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+				}
+			}
+		]
+	});
+	$('.photo-slider').slick({
+		autoplay: true,
+		autoplaySpeed: 5000,
+		dots: false,
+		arrows: false,
+		infinite: true,
+		speed: 500,
+		fade: true,
+		cssEase: 'linear',
+	});
+	
+	
+	$('.blog-slider').slick({
+		cssEase: 'ease-out',
+		slidesToShow: 2,
+		slidesToScroll: 1,
+		draggable: true,
+		swipe: true,
+		touchMove: true,
+		arrows: true,
+		infinite: false,
+		prevArrow: '<button type="button" class="slick-prev"></button>',
+		nextArrow: '<button type="button" class="slick-next"></button>',
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 2,
+				}
+			},
+			{
+				breakpoint: 980,
+				settings: {
+					slidesToShow: 2,
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+				}
+			}
+		]
+	});
 });
 </script>
