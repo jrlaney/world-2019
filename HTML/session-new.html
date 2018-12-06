@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Session New Test</title>
-    <link rel="stylesheet" href="../CSS/main.min.css">
+	<link rel="stylesheet" href="../CSS/main.min.css">
 </head>
 
 <body>
@@ -78,14 +78,22 @@
                                 <ul></ul>
                             </div>
                         </div>
-                        <div class="col">
-                            <h5 class="text-uppercase text-bold program-label">Theme</h5>
-                            <div id="program-filter" class="jplist-group" data-control-type="checkbox-group-filter"
-                                data-control-name="program-filter" data-control-action="filter" data-no-selected-text="All Programs"
-                                data-one-item-text="{selected}" data-many-items-text="{num} selected">
-                                <ul></ul>
-                            </div>
-                        </div>
+	                    <div class="col" style="display: none;">
+		                    <h5 class="text-uppercase text-bold program-label">Programs</h5>
+		                    <div id="program-filter" class="jplist-group" data-control-type="checkbox-group-filter"
+		                         data-control-name="program-filter" data-control-action="filter" data-no-selected-text="All Programs"
+		                         data-one-item-text="{selected}" data-many-items-text="{num} selected">
+			                    <ul></ul>
+		                    </div>
+	                    </div>
+	                    <div class="col">
+		                    <h5 class="text-uppercase text-bold theme-label">Theme</h5>
+		                    <div id="theme-filter" class="jplist-group" data-control-type="checkbox-group-filter"
+		                         data-control-name="theme-filter" data-control-action="filter" data-no-selected-text="All Themes"
+		                         data-one-item-text="{selected}" data-many-items-text="{num} selected">
+			                    <ul></ul>
+		                    </div>
+	                    </div>
                         <div class="col">
                             <h5 class="text-uppercase text-bold topic-label">Topic</h5>
                             <div id="topic-filter" class="jplist-group" data-control-type="checkbox-group-filter"
@@ -273,21 +281,21 @@
     {[E-CUSTOM TAG:AGENDA-BUILDER-SCRIPT-3]} -->
     <script type="text/javascript" src="../scripts/agenda-builder.js"></script>
     <style>
-        .register-btn-bottom {
-            display: none;
-        }
+	    .register-btn-bottom {
+		    display: none;
+	    }
 
-        div.bottom {
-            padding: 0;
-        }
+	    div.bottom {
+		    padding: 0;
+	    }
 
-        .jplist-hidden {
-            display: none !important;
-        }
+	    .jplist-hidden {
+		    display: none !important;
+	    }
 
-        .tabs-menu {
-            padding-bottom: 0px;
-        }
+	    .tabs-menu {
+		    padding-bottom: 0px;
+	    }
     </style>
 
 </body>
