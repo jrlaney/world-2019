@@ -55,6 +55,10 @@ function tagFilterInit() {
 	$('.role-tag').click(function () {
 		tagFilterListItems($('#role-filter'), $(this), '');
 	});
+	$('.theme-tag').click(function ()
+	{
+		tagFilterListItems($('#theme-filter'), $(this), '');
+	});
 	$('.topic-tag').click(function () {
 		tagFilterListItems($('#topic-filter'), $(this), '');
 	});
@@ -96,6 +100,14 @@ function populateMyAgendaSessions() {
 				$.each(value.RolePersona,
 					function (k, v) {
 						tags += "<span class=\"text-label role-tag " + classifyText(v) + "\">" + v + "</span>";
+					});
+			}
+			if (value.Themes != null)
+			{
+				$.each(value.Themes,
+					function (k, v)
+					{
+						tags += "<span class=\"text-label theme-tag " + classifyText(v) + "\">" + v + "</span>";
 					});
 			}
 			if (value.Topic != null) {
@@ -142,6 +154,7 @@ $('document').ready(function () {
 		var program = [];
 		var role = [];
 		var sessionType = [];
+		var theme = [];
 		var topic = [];
 		$.each(allSessions, function (key, value) {
 			if (value.Title != null && value.Publish) {
@@ -167,6 +180,16 @@ $('document').ready(function () {
 					if (sessionType.indexOf(value.SessionType) === -1)
 						sessionType.push(value.SessionType);
 				}
+				if (value.Themes != null)
+				{
+					$.each(value.Themes,
+						function (k, v)
+						{
+							tags += "<span class=\"text-label theme-tag " + classifyText(v) + "\">" + v + "</span>";
+							if (theme.indexOf(v) === -1)
+								theme.push(v);
+						});
+				}
 				if (value.Topic != null) {
 					$.each(value.Topic,
 						function (k, v) {
@@ -181,7 +204,6 @@ $('document').ready(function () {
 
 				var startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
 				var endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit' });
-
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
@@ -203,6 +225,7 @@ $('document').ready(function () {
 		program.sort();
 		role.sort();
 		sessionType.sort();
+		theme.sort();
 		topic.sort();
 		//Adding text dynamically from airtable to each of filter slots
 		var p = $('#program-filter > ul');
@@ -216,6 +239,11 @@ $('document').ready(function () {
 		var s = $('#session-filter > ul');
 		$.each(sessionType, function (key, value) {
 			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var th = $('#theme-filter > ul');
+		$.each(theme, function (key, value)
+		{
+			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var t = $('#topic-filter > ul');
 		$.each(topic, function (key, value) {
@@ -243,34 +271,40 @@ $('document').ready(function () {
 
 	// Third snippet starts here	
 	$('#program-filter > ul').hide();
-	$('#session-filter > ul').hide();
-	$('#topic-filter > ul').hide();
 	$('#role-filter > ul').hide();
+	$('#session-filter > ul').hide();
+	$('#theme-filter > ul').hide();
+	$('#topic-filter > ul').hide();
 
 	$('.program-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#program-filter > ul').slideToggle('fast');
 	});
+	$('.role-label').click(function (event)
+	{
+		event.preventDefault();
+		$(this).toggleClass('menu-open');
+		$('#role-filter > ul').slideToggle('fast');
+	});
 	$('.session-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#session-filter > ul').slideToggle('fast');
 	});
-	$('.topic-label').click(function (event) {
+	$('.theme-label').click(function (event) {
+		event.preventDefault();
+		$(this).toggleClass('menu-open');
+		$('#theme-filter > ul').slideToggle('fast');
+	});
+	$('.topic-label').click(function (event)
+	{
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#topic-filter > ul').slideToggle('fast');
 	});
-	$('.role-label').click(function (event) {
-		event.preventDefault();
-		$(this).toggleClass('menu-open');
-		$('#role-filter > ul').slideToggle('fast');
-	});
 
 	$("#filter-box").hide();
-
-
 
 	$(document).on('click', '.details-expand', function () {
 		var details = $('.session-details');
