@@ -6,8 +6,6 @@
     padding-top: 40px;
     padding-bottom: 40px;
     @include medium {
-        padding-top: 100px;
-        padding-bottom: 100px;
         &.no-padding-top {
             padding-top: 0px;
         }
