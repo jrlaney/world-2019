@@ -60,17 +60,6 @@ function tagFilterInit() {
 		tagFilterListItems($('#topic-filter'), $(this), '');
 	});
 }
-
-function GetSessionsFromCookie() {
-	var myAgenda = $.cookie("myAgenda");
-	var myArticles = [];
-	if (myAgenda !== undefined) {
-		myArticles = JSON.parse(myAgenda);
-		if (typeof myArticles === "string")
-			myArticles = JSON.parse(myArticles);
-	}
-	return myArticles;
-}
 //end first snippet
 
 //start second snippet
