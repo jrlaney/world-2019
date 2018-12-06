@@ -178,17 +178,17 @@ $('document').ready(function () {
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
 				description = description.replace(/\n/g, '<br />');
-				var sessionTime = new Date(value.StartDateTime);
-				var date = sessionTime.getDate();
-				var month = sessionTime.getMonth(); //Be careful! January is 0 not 1
-				var dateString = (month + 1) + "-" + date + "-" + sessionTime.getHours() + ":" + sessionTime.getMinutes();
+
+				var startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+				var endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit' });
+
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
-					"<p class=\"session-start-time hide\">" + dateString + "</p>" +
+					"<p class=\"session-start-time\">" + startTime + " - " + endTime + "</p>" +
 					"<div class=\"session-details hide\">" +
 					"<p class=\"session-description\">" + description + "</p>" +
 					"</div>" +
