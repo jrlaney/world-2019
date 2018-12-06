@@ -2554,10 +2554,6 @@ div.top .navigation li.subnav-register a:active {
   padding-bottom: 40px;
 }
 @media (min-width: 768px) {
-  #hero-banner {
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
   #hero-banner.no-padding-top {
     padding-top: 0px;
   }
