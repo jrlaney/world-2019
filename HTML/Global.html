@@ -1,29 +1,26 @@
 <html>
 <head>
 	<title>Cvent Test page</title>
-	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery/dist/jquery.min.js"></script> 
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.core.min.js"></script> 
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.filter-dropdown-bundle.min.js"></script> 
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.pagination-bundle.min.js"></script> 
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.history-bundle.min.js"></script> 
+	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.filter-toggle-bundle.min.js"></script> 
 	<script type="text/javascript" src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jquery.cookie/jquery.cookie.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.core.min.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.filter-dropdown-bundle.min.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.pagination-bundle.min.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.checkbox-dropdown.min.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.textbox-filter.min.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.sort-bundle.min.js"></script>
-	<script src="https://www.microstrategy.com/CMSTemplates/microstrategy/bower_components/jplist/dist/js/jplist.history-bundle.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="http://events.microstrategy.com/Events/stylesheets/site1.css?version=10.0.27" />
-	<link rel="stylesheet" type="text/css" href="http://events.microstrategy.com/events/GetAdvancedCSS.aspx?e=2c0e1774-16a0-487b-95c8-2069ccaa35ce&rand=691688901" />
+	<!-- <link rel="stylesheet" type="text/css" href="http://events.microstrategy.com/Events/stylesheets/site1.css?version=10.0.27" />
+	<link rel="stylesheet" type="text/css" href="http://events.microstrategy.com/events/GetAdvancedCSS.aspx?e=2c0e1774-16a0-487b-95c8-2069ccaa35ce&rand=691688901" /> -->
 
-
-	<!--<style type="text/css" id="styles"></style>
-	<style type="text/css" id="styles2"></style>
-	<style type="text/css" id="styles3"></style>-->
+	<link rel="stylesheet" href="../CSS/main.min.css">
+	<!-- <style type="text/css" id="styles"></style> -->
+	<!-- <style type="text/css" id="styles2"></style>
+	<style type="text/css" id="styles3"></style> -->
 
 	<script>
-		$(function ()
-		{
-			$("#agenda").load("Agenda_builder-version.html");
-			//$("#styles").load("../CSS/main.css");
+		$(function (){
+			$("#agenda-page").load("Sessions.html");
+			// $("#styles").load("../CSS/main.min.css");
 			//$("#styles2").load("http://events.microstrategy.com/events/GetAdvancedCSS.aspx?e=2c0e1774-16a0-487b-95c8-2069ccaa35ce&rand=691688901");
 			//$("#styles3").load("http://events.microstrategy.com/events/stylesheets/questionRedesign.css?version=10.0.27");
 			$("#scripts").load("../scripts/agenda-builder.js");
@@ -31,8 +28,7 @@
 	</script>
 </head>
 <body>
-	<div id="agenda"></div>
+	<div id="agenda-page"></div>
 	<div id="scripts"></div>
-
 </body>
 </html>
