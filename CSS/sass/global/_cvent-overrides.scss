@@ -228,11 +228,11 @@ td.Line1 {
     .my-reg-action-buttons {
         display: block;
         z-index: 4;
-        margin: -25px 0 0 0;
+        margin: -25px 0 2% 0;
         padding: 0;
         float: none;
         width: auto;
-        background-color: $black;
+        background-color: $red;
 
         table {
             display: inline-block;
@@ -242,17 +242,18 @@ td.Line1 {
         }
 
         td.grButtonMid a.dropdown-arrow {
-            padding: .75em 1.5em;
+            background: url(https://events.microstrategy.com/a/images/icn-arrow-white.png) no-repeat 156px 20px;
+            padding: .75em 1.5em !important;
             margin-left: 15px;
+            &:hover, &:focus {
+                background-color: darken($red, 7%);
+            }
         }
     }
 
     .main-action-button-container {
         overflow: visible;
         padding: 15px;
-
-        @include small {
-            padding: 40px 15px 15px 15px;
 
             >table {
                 max-width: calc(50% - 4px);
@@ -262,19 +263,22 @@ td.Line1 {
                 padding: .75em 1em;
             }
         }
-    }
+}
 
     ul.confirmation-dropdown-menu {
         left: 0;
-        top: 100%;
+        top: 38px;
         width: 100%;
         background-color: $red;
         padding: 0;
-        @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
+        //@include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
 
         >li {
             padding: 0;
             margin: 0;
+            &::before {
+                border-right: none;
+            }
 
             >a {
                 padding: 10px 15px;
@@ -283,7 +287,7 @@ td.Line1 {
                 @include transition;
 
                 &:hover {
-                    background-color: $dark-red;
+                    background-color: $light-red;
                     text-decoration: none;
                 }
             }
@@ -647,7 +651,6 @@ td.Line1 {
             padding: 0;
         }
     }
-}
 
 
 //REG POPUP BOX OVERRIDES
@@ -758,7 +761,7 @@ td.grButtonMid {
 a.grButtonText,
 td.grButtonMid a {
     display: block;
-    background-color: $red;
+    background-color: darken($red, 7%);
     color: $white;
     padding: .75em 2.5em;
     font-weight: 400;
@@ -923,5 +926,17 @@ div.button {
 
     @include xlarge {
         max-width: $xl-breakpoint;
+    }
+}
+
+.confirmation-order-summaries {
+    padding: 50px;
+    & .section-header {
+        padding: 0;
+    }
+    & table {
+        tbody {
+            background-color: $light-gray;
+        }
     }
 }

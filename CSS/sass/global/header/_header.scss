@@ -71,12 +71,14 @@ div.top {
 
     .logo-img {
         height: 60px;
-        max-width: 275px;
+        max-width: 100%;
+        width: 155px;
         padding-right: 15px;
         @include transition;
 
         @include medium {
             height: auto;
+            width: 275px;
             //@include translateY(15px);
         }
     }
