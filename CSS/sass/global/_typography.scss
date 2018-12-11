@@ -182,6 +182,14 @@ a.text-white {
     text-decoration: underline;
 }
 
+.text-small {
+    font-size: 14px;
+    line-height: 20px;
+}
+.text-small-heading {
+    letter-spacing: .05em;
+}
+
 @include medium {
 
     h1,
