@@ -75,42 +75,59 @@ function tagFilterInit()
 	});
 }
 
-function dynamicSort(property)
+function dynamicSort(firstProperty, secondProperty)
 {
-	var sortOrder = 1;
-
-	if (property[0] === "-")
+	var firstSortOrder = 1;
+	if (firstProperty[0] === "-")
 	{
-		sortOrder = -1;
-		property = property.substr(1);
+		firstSortOrder = -1;
+		firstProperty = firstProperty.substr(1);
+	}
+
+	var secondSortOrder = 1;
+	if (secondProperty[0] === "-")
+	{
+		secondSortOrder = -1;
+		secondProperty = secondProperty.substr(1);
 	}
 
 	return function (a, b)
 	{
-		var aProperty = a[property];
-		var bProperty = b[property];
-		if (aProperty != null && bProperty != null)
+		var returnValue = 0;
+		returnValue = sortComparision(a[firstProperty], b[firstProperty], firstSortOrder);
+
+		if (returnValue === 0)
 		{
-			if (sortOrder === -1)
-			{
-				return bProperty.localeCompare(aProperty);
-			}
-			else
-			{
-				return aProperty.localeCompare(bProperty);
-			}
+			returnValue = sortComparision(a[secondProperty], b[secondProperty], secondSortOrder);
 		}
-		else if (aProperty != null && bProperty == null)
+
+		return returnValue;
+	}
+}
+
+function sortComparision(aProperty, bProperty, sortOrder)
+{
+	if (aProperty != null && bProperty != null)
+	{
+		if (sortOrder === -1)
 		{
-			return sortOrder;
-		}
-		else if (aProperty == null && bProperty != null)
-		{
-			return sortOrder * -1;
+			return bProperty.localeCompare(aProperty);
 		}
 		else
-			return 0;
+		{
+			return aProperty.localeCompare(bProperty);
+		}
 	}
+	else if (aProperty != null && bProperty == null)
+	{
+		return sortOrder;
+	}
+	else if (aProperty == null && bProperty != null)
+	{
+		return sortOrder * -1;
+	}
+	else
+		return 0;
 }
 //end first snippet
 
@@ -122,7 +139,7 @@ $('document').ready(function ()
 	{
 		allSessions = data;
 
-		allSessions.sort(dynamicSort("StartDateTime"));
+		allSessions.sort(dynamicSort("StartDateTime", "Title"));
 
 		//Creating empty array variables for each of the filtering options
 		var role = [];
