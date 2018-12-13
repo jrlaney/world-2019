@@ -265,3 +265,101 @@ section {
 .no-margin-bottom {
     margin-bottom: 0;
 }
+
+.margin-left {
+    &-5 {
+        margin-left: 5px;
+    }
+
+    &-10 {
+        margin-left: 10px;
+    }
+
+    &-20,
+    &-30,
+    &-40,
+    &-50 {
+        margin-left: 20px;
+    }
+
+    @include medium {
+        &-30 {
+            margin-left: 15px;
+        }
+
+        &-40 {
+            margin-left: 20px;
+        }
+
+        &-50 {
+            margin-left: 25px;
+        }
+    }
+
+    @include large {
+        &-30 {
+            margin-left: 30px;
+        }
+
+        &-40 {
+            margin-left: 40px;
+        }
+
+        &-50 {
+            margin-left: 50px;
+        }
+    }
+}
+
+.no-margin-left {
+    margin-left: 0;
+}
+
+.margin-right {
+    &-5 {
+        margin-right: 5px;
+    }
+
+    &-10 {
+        margin-right: 10px;
+    }
+
+    &-20,
+    &-30,
+    &-40,
+    &-50 {
+        margin-right: 20px;
+    }
+
+    @include medium {
+        &-30 {
+            margin-right: 15px;
+        }
+
+        &-40 {
+            margin-right: 20px;
+        }
+
+        &-50 {
+            margin-right: 25px;
+        }
+    }
+
+    @include large {
+        &-30 {
+            margin-right: 30px;
+        }
+
+        &-40 {
+            margin-right: 40px;
+        }
+
+        &-50 {
+            margin-right: 50px;
+        }
+    }
+}
+
+.no-margin-right {
+    margin-right: 0;
+}
