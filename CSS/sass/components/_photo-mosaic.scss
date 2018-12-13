@@ -61,8 +61,26 @@
     &.phoenix-city-landscape {
         background-image: url($phoenix-city-photo2);
     }
+    &.grand-canyon {
+        background-image: url($grand-canyon);
+    }
+    &.sedona {
+        background-image: url($sedona);
+    }
+    &.antelope-canyon {
+        background-image: url($antelope-canyon);
+    }
+    &.tombstone {
+        background-image: url($tombstone);
+    }
     &.venue-main {
         background-image: url($venue-main);
+    }
+    &.venue-second {
+        background-image: url($venue-second);
+    }
+    &.venue-third {
+        background-image: url($venue-third);
     }
     &.accomm-main {
         background-image: url($accommodations-main);
@@ -133,7 +151,7 @@
         background-image: url($datathon);
     }
     &.block-party {
-        background-image: url($party-drinks);
+        background-image: url($block-party);
     }
 
 }
