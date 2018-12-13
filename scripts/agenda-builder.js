@@ -1,14 +1,18 @@
 var allSessions = [];
 
-function getQueryStringParamValue(key) {
+function getQueryStringParamValue(key)
+{
 	var url = document.location.href;
 	var value = "";
 
-	if (url.indexOf('?') !== -1) {
+	if (url.indexOf('?') !== -1)
+	{
 		var queryStrings = url.substr(url.indexOf('?') + 1);
 
-		if (queryStrings.toLowerCase().indexOf(key.toLowerCase() + "=") !== -1) {
-			var queryString = queryStrings.split("&").find(function (element) {
+		if (queryStrings.toLowerCase().indexOf(key.toLowerCase() + "=") !== -1)
+		{
+			var queryString = queryStrings.split("&").find(function (element)
+			{
 				return element.toLowerCase().split("=")[0] === key.toLowerCase();
 			});
 			if (typeof queryString !== "undefined")
@@ -18,19 +22,25 @@ function getQueryStringParamValue(key) {
 	return value;
 }
 
-function classifyText(text) {
+function classifyText(text)
+{
 	var returnValue = "";
-	if ($.isArray(text)) {
-		$.each($.unique(text), function (key, value) {
+	if ($.isArray(text))
+	{
+		$.each($.unique(text), function (key, value)
+		{
 			returnValue += " " + value.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
 		});
-	} else {
+	}
+	else
+	{
 		returnValue = text.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
 	}
 	return returnValue;
 }
 
-function tagFilterListItems($filter, $tag, dataPathId) {
+function tagFilterListItems($filter, $tag, dataPathId)
+{
 	var dataPath = dataPathId + classifyText($tag.text());
 	// update value and trigger change in field
 	$filter.find('#' + dataPath).trigger('click');
@@ -43,48 +53,99 @@ function tagFilterListItems($filter, $tag, dataPathId) {
 	// select first pagination page
 	$('.pagination').find('button[data-number="0"]').trigger('click');
 	// remove changed style after a second
-	setTimeout(function () {
+	setTimeout(function ()
+	{
 		$filter.find('jplist-checkbox-path-filter').removeClass('changed');
 	}, 1000);
 }
 
-function tagFilterInit() {
-	$('.role-tag').click(function () {
+function tagFilterInit()
+{
+	$('.role-tag').click(function ()
+	{
 		tagFilterListItems($('#role-filter'), $(this), '');
 	});
 	$('.theme-tag').click(function ()
 	{
 		tagFilterListItems($('#theme-filter'), $(this), '');
 	});
-	$('.topic-tag').click(function () {
+	$('.topic-tag').click(function ()
+	{
 		tagFilterListItems($('#topic-filter'), $(this), '');
 	});
+}
+
+function dynamicSort(property)
+{
+	var sortOrder = 1;
+
+	if (property[0] === "-")
+	{
+		sortOrder = -1;
+		property = property.substr(1);
+	}
+
+	return function (a, b)
+	{
+		var aProperty = a[property];
+		var bProperty = b[property];
+		if (aProperty != null && bProperty != null)
+		{
+			if (sortOrder === -1)
+			{
+				return bProperty.localeCompare(aProperty);
+			}
+			else
+			{
+				return aProperty.localeCompare(bProperty);
+			}
+		}
+		else if (aProperty != null && bProperty == null)
+		{
+			return sortOrder;
+		}
+		else if (aProperty == null && bProperty != null)
+		{
+			return sortOrder * -1;
+		}
+		else
+			return 0;
+	}
 }
 //end first snippet
 
 //start second snippet
-$('document').ready(function () {
+$('document').ready(function ()
+{
 	//Grabbing API Information
-	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
+	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data)
+	{
 		allSessions = data;
+
+		allSessions.sort(dynamicSort("StartDateTime"));
 
 		//Creating empty array variables for each of the filtering options
 		var role = [];
 		var sessionType = [];
 		var theme = [];
 		var topic = [];
-		$.each(allSessions, function (key, value) {
-			if (value.Title != null && value.Publish) {
+		$.each(allSessions, function (key, value)
+		{
+			if (value.Title != null && value.Publish)
+			{
 				var tags = "";
-				if (value.RolePersona != null) {
+				if (value.RolePersona != null)
+				{
 					$.each(value.RolePersona,
-						function (k, v) {
+						function (k, v)
+						{
 							tags += "<span class=\"text-label role-tag " + classifyText(v) + "\">" + v + "</span>";
 							if (role.indexOf(v) === -1)
 								role.push(v);
 						});
 				}
-				if (value.SessionType != null) {
+				if (value.SessionType != null)
+				{
 					tags += "<span class=\"text-label sessiontype-tag " + classifyText(value.SessionType) + "\">" + value.SessionType + "</span>";
 					if (sessionType.indexOf(value.SessionType) === -1)
 						sessionType.push(value.SessionType);
@@ -99,9 +160,11 @@ $('document').ready(function () {
 								theme.push(v);
 						});
 				}
-				if (value.Topic != null) {
+				if (value.Topic != null)
+				{
 					$.each(value.Topic,
-						function (k, v) {
+						function (k, v)
+						{
 							tags += "<span class=\"text-label topic-tag " + classifyText(v) + "\">" + v + "</span>";
 							if (topic.indexOf(v) === -1)
 								topic.push(v);
@@ -137,15 +200,17 @@ $('document').ready(function () {
 		topic.sort();
 		//Adding text dynamically from airtable to each of filter slots
 		var r = $('#role-filter > ul');
-		$.each(role, function (key, value) {
+		$.each(role, function (key, value)
+		{
 			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var s = $('#session-filter > ul');
-		$.each(sessionType, function (key, value) {
+		$.each(sessionType, function (key, value)
+		{
 			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		// End of second snippet
-		
+
 		// Third snippet starts here
 		var th = $('#theme-filter > ul');
 		$.each(theme, function (key, value)
@@ -153,7 +218,8 @@ $('document').ready(function () {
 			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var t = $('#topic-filter > ul');
-		$.each(topic, function (key, value) {
+		$.each(topic, function (key, value)
+		{
 			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 
@@ -162,13 +228,15 @@ $('document').ready(function () {
 			itemPath: '.grid-item',
 			panelPath: '.jp-lists',
 			effect: 'fade',
-			redrawCallback: function () {
+			redrawCallback: function ()
+			{
 				tagFilterInit();
 			}
 		});
 	}); //end of api pull
 
-	$('#filter-btn').click(function (event) {
+	$('#filter-btn').click(function (event)
+	{
 		event.preventDefault();
 		$('#filter-box').animate({
 			width: 'toggle'
@@ -186,12 +254,14 @@ $('document').ready(function () {
 		$(this).toggleClass('menu-open');
 		$('#role-filter > ul').slideToggle('fast');
 	});
-	$('.session-label').click(function (event) {
+	$('.session-label').click(function (event)
+	{
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#session-filter > ul').slideToggle('fast');
 	});
-	$('.theme-label').click(function (event) {
+	$('.theme-label').click(function (event)
+	{
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#theme-filter > ul').slideToggle('fast');
@@ -205,7 +275,8 @@ $('document').ready(function () {
 
 	$("#filter-box").hide();
 
-	$(document).on('click', '.details-expand', function () {
+	$(document).on('click', '.details-expand', function ()
+	{
 		var details = $('.session-details');
 		$(this).parent('.grid-item').find(details).slideToggle('fast');
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
@@ -215,18 +286,21 @@ $('document').ready(function () {
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
-	$('.tabs-menu .tab-toggle').click(function (event) {
+	$('.tabs-menu .tab-toggle').click(function (event)
+	{
 		event.preventDefault();
 		$(this).addClass('current');
 		$(this).siblings().removeClass('current');
 
 		var tab = $(this).attr('href');
 		$('.tab-content').not(tab).addClass('hide-tab');
-		setTimeout(function () {
+		setTimeout(function ()
+		{
 			$('.tab-content').not(tab).css('display', 'none');
 		}, 200);
 		$(tab).removeClass('hide-tab');
-		setTimeout(function () {
+		setTimeout(function ()
+		{
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
