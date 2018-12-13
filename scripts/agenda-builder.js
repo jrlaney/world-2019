@@ -110,7 +110,7 @@ function dynamicSort(property)
 		}
 		else
 			return 0;
-	}
+	};
 }
 //end first snippet
 
