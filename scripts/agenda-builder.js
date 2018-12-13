@@ -113,13 +113,13 @@ $('document').ready(function () {
 
 				var startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
 				var endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit' });
-
+				
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
-					"<p class=\"session-start-time hide\">" + startTime + " - " + endTime + "</p>" +
+					"<p class=\"session-start-time\">" + startTime + " - " + endTime + "</p>" +
 					"<div class=\"session-details hide\">" +
 					"<p class=\"session-description\">" + description + "</p>" +
 					"</div>" +
@@ -211,7 +211,7 @@ $('document').ready(function () {
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
 		$(this).parent('.grid-item').find('.session-speaker').toggleClass('hide');
 		$(this).parent('.grid-item').find('.session-type').toggleClass('hide');
-		$(this).parent('.grid-item').find('.session-start-time').toggleClass('hide');
+		// $(this).parent('.grid-item').find('.session-start-time').toggleClass('hide');
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
