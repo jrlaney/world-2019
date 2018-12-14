@@ -73,6 +73,14 @@ function tagFilterInit()
 	{
 		tagFilterListItems($('#topic-filter'), $(this), '');
 	});
+	$('.startDate-tag').click(function ()
+	{
+		tagFilterListItems($('#date-filter'), $(this), '');
+	});
+	$('.startTime-tag').click(function ()
+	{
+		tagFilterListItems($('#time-filter'), $(this), $(this).text().replace(":", "").replace(" AM", "").replace(" PM", ""));
+	});
 }
 
 function dynamicSort(firstProperty, secondProperty)
@@ -120,11 +128,11 @@ function sortComparision(aProperty, bProperty, sortOrder)
 	}
 	else if (aProperty != null && bProperty == null)
 	{
-		return sortOrder;
+		return sortOrder * -1;
 	}
 	else if (aProperty == null && bProperty != null)
 	{
-		return sortOrder * -1;
+		return sortOrder;
 	}
 	else
 		return 0;
@@ -138,14 +146,16 @@ $('document').ready(function ()
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data)
 	{
 		allSessions = data;
-
 		allSessions.sort(dynamicSort("StartDateTime", "Title"));
+		var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 		//Creating empty array variables for each of the filtering options
 		var role = [];
 		var sessionType = [];
 		var theme = [];
 		var topic = [];
+		var date = [];
+		var time = [];
 		$.each(allSessions, function (key, value)
 		{
 			if (value.Title != null && value.Publish)
@@ -187,13 +197,28 @@ $('document').ready(function ()
 								topic.push(v);
 						});
 				}
+				if (value.StartDateTime != null)
+				{
+					var startDateTime = new Date(value.StartDateTime);
+					tags += "<span class=\"text-label startDate-tag " + classifyText(days[startDateTime.getDay()]) + "\">" + days[startDateTime.getDay()]+ "</span>";
+					if (date.indexOf(days[startDateTime.getDay()]) === -1)
+						date.push(days[startDateTime.getDay()]);
+
+					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + "</span>";
+					if (time.map(Number).indexOf(+new Date(startDateTime.toLocaleString('en-US', { year: 'numeric',hour: 'numeric', minute: 'numeric', hour12: true }))) === -1)
+						time.push(new Date(startDateTime.toLocaleString('en-US', { year: 'numeric',hour: 'numeric', minute: 'numeric', hour12: true })));
+				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
 				description = description.replace(/\n/g, '<br />');
 
-				var startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-				var endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit' });
-				
+				var startTime = "TBD";
+				if (value.StartDateTime != null)
+					startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+				var endTime = "TBD";
+				if (value.EndDateTime != null)
+					endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit' });
+
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
@@ -215,6 +240,7 @@ $('document').ready(function ()
 		sessionType.sort();
 		theme.sort();
 		topic.sort();
+		time.sort();
 		//Adding text dynamically from airtable to each of filter slots
 		var r = $('#role-filter > ul');
 		$.each(role, function (key, value)
@@ -238,6 +264,17 @@ $('document').ready(function ()
 		$.each(topic, function (key, value)
 		{
 			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var d = $('#date-filter > ul');
+		$.each(date, function (key, value)
+		{
+			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var t = $('#time-filter > ul');
+		$.each(time, function (key, value)
+		{
+			var timeString = value.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+			t.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours()+value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
 		});
 
 		$('#agenda-page').jplist({
