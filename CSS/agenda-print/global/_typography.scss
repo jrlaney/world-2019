@@ -31,7 +31,12 @@ a:active {
 
 a.ListText2,
 a.ListText2 {
-    color: $monsoon;
+    color: $black;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .1em;
+    font-weight: 600;
+    padding-left: .6em;
 }
 
 .uppercase {
