@@ -102,7 +102,7 @@ function dynamicSort(firstProperty, secondProperty)
 		}
 
 		return returnValue;
-	}
+	};
 }
 
 function sortComparision(aProperty, bProperty, sortOrder)
