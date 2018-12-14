@@ -315,8 +315,11 @@ td.Line1 {
         width: 100%;
         padding-bottom: 20px;
     }
-
+    div.reg-process {
+        padding: 5%;
+    }
     .reg-process-content {
+        padding: 5%;
 
         div.reg-field-left-column,
         div.reg-field-right-column {
@@ -374,13 +377,15 @@ td.Line1 {
         float: none;
         display: block;
     }
-
+    div.reg-summary-container {
+        padding: 5%;
+    }
     div.reg-process-content .reg-section div.register-btn-bottom,
     .reg-section div.register-btn-bottom,
     div.register-btn-bottom div.register-btn-bottom,
     .reg-summary-content div.register-btn-bottom,
     .reg-payment-tables>.reg-third-header {
-        padding: 0;
+        padding: 5%;
     }
 
     .reg-section.reg-questions div.register-btn-bottom {

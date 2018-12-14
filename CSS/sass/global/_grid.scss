@@ -123,6 +123,17 @@
                 padding-bottom: 0;
             }
         }
+
+        &.padding-20 {
+            padding: 20px 20px 20px 20px;
+            
+            &-x> {
+                padding: 20px 0;
+            }
+            &-y> {
+                padding: 0 20px;
+            }
+        }
     }
 
     // gutter controls
@@ -135,6 +146,17 @@
 
         >.col {
             padding: 0;
+
+            &.padding-20 {
+                padding: 20px 20px 20px 20px;
+                
+                &-x> {
+                    padding: 20px 0;
+                }
+                &-y> {
+                    padding: 0 20px;
+                }
+            }
         }
 
         &-x{
