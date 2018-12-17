@@ -270,12 +270,12 @@ $('document').ready(function ()
 		{
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
-		var t = $('#time-filter > ul');
-		$.each(time, function (key, value)
-		{
-			var timeString = value.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-			t.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours()+value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
-		});
+		// var tm = $('#time-filter > ul');
+		// $.each(time, function (key, value)
+		// {
+		// 	var timeString = value.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+		// 	tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours()+value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
+		// });
 
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
@@ -301,6 +301,8 @@ $('document').ready(function ()
 	$('#session-filter > ul').hide();
 	$('#theme-filter > ul').hide();
 	$('#topic-filter > ul').hide();
+	$('#filter-box #date-filter > ul').hide();
+	$('#time-filter > ul').hide();
 
 	$('.role-label').click(function (event)
 	{
@@ -326,6 +328,18 @@ $('document').ready(function ()
 		$(this).toggleClass('menu-open');
 		$('#topic-filter > ul').slideToggle('fast');
 	});
+	$('.date-label').click(function (event)
+	{
+		event.preventDefault();
+		$(this).toggleClass('menu-open');
+		$('#filter-box #date-filter > ul').slideToggle('fast');
+	});
+	$('.time-label').click(function (event)
+	{
+		event.preventDefault();
+		$(this).toggleClass('menu-open');
+		$('#time-filter > ul').slideToggle('fast');
+	});
 
 	$("#filter-box").hide();
 
@@ -336,7 +350,6 @@ $('document').ready(function ()
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
 		$(this).parent('.grid-item').find('.session-speaker').toggleClass('hide');
 		$(this).parent('.grid-item').find('.session-type').toggleClass('hide');
-		// $(this).parent('.grid-item').find('.session-start-time').toggleClass('hide');
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
