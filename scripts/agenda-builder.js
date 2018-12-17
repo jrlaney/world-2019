@@ -119,11 +119,11 @@ function sortComparision(aProperty, bProperty, sortOrder)
 	{
 		if (sortOrder === -1)
 		{
-			return bProperty.localeCompare(aProperty);
+			return bProperty.localeCompare(aProperty, undefined, { numeric: true, sensitivity: 'base' });
 		}
 		else
 		{
-			return aProperty.localeCompare(bProperty);
+			return aProperty.localeCompare(bProperty, undefined, { numeric: true, sensitivity: 'base' });
 		}
 	}
 	else if (aProperty != null && bProperty == null)
@@ -205,8 +205,8 @@ $('document').ready(function ()
 						date.push(days[startDateTime.getDay()]);
 
 					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + "</span>";
-					if (time.map(Number).indexOf(+new Date(startDateTime.toLocaleString('en-US', { year: 'numeric',hour: 'numeric', minute: 'numeric', hour12: true }))) === -1)
-						time.push(new Date(startDateTime.toLocaleString('en-US', { year: 'numeric',hour: 'numeric', minute: 'numeric', hour12: true })));
+					if (time.indexOf(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })) === -1)
+						time.push(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
 				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
@@ -240,7 +240,13 @@ $('document').ready(function ()
 		sessionType.sort();
 		theme.sort();
 		topic.sort();
-		time.sort();
+
+		var distinctTimes = [];
+		$.each(time, function (key, value)
+		{
+			distinctTimes.push({ ampm: value.split(" ")[1], hrmin: value.split(" ")[0] });
+		});
+		distinctTimes.sort(dynamicSort("ampm", "hrmin"));
 		//Adding text dynamically from airtable to each of filter slots
 		var r = $('#role-filter > ul');
 		$.each(role, function (key, value)
@@ -270,12 +276,18 @@ $('document').ready(function ()
 		{
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
-		// var tm = $('#time-filter > ul');
-		// $.each(time, function (key, value)
-		// {
-		// 	var timeString = value.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-		// 	tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours()+value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
-		// });
+		var tm = $('#time-filter > ul');
+		$.each(distinctTimes, function (key, value)
+		{
+			var temptime = new Date();
+			temptime.setHours(value.hrmin.split(":")[0]);
+			temptime.setMinutes(value.hrmin.split(":")[1]);
+			if (value.ampm === "PM")
+				temptime.setHours(temptime.getHours() + 12);
+
+			var timeString = temptime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
+		});
 
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
