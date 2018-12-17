@@ -193,6 +193,60 @@
             background-size: 1623px * .2;
         }
     }
+    //navy background options
+    &.pattern-horseshoe {
+        background-color: $navy;
+        background-image: url($pattern-horseshoe);
+        background-size: 1200px * .33;
+
+        &.pattern-large {
+            background-size: 1200px * .5;
+        }
+
+        &.pattern-small {
+            background-size: 1200px * .2;
+        }
+    }
+    &.pattern-squiggles-navy {
+        background-color: $navy;
+        background-image: url($pattern-squiggles-navy);
+        background-size: 1200px * .33;
+
+        &.pattern-large {
+            background-size: 1200px * .5;
+        }
+
+        &.pattern-small {
+            background-size: 1200px * .2;
+        }
+    }
+    //green background options
+    &.pattern-abstract {
+        background-color: $green;
+        background-image: url($pattern-abstract);
+        background-size: 1300px * .33;
+
+        &.pattern-large {
+            background-size: 1300px * .5;
+        }
+
+        &.pattern-small {
+            background-size: 1300px * .2;
+        }
+    }
+    &.pattern-confetti {
+        background-color: $green;
+        background-image: url($pattern-confetti);
+        background-size: 1300px * .33;
+
+        &.pattern-large {
+            background-size: 1300px * .5;
+        }
+
+        &.pattern-small {
+            background-size: 1300px * .2;
+        }
+    }
 }
 
 
