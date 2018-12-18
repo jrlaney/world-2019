@@ -270,12 +270,12 @@ $('document').ready(function ()
 		{
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
-		// var tm = $('#time-filter > ul');
-		// $.each(time, function (key, value)
-		// {
-		// 	var timeString = value.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-		// 	tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours()+value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
-		// });
+		var tm = $('#time-filter > ul');
+		$.each(time, function (key, value)
+		{
+			var timeString = value.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours()+value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
+		});
 
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
