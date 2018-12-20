@@ -1,18 +1,14 @@
 var allSessions = [];
 
-function getQueryStringParamValue(key)
-{
+function getQueryStringParamValue(key) {
 	var url = document.location.href;
 	var value = "";
 
-	if (url.indexOf('?') !== -1)
-	{
+	if (url.indexOf('?') !== -1) {
 		var queryStrings = url.substr(url.indexOf('?') + 1);
 
-		if (queryStrings.toLowerCase().indexOf(key.toLowerCase() + "=") !== -1)
-		{
-			var queryString = queryStrings.split("&").find(function (element)
-			{
+		if (queryStrings.toLowerCase().indexOf(key.toLowerCase() + "=") !== -1) {
+			var queryString = queryStrings.split("&").find(function (element) {
 				return element.toLowerCase().split("=")[0] === key.toLowerCase();
 			});
 			if (typeof queryString !== "undefined")
@@ -22,25 +18,19 @@ function getQueryStringParamValue(key)
 	return value;
 }
 
-function classifyText(text)
-{
+function classifyText(text) {
 	var returnValue = "";
-	if ($.isArray(text))
-	{
-		$.each($.unique(text), function (key, value)
-		{
+	if ($.isArray(text)) {
+		$.each($.unique(text), function (key, value) {
 			returnValue += " " + value.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
 		});
-	}
-	else
-	{
+	} else {
 		returnValue = text.toLowerCase().replace(" ", "").replace(/[^a-z]+/g, '');
 	}
 	return returnValue;
 }
 
-function tagFilterListItems($filter, $tag, dataPathId)
-{
+function tagFilterListItems($filter, $tag, dataPathId) {
 	var dataPath = dataPathId + classifyText($tag.text());
 	// update value and trigger change in field
 	$filter.find('#' + dataPath).trigger('click');
@@ -53,59 +43,47 @@ function tagFilterListItems($filter, $tag, dataPathId)
 	// select first pagination page
 	$('.pagination').find('button[data-number="0"]').trigger('click');
 	// remove changed style after a second
-	setTimeout(function ()
-	{
+	setTimeout(function () {
 		$filter.find('jplist-checkbox-path-filter').removeClass('changed');
 	}, 1000);
 }
 
-function tagFilterInit()
-{
-	$('.role-tag').click(function ()
-	{
+function tagFilterInit() {
+	$('.role-tag').click(function () {
 		tagFilterListItems($('#role-filter'), $(this), '');
 	});
-	$('.theme-tag').click(function ()
-	{
+	$('.theme-tag').click(function () {
 		tagFilterListItems($('#theme-filter'), $(this), '');
 	});
-	$('.topic-tag').click(function ()
-	{
+	$('.topic-tag').click(function () {
 		tagFilterListItems($('#topic-filter'), $(this), '');
 	});
-	$('.startDate-tag').click(function ()
-	{
+	$('.startDate-tag').click(function () {
 		tagFilterListItems($('#date-filter'), $(this), '');
 	});
-	$('.startTime-tag').click(function ()
-	{
+	$('.startTime-tag').click(function () {
 		tagFilterListItems($('#time-filter'), $(this), $(this).text().replace(":", "").replace(" AM", "").replace(" PM", ""));
 	});
 }
 
-function dynamicSort(firstProperty, secondProperty)
-{
+function dynamicSort(firstProperty, secondProperty) {
 	var firstSortOrder = 1;
-	if (firstProperty[0] === "-")
-	{
+	if (firstProperty[0] === "-") {
 		firstSortOrder = -1;
 		firstProperty = firstProperty.substr(1);
 	}
 
 	var secondSortOrder = 1;
-	if (secondProperty[0] === "-")
-	{
+	if (secondProperty[0] === "-") {
 		secondSortOrder = -1;
 		secondProperty = secondProperty.substr(1);
 	}
 
-	return function (a, b)
-	{
+	return function (a, b) {
 		var returnValue = 0;
 		returnValue = sortComparision(a[firstProperty], b[firstProperty], firstSortOrder);
 
-		if (returnValue === 0)
-		{
+		if (returnValue === 0) {
 			returnValue = sortComparision(a[secondProperty], b[secondProperty], secondSortOrder);
 		}
 
@@ -125,26 +103,19 @@ function sortComparision(aProperty, bProperty, sortOrder)
 		{
 			return aProperty.localeCompare(bProperty, undefined, { numeric: true, sensitivity: 'base' });
 		}
-	}
-	else if (aProperty != null && bProperty == null)
-	{
+	} else if (aProperty != null && bProperty == null) {
 		return sortOrder * -1;
-	}
-	else if (aProperty == null && bProperty != null)
-	{
+	} else if (aProperty == null && bProperty != null) {
 		return sortOrder;
-	}
-	else
+	} else
 		return 0;
 }
 //end first snippet
 
 //start second snippet
-$('document').ready(function ()
-{
+$('document').ready(function () {
 	//Grabbing API Information
-	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data)
-	{
+	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
 		allSessions = data;
 		allSessions.sort(dynamicSort("StartDateTime", "Title"));
 		var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -156,51 +127,41 @@ $('document').ready(function ()
 		var topic = [];
 		var date = [];
 		var time = [];
-		$.each(allSessions, function (key, value)
-		{
-			if (value.Title != null && value.Publish)
-			{
+		$.each(allSessions, function (key, value) {
+			if (value.Title != null && value.Publish) {
 				var tags = "";
-				if (value.RolePersona != null)
-				{
+				if (value.RolePersona != null) {
 					$.each(value.RolePersona,
-						function (k, v)
-						{
+						function (k, v) {
 							tags += "<span class=\"text-label role-tag " + classifyText(v) + "\">" + v + "</span>";
 							if (role.indexOf(v) === -1)
 								role.push(v);
 						});
 				}
-				if (value.SessionType != null)
-				{
+				if (value.SessionType != null) {
 					tags += "<span class=\"text-label sessiontype-tag " + classifyText(value.SessionType) + "\">" + value.SessionType + "</span>";
 					if (sessionType.indexOf(value.SessionType) === -1)
 						sessionType.push(value.SessionType);
 				}
-				if (value.Themes != null)
-				{
+				if (value.Themes != null) {
 					$.each(value.Themes,
-						function (k, v)
-						{
+						function (k, v) {
 							tags += "<span class=\"text-label theme-tag " + classifyText(v) + "\">" + v + "</span>";
 							if (theme.indexOf(v) === -1)
 								theme.push(v);
 						});
 				}
-				if (value.Topic != null)
-				{
+				if (value.Topic != null) {
 					$.each(value.Topic,
-						function (k, v)
-						{
+						function (k, v) {
 							tags += "<span class=\"text-label topic-tag " + classifyText(v) + "\">" + v + "</span>";
 							if (topic.indexOf(v) === -1)
 								topic.push(v);
 						});
 				}
-				if (value.StartDateTime != null)
-				{
+				if (value.StartDateTime != null) {
 					var startDateTime = new Date(value.StartDateTime);
-					tags += "<span class=\"text-label startDate-tag " + classifyText(days[startDateTime.getDay()]) + "\">" + days[startDateTime.getDay()]+ "</span>";
+					tags += "<span class=\"text-label startDate-tag " + classifyText(days[startDateTime.getDay()]) + "\">" + days[startDateTime.getDay()] + "</span>";
 					if (date.indexOf(days[startDateTime.getDay()]) === -1)
 						date.push(days[startDateTime.getDay()]);
 
@@ -214,10 +175,19 @@ $('document').ready(function ()
 
 				var startTime = "TBD";
 				if (value.StartDateTime != null)
-					startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+					startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", {
+						weekday: 'long',
+						month: 'long',
+						day: 'numeric',
+						hour: 'numeric',
+						minute: '2-digit'
+					});
 				var endTime = "TBD";
 				if (value.EndDateTime != null)
-					endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit' });
+					endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", {
+						hour: 'numeric',
+						minute: '2-digit'
+					});
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
@@ -249,31 +219,26 @@ $('document').ready(function ()
 		distinctTimes.sort(dynamicSort("ampm", "hrmin"));
 		//Adding text dynamically from airtable to each of filter slots
 		var r = $('#role-filter > ul');
-		$.each(role, function (key, value)
-		{
+		$.each(role, function (key, value) {
 			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var s = $('#session-filter > ul');
-		$.each(sessionType, function (key, value)
-		{
+		$.each(sessionType, function (key, value) {
 			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		// End of second snippet
 
 		// Third snippet starts here
 		var th = $('#theme-filter > ul');
-		$.each(theme, function (key, value)
-		{
+		$.each(theme, function (key, value) {
 			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var t = $('#topic-filter > ul');
-		$.each(topic, function (key, value)
-		{
+		$.each(topic, function (key, value) {
 			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var d = $('#date-filter > ul');
-		$.each(date, function (key, value)
-		{
+		$.each(date, function (key, value) {
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var tm = $('#time-filter > ul');
@@ -294,15 +259,13 @@ $('document').ready(function ()
 			itemPath: '.grid-item',
 			panelPath: '.jp-lists',
 			effect: 'fade',
-			redrawCallback: function ()
-			{
+			redrawCallback: function () {
 				tagFilterInit();
 			}
 		});
 	}); //end of api pull
 
-	$('#filter-btn').click(function (event)
-	{
+	$('#filter-btn').click(function (event) {
 		event.preventDefault();
 		$('#filter-box').animate({
 			width: 'toggle'
@@ -316,38 +279,32 @@ $('document').ready(function ()
 	$('#filter-box #date-filter > ul').hide();
 	$('#time-filter > ul').hide();
 
-	$('.role-label').click(function (event)
-	{
+	$('.role-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#role-filter > ul').slideToggle('fast');
 	});
-	$('.session-label').click(function (event)
-	{
+	$('.session-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#session-filter > ul').slideToggle('fast');
 	});
-	$('.theme-label').click(function (event)
-	{
+	$('.theme-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#theme-filter > ul').slideToggle('fast');
 	});
-	$('.topic-label').click(function (event)
-	{
+	$('.topic-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#topic-filter > ul').slideToggle('fast');
 	});
-	$('.date-label').click(function (event)
-	{
+	$('.date-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#filter-box #date-filter > ul').slideToggle('fast');
 	});
-	$('.time-label').click(function (event)
-	{
+	$('.time-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
 		$('#time-filter > ul').slideToggle('fast');
@@ -355,8 +312,7 @@ $('document').ready(function ()
 
 	$("#filter-box").hide();
 
-	$(document).on('click', '.details-expand', function ()
-	{
+	$(document).on('click', '.details-expand', function () {
 		var details = $('.session-details');
 		$(this).parent('.grid-item').find(details).slideToggle('fast');
 		$(this).parent('.grid-item').find(details).toggleClass('hide');
@@ -365,21 +321,18 @@ $('document').ready(function ()
 		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
-	$('.tabs-menu .tab-toggle').click(function (event)
-	{
+	$('.tabs-menu .tab-toggle').click(function (event) {
 		event.preventDefault();
 		$(this).addClass('current');
 		$(this).siblings().removeClass('current');
 
 		var tab = $(this).attr('href');
 		$('.tab-content').not(tab).addClass('hide-tab');
-		setTimeout(function ()
-		{
+		setTimeout(function () {
 			$('.tab-content').not(tab).css('display', 'none');
 		}, 200);
 		$(tab).removeClass('hide-tab');
-		setTimeout(function ()
-		{
+		setTimeout(function () {
 			$(tab).css('display', 'block');
 		}, 400);
 	}); //tab toogle script
