@@ -91,12 +91,17 @@ function dynamicSort(firstProperty, secondProperty) {
 	};
 }
 
-function sortComparision(aProperty, bProperty, sortOrder) {
-	if (aProperty != null && bProperty != null) {
-		if (sortOrder === -1) {
-			return bProperty.localeCompare(aProperty);
-		} else {
-			return aProperty.localeCompare(bProperty);
+function sortComparision(aProperty, bProperty, sortOrder)
+{
+	if (aProperty != null && bProperty != null)
+	{
+		if (sortOrder === -1)
+		{
+			return bProperty.localeCompare(aProperty, undefined, { numeric: true, sensitivity: 'base' });
+		}
+		else
+		{
+			return aProperty.localeCompare(bProperty, undefined, { numeric: true, sensitivity: 'base' });
 		}
 	} else if (aProperty != null && bProperty == null) {
 		return sortOrder * -1;
@@ -160,23 +165,9 @@ $('document').ready(function () {
 					if (date.indexOf(days[startDateTime.getDay()]) === -1)
 						date.push(days[startDateTime.getDay()]);
 
-					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', {
-						hour: 'numeric',
-						minute: 'numeric',
-						hour12: true
-					}) + "</span>";
-					if (time.map(Number).indexOf(+new Date(startDateTime.toLocaleString('en-US', {
-							year: 'numeric',
-							hour: 'numeric',
-							minute: 'numeric',
-							hour12: true
-						}))) === -1)
-						time.push(new Date(startDateTime.toLocaleString('en-US', {
-							year: 'numeric',
-							hour: 'numeric',
-							minute: 'numeric',
-							hour12: true
-						})));
+					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + "</span>";
+					if (time.indexOf(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })) === -1)
+						time.push(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
 				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
@@ -223,19 +214,29 @@ $('document').ready(function () {
 		theme.sort();
 		topic.sort();
 		role.sort();
+
+		var distinctTimes = [];
+		$.each(time, function (key, value)
+		{
+			distinctTimes.push({ ampm: value.split(" ")[1], hrmin: value.split(" ")[0] });
+		});
+		distinctTimes.sort(dynamicSort("ampm", "hrmin"));
 		//Adding text dynamically from airtable to each of filter slots
 		var d = $('#date-filter > ul');
 		$.each(date, function (key, value) {
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var tm = $('#time-filter > ul');
-		$.each(time, function (key, value) {
-			var timeString = value.toLocaleString('en-US', {
-				hour: 'numeric',
-				minute: 'numeric',
-				hour12: true
-			});
-			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours() + value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
+		$.each(distinctTimes, function (key, value)
+		{
+			var temptime = new Date();
+			temptime.setHours(value.hrmin.split(":")[0]);
+			temptime.setMinutes(value.hrmin.split(":")[1]);
+			if (value.ampm === "PM")
+				temptime.setHours(temptime.getHours() + 12);
+
+			var timeString = temptime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
 		});
 
 		var s = $('#session-filter > ul');
