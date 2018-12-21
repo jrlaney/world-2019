@@ -214,32 +214,16 @@ $('document').ready(function () {
 			}
 		});
 
-		//Sorting items
-		role.sort();
-		sessionType.sort();
-		theme.sort();
-		topic.sort();
-		time.sort();
-		//Adding text dynamically from airtable to each of filter slots
-		var r = $('#role-filter > ul');
-		$.each(role, function (key, value) {
-			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
-		var s = $('#session-filter > ul');
-		$.each(sessionType, function (key, value) {
-			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
 		// End of second snippet
 
 		// Third snippet starts here
-		var th = $('#theme-filter > ul');
-		$.each(theme, function (key, value) {
-			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
-		var t = $('#topic-filter > ul');
-		$.each(topic, function (key, value) {
-			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
-		});
+		//Sorting items
+		time.sort();
+		sessionType.sort();
+		theme.sort();
+		topic.sort();
+		role.sort();
+		//Adding text dynamically from airtable to each of filter slots
 		var d = $('#date-filter > ul');
 		$.each(date, function (key, value) {
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
@@ -254,6 +238,23 @@ $('document').ready(function () {
 			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + value.getHours() + value.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", value.getHours()).text(timeString)));
 		});
 
+		var s = $('#session-filter > ul');
+		$.each(sessionType, function (key, value) {
+			s.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var th = $('#theme-filter > ul');
+		$.each(theme, function (key, value) {
+			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var t = $('#topic-filter > ul');
+		$.each(topic, function (key, value) {
+			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		var r = $('#role-filter > ul');
+		$.each(role, function (key, value) {
+			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
+		});
+		
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
 			itemPath: '.grid-item',
@@ -272,17 +273,23 @@ $('document').ready(function () {
 		});
 	});
 
-	$('#role-filter > ul').hide();
+	$("#filter-box").hide();
+	$('#date-filter > ul').hide();
+	$('#time-filter > ul').hide();
 	$('#session-filter > ul').hide();
 	$('#theme-filter > ul').hide();
 	$('#topic-filter > ul').hide();
-	$('#filter-box #date-filter > ul').hide();
-	$('#time-filter > ul').hide();
+	$('#role-filter > ul').hide();
 
-	$('.role-label').click(function (event) {
+	$('.date-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
-		$('#role-filter > ul').slideToggle('fast');
+		$('#filter-box #date-filter > ul').slideToggle('fast');
+	});
+	$('.time-label').click(function (event) {
+		event.preventDefault();
+		$(this).toggleClass('menu-open');
+		$('#time-filter > ul').slideToggle('fast');
 	});
 	$('.session-label').click(function (event) {
 		event.preventDefault();
@@ -299,26 +306,19 @@ $('document').ready(function () {
 		$(this).toggleClass('menu-open');
 		$('#topic-filter > ul').slideToggle('fast');
 	});
-	$('.date-label').click(function (event) {
+	$('.role-label').click(function (event) {
 		event.preventDefault();
 		$(this).toggleClass('menu-open');
-		$('#filter-box #date-filter > ul').slideToggle('fast');
+		$('#role-filter > ul').slideToggle('fast');
 	});
-	$('.time-label').click(function (event) {
-		event.preventDefault();
-		$(this).toggleClass('menu-open');
-		$('#time-filter > ul').slideToggle('fast');
-	});
-
-	$("#filter-box").hide();
-
-	$(document).on('click', '.details-expand', function () {
-		var details = $('.session-details');
-		$(this).parent('.grid-item').find(details).slideToggle('fast');
-		$(this).parent('.grid-item').find(details).toggleClass('hide');
-		$(this).parent('.grid-item').find('.session-speaker').toggleClass('hide');
-		$(this).parent('.grid-item').find('.session-type').toggleClass('hide');
-		$(this).text($(this).text() === 'See Details' ? 'Hide Details' : 'See Details');
+	
+	$(document).on('click', '.grid-item', function () {
+		$(this).find('.session-details').slideToggle('fast');
+		$(this).find('.session-details').toggleClass('hide');
+		$(this).find('.session-speaker').toggleClass('hide');
+		$(this).find('.session-type').toggleClass('hide');
+		var details = $(this).find('.details-expand').text();
+		$(this).find('.details-expand').text( details === 'See Details' ? 'Hide Details' : 'See Details' );
 	});
 
 	$('.tabs-menu .tab-toggle').click(function (event) {
