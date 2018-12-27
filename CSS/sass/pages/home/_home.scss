@@ -1,0 +1,13 @@
+//////////////////////HOME PAGE
+#home-page {
+	@import 'sections/hero';
+	@import 'sections/about';
+	@import 'sections/special-events';
+	@import 'sections/meetings';
+	@import 'sections/agenda';
+	@import '../../components/agenda-bar';
+	@import 'sections/venue';
+	@import 'sections/pricing';
+	@import 'sections/sponsors';
+	@import 'sections/highlights';	
+}

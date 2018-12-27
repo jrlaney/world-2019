@@ -1,0 +1,12 @@
+#pricing-registration {
+    .pattern-overlay .static-pattern {
+        &.pos-top {
+            max-width: none;
+            left: 45%;
+        }
+
+        &.pos-bottom {
+            right: 75%
+        }
+    }
+}

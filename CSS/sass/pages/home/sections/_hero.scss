@@ -1,0 +1,38 @@
+//Home Hero
+#hero {
+    border: 1px solid $white;
+
+    .col {
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include align-items(center);
+
+    }
+
+    .background-blue,
+    .photo {
+        border: 2px solid $white;
+    }
+
+    .title-copy-col>h1 {
+        padding: 50px 50px 50px 10px;
+        text-align: center;
+
+        @include large {
+            text-align: left;
+            max-width: $lg-breakpoint / 2;
+            @include align-self(flex-end);
+        }
+
+        @include xlarge {
+            max-width: $xl-breakpoint / 2;
+        }
+    }
+
+    .cta-button {
+        margin: 0;
+        box-shadow: none;
+        border: 2px solid $white;
+    }
+}

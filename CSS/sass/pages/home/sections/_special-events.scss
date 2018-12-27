@@ -1,0 +1,39 @@
+//Special Events
+#special-events {
+    .pattern-overlay .static-pattern {
+        &.pos-top-right {
+            top:-8.2%;
+            right: -34%;
+        }
+        &.pos-bottom {
+            bottom:-12%;
+        }
+        @include medium {
+            &.pos-top-right {
+                top: -12.4%;
+                right: -34%;
+            }
+            &.pos-bottom {
+                right: 0%;
+                bottom:-20%;
+            }
+        }
+        @include large {
+            &.pos-top-right {
+                top: -15%;
+                right: -5%;
+            }
+            &.pos-bottom {
+                right: 32%;
+            }
+        }
+        @include xlarge {
+            &.pos-top-right {
+                top: -16%;
+            }
+            &.pos-bottom {
+                right: 88%;
+            }
+        }
+    }
+}

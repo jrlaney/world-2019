@@ -1,0 +1,36 @@
+//About the Conference
+#about {
+    .photo {
+        @include medium {
+            float: left;
+            max-width: none;
+            margin-left: -10%;
+            width: 120%;
+        }
+
+        @include large {
+            margin-left: 40px;
+            width: 200%;
+        }
+
+        @include xlarge {
+            width: 145%;
+        }
+    }
+
+    .pattern-overlay .static-pattern {
+        &.pos-top {
+            left: 65%;
+        }
+
+        @include medium {
+            &.pos-top {
+                left: 55%;
+            }
+
+            &.pos-bottom {
+                right: 78%;
+            }
+        }
+    }
+}

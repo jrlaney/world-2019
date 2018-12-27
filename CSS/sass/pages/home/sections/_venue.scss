@@ -1,0 +1,68 @@
+//Venue
+#venue {
+    .map-col {
+        position: relative;
+
+        .static-pattern {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            right: 75%;
+        }
+    }
+
+    .map-container {
+        &:before {
+            padding-bottom: 115%;
+
+            @include medium {
+                padding-bottom: 56.66%;
+            }
+
+            @include large {
+                padding-bottom: 95%;
+            }
+
+            @include xlarge {
+                padding-bottom: 75%;
+            }
+        }
+
+        @include large {
+            float: right;
+            margin-right: 40px;
+            width: 130%;
+        }
+
+        @include xlarge {
+            width: 125%;
+        }
+    }
+
+    .static-map {
+        float: right;
+        width: 250%;
+        max-width: none;
+        margin-bottom: -30%;
+
+        @include medium {
+            width: 130%;
+            margin-bottom: 0;
+        }
+
+        @include large {
+            width: 1200px;
+            margin-right: 40px;
+            margin-bottom: 0;
+        }
+    }
+
+    .pattern-overlay .static-pattern {
+        &.pos-top {
+            left: 55%;
+        }
+        &.pos-bottom-left {
+            left: -10%;
+        }
+    }
+}

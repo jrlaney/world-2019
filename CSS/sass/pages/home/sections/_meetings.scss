@@ -1,0 +1,15 @@
+//Venue
+#meetings {
+    .pattern-overlay {
+        .static-pattern {
+            &.pos-top-right {
+                top: -80%;
+                right: -20%;
+            }
+            &.pos-bottom-right {
+                bottom: -85%;
+                right: -1%;
+            }
+        }
+    } 
+}
