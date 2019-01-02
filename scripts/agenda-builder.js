@@ -51,18 +51,23 @@ function tagFilterListItems($filter, $tag, dataPathId) {
 function tagFilterInit() {
 	$('.role-tag').click(function () {
 		tagFilterListItems($('#role-filter'), $(this), '');
+		return false;
 	});
 	$('.theme-tag').click(function () {
 		tagFilterListItems($('#theme-filter'), $(this), '');
+		return false;
 	});
 	$('.topic-tag').click(function () {
 		tagFilterListItems($('#topic-filter'), $(this), '');
+		return false;
 	});
 	$('.startDate-tag').click(function () {
 		tagFilterListItems($('#date-filter'), $(this), '');
+		return false;
 	});
 	$('.startTime-tag').click(function () {
 		tagFilterListItems($('#time-filter'), $(this), $(this).text().replace(":", "").replace(" AM", "").replace(" PM", ""));
+		return false;
 	});
 }
 
@@ -165,7 +170,7 @@ $('document').ready(function () {
 					if (date.indexOf(days[startDateTime.getDay()]) === -1)
 						date.push(days[startDateTime.getDay()]);
 
-					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) + "</span>";
+					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }).replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
 					if (time.indexOf(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })) === -1)
 						time.push(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
 				}
@@ -230,13 +235,12 @@ $('document').ready(function () {
 		$.each(distinctTimes, function (key, value)
 		{
 			var temptime = new Date();
-			temptime.setHours(value.hrmin.split(":")[0]);
-			temptime.setMinutes(value.hrmin.split(":")[1]);
-			if (value.ampm === "PM")
+			temptime.setHours(((value.hrmin.split(":")[0]).split('').filter(function (v) { return !isNaN(v); })).join(''), ((value.hrmin.split(":")[1]).split('').filter(function (v) { return !isNaN(v); })).join(''), "0");
+			if (value.ampm.indexOf("PM") > -1)
 				temptime.setHours(temptime.getHours() + 12);
 
 			var timeString = temptime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(" ", "").replace(":", "").toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
+			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(/[^a-zA-Z0-9]+/g, '').toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
 		});
 
 		var s = $('#session-filter > ul');
