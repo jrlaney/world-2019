@@ -1,6 +1,7 @@
 #call-to-action {
 	//background: linear-gradient(#254a58, #333333);
 	@include linear-gradient($navy, $black, $navy , top, bottom);
+	transition: all .3s ease-in-out;
 
 	.final-cta {
 		display: flex;
@@ -30,8 +31,14 @@
 			@include medium {
 				position: absolute;
 				align-self: center;
-				width: 43%;
-				margin-top: 0;
+				top: 80%;
+				left: 8%;
+			}
+			@include large {
+				left: 10%;
+			}
+			@include xlarge {
+				left: 13%;
 			}
 		}
 	}
