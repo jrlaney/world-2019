@@ -186,5 +186,9 @@
     &.block-party {
         background-image: url($block-party);
     }
+    &.one-on-one {
+        background-image: url($one-on-one);
+        background-position: left center;
+    }
 
 }
