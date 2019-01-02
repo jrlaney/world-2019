@@ -2,7 +2,6 @@
 .agenda-bars-mobile {
     display: flex;
     background-color: $navy;
-    //width: 97.5%;
     padding: 20px;
     color: $white;
     @include medium {
@@ -23,29 +22,36 @@
         flex-grow: 1;
     }
 
-    .event-col span.event-title:nth-child(1), .event-col span.event-title:nth-child(17) {
+    .event-col span.event-title:nth-child(1), 
+    .event-col span.event-title:nth-child(17) {
         // education
         background-color: lighten($navy, 10%);
         padding: .5em;
     }
-    .event-col span.event-title:nth-child(2), .event-col span.event-title:nth-child(6) {
+    .event-col span.event-title:nth-child(2), 
+    .event-col span.event-title:nth-child(6) {
         // keynote
         background-color: $orange;
         padding: .5em;
         }
-    .event-col span.event-title:nth-child(3), .event-col span.event-title:nth-child(7), .event-col span.event-title:nth-child(13) {
+    .event-col span.event-title:nth-child(3), 
+    .event-col span.event-title:nth-child(7), 
+    .event-col span.event-title:nth-child(13) {
         // engagement zone
         background-color: $gray;
         padding: .5em;
     }
-    .event-col span.event-title:nth-child(4), .event-col span.event-title:nth-child(11), .event-col span.event-title:nth-child(16) {
+    .event-col span.event-title:nth-child(4), 
+    .event-col span.event-title:nth-child(11), 
+    .event-col span.event-title:nth-child(16) {
         // datathon
         background-color: darken($green, 10%);
         padding: .5em;
         margin-bottom: 10px;
 
     }
-    .event-col span.event-title:nth-child(5), .event-col span.event-title:nth-child(12) {
+    .event-col span.event-title:nth-child(5), 
+    .event-col span.event-title:nth-child(12) {
         // sessions
         background-color: $green;
         padding: .5em;
@@ -80,11 +86,11 @@
     }
 
 }
+
 .agenda-bars {
     display: none;
     @include medium{
         display: grid;
-        //width: 98.5%;
         padding: 20px;
         background-color: fade-out($navy, .3);
     }
