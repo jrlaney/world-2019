@@ -43,7 +43,6 @@
         float: right;
         width: 250%;
         max-width: none;
-        margin-bottom: -30%;
 
         @include medium {
             width: 130%;
@@ -62,7 +61,18 @@
             left: 55%;
         }
         &.pos-bottom-left {
-            left: -10%;
+            @include small {
+                left: -77%;
+            }
+            @include medium {
+                left: -40%;
+            }
+            @include large {
+                left: -20%;
+            }
+            @include xlarge {
+                left: -10%;
+            }
         }
     }
 }

@@ -239,5 +239,13 @@
 	.slick-slide {
 		padding:0;
 		.ratio {width:calc(100% - 20px); margin:0 auto;}
-	}
+    }
+    .sponsor-logo {
+        @include small {
+            padding: .5em;
+        }
+        @include medium {
+            padding: 1em;
+        }
+    }
 }
