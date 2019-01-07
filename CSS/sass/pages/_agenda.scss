@@ -182,9 +182,9 @@ input[type='search'] {
 	}
 
 	.theme-label, .topic-label, .role-label, .session-label, .date-label, .time-label{
-		transition: all .5s ease-in-out;
+		transition: all .3s ease-in-out;
 		&.menu-open::after {
-			transform: rotate(-45deg);
+			transform: rotate(45deg) translateY(1px) translateX(5px);
 		}
 		&::before {
 			content:'';
@@ -199,6 +199,7 @@ input[type='search'] {
 			display:inline-block;
 			margin-left:10px;
 			height:20px; width:20px;
+			transition: all .3s ease-in-out;
 		}
 	}
 	.theme-label:before {background-color:$red;}
