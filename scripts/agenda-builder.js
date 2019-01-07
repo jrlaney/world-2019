@@ -96,17 +96,18 @@ function dynamicSort(firstProperty, secondProperty) {
 	};
 }
 
-function sortComparision(aProperty, bProperty, sortOrder)
-{
-	if (aProperty != null && bProperty != null)
-	{
-		if (sortOrder === -1)
-		{
-			return bProperty.localeCompare(aProperty, undefined, { numeric: true, sensitivity: 'base' });
-		}
-		else
-		{
-			return aProperty.localeCompare(bProperty, undefined, { numeric: true, sensitivity: 'base' });
+function sortComparision(aProperty, bProperty, sortOrder) {
+	if (aProperty != null && bProperty != null) {
+		if (sortOrder === -1) {
+			return bProperty.localeCompare(aProperty, undefined, {
+				numeric: true,
+				sensitivity: 'base'
+			});
+		} else {
+			return aProperty.localeCompare(bProperty, undefined, {
+				numeric: true,
+				sensitivity: 'base'
+			});
 		}
 	} else if (aProperty != null && bProperty == null) {
 		return sortOrder * -1;
@@ -115,9 +116,6 @@ function sortComparision(aProperty, bProperty, sortOrder)
 	} else
 		return 0;
 }
-//end first snippet
-
-//start second snippet
 $('document').ready(function () {
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
@@ -156,6 +154,9 @@ $('document').ready(function () {
 								theme.push(v);
 						});
 				}
+				//end first snippet
+
+				//start second snippet
 				if (value.Topic != null) {
 					$.each(value.Topic,
 						function (k, v) {
@@ -170,9 +171,21 @@ $('document').ready(function () {
 					if (date.indexOf(days[startDateTime.getDay()]) === -1)
 						date.push(days[startDateTime.getDay()]);
 
-					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }).replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
-					if (time.indexOf(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })) === -1)
-						time.push(startDateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
+					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', {
+						hour: 'numeric',
+						minute: 'numeric',
+						hour12: true
+					}).replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
+					if (time.indexOf(startDateTime.toLocaleString('en-US', {
+							hour: 'numeric',
+							minute: 'numeric',
+							hour12: true
+						})) === -1)
+						time.push(startDateTime.toLocaleString('en-US', {
+							hour: 'numeric',
+							minute: 'numeric',
+							hour12: true
+						}));
 				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
@@ -210,9 +223,6 @@ $('document').ready(function () {
 			}
 		});
 
-		// End of second snippet
-
-		// Third snippet starts here
 		//Sorting items
 		time.sort();
 		sessionType.sort();
@@ -221,9 +231,11 @@ $('document').ready(function () {
 		role.sort();
 
 		var distinctTimes = [];
-		$.each(time, function (key, value)
-		{
-			distinctTimes.push({ ampm: value.split(" ")[1], hrmin: value.split(" ")[0] });
+		$.each(time, function (key, value) {
+			distinctTimes.push({
+				ampm: value.split(" ")[1],
+				hrmin: value.split(" ")[0]
+			});
 		});
 		distinctTimes.sort(dynamicSort("ampm", "hrmin"));
 		//Adding text dynamically from airtable to each of filter slots
@@ -232,14 +244,21 @@ $('document').ready(function () {
 			d.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
 		var tm = $('#time-filter > ul');
-		$.each(distinctTimes, function (key, value)
-		{
+		$.each(distinctTimes, function (key, value) {
 			var temptime = new Date();
-			temptime.setHours(((value.hrmin.split(":")[0]).split('').filter(function (v) { return !isNaN(v); })).join(''), ((value.hrmin.split(":")[1]).split('').filter(function (v) { return !isNaN(v); })).join(''), "0");
+			temptime.setHours(((value.hrmin.split(":")[0]).split('').filter(function (v) {
+				return !isNaN(v);
+			})).join(''), ((value.hrmin.split(":")[1]).split('').filter(function (v) {
+				return !isNaN(v);
+			})).join(''), "0");
 			if (value.ampm.indexOf("PM") > -1)
 				temptime.setHours(temptime.getHours() + 12);
 
-			var timeString = temptime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+			var timeString = temptime.toLocaleString('en-US', {
+				hour: 'numeric',
+				minute: 'numeric',
+				hour12: true
+			});
 			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(/[^a-zA-Z0-9]+/g, '').toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
 		});
 
@@ -251,6 +270,9 @@ $('document').ready(function () {
 		$.each(theme, function (key, value) {
 			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
+		// End of second snippet
+
+		// Third snippet starts here
 		var t = $('#topic-filter > ul');
 		$.each(topic, function (key, value) {
 			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
@@ -259,7 +281,7 @@ $('document').ready(function () {
 		$.each(role, function (key, value) {
 			r.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
-		
+
 		$('#agenda-page').jplist({
 			itemsBox: '#agendaCards',
 			itemPath: '.grid-item',
@@ -316,14 +338,14 @@ $('document').ready(function () {
 		$(this).toggleClass('menu-open');
 		$('#role-filter > ul').slideToggle('fast');
 	});
-	
+
 	$(document).on('click', '.grid-item', function () {
 		$(this).find('.session-details').slideToggle('fast');
 		$(this).find('.session-details').toggleClass('hide');
 		$(this).find('.session-speaker').toggleClass('hide');
 		$(this).find('.session-type').toggleClass('hide');
 		var details = $(this).find('.details-expand').text();
-		$(this).find('.details-expand').text( details === 'See Details' ? 'Hide Details' : 'See Details' );
+		$(this).find('.details-expand').text(details === 'See Details' ? 'Hide Details' : 'See Details');
 	});
 
 	$('.tabs-menu .tab-toggle').click(function (event) {
