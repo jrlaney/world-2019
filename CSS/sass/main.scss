@@ -1,0 +1,40 @@
+//MicroStrategy World Site
+
+/*variables don't show*/
+@import 'global/variables';
+
+/*mixins don't show*/
+@import 'global/mixins/mixins';
+
+/*global / overrides*/
+@import 'global/cvent-overrides';
+
+/*global / reset*/
+@import 'global/base-reset';
+
+/*global / typography*/
+@import 'global/typography';
+
+/*global / sizing*/
+@import 'global/sizing';
+
+/*global / grid*/
+@import 'global/grid';
+
+/*global / appearance*/
+@import 'global/appearance';
+
+/*global / header / header*/
+@import 'global/header/header';
+
+/*global / header / hero*/
+@import 'global/header/hero';
+
+/*components / components*/
+@import 'components/components';
+
+/*pages / pages*/
+@import 'pages/pages';
+
+/*global / footer / footer*/
+@import 'global/footer/footer';
