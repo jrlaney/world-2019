@@ -67,6 +67,141 @@
             }
         }
     }
+
+}
+
+.icon-lockup {
+    @include display(flex);
+    @include align-items(center);
+    padding: 10px 0;
+
+    .icon {
+        margin-right: 15px;
+    }
+
+    >p {
+        margin: 0;
+
+        >strong {
+            display: block;
+        }
+    }
+}
+
+.z {
+    &-0 {
+        z-index: 0;
+        position: relative;
+    }
+
+    &-1 {
+        z-index: 1;
+        position: relative;
+    }
+
+    &-2 {
+        z-index: 2;
+        position: relative;
+    }
+}
+
+.stretch-content {
+    min-height: 100%;
+}
+
+@include small {
+    .hide-sm {
+        display: none !important;
+    }
+}
+
+@include medium {
+    .hide-md {
+        display: none !important;
+    }
+}
+
+.item-centered {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
+
+.pattern-grid {
+    display: none;
+    @include large {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        padding-top: 7em;
+    }
+    @include xlarge {
+        padding-top: 30px;
+        padding-left: 25px;
+
+    }
+
+    .photo {
+
+        grid-column: 3/9;
+        grid-row: 2/5;
+        z-index: 1;
+
+    }
+
+    .background-pattern.pattern-triangles.pattern-small.height-small {
+
+        grid-column: 3/9;
+        grid-row: 1/2;
+
+    }
+
+    .background-pattern.pattern-tartan.pattern-small.height-medium {
+
+        grid-column: 1/3;
+        grid-row: 2/3;
+
+    }
+
+    .background-pattern.pattern-stacked-bars.pattern-small.height-small {
+
+        grid-column: 2/4;
+        grid-row-start: 3;
+        z-index: 3;
+
+    }
+
+    .background-pattern.pattern-squiggles.pattern-medium.height-small {
+
+        grid-column: 1/3;
+
+    }
+
+    .background-pattern.pattern-ribbon.pattern-small.height-tiny {
+
+       grid-column: 1/9;
+        height: 40px;
+
+    }
+}
+
+.cta-home-group {
+    padding-left: .5em;
+    @include large {
+        display: flex;
+        flex-direction: row;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 1em;
+    }
+}
+
+.cta-home-group a {
+    margin-bottom: 1em;
+    @include medium {
+
+        margin-top: 0;
+    }
 }
 
 //end hero banner
