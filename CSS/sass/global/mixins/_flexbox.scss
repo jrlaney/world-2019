@@ -1,24 +1,14 @@
 // FLEXBOX
 
     // display
-    // @mixin display($value) {
-    //     @if $value == flex {
-    //         display: flex;
-    //     } @else  {
-    //         display: inline-flex;
-    //     }
-    // }
-    // display
     @mixin display($value) {
         @if $value == flex {
-            display: -webkit-flex;
-        }
-        @else if $value == inline-flex {
-            display: -webkit-inline-flex;
+            display: flex;
+        } @else  {
+            display: inline-flex;
         }
         display: $value;
     }
-
 
     // flex-direction
     @mixin flex-direction($direction) {
