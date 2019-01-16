@@ -29,7 +29,7 @@ div.top {
         border-bottom: 1px solid fade-out($pure-black, .9);
         @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
         width: 100%;
-        max-width: none;
+        max-width: 100%;
         background-color: $white;
 
         @include medium {
@@ -54,7 +54,7 @@ div.top {
 }
 
 .logo-zone {
-    @include flex(1, 1, 1px);
+    @include flex(1, 1, 1em);
     @include display(flex);
     @include flex-wrap(wrap);
     @include align-items(center);
@@ -71,16 +71,10 @@ div.top {
 
     .logo-img {
         height: 60px;
-        max-width: 100%;
-        width: 155px;
+        max-width: 150px;
+        width: 150px;
         padding-right: 15px;
         @include transition;
-
-        @include medium {
-            height: auto;
-            width: 275px;
-            //@include translateY(15px);
-        }
     }
 
     .text {
