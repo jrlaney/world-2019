@@ -19,17 +19,45 @@
     }
 
     .pattern-overlay .static-pattern {
-        &.pos-top {
-            left: 65%;
+        &.pos-top-right {
+            top: -2%;
+            right: -35%;
+        }
+
+        &.pos-bottom-left {
+            bottom: -4%;
         }
 
         @include medium {
-            &.pos-top {
-                left: 55%;
+            &.pos-top-right {
+                top: -7%;
             }
 
-            &.pos-bottom {
-                right: 78%;
+            &.pos-bottom-left {
+                bottom: -8%;
+            }
+        }
+
+        @include large {
+            &.pos-top-right {
+                top: -7%;
+                right: -20%;
+            }
+
+            &.pos-bottom-left {
+                bottom: -10%;
+            }
+        }
+
+        @include doubleLarge {
+            &.pos-top-right {
+                top: -2%;
+                right: -6%;
+            }
+
+            &.pos-bottom-left {
+                bottom: -10%;
+                left: -11%;
             }
         }
     }
