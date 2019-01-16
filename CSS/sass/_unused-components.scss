@@ -12,7 +12,7 @@
 		@include box-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
 	}
 
-	@media $medium {
+	@include medium {
 		margin-top: -150px;
 		margin-bottom: 60px;
 
@@ -23,7 +23,7 @@
 }
 
 section.above-card {
-	@media $medium {
+	@include medium {
 		padding-bottom: 150px;
 		position: relative;
 		z-index: 4;
@@ -74,7 +74,7 @@ section.above-card {
 				}
 			}
 
-			@media $medium {
+			@include medium {
 				max-width: none;
 
 				.speaker-photo {
@@ -112,7 +112,7 @@ section.above-card {
 			color: $gray;
 			padding: 20px;
 
-			@media $xlarge {
+			@include xlarge {
 				width: auto;
 			}
 
@@ -524,7 +524,7 @@ section.above-card {
 		margin: 0 5px 0 -5px;
 	}
 
-	@media $medium {
+	@include medium {
 		font-size: 60px;
 		line-height: 1em;
 
@@ -534,7 +534,7 @@ section.above-card {
 		}
 	}
 
-	@media $large {
+	@include large {
 		font-size: 80px;
 	}
 }
@@ -572,7 +572,7 @@ section.above-card {
 
 	.icon,
 	.text-content {
-		.flex(0, 0, auto);
+		@include flex(0, 0, auto);
 		width: 100%;
 		position: relative;
 		z-index: 1;
@@ -590,7 +590,7 @@ section.above-card {
 		color: $white;
 	}
 
-	@media $medium {
+	@include medium {
 		padding: 20px 30px;
 
 		&:hover {
@@ -608,7 +608,7 @@ section.above-card {
 		}
 
 		.text-content {
-			.flex(1, 1, 0px);
+			@include flex(1, 1, 0px);
 			font-size: 30px;
 			line-height: 1em;
 			padding-right: 30px;
@@ -650,7 +650,7 @@ $base-20hr:100 / 20%;
 			text-overflow: ellipsis;
 		}
 
-		@media $small-only {
+		@include small-only {
 			display: none;
 		}
 	}
@@ -661,7 +661,7 @@ $base-20hr:100 / 20%;
 		float: left;
 		width: 80%;
 
-		@media $small-only {
+		@include small-only {
 			float: none;
 			width: auto;
 		}
@@ -704,7 +704,7 @@ $base-20hr:100 / 20%;
 			background-color: $orange;
 		}
 
-		@media $small-only {
+		@include small-only {
 			width: 100% !important;
 			margin-left: 0px !important;
 			margin-bottom: 20px;
@@ -1598,12 +1598,12 @@ $base-20hr:100 / 20%;
 				top: 100%;
 				left: 0;
 				color: $gray;
-				weight: 400;
+				font-weight: 400;
 				font-size: 16px;
 			}
 		}
 
-		@media $small-only {
+		@include small-only {
 			display: none;
 		}
 	}
@@ -1621,7 +1621,7 @@ $base-20hr:100 / 20%;
 		width: 60px;
 
 		&.rounded {
-			.round;
+			@include round;
 			padding: 15px;
 		}
 
@@ -1760,7 +1760,7 @@ $base-20hr:100 / 20%;
 		}
 	}
 
-	@media $medium {
+	@include medium {
 		.angle-wrapper {
 			overflow: hidden;
 			width: 100%;
@@ -1839,7 +1839,7 @@ $base-20hr:100 / 20%;
 		text-align: center;
 		color: $white;
 		top: 50%;
-		.translateY(-50%);
+		@include translateY(-50%);
 
 		.play-icon {
 			max-width: 25%
