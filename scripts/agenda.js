@@ -58,24 +58,24 @@ $('document').ready(function () {
 			var tags = "";
 			if (value.Program != null) {
 				$.each(value.Program.toString().split(","), function (i, program) {
-					tags += "<span class=\"text-block program-tag " + classifyText(program) + "\">" + program + "</span>"
+					tags += "<span class=\"text-block program-tag " + classifyText(program) + "\">" + program + "</span>";
 				});
 			}
 			if (value.RolePersona != null) {
 				$.each(value.RolePersona.toString().split(","), function (i, rolePersona) {
-					tags += "<span class=\"text-block role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>"
+					tags += "<span class=\"text-block role-tag " + classifyText(rolePersona) + "\">" + rolePersona + "</span>";
 				});
 			}
 			if (value.Topic != null) {
 				$.each(value.Topic.toString().split(","), function (i, topic) {
-					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>"
+					tags += "<span class=\"text-block topic-tag " + classifyText(topic) + "\">" + topic + "</span>";
 				});
-			} 
+			}
 
 			if (value.Title != null && value.Publish)
 			{
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 100) ? (value.MarCommReviewAbstract.substring(0, 1000) + "...") : value.MarCommReviewAbstract) : "");
-			
+
 				description = description.replace(/\n/g, '<br/>');
 
 				$(".session-browse .row").append("" +
@@ -147,7 +147,7 @@ $('document').ready(function () {
 			}
 		});
 	}); //end of api pull
-	
+
 	$('#filter-btn').click(function (event) {
 		event.preventDefault();
 		$('#filter-box').slideToggle('slow');
