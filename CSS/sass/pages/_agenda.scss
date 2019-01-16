@@ -55,7 +55,7 @@
 }
 
 .tab-content {
-	position:relative; 
+	position:relative;
 	z-index:2;
 	opacity:1;
 	transform:translateY(0);
@@ -223,7 +223,7 @@ input[type='search'] {
 		font-weight:400;
 
 		& ul{
-			position:block; 
+			position:block;
 			width:100%;
 			top:100%; left:0;
 			margin:0; padding:0;
@@ -332,7 +332,7 @@ input[type='search'] {
 
 .agenda-list {
 	width: 90%;
-	
+
 	@include medium{
 		width: 100%;
 		padding-left:150px;
@@ -386,7 +386,9 @@ input[type='search'] {
 	line-height: 1.2em;
 	font-weight: 400;
 	transition: all .3s ease-in-out;
+	padding-top: 1.5em;
 	@include medium {
+		padding-top: 0;
 		font-size: 1.3em;
 	}
 	@include large {
@@ -424,15 +426,26 @@ input[type='search'] {
 	top: 0;
 	left: 0;
 	background-color: darken($orange, 5%);
-	width: 9%;
-	height: 100vh;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
+	width: 100%;
+	height: 45px;
+	font-size: .75em;
+	text-transform: uppercase;
+	letter-spacing: .1em;
 	font-weight: 400;
 	padding: 1em;
 	margin-top: 0;
 	color: $white;
+	@include medium {
+		width: 16%;
+		height: 100vh;
+		font-size: .8em;
+	}
+	@include large {
+		width: 12%;
+	}
+	@include xlarge {
+		width: 9%;
+	}
 }
 
 .session-description {
@@ -445,6 +458,34 @@ input[type='search'] {
     font-weight: 600;
     font-size: 12px;
 	margin-right:10px;
+}
+
+#meetings {
+
+	.pattern-overlay .static-pattern {
+			&.pos-top-right {
+					right: -10%;
+					top: 0;
+					opacity: .2;
+					animation: slide 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) .3s infinite alternate ;
+			}
+
+			&.pos-bottom-right {
+					opacity: .2;
+					bottom: -12%;
+			}
+	}
+}
+
+@keyframes slide {
+	from {
+		right: -10%;
+		top: 0;
+	}
+	to {
+		right: -11%;
+		top: -1%;
+	}
 }
 
 
