@@ -109,11 +109,17 @@
     &.venue-main {
         background-image: url($venue-main);
     }
-    &.venue-second {
-        background-image: url($venue-second);
+    &.venue-sheraton {
+        background-image: url($venue-sheraton);
     }
-    &.venue-third {
-        background-image: url($venue-third);
+    &.venue-renaissance {
+        background-image: url($venue-renaissance);
+    }
+    &.venue-hampton {
+        background-image: url($venue-hampton);
+    }
+    &.venue-hyatt {
+        background-image: url($venue-hyatt);
     }
     &.accomm-main {
         background-image: url($accommodations-main);
@@ -185,6 +191,10 @@
     }
     &.block-party {
         background-image: url($block-party);
+    }
+
+    &.run {
+        background-image: url($womens-5k);
     }
     &.one-on-one {
         background-image: url($one-on-one);
