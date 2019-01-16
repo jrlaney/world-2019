@@ -1,8 +1,8 @@
 //agenda at a glance with colored bars
 .agenda-bars-mobile {
     display: flex;
-    background-color: $navy;
-    padding: 20px;
+    background-color: rgba(0,0,0,.4);
+    padding: 0;
     color: $white;
     @include medium {
         display: none;
@@ -22,27 +22,27 @@
         flex-grow: 1;
     }
 
-    .event-col span.event-title:nth-child(1), 
+    .event-col span.event-title:nth-child(1),
     .event-col span.event-title:nth-child(17) {
         // education
         background-color: lighten($navy, 10%);
         padding: .5em;
     }
-    .event-col span.event-title:nth-child(2), 
+    .event-col span.event-title:nth-child(2),
     .event-col span.event-title:nth-child(6) {
         // keynote
         background-color: $orange;
         padding: .5em;
         }
-    .event-col span.event-title:nth-child(3), 
-    .event-col span.event-title:nth-child(7), 
+    .event-col span.event-title:nth-child(3),
+    .event-col span.event-title:nth-child(7),
     .event-col span.event-title:nth-child(13) {
         // engagement zone
         background-color: $gray;
         padding: .5em;
     }
-    .event-col span.event-title:nth-child(4), 
-    .event-col span.event-title:nth-child(11), 
+    .event-col span.event-title:nth-child(4),
+    .event-col span.event-title:nth-child(11),
     .event-col span.event-title:nth-child(16) {
         // datathon
         background-color: darken($green, 10%);
@@ -50,7 +50,7 @@
         margin-bottom: 10px;
 
     }
-    .event-col span.event-title:nth-child(5), 
+    .event-col span.event-title:nth-child(5),
     .event-col span.event-title:nth-child(12) {
         // sessions
         background-color: $green;
@@ -92,7 +92,12 @@
     @include medium{
         display: grid;
         padding: 20px;
-        background-color: fade-out($navy, .3);
+        grid-template-columns: 150px;
+        grid-template-rows: 40px;
+        background-color: rgba($color: #000000, $alpha: .4);
+    }
+    @include large {
+        grid-template-columns: 210px;
     }
 
     .day-label {
@@ -105,7 +110,7 @@
             justify-content: space-around;
             grid-column: 2/6;
             grid-row: 1/2;
-            border-bottom: 1px solid lighten($blue, 40%);
+            border-bottom: 1px solid rgba(255, 255, 255, .7);
         }
     }
 
@@ -117,52 +122,52 @@
             grid-column: 1/2;
             grid-row: 2/11;
             z-index: 1;
-            border-bottom: 1px solid lighten($blue, 40%);
+            border-bottom: 1px solid rgba(255, 255, 255, .7);
 
             & .event-label:nth-child(1) {
                 grid-row: 2/3;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(2) {
                 grid-row: 3/4;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(3) {
                 grid-row: 4/5;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(4) {
                 grid-row: 5/6;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(5) {
                 grid-row: 6/7;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(6) {
                 grid-row: 7/8;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(7) {
                 grid-row: 8/9;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(8) {
                 grid-row: 9/10;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
 
             }
             & .event-label:nth-child(9) {
                 grid-row: 10/11;
-                border-bottom: 1px solid lighten($blue, 40%);
+                border-bottom: 1px solid rgba(255, 255, 255, .7);
                 padding: .5em 0;
             }
             & .event-label:nth-child(10) {
