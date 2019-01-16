@@ -1,4 +1,4 @@
-//Agenda 
+//Agenda
 
 #agenda {
     .time-block-wrapper.col {
@@ -7,37 +7,37 @@
 
     .agenda-day {
         width: 100%;
-    
+
         >.row {
             padding-left: 0;
             padding-right: 0;
-    
+
             @include large {
                 >.col {
                     &:first-child {
                         padding-left: 0;
                     }
-    
+
                     &:last-child {
                         padding-right: 0;
                     }
                 }
             }
         }
-    
+
         .time-block {
             display: block;
             position: relative;
             padding: 15px 0 15px 30px;
-            border-bottom: 1px solid $blue;
+            border-bottom: 1px solid rgba(255,255,255, .7);
             font-size: 18px;
             line-height: 20px;
             font-weight: 400;
-    
+
             &:last-child {
                 border-bottom: none;
             }
-    
+
             &:before {
                 content: '';
                 position: absolute;
@@ -51,7 +51,7 @@
                 @include translateY(-50%);
             }
         }
-    
+
         .time-label {
             display: block;
             position: relative;
@@ -65,7 +65,7 @@
 
     .agenda-day {
         padding: 20px;
-        background-color: fade-out($navy, .3);
+        background-color: rgba(0,0,0,.4);
 
         >h5 {
             padding-bottom: 10px;
@@ -76,13 +76,4 @@
         }
     }
 
-    .pattern-overlay .static-pattern {
-        &.pos-top {
-            left: 75%;
-        }
-
-        &.pos-bottom {
-            right: 62%;
-        }
-    }
 }
