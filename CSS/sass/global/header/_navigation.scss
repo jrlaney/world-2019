@@ -6,8 +6,7 @@ $menu-mobile-height: 80px;
             .navigation {
                 @include display(flex);
                 @include flex(0, 1, auto);
-                @include flex-direction(row);
-                @include flex-wrap(wrap);
+                flex-flow: row wrap;
                 @include justify-content(space-between);
                 position: relative;
                 margin: 0 auto;
@@ -25,10 +24,8 @@ $menu-mobile-height: 80px;
                     display: block;
                     position: absolute;
                     z-index: 2;
-                    overflow: hidden;
                     top: 0;
                     left: 0;
-                    float: none;
                     padding: $menu-mobile-height 0 0 0;
                     width: 100%;
                     min-height: 100%;
@@ -41,7 +38,7 @@ $menu-mobile-height: 80px;
                         display: none;
                     }
 
-                    @include medium {
+                    @include xlarge {
                         @include display(flex);
                         @include flex-direction(row);
                         @include flex-wrap(wrap);
@@ -56,7 +53,7 @@ $menu-mobile-height: 80px;
                         text-align: right;
                         padding: 0 10px 0 20px;
                     }
-                    
+
                         &.menu-opened {
                             max-height: 100vh;
                             @include drop-shadow(1px, 1px, 10px, fade-out($pure-black, .5));
@@ -64,9 +61,9 @@ $menu-mobile-height: 80px;
                                     background: $red;
                                     box-shadow:
                                         0 0.25em 0 0 $red,
-                                        0 0.5em 0 0 $red;  
+                                        0 0.5em 0 0 $red;
                                 }
-                                @include medium {
+                                @include xlarge {
                                     box-shadow: none;
                                 }
                             }
@@ -85,7 +82,7 @@ $menu-mobile-height: 80px;
                                 0 0.5em 0 0 $dark-gray;
                             @include transition;
 
-                            @include medium {
+                            @include xlarge {
                                 display: none;
                             }
                         }
@@ -102,7 +99,7 @@ $menu-mobile-height: 80px;
                         border-top: 1px solid fade-out($white, .1);
                         border-bottom: 1px solid fade-out($pure-black, .9);
 
-                        @include medium {
+                        @include xlarge {
                             @include display(flex);
                             // .flex-direction(row);
                             @include align-items(center);
@@ -154,14 +151,14 @@ $menu-mobile-height: 80px;
                                 background-color: $red;
                                 color: $white;
                                 padding: 15px 25px;
-                                margin: 0;
+                                margin: 1em 0 0;
                                 cursor: pointer;
                                 @include transition();
 
                                 &:hover {
                                     background-color: $light-red;
                                 }
-        
+
                                 &:active {
                                     background-color: $dark-red;
                                 }
