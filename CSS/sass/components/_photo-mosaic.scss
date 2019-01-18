@@ -121,8 +121,11 @@
     &.venue-hyatt {
         background-image: url($venue-hyatt);
     }
-    &.accomm-main {
-        background-image: url($accommodations-main);
+    &.venue-residence {
+        background-image: url($venue-residence-inn);
+    }
+    &.venue-hilton {
+        background-image: url($venue-hilton);
     }
 
     &.world2018-keynote-rennyson {
