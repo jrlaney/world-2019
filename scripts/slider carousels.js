@@ -1,5 +1,5 @@
-<script type="text/javascript" src="https://www.microstrategy.com/cmstemplates/microstrategy/bower_components/slick-carousel/slick/slick.min.js"></script>
-<script type="text/javascript">
+/* <script type="text/javascript" src="https://www.microstrategy.com/cmstemplates/microstrategy/bower_components/slick-carousel/slick/slick.min.js"></script> */
+/* <script type="text/javascript"> */
 jQuery(document).ready(function($) {
 	$('.logo-slider').slick({
 		autoplay: true,
@@ -52,7 +52,7 @@ jQuery(document).ready(function($) {
 				}
 			}
 		]
-	});
+	})
 
 	// $('.sessions-slider').slick({
 	// 	autoplay: true,
@@ -128,8 +128,8 @@ jQuery(document).ready(function($) {
 	// 	fade: true,
 	// 	cssEase: 'linear',
 	// });
-	
-	
+
+
 	// $('.blog-slider').slick({
 	// 	cssEase: 'ease-out',
 	// 	slidesToShow: 2,
@@ -163,4 +163,4 @@ jQuery(document).ready(function($) {
 	// 	]
 	// });
 });
-</script>
+/* </script> */
