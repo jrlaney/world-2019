@@ -436,15 +436,9 @@ input[type='search'] {
 	margin-top: 0;
 	color: $white;
 	@include medium {
-		width: 16%;
+		width: 120px;
 		height: 100vh;
 		font-size: .8em;
-	}
-	@include large {
-		width: 12%;
-	}
-	@include xlarge {
-		width: 9%;
 	}
 }
 
