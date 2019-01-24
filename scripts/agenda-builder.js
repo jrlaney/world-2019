@@ -116,6 +116,16 @@ function sortComparision(aProperty, bProperty, sortOrder) {
 	} else
 		return 0;
 }
+
+Date.prototype.getFormattedTime = function ()
+{
+	var hours = this.getHours() === 0 ? "12" : this.getHours() > 12 ? this.getHours() - 12 : this.getHours();
+	var minutes = (this.getMinutes() < 10 ? "0" : "") + this.getMinutes();
+	var ampm = this.getHours() < 12 ? "AM" : "PM";
+	var formattedTime = hours + ":" + minutes + " " + ampm;
+	return formattedTime;
+}
+
 $('document').ready(function () {
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
@@ -170,22 +180,11 @@ $('document').ready(function () {
 					tags += "<span class=\"text-label startDate-tag " + classifyText(days[startDateTime.getDay()]) + "\">" + days[startDateTime.getDay()] + "</span>";
 					if (date.indexOf(days[startDateTime.getDay()]) === -1)
 						date.push(days[startDateTime.getDay()]);
+					//var startTime = new Date('1970-01-01 ' + value.StartTime);
 
-					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.toLocaleString('en-US', {
-						hour: 'numeric',
-						minute: 'numeric',
-						hour12: true
-					}).replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
-					if (time.indexOf(startDateTime.toLocaleString('en-US', {
-							hour: 'numeric',
-							minute: 'numeric',
-							hour12: true
-						})) === -1)
-						time.push(startDateTime.toLocaleString('en-US', {
-							hour: 'numeric',
-							minute: 'numeric',
-							hour12: true
-						}));
+					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.getFormattedTime().replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
+					if (time.indexOf(startDateTime.getFormattedTime()) === -1)
+						time.push(startDateTime.getFormattedTime());
 				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
@@ -193,19 +192,10 @@ $('document').ready(function () {
 
 				var startTime = "TBD";
 				if (value.StartDateTime != null)
-					startTime = new Date(value.StartDateTime).toLocaleDateString("en-US", {
-						weekday: 'long',
-						month: 'long',
-						day: 'numeric',
-						hour: 'numeric',
-						minute: '2-digit'
-					});
+					startTime = new Date(value.StartDateTime).toDateString() + "<br/>" + new Date(value.StartDateTime).getFormattedTime();
 				var endTime = "TBD";
 				if (value.EndDateTime != null)
-					endTime = new Date(value.EndDateTime).toLocaleTimeString("en-US", {
-						hour: 'numeric',
-						minute: '2-digit'
-					});
+					endTime = new Date(value.EndDateTime).getFormattedTime();
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
@@ -254,11 +244,7 @@ $('document').ready(function () {
 			if (value.ampm.indexOf("PM") > -1)
 				temptime.setHours(temptime.getHours() + 12);
 
-			var timeString = temptime.toLocaleString('en-US', {
-				hour: 'numeric',
-				minute: 'numeric',
-				hour12: true
-			});
+			var timeString = temptime.getFormattedTime();
 			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(/[^a-zA-Z0-9]+/g, '').toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
 		});
 
