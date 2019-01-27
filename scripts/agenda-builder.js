@@ -187,7 +187,7 @@ $('document').ready(function ()
 					//var startTime = new Date('1970-01-01 ' + value.StartTime);
 
 					luxonStartDateTime = DateTime.fromISO(value.StartDateTime);
-					tags += "<span class=\"text-label startTime-tag " + luxonStartDateTime.hours + luxonStartDateTime.minutes + "\">" + luxonStartDateTime.toFormat('t').replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
+					tags += "<span class=\"text-label startTime-tag " + luxonStartDateTime.hour + luxonStartDateTime.minute + "\">" + luxonStartDateTime.toFormat('t').replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
 					if (time.indexOf(luxonStartDateTime.toFormat('t')) === -1)
 						time.push(luxonStartDateTime.toFormat('t'));
 				}
