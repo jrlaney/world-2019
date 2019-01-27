@@ -7518,11 +7518,12 @@ input[type=search] {
 
 .agenda-list {
   width: 90%;
+  padding-top: 60px;
 }
 @media (min-width: 768px) {
   .agenda-list {
     width: 100%;
-    padding-left: 150px;
+    padding-left: 180px;
   }
 }
 
@@ -7633,7 +7634,7 @@ input[type=search] {
   left: 0;
   background-color: #e68300;
   width: 100%;
-  height: 45px;
+  height: 70px;
   font-size: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -7644,7 +7645,7 @@ input[type=search] {
 }
 @media (min-width: 768px) {
   .session-start-time {
-    width: 120px;
+    width: 160px;
     height: 100vh;
     font-size: 0.8em;
   }
