@@ -126,7 +126,9 @@ Date.prototype.getFormattedTime = function ()
 	return formattedTime;
 }
 
-$('document').ready(function () {
+$('document').ready(function ()
+{
+	var DateTime = luxon.DateTime;
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
 		allSessions = data;
@@ -143,6 +145,8 @@ $('document').ready(function () {
 		$.each(allSessions, function (key, value) {
 			if (value.Title != null && value.Publish) {
 				var tags = "";
+				var luxonStartDateTime;
+				var luxonEndDateTime;
 				if (value.RolePersona != null) {
 					$.each(value.RolePersona,
 						function (k, v) {
@@ -182,20 +186,26 @@ $('document').ready(function () {
 						date.push(days[startDateTime.getDay()]);
 					//var startTime = new Date('1970-01-01 ' + value.StartTime);
 
-					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.getFormattedTime().replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
-					if (time.indexOf(startDateTime.getFormattedTime()) === -1)
-						time.push(startDateTime.getFormattedTime());
+					luxonStartDateTime = DateTime.fromISO(value.StartDateTime);
+					tags += "<span class=\"text-label startTime-tag " + luxonStartDateTime.hours + luxonStartDateTime.minutes + "\">" + luxonStartDateTime.toFormat('t').replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
+					if (time.indexOf(luxonStartDateTime.toFormat('t')) === -1)
+						time.push(luxonStartDateTime.toFormat('t'));
 				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
 				description = description.replace(/\n/g, '<br />');
 
 				var startTime = "TBD";
-				if (value.StartDateTime != null)
-					startTime = new Date(value.StartDateTime).toDateString() + "<br/>" + new Date(value.StartDateTime).getFormattedTime();
+				if (value.StartDateTime != null) 
+				{
+					startTime = luxonStartDateTime.weekdayShort + " " + luxonStartDateTime.monthShort + " " + luxonStartDateTime.day + " " + luxonStartDateTime.year + "<br/>" + luxonStartDateTime.toFormat('t') ;
+				}
 				var endTime = "TBD";
-				if (value.EndDateTime != null)
-					endTime = new Date(value.EndDateTime).getFormattedTime();
+				if (value.EndDateTime != null) 
+				{
+					luxonEndDateTime = DateTime.fromISO(value.EndDateTime);
+					endTime = luxonEndDateTime.toFormat('t');
+				}
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
