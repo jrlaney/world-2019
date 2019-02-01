@@ -2,89 +2,74 @@
 .agenda-bars-mobile {
     display: flex;
     background-color: rgba(0,0,0,.4);
-    padding: 0;
+    padding: 1em;
     color: $white;
     @include medium {
         display: none;
     }
-
-    .day-label {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-right: 10px;
-        color: $white;
-    }
-
     .event-col {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-    }
 
-    .event-col span.event-title:nth-child(1),
-    .event-col span.event-title:nth-child(17) {
-        // education
-        background-color: lighten($navy, 10%);
-        padding: .5em;
-    }
-    .event-col span.event-title:nth-child(2),
-    .event-col span.event-title:nth-child(6) {
-        // keynote
-        background-color: $orange;
-        padding: .5em;
+        .event-title {
+            padding: .5em;
+            //MONDAY
+            &:nth-child(2) { //Pre-Event Education
+                background-color: $navy;
+            }
+            &:nth-child(3) { //Partner Forum
+                background-color: $orange;
+            }
+            &:nth-child(4) { //Expo Hall & Lounge
+                background-color: $gray;
+            }
+
+            //TUESDAY
+            &:nth-child(6) { //General Session
+                background-color: $green;
+            }
+            &:nth-child(7) { //Session & Workshops
+                background-color: $red;
+            }
+            &:nth-child(8) { //Expo Hall & Lounge
+                background-color: $gray;
+            }
+            &:nth-child(9) { //Block Party
+                background-color: darken($blue, 12%);
+            }
+            &:nth-child(10) { //Executive Forum
+                background-color: $orange;
+            }
+            &:nth-child(11) { //Women in Tech
+                background-color: $blue;
+            }
+            &:nth-child(12) { //Datathon
+                background-color: lighten($navy, 7%);
+            }
+
+            //WEDNESDAY
+            &:nth-child(14) { //General Session
+                margin-top: 1.2em;
+                background-color: $green;
+            }
+            &:nth-child(15) { //Session & Workshops
+                background-color: $red;
+            }
+            &:nth-child(16) { //Expo Hall & Lounge
+                background-color: $gray;
+            }
+            &:nth-child(17) { //Datathon
+                background-color: lighten($navy, 7%);
+            }
+
+            //THURSDAY
+            &:nth-child(19) { //Pre-Event Education
+                margin-top: 1.2em;
+                background-color: $navy;
+            }
         }
-    .event-col span.event-title:nth-child(3),
-    .event-col span.event-title:nth-child(7),
-    .event-col span.event-title:nth-child(13) {
-        // engagement zone
-        background-color: $gray;
-        padding: .5em;
     }
-    .event-col span.event-title:nth-child(4),
-    .event-col span.event-title:nth-child(11),
-    .event-col span.event-title:nth-child(16) {
-        // datathon
-        background-color: darken($green, 10%);
-        padding: .5em;
-        margin-bottom: 10px;
-
-    }
-    .event-col span.event-title:nth-child(5),
-    .event-col span.event-title:nth-child(12) {
-        // sessions
-        background-color: $green;
-        padding: .5em;
-    }
-
-    .event-col span.event-title:nth-child(8) {
-        // block party
-        background-color: darken($red, 10%);
-        padding: .5em;
-    }
-    .event-col span.event-title:nth-child(9) {
-        // executive summit
-        background-color: lighten($blue, 10%);
-        padding: .5em;
-    }
-    .event-col span.event-title:nth-child(10) {
-        // womens networking
-        background-color: darken($red, 30%);
-        padding: .5em;
-    }
-
-    .event-col span.event-title:nth-child(14) {
-        // futures
-        background-color: $red;
-        padding: .5em;
-    }
-
-    .event-col span.event-title:nth-child(15) {
-        // partner summit
-        background-color: darken($blue, 20%);
-        padding: .5em;
-    }
-
 }
 
 .agenda-bars {
@@ -97,7 +82,7 @@
         background-color: rgba($color: #000000, $alpha: .4);
     }
     @include large {
-        grid-template-columns: 210px;
+        grid-template-columns: 280px;
     }
 
     .day-label {
@@ -108,193 +93,9 @@
         @include medium {
             flex-direction: row;
             justify-content: space-around;
-            grid-column: 2/6;
+            grid-column: 1/6;
             grid-row: 1/2;
             border-bottom: 1px solid rgba(255, 255, 255, .7);
-        }
-    }
-
-    .label-col {
-        display: none;
-
-        @include medium {
-            display: grid;
-            grid-column: 1/2;
-            grid-row: 2/11;
-            z-index: 1;
-            border-bottom: 1px solid rgba(255, 255, 255, .7);
-
-            & .event-label:nth-child(1) {
-                grid-row: 2/3;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(2) {
-                grid-row: 3/4;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(3) {
-                grid-row: 4/5;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(4) {
-                grid-row: 5/6;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(5) {
-                grid-row: 6/7;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(6) {
-                grid-row: 7/8;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(7) {
-                grid-row: 8/9;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(8) {
-                grid-row: 9/10;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-
-            }
-            & .event-label:nth-child(9) {
-                grid-row: 10/11;
-                border-bottom: 1px solid rgba(255, 255, 255, .7);
-                padding: .5em 0;
-            }
-            & .event-label:nth-child(10) {
-                grid-row: 11/12;
-                padding: .5em 0;
-
-            }
-
-        }
-    }
-
-    .event-col span.event-title:nth-child(1) {
-        // education
-        background-color: lighten($navy, 10%);
-        padding: .5em;
-        grid-column: 1/3;
-        grid-row: 1/2;
-
-        @include medium{
-            grid-column: 1/2;
-            grid-row: 2/3;
-        }
-    }
-    .event-col span.event-title:nth-child(2) {
-        // education
-        background-color: lighten($navy, 10%);
-        padding: .5em;
-        grid-column: 1/3;
-        grid-row: 12/13;
-        @include medium {
-            grid-column: 4/5;
-            grid-row: 2/3;
-        }
-    }
-    .event-col span.event-title:nth-child(3) {
-        // expo hall and lounge
-        grid-column: 2/3;
-        grid-row: 1/10;
-        background-color: $gray;
-        padding: .5em;
-        @include medium {
-            grid-column: 1/4;
-            grid-row: 3/4;
-        }
-    }
-    .event-col span.event-title:nth-child(4) {
-        // Partner Forum
-        grid-column: 1/2;
-        grid-row: 2/8;
-        background-color: $navy;
-        padding: .5em;
-
-        @include medium {
-            grid-column: 1/2;
-            grid-row: 4/5;
-        }
-    }
-    .event-col span.event-title:nth-child(5) {
-        // General Sessions
-        grid-column: 2/3;
-        grid-row: 6/10;
-        background-color: $orange;
-        padding: .5em;
-
-        @include medium{
-            grid-column: 2/4;
-            grid-row: 5/6;
-        }
-    }
-    .event-col span.event-title:nth-child(6) {
-        // executive forum
-        @include medium {
-            grid-column: 2/4;
-            grid-row: 6/7;
-
-        }
-        background-color: $green;
-        padding: .5em;
-    }
-    .event-col span.event-title:nth-child(7) {
-        // womens networking
-        grid-column: 2/3;
-        grid-row: 7/8;
-        background-color: lighten($blue, 10%);
-        padding: .5em;
-    }
-    .event-col span.event-title:nth-child(8) {
-        // block party
-        background-color: darken($red, 30%);
-        padding: .5em;
-        @include medium {
-            grid-column: 2/3;
-            grid-row: 8/9;
-
-        }
-    }
-    .event-col span.event-title:nth-child(9) {
-        // partner summit
-        grid-column: 1/2;
-        grid-row: 9/10;
-        background-color: darken($red, 10%);
-        padding: .5em;
-
-        @include medium {
-            grid-column: 2/3;
-            grid-row: 9/10;
-        }
-    }
-    .event-col span.event-title:nth-child(10) {
-        // futures
-        @include medium {
-            grid-column: 3/4;
-            grid-row: 10/11;
-        }
-        background-color: darken($blue, 20%);
-        padding: .5em;
-    }
-    .event-col span.event-title:nth-child(11) {
-        // datathon
-        grid-column: 2/3;
-        grid-row: 3/10;
-        background-color: darken($green, 10%);
-        padding: .5em;
-
-        @include medium {
-            grid-column: 1/3;
-            grid-row: 11/12;
         }
     }
 
@@ -302,10 +103,72 @@
         display: grid;
         color:$white;
         @include medium{
-            grid-column: 2/6;
+            grid-column: 1/6;
             grid-row: 2/11;
         }
     }
+
+    .event-title {
+        padding: .5em;
+        &:nth-child(1) { // pre-event education
+            background-color: $navy;
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+        &:nth-child(2) { // post-evet education
+            background-color: $navy;
+            grid-column: 4/5;
+            grid-row: 2/3;
+        }
+        &:nth-child(3) { // expo hall and lounge
+            background-color: $gray;
+            grid-column: 1/4;
+            grid-row: 3/4;
+        }
+        &:nth-child(4) { // Partner Forum
+            background-color: $orange;
+            grid-column: 1/2;
+            grid-row: 4/5;
+        }
+        &:nth-child(5) { // General Sessions
+            background-color: $green;
+            grid-column: 2/4;
+            grid-row: 5/6;
+        }
+        &:nth-child(6) { // Workshops & Sessions
+            background-color: $red;
+            grid-column: 2/4;
+            grid-row: 6/7;
+        }
+        &:nth-child(7) { // Executive Forum
+            background-color: $orange;
+            grid-column: 2/3;
+            grid-row: 7/8;
+        }
+        &:nth-child(8) { // Women in Tech
+            background-color: $blue;
+            grid-column: 2/3;
+            grid-row: 8/9;
+        }
+        &:nth-child(9) { // Block Party
+            background-color: darken($blue, 12%);
+            grid-column: 2/3;
+            grid-row: 9/10;
+        }
+        &:nth-child(10) { // futures
+            background-color: darken($green, 20%);
+            padding: .3em 1em;
+            grid-column: 3/4;
+            grid-row: 5/6;
+            height: 35px;
+        }
+        &:nth-child(11) { // datathon
+            background-color: lighten($navy, 7%);
+            grid-column: 1/3;
+            grid-row: 11/12;
+        }
+    }
+}
 
     .event {
         display: block;
@@ -362,38 +225,3 @@
             }
         }
     }
-
-
-
-    .time-markers {
-        @include display(flex);
-        @include flex(0, 1, auto);
-        @include flex-direction(row);
-        @include flex-wrap(nowrap);
-        @include justify-content(flex-start);
-        @include align-items(stretch);
-        position: absolute;
-        z-index: 0;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-
-        .time-bar {
-            @include display(flex);
-            @include flex(1, 1, auto);
-            position: relative;
-            border-left: 1px solid $iron;
-
-            >span {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                color: $gray;
-                font-weight: 400;
-                font-size: 16px;
-            }
-        }
-
-    }
-}
