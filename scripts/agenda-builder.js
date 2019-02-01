@@ -126,7 +126,9 @@ Date.prototype.getFormattedTime = function ()
 	return formattedTime;
 }
 
-$('document').ready(function () {
+$('document').ready(function ()
+{
+	var DateTime = luxon.DateTime;
 	//Grabbing API Information
 	$.get("https://www.microstrategy.com/api/GetAirTableData", function (data) {
 		allSessions = data;
@@ -143,6 +145,8 @@ $('document').ready(function () {
 		$.each(allSessions, function (key, value) {
 			if (value.Title != null && value.Publish) {
 				var tags = "";
+				var luxonStartDateTime;
+				var luxonEndDateTime;
 				if (value.RolePersona != null) {
 					$.each(value.RolePersona,
 						function (k, v) {
@@ -151,6 +155,9 @@ $('document').ready(function () {
 								role.push(v);
 						});
 				}
+				//end first snippet
+
+				//start second snippet
 				if (value.SessionType != null) {
 					tags += "<span class=\"text-label sessiontype-tag " + classifyText(value.SessionType) + "\">" + value.SessionType + "</span>";
 					if (sessionType.indexOf(value.SessionType) === -1)
@@ -164,9 +171,6 @@ $('document').ready(function () {
 								theme.push(v);
 						});
 				}
-				//end first snippet
-
-				//start second snippet
 				if (value.Topic != null) {
 					$.each(value.Topic,
 						function (k, v) {
@@ -182,9 +186,10 @@ $('document').ready(function () {
 						date.push(days[startDateTime.getDay()]);
 					//var startTime = new Date('1970-01-01 ' + value.StartTime);
 
-					tags += "<span class=\"text-label startTime-tag " + startDateTime.getHours() + startDateTime.getMinutes() + "\">" + startDateTime.getFormattedTime().replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
-					if (time.indexOf(startDateTime.getFormattedTime()) === -1)
-						time.push(startDateTime.getFormattedTime());
+					luxonStartDateTime = DateTime.fromISO(value.StartDateTime);
+					tags += "<span class=\"text-label startTime-tag " + luxonStartDateTime.hour + luxonStartDateTime.minute + "\">" + luxonStartDateTime.toFormat('t').replace(/[^a-zA-Z0-9: ]+/g, '') + "</span>";
+					if (time.indexOf(luxonStartDateTime.toFormat('t')) === -1)
+						time.push(luxonStartDateTime.toFormat('t'));
 				}
 
 				var description = ((value.MarCommReviewAbstract != null) ? ((value.MarCommReviewAbstract.length > 2000) ? (value.MarCommReviewAbstract.substring(0, 2000) + "...") : value.MarCommReviewAbstract) : "");
@@ -192,10 +197,15 @@ $('document').ready(function () {
 
 				var startTime = "TBD";
 				if (value.StartDateTime != null)
-					startTime = new Date(value.StartDateTime).toDateString() + "<br/>" + new Date(value.StartDateTime).getFormattedTime();
+				{
+					startTime = luxonStartDateTime.weekdayShort + " " + luxonStartDateTime.monthShort + " " + luxonStartDateTime.day + " " + luxonStartDateTime.year + "<br/>" + luxonStartDateTime.toFormat('t') ;
+				}
 				var endTime = "TBD";
 				if (value.EndDateTime != null)
-					endTime = new Date(value.EndDateTime).getFormattedTime();
+				{
+					luxonEndDateTime = DateTime.fromISO(value.EndDateTime);
+					endTime = luxonEndDateTime.toFormat('t');
+				}
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
@@ -247,6 +257,9 @@ $('document').ready(function () {
 			var timeString = temptime.getFormattedTime();
 			tm.append($("<li></li>").append($("<input>").attr("id", timeString.replace(/[^a-zA-Z0-9]+/g, '').toLowerCase()).attr("data-path", "." + temptime.getHours() + temptime.getMinutes()).attr("type", "checkbox")).append($("<label></label>").attr("for", temptime.getHours()).text(timeString)));
 		});
+		// End of second snippet
+
+		// Third snippet starts here
 
 		var s = $('#session-filter > ul');
 		$.each(sessionType, function (key, value) {
@@ -256,9 +269,6 @@ $('document').ready(function () {
 		$.each(theme, function (key, value) {
 			th.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
 		});
-		// End of second snippet
-
-		// Third snippet starts here
 		var t = $('#topic-filter > ul');
 		$.each(topic, function (key, value) {
 			t.append($("<li></li>").append($("<input>").attr("id", classifyText(value)).attr("data-path", "." + classifyText(value)).attr("type", "checkbox")).append($("<label></label>").attr("for", classifyText(value)).text(value)));
