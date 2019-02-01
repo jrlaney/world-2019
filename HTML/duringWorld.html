@@ -36,7 +36,32 @@
 							<p><strong class="text-uppercase text-bold">Phoenix, Arizona</strong>Phoenix Convention Center</p>
 						</div>
 					</div>
-				</div>
+                </div>
+                <div class="row h-center z-1">
+                    <div class="col text-center">
+                        <h4 class="text-white text-normal">Live Keynote In: </h4>
+                    </div>
+                    <div class="col lg-8 text-center text-white text-uppercase collapse" id="countdownClock">
+                        <div class="row text-center clockDisplay expand">
+                            <div class="col lg-2 background-green">
+                                <p class="text-label">Days</p>
+                                <br><span class="days h4"></span>
+                            </div>
+                            <div class="col lg-2 background-orange">
+                                <p class="text-label">Hours</p>
+                                <br><span class="hours h4"></span>
+                            </div>
+                            <div class="col lg-2 background-navy">
+                                <p class="text-label">Minutes</p>
+                                <br><span class="minutes h4"></span>
+                            </div>
+                            <div class="col lg-2 background-red">
+                                <p class="text-label">seconds</p>
+                                <br><span class="seconds h4"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 				<div class="row h-center padding-20 z-1">
 					<a class="cta-button small red carat reg-link" href="{[E-RSVP YES URL]}">Register to Stream the Keynotes</a>
 				</div>
@@ -1055,6 +1080,8 @@
 		}
         </style>
         {[E-CUSTOM TAG:SCRIPT-REGLINKFIX]}
+        {[E-CUSTOM TAG:SCRIPT-COUNTDOWN-CLOCK]}
+        <script src="../scripts/countdownClock.js"></script>
     </body>
 
 </html>
