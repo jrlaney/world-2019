@@ -209,6 +209,7 @@ $('document').ready(function ()
 
 				$("#agendaCards").append("" +
 					"<article class=\"grid-item agenda-list\" id=\"" + value.Id + "\">" +
+					(description.indexOf("Download the presentation") >= 0?"<p class=\"text-label red\">Download Available</p>":"")+
 					"<h3 class=\"session-title\">" + value.Title + "</h3>" +
 					"<h4 class=\"session-speaker hide\">" + ((value.Speaker != null) ? value.Speaker : "") + "</h4>" +
 					"<p class=\"session-type hide\">" + value.SessionType + "</p>" +
